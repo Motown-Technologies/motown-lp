@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import about from '../img/about.jpg';
 import logo from '../img/logo.png';
+const currentYear = new Date().getFullYear();
 ---
 
 <html lang="en">
@@ -58,5 +59,18 @@ import logo from '../img/logo.png';
 				</div>
 			</div>
 		</div>
+		<div class="mx-auto p-16 mt-10 bg-gray-900 text-gray-50 text-center">
+			<div class="text-6xl mb-8 font-semibold font-mono tracking-wide underline underline-offset-8">Reach Out</div>
+			<div class="flex gap-4 justify-center">
+				<div class="text-2xl">
+					<p class="py-1">Ready to start a project or just want to chat?</p>
+					<p class="py-1">Drop us a line, and let's make something amazing together.</p>
+					<button class="mt-8 bg-blue-600 rounded-md shadow-md px-6 py-2 font-semibold">Contact Us</button>
+				</div>
+			</div>
+		</div>
+		<footer class="bg-[#E7E7E7] p-2 text-center">
+			<p>&copy; {currentYear} Motown Tech. All rights reserved.</p>
+		</footer>
 	</body>
 </html>
