@@ -1,0 +1,62 @@
+---
+import { Image } from 'astro:assets';
+import about from '../img/about.jpg';
+import logo from '../img/logo.png';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body class="bg-gray-300">
+		<div class="text-white w-full flex justify-center items-center p-24">
+			<div class="">
+				<Image src={logo} alt="Motown Logo" />
+				<p class="text-blue-700 text-center font-semibold font-mono tracking-wide">Where Ideas Become Reality</p>
+			</div>
+		</div>	
+		<div class="bg-gray-900 rounded-md mx-4 p-16 shadow-md text-gray-900">
+			<div class="text-6xl text-gray-50 mb-16 font-semibold font-mono tracking-wide underline underline-offset-8">Our Services</div>
+			<div class="grid grid-cols-3 gap-4">
+				<div class="bg-gray-200 rounded-md p-4">
+					<div class="text-blue-600 font-bold underline underline-offset-8 mb-4">Software Development</div>	
+					<div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt est et tempora quidem tempore voluptas itaque deleniti voluptatum nemo similique?</div>	
+				</div>	
+				<div class="bg-gray-200 rounded-md p-4">
+					<div class="text-blue-600 font-bold underline underline-offset-8 mb-4">Digital Marketing</div>	
+					<div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt est et tempora quidem tempore voluptas itaque deleniti voluptatum nemo similique?</div>	
+				</div>	
+				<div class="bg-gray-200 rounded-md p-4">
+					<div class="text-blue-600 font-bold underline underline-offset-8 mb-4">Mobile Development</div>	
+					<div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt est et tempora quidem tempore voluptas itaque deleniti voluptatum nemo similique?</div>	
+				</div>	
+				<div class="col-span-3 flex gap-4">
+					<div class="bg-gray-200 rounded-md p-4 w-1/2">
+						<div class="text-blue-600 font-bold underline underline-offset-8 mb-4">Automation</div>	
+						<div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt est et tempora quidem tempore voluptas itaque deleniti voluptatum nemo similique?</div>	
+					</div>	
+					<div class="bg-gray-200 rounded-md p-4 w-1/2">
+						<div class="text-blue-600 font-bold underline underline-offset-8 mb-4">Consulting</div>	
+						<div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt est et tempora quidem tempore voluptas itaque deleniti voluptatum nemo similique?</div>	
+					</div>	
+				  </div>
+			</div>	  
+		</div>
+		<div class="mx-auto p-8 my-10">
+			<div class="text-6xl text-gray-900 mb-8 font-semibold font-mono tracking-wide underline underline-offset-8">About Us</div>
+			<div class="flex gap-4">
+				<div class="text-2xl">
+					<p class="py-4">At Motown Tech, we are passionate about crafting innovative digital solutions that drive businesses forward. Based in the heart of a city known for its rhythm and creativity, our team embodies the spirit of Motown—blending technical expertise with a creative flair. We specialize in designing and developing cutting-edge websites, custom software solutions, and automation tools that not only meet the unique needs of our clients but also exceed their expectations.</p>
+					<p class="py-4">Our approach is centered around collaboration and understanding the distinct challenges and opportunities within each industry we serve. Whether you're a startup looking to establish a strong online presence or an established enterprise seeking to optimize your operations through automation, Motown Tech is your trusted partner. We take pride in delivering solutions that are as dynamic and diverse as the clients we work with, ensuring that every project is a harmonious blend of functionality, innovation, and style.</p>
+				</div>
+				<div class="flex justify-center" style="clip-path: polygon(50% 0%, 88% 8%, 100% 43%, 100% 100%, 68% 100%, 32% 100%, 6% 88%, 0% 43%, 0 0);">
+					<Image src={about} alt="Motown Logo" width={3000}/>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
