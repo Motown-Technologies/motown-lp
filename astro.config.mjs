@@ -7,5 +7,8 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   site: 'https://motown-technologies.github.io/motown-lp/',
   base: '/motown-lp',
+  build: {
+    assets: 'assets'
+  },
   integrations: [tailwind()]
 });
