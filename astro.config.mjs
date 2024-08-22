@@ -5,7 +5,7 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  base: process.env.BASE_URL || '/', // replace with your repository name
-  output: 'static',
+  site: 'https://motown-technologies.github.io/motown-lp/',
+  base: '/motown-lp',
   integrations: [tailwind()]
 });

@@ -49,17 +49,3 @@ jobs:
       - name: Output Pages URL
         run: |
           echo "Pages URL: ${{ steps.deployment.outputs.page_url }}"
-      - name: Create deployment status
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          script: |
-            github.rest.repos.createDeploymentStatus({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              deployment_id: ${{ steps.deployment.outputs.deployment_id }},
-              state: 'success',
-              environment_url: '${{ steps.deployment.outputs.page_url }}',
-              description: 'Deployment finished successfully!',
-              log_url: 'https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}'
-            })
