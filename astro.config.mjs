@@ -5,7 +5,7 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://motown-technologies.github.io/motown-lp/',
+  site: 'https://motowntech.com',
   base: '/motown-lp',
   build: {
     assets: 'assets'
