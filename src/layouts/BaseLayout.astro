@@ -1,0 +1,26 @@
+---
+import { ClientRouter } from "astro:transitions";
+import { Navigation } from "../components/Navigation";
+const { meta_title, meta_description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{meta_title}</title>
+        <meta name="description" content={meta_description} />
+        <ClientRouter />
+    </head>
+    <body class="pt-28 bg-[#0a0a0f]">
+        <Navigation client:load />
+        <slot />
+        <!-- Footer -->
+        <footer class="py-8 bg-[#0a0a0f] border-t border-gray-800">
+            <div class="max-w-7xl mx-auto px-6 text-center text-gray-500">
+                <p>&copy; 2025 Motown Tech. Where Ideas Become Reality.</p>
+            </div>
+        </footer>
+    </body>
+</html>

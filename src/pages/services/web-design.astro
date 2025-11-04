@@ -1,0 +1,794 @@
+---
+import { Image } from "astro:assets";
+import bannerImage from "../../img/modern-web-design-workspace-with-multiple-screens-.jpg";
+import processImage from "../../img/web-design-process-with-wireframes-and-mockups-on-.jpg";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+    <main class="min-h-screen bg-[#0a0a0f]">
+        {/* Hero Section */}
+        <section
+            class="relative overflow-hidden bg-gradient-to-b from-[#0a0a0f] to-[#1a1a2e] pt-8 pb-24"
+        >
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="inline-block mb-4">
+                            <span
+                                class="text-[#2563eb] text-sm font-semibold tracking-wider uppercase"
+                            >
+                                Web Design &amp; Development
+                            </span>
+                        </div>
+                        <h1
+                            class="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight text-balance"
+                        >
+                            Beautiful websites that convert
+                        </h1>
+                        <p
+                            class="text-xl text-gray-400 leading-relaxed mb-8 text-pretty"
+                        >
+                            We create stunning, user-friendly websites that
+                            captivate your audience and drive business growth.
+                            From concept to launch, we deliver digital
+                            experiences that make an impact.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a
+                                href="/contact"
+                                class="px-8 py-4 bg-white text-[#0a0a0f] font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+                            >
+                                Start Your Project
+                            </a>
+                            <a
+                                href="#services"
+                                class="px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
+                            >
+                                View Services
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <div
+                            class="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-[#2563eb]/20 to-transparent border border-[#2563eb]/30"
+                        >
+                            <Image
+                                src={bannerImage}
+                                alt="Web Design"
+                                class="w-full h-full object-cover opacity-80"
+                                loading="eager"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {/* Services Section */}
+        <section id="services" class="py-24 bg-[#0a0a0f]">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                        What We Design
+                    </h2>
+                    <p
+                        class="text-xl text-gray-400 max-w-3xl mx-auto text-pretty"
+                    >
+                        From landing pages to complex web applications, we craft
+                        digital experiences that engage and convert
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {/* Responsive Web Design */}
+                    <div
+                        class="bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 hover:border-[#2563eb]/50 transition-colors"
+                    >
+                        <div
+                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6"
+                        >
+                            <svg
+                                class="w-6 h-6 text-[#2563eb]"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">
+                            Responsive Design
+                        </h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Websites that look perfect on every device, from
+                            mobile to desktop
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-gray-300"
+                                    >Mobile-first approach</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-gray-300"
+                                    >Cross-browser compatibility</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-gray-300"
+                                    >Fluid layouts &amp; grids</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-gray-300"
+                                    >Touch-optimized interfaces</span
+                                >
+                            </li>
+                        </ul>
+                    </div>
+
+                    {/* UI/UX Design */}
+                    <div
+                        class="bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 hover:border-[#2563eb]/50 transition-colors"
+                    >
+                        <div
+                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6"
+                        >
+                            <svg
+                                class="w-6 h-6 text-[#2563eb]"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">
+                            UI/UX Design
+                        </h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Intuitive interfaces designed with your users in
+                            mind
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-gray-300"
+                                    >User research &amp; personas</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-gray-300"
+                                    >Wireframing &amp; prototyping</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-gray-300"
+                                    >Usability testing</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-gray-300"
+                                    >Accessibility standards</span
+                                >
+                            </li>
+                        </ul>
+                    </div>
+
+                    {/* E-commerce Design */}
+                    <div
+                        class="bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 hover:border-[#2563eb]/50 transition-colors"
+                    >
+                        <div
+                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6"
+                        >
+                            <svg
+                                class="w-6 h-6 text-[#2563eb]"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">
+                            E-commerce Design
+                        </h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Online stores designed to maximize conversions and
+                            sales
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-gray-300"
+                                    >Product catalog design</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-gray-300"
+                                    >Shopping cart optimization</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-gray-300"
+                                    >Checkout flow design</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-gray-300"
+                                    >Payment integration</span
+                                >
+                            </li>
+                        </ul>
+                    </div>
+
+                    {/* Landing Pages */}
+                    <div
+                        class="bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 hover:border-[#2563eb]/50 transition-colors"
+                    >
+                        <div
+                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6"
+                        >
+                            <svg
+                                class="w-6 h-6 text-[#2563eb]"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">
+                            Landing Pages
+                        </h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            High-converting pages designed to capture leads and
+                            drive action
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-gray-300"
+                                    >Compelling headlines &amp; copy</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-gray-300"
+                                    >Clear call-to-actions</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-gray-300"
+                                    >A/B testing ready</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-gray-300"
+                                    >Lead capture forms</span
+                                >
+                            </li>
+                        </ul>
+                    </div>
+
+                    {/* Brand Identity */}
+                    <div
+                        class="bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 hover:border-[#2563eb]/50 transition-colors"
+                    >
+                        <div
+                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6"
+                        >
+                            <svg
+                                class="w-6 h-6 text-[#2563eb]"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">
+                            Brand Identity
+                        </h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Cohesive visual identity that represents your brand
+                            values
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-gray-300"
+                                    >Logo design &amp; branding</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-gray-300"
+                                    >Color palette &amp; typography</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-gray-300"
+                                    >Style guides &amp; assets</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-gray-300"
+                                    >Brand consistency</span
+                                >
+                            </li>
+                        </ul>
+                    </div>
+
+                    {/* Website Redesign */}
+                    <div
+                        class="bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 hover:border-[#2563eb]/50 transition-colors"
+                    >
+                        <div
+                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6"
+                        >
+                            <svg
+                                class="w-6 h-6 text-[#2563eb]"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">
+                            Website Redesign
+                        </h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Modernize your existing website with fresh design
+                            and improved UX
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-gray-300"
+                                    >Site audit &amp; analysis</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-gray-300"
+                                    >Modern design trends</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-gray-300"
+                                    >Performance optimization</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-gray-300"
+                                    >SEO improvements</span
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {/* Design Process Section */}
+        <section class="py-24 bg-[#1a1a2e]">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="relative">
+                        <div
+                            class="aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-[#2563eb]/20 to-transparent border border-[#2563eb]/30"
+                        >
+                            <Image
+                                src={processImage}
+                                alt="Design Process"
+                                class="w-full h-full object-cover opacity-80"
+                                loading="lazy"
+                            />
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2
+                            class="text-4xl md:text-5xl font-bold text-white mb-6"
+                        >
+                            Our Design Process
+                        </h2>
+                        <p
+                            class="text-xl text-gray-400 mb-8 leading-relaxed text-pretty"
+                        >
+                            We follow a proven design process that ensures your
+                            website not only looks great but achieves your
+                            business goals.
+                        </p>
+
+                        <div class="space-y-6">
+                            {
+                                [
+                                    {
+                                        n: 1,
+                                        t: "Research & Strategy",
+                                        d: "We analyze your brand, competitors, and target audience to create a strategic foundation",
+                                    },
+                                    {
+                                        n: 2,
+                                        t: "Wireframing & Prototyping",
+                                        d: "We create wireframes and interactive prototypes to visualize the user experience",
+                                    },
+                                    {
+                                        n: 3,
+                                        t: "Visual Design",
+                                        d: "Our designers craft beautiful, on-brand visuals that captivate your audience",
+                                    },
+                                    {
+                                        n: 4,
+                                        t: "Development & Launch",
+                                        d: "We build your website with clean code and launch it with comprehensive testing",
+                                    },
+                                ].map((step) => (
+                                    <div class="flex gap-4">
+                                        <div class="flex-shrink-0 w-12 h-12 bg-[#2563eb] rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                                            {step.n}
+                                        </div>
+                                        <div>
+                                            <h3 class="text-xl font-bold text-white mb-2">
+                                                {step.t}
+                                            </h3>
+                                            <p class="text-gray-400 leading-relaxed">
+                                                {step.d}
+                                            </p>
+                                        </div>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {/* CTA Section */}
+        <section class="py-24 bg-gradient-to-b from-[#1a1a2e] to-[#0a0a0f]">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h2
+                    class="text-4xl md:text-5xl font-bold text-white mb-6 text-balance"
+                >
+                    Ready to Transform Your Online Presence?
+                </h2>
+                <p
+                    class="text-xl text-gray-400 mb-10 leading-relaxed text-pretty"
+                >
+                    Let's create a website that not only looks amazing but
+                    drives real results for your business.
+                </p>
+                <div class="flex flex-wrap gap-4 justify-center">
+                    <a
+                        href="/contact"
+                        class="px-8 py-4 bg-[#2563eb] text-white font-semibold rounded-lg hover:bg-[#1d4ed8] transition-colors"
+                    >
+                        Get Started
+                    </a>
+                    <a
+                        href="/services"
+                        class="px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
+                    >
+                        View All Services
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+</BaseLayout>

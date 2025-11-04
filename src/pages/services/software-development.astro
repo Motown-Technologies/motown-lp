@@ -1,0 +1,490 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+// Reuse existing icons you already created
+import CheckIcon from "../../components/icons/CheckIcon.astro";
+import MobileIcon from "../../components/icons/MobileIcon.astro";
+import WebIcon from "../../components/icons/WebIcon.astro";
+
+// New icons from above
+import ApiIcon from "../../components/icons/ApiIcon.astro";
+import CloudIcon from "../../components/icons/CloudIcon.astro";
+import DatabaseIcon from "../../components/icons/DatabaseIcon.astro";
+import EnterpriseIcon from "../../components/icons/EnterpriseIcon.astro";
+
+import { Image } from "astro:assets";
+import agileImage from "../../img/agile-software-development-team-collaboration-whit.jpg";
+import bannerImage from "../../img/modern-software-development-workspace-with-multipl.jpg";
+---
+
+<BaseLayout>
+    <main class="min-h-screen bg-[#0a0a0f]">
+        <!-- Hero Section -->
+        <section
+            class="relative overflow-hidden bg-gradient-to-b from-[#0a0a0f] to-[#1a1a2e] pt-8 pb-24"
+        >
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="inline-block mb-4">
+                            <span
+                                class="text-[#2563eb] text-sm font-semibold tracking-wider uppercase"
+                            >
+                                Software Development
+                            </span>
+                        </div>
+                        <h1
+                            class="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight text-balance"
+                        >
+                            Building the future, one line at a time
+                        </h1>
+                        <p
+                            class="text-xl text-gray-400 leading-relaxed mb-8 text-pretty"
+                        >
+                            Transform your vision into powerful, scalable
+                            software solutions. We craft custom applications
+                            that drive innovation and deliver measurable results
+                            for your business.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a
+                                href="/contact"
+                                class="px-8 py-4 bg-white text-[#0a0a0f] font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+                            >
+                                Start Your Project
+                            </a>
+                            <a
+                                href="#capabilities"
+                                class="px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
+                            >
+                                View Capabilities
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <div
+                            class="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-[#2563eb]/20 to-transparent border border-[#2563eb]/30"
+                        >
+                            <Image
+                                src={bannerImage}
+                                alt="Software Development"
+                                class="w-full h-full object-cover opacity-80"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Capabilities Section -->
+        <section id="capabilities" class="py-24 bg-[#0a0a0f]">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                        What We Build
+                    </h2>
+                    <p
+                        class="text-xl text-gray-400 max-w-3xl mx-auto text-pretty"
+                    >
+                        From concept to deployment, we deliver enterprise-grade
+                        software solutions tailored to your unique needs
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Web Applications -->
+                    <div
+                        class="bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 hover:border-[#2563eb]/50 transition-colors"
+                    >
+                        <div
+                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6"
+                        >
+                            <WebIcon />
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">
+                            Web Applications
+                        </h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Responsive, scalable web apps built with modern
+                            frameworks and best practices
+                        </p>
+                        <ul class="space-y-3">
+                            {
+                                [
+                                    "React, Next.js, Vue.js",
+                                    "Progressive Web Apps (PWA)",
+                                    "Real-time applications",
+                                    "E-commerce platforms",
+                                ].map((b) => (
+                                    <li class="flex items-start gap-3">
+                                        <CheckIcon class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5" />
+                                        <span class="text-gray-300">{b}</span>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+
+                    <!-- Enterprise Solutions -->
+                    <div
+                        class="bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 hover:border-[#2563eb]/50 transition-colors"
+                    >
+                        <div
+                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6"
+                        >
+                            <EnterpriseIcon />
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">
+                            Enterprise Solutions
+                        </h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Robust systems designed to scale with your growing
+                            business needs
+                        </p>
+                        <ul class="space-y-3">
+                            {
+                                [
+                                    "Custom CRM & ERP systems",
+                                    "Business intelligence dashboards",
+                                    "Workflow automation",
+                                    "Legacy system modernization",
+                                ].map((b) => (
+                                    <li class="flex items-start gap-3">
+                                        <CheckIcon class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5" />
+                                        <span class="text-gray-300">{b}</span>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+
+                    <!-- API Development -->
+                    <div
+                        class="bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 hover:border-[#2563eb]/50 transition-colors"
+                    >
+                        <div
+                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6"
+                        >
+                            <ApiIcon />
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">
+                            API Development
+                        </h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Secure, well-documented APIs that power seamless
+                            integrations
+                        </p>
+                        <ul class="space-y-3">
+                            {
+                                [
+                                    "RESTful & GraphQL APIs",
+                                    "Third-party integrations",
+                                    "Microservices architecture",
+                                    "API security & authentication",
+                                ].map((b) => (
+                                    <li class="flex items-start gap-3">
+                                        <CheckIcon class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5" />
+                                        <span class="text-gray-300">{b}</span>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+
+                    <!-- Cloud Solutions -->
+                    <div
+                        class="bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 hover:border-[#2563eb]/50 transition-colors"
+                    >
+                        <div
+                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6"
+                        >
+                            <CloudIcon />
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">
+                            Cloud Solutions
+                        </h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Cloud-native applications built for performance and
+                            reliability
+                        </p>
+                        <ul class="space-y-3">
+                            {
+                                [
+                                    "AWS, Azure, Google Cloud",
+                                    "Serverless architecture",
+                                    "Container orchestration",
+                                    "DevOps & CI/CD pipelines",
+                                ].map((b) => (
+                                    <li class="flex items-start gap-3">
+                                        <CheckIcon class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5" />
+                                        <span class="text-gray-300">{b}</span>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+
+                    <!-- Mobile Backend -->
+                    <div
+                        class="bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 hover:border-[#2563eb]/50 transition-colors"
+                    >
+                        <div
+                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6"
+                        >
+                            <MobileIcon />
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">
+                            Mobile Backend
+                        </h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Powerful backend systems that support mobile
+                            applications at scale
+                        </p>
+                        <ul class="space-y-3">
+                            {
+                                [
+                                    "Push notifications",
+                                    "User authentication & authorization",
+                                    "Real-time data sync",
+                                    "Analytics & monitoring",
+                                ].map((b) => (
+                                    <li class="flex items-start gap-3">
+                                        <CheckIcon class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5" />
+                                        <span class="text-gray-300">{b}</span>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+
+                    <!-- Database Design -->
+                    <div
+                        class="bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 hover:border-[#2563eb]/50 transition-colors"
+                    >
+                        <div
+                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6"
+                        >
+                            <DatabaseIcon />
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">
+                            Database Design
+                        </h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Optimized data architecture for performance and
+                            scalability
+                        </p>
+                        <ul class="space-y-3">
+                            {
+                                [
+                                    "SQL & NoSQL databases",
+                                    "Data modeling & optimization",
+                                    "Migration & replication",
+                                    "Backup & disaster recovery",
+                                ].map((b) => (
+                                    <li class="flex items-start gap-3">
+                                        <CheckIcon class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5" />
+                                        <span class="text-gray-300">{b}</span>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="py-24 bg-[#1a1a2e]">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <h2
+                            class="text-4xl md:text-5xl font-bold text-white mb-6"
+                        >
+                            Our Development Process
+                        </h2>
+                        <p
+                            class="text-xl text-gray-400 mb-8 leading-relaxed text-pretty"
+                        >
+                            We follow agile methodologies to deliver
+                            high-quality software on time and within budget. Our
+                            collaborative approach ensures your vision becomes
+                            reality.
+                        </p>
+
+                        <div class="space-y-6">
+                            {
+                                [
+                                    {
+                                        n: 1,
+                                        t: "Discovery & Planning",
+                                        d: "We analyze your requirements, define project scope, and create a detailed roadmap",
+                                    },
+                                    {
+                                        n: 2,
+                                        t: "Design & Architecture",
+                                        d: "Our team designs intuitive interfaces and scalable system architecture",
+                                    },
+                                    {
+                                        n: 3,
+                                        t: "Development & Testing",
+                                        d: "We build your solution using best practices with continuous testing and QA",
+                                    },
+                                    {
+                                        n: 4,
+                                        t: "Deployment & Support",
+                                        d: "We launch your application and provide ongoing maintenance and support",
+                                    },
+                                ].map((step) => (
+                                    <div class="flex gap-4">
+                                        <div class="flex-shrink-0 w-12 h-12 bg-[#2563eb] rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                                            {step.n}
+                                        </div>
+                                        <div>
+                                            <h3 class="text-xl font-bold text-white mb-2">
+                                                {step.t}
+                                            </h3>
+                                            <p class="text-gray-400 leading-relaxed">
+                                                {step.d}
+                                            </p>
+                                        </div>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <div
+                            class="aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-[#2563eb]/20 to-transparent border border-[#2563eb]/30"
+                        >
+                            <Image
+                                src={agileImage}
+                                alt="Development Process"
+                                class="w-full h-full object-cover opacity-80"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technologies Section -->
+        <section class="py-24 bg-[#0a0a0f]">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                        Technologies We Master
+                    </h2>
+                    <p
+                        class="text-xl text-gray-400 max-w-3xl mx-auto text-pretty"
+                    >
+                        We leverage cutting-edge technologies to build robust,
+                        scalable solutions
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    {
+                        [
+                            {
+                                title: "Frontend Technologies",
+                                items: [
+                                    "React & Next.js",
+                                    "Vue.js & Nuxt",
+                                    "TypeScript",
+                                    "Tailwind CSS",
+                                    "Redux & Zustand",
+                                    "React Query",
+                                ],
+                            },
+                            {
+                                title: "Backend Technologies",
+                                items: [
+                                    "Node.js & Express",
+                                    "Python & Django",
+                                    ".NET Core",
+                                    "PostgreSQL",
+                                    "MongoDB",
+                                    "Redis",
+                                ],
+                            },
+                            {
+                                title: "Cloud & DevOps",
+                                items: [
+                                    "AWS & Azure",
+                                    "Docker & Kubernetes",
+                                    "GitHub Actions",
+                                    "Terraform",
+                                    "Vercel & Netlify",
+                                    "CI/CD",
+                                ],
+                            },
+                            {
+                                title: "Mobile & More",
+                                items: [
+                                    "React Native",
+                                    "Flutter",
+                                    "GraphQL",
+                                    "WebSockets",
+                                    "Stripe & Payments",
+                                    "Auth0 & OAuth",
+                                ],
+                            },
+                        ].map((block) => (
+                            <div>
+                                <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                                    <span class="w-2 h-2 bg-[#2563eb] rounded-full" />
+                                    {block.title}
+                                </h3>
+                                <div class="grid grid-cols-2 gap-4">
+                                    {block.items.map((tech) => (
+                                        <div class="flex items-center gap-2 text-gray-300">
+                                            <CheckIcon class="w-4 h-4 text-[#2563eb]" />
+                                            <span>{tech}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section
+            id="contact"
+            class="py-24 bg-gradient-to-b from-[#1a1a2e] to-[#0a0a0f]"
+        >
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h2
+                    class="text-4xl md:text-5xl font-bold text-white mb-6 text-balance"
+                >
+                    Ready to Build Something Amazing?
+                </h2>
+                <p
+                    class="text-xl text-gray-400 mb-10 leading-relaxed text-pretty"
+                >
+                    Let's discuss your project and turn your ideas into reality.
+                    Our team is ready to help you succeed.
+                </p>
+                <div class="flex flex-wrap gap-4 justify-center">
+                    <a
+                        href="/contact"
+                        class="px-8 py-4 bg-[#2563eb] text-white font-semibold rounded-lg hover:bg-[#1d4ed8] transition-colors"
+                    >
+                        Get in Touch
+                    </a>
+                    <a
+                        href="/services"
+                        class="px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
+                    >
+                        View All Services
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+</BaseLayout>

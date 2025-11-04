@@ -1,0 +1,530 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+import { Image } from "astro:assets";
+import processImg from "../../img/mobile-app-development-team-working-on-app-design-.jpg";
+import heroImg from "../../img/mobile-app-development-with-smartphones-showing-mo.jpg";
+---
+
+<BaseLayout>
+    <main class="min-h-screen bg-[#0a0a0f]">
+        <!-- Hero Section -->
+        <section
+            class="relative overflow-hidden bg-gradient-to-b from-[#0a0a0f] to-[#1a1a2e] pt-8 pb-24"
+        >
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="inline-block mb-4">
+                            <span
+                                class="text-[#2563eb] text-sm font-semibold tracking-wider uppercase"
+                            >
+                                Mobile App Development
+                            </span>
+                        </div>
+                        <h1
+                            class="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight text-balance"
+                        >
+                            Apps that users love
+                        </h1>
+                        <p
+                            class="text-xl text-gray-400 leading-relaxed mb-8 text-pretty"
+                        >
+                            Create powerful mobile experiences for iOS and
+                            Android. We build native and cross-platform apps
+                            that engage users and drive business growth.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a
+                                href="/contact"
+                                class="px-8 py-4 bg-white text-[#0a0a0f] font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+                            >
+                                Start Your App
+                            </a>
+                            <a
+                                href="#capabilities"
+                                class="px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
+                            >
+                                View Capabilities
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <div
+                            class="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-[#2563eb]/20 to-transparent border border-[#2563eb]/30"
+                        >
+                            <Image
+                                src={heroImg}
+                                alt="Mobile App Development"
+                                class="w-full h-full object-cover opacity-80"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Capabilities Section -->
+        <section id="capabilities" class="py-24 bg-[#0a0a0f]">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                        What We Build
+                    </h2>
+                    <p
+                        class="text-xl text-gray-400 max-w-3xl mx-auto text-pretty"
+                    >
+                        From consumer apps to enterprise solutions, we create
+                        mobile experiences that users love
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- iOS Development -->
+                    <div
+                        class="bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 hover:border-[#2563eb]/50 transition-colors"
+                    >
+                        <div
+                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6"
+                        >
+                            <svg
+                                class="w-6 h-6 text-[#2563eb]"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                            >
+                                <path
+                                    d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">
+                            iOS Development
+                        </h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Native iOS apps built with Swift for optimal
+                            performance
+                        </p>
+                        <ul class="space-y-3">
+                            {
+                                [
+                                    "Swift & SwiftUI",
+                                    "App Store optimization",
+                                    "Apple design guidelines",
+                                    "iOS SDK integration",
+                                ].map((t) => (
+                                    <li class="flex items-start gap-3">
+                                        <svg
+                                            class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M5 13l4 4L19 7"
+                                            />
+                                        </svg>
+                                        <span class="text-gray-300">{t}</span>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+
+                    <!-- Android Development -->
+                    <div
+                        class="bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 hover:border-[#2563eb]/50 transition-colors"
+                    >
+                        <div
+                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6"
+                        >
+                            <svg
+                                class="w-6 h-6 text-[#2563eb]"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                            >
+                                <path
+                                    d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24a11.5 11.5 0 00-8.94 0L5.65 5.67c-.19-.28-.54-.37-.83-.22-.3.16-.42.54-.26.85l1.84 3.18C4.8 11.16 3.5 13.84 3.5 16.5h17c0-2.66-1.3-5.34-2.9-7.02zM7 14.5c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm10 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">
+                            Android Development
+                        </h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Native Android apps with Kotlin for seamless
+                            experiences
+                        </p>
+                        <ul class="space-y-3">
+                            {
+                                [
+                                    "Kotlin & Jetpack Compose",
+                                    "Google Play optimization",
+                                    "Material Design",
+                                    "Android SDK integration",
+                                ].map((t) => (
+                                    <li class="flex items-start gap-3">
+                                        <svg
+                                            class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M5 13l4 4L19 7"
+                                            />
+                                        </svg>
+                                        <span class="text-gray-300">{t}</span>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+
+                    <!-- Cross-Platform -->
+                    <div
+                        class="bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 hover:border-[#2563eb]/50 transition-colors"
+                    >
+                        <div
+                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6"
+                        >
+                            <svg
+                                class="w-6 h-6 text-[#2563eb]"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">
+                            Cross-Platform
+                        </h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Build once, deploy everywhere with React Native and
+                            Flutter
+                        </p>
+                        <ul class="space-y-3">
+                            {
+                                [
+                                    "React Native & Flutter",
+                                    "Shared codebase",
+                                    "Native performance",
+                                    "Faster time to market",
+                                ].map((t) => (
+                                    <li class="flex items-start gap-3">
+                                        <svg
+                                            class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M5 13l4 4L19 7"
+                                            />
+                                        </svg>
+                                        <span class="text-gray-300">{t}</span>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+
+                    <!-- Mobile UI/UX -->
+                    <div
+                        class="bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 hover:border-[#2563eb]/50 transition-colors"
+                    >
+                        <div
+                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6"
+                        >
+                            <svg
+                                class="w-6 h-6 text-[#2563eb]"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">
+                            Mobile UI/UX
+                        </h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Intuitive interfaces designed for mobile-first
+                            experiences
+                        </p>
+                        <ul class="space-y-3">
+                            {
+                                [
+                                    "User research & testing",
+                                    "Wireframing & prototyping",
+                                    "Gesture-based interactions",
+                                    "Accessibility standards",
+                                ].map((t) => (
+                                    <li class="flex items-start gap-3">
+                                        <svg
+                                            class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M5 13l4 4L19 7"
+                                            />
+                                        </svg>
+                                        <span class="text-gray-300">{t}</span>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+
+                    <!-- Backend Integration -->
+                    <div
+                        class="bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 hover:border-[#2563eb]/50 transition-colors"
+                    >
+                        <div
+                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6"
+                        >
+                            <svg
+                                class="w-6 h-6 text-[#2563eb]"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">
+                            Backend Integration
+                        </h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Robust backend systems that power your mobile app
+                        </p>
+                        <ul class="space-y-3">
+                            {
+                                [
+                                    "RESTful & GraphQL APIs",
+                                    "Real-time data sync",
+                                    "Push notifications",
+                                    "Cloud storage integration",
+                                ].map((t) => (
+                                    <li class="flex items-start gap-3">
+                                        <svg
+                                            class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M5 13l4 4L19 7"
+                                            />
+                                        </svg>
+                                        <span class="text-gray-300">{t}</span>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+
+                    <!-- App Maintenance -->
+                    <div
+                        class="bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 hover:border-[#2563eb]/50 transition-colors"
+                    >
+                        <div
+                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6"
+                        >
+                            <svg
+                                class="w-6 h-6 text-[#2563eb]"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                                ></path>
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">
+                            App Maintenance
+                        </h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Ongoing support to keep your app running smoothly
+                        </p>
+                        <ul class="space-y-3">
+                            {
+                                [
+                                    "Bug fixes & updates",
+                                    "OS compatibility updates",
+                                    "Performance monitoring",
+                                    "Feature enhancements",
+                                ].map((t) => (
+                                    <li class="flex items-start gap-3">
+                                        <svg
+                                            class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M5 13l4 4L19 7"
+                                            />
+                                        </svg>
+                                        <span class="text-gray-300">{t}</span>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="py-24 bg-[#1a1a2e]">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="relative">
+                        <div
+                            class="aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-[#2563eb]/20 to-transparent border border-[#2563eb]/30"
+                        >
+                            <Image
+                                src={processImg}
+                                alt="Development Process"
+                                class="w-full h-full object-cover opacity-80"
+                                loading="lazy"
+                            />
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2
+                            class="text-4xl md:text-5xl font-bold text-white mb-6"
+                        >
+                            Our Development Process
+                        </h2>
+                        <p
+                            class="text-xl text-gray-400 mb-8 leading-relaxed text-pretty"
+                        >
+                            We follow agile methodologies to deliver
+                            high-quality mobile apps that exceed expectations.
+                        </p>
+
+                        <div class="space-y-6">
+                            {
+                                [
+                                    {
+                                        n: 1,
+                                        h: "Strategy & Planning",
+                                        d: "We define your app's goals, features, and technical requirements",
+                                    },
+                                    {
+                                        n: 2,
+                                        h: "Design & Prototype",
+                                        d: "Our designers create intuitive interfaces and interactive prototypes",
+                                    },
+                                    {
+                                        n: 3,
+                                        h: "Development & Testing",
+                                        d: "We build your app with rigorous testing on real devices",
+                                    },
+                                    {
+                                        n: 4,
+                                        h: "Launch & Support",
+                                        d: "We handle app store submission and provide ongoing support",
+                                    },
+                                ].map((s) => (
+                                    <div class="flex gap-4">
+                                        <div class="flex-shrink-0 w-12 h-12 bg-[#2563eb] rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                                            {s.n}
+                                        </div>
+                                        <div>
+                                            <h3 class="text-xl font-bold text-white mb-2">
+                                                {s.h}
+                                            </h3>
+                                            <p class="text-gray-400 leading-relaxed">
+                                                {s.d}
+                                            </p>
+                                        </div>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-24 bg-gradient-to-b from-[#1a1a2e] to-[#0a0a0f]">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h2
+                    class="text-4xl md:text-5xl font-bold text-white mb-6 text-balance"
+                >
+                    Ready to Build Your Mobile App?
+                </h2>
+                <p
+                    class="text-xl text-gray-400 mb-10 leading-relaxed text-pretty"
+                >
+                    Let's create a mobile experience that your users will love.
+                    Get in touch to discuss your project.
+                </p>
+                <div class="flex flex-wrap gap-4 justify-center">
+                    <a
+                        href="/contact"
+                        class="px-8 py-4 bg-[#2563eb] text-white font-semibold rounded-lg hover:bg-[#1d4ed8] transition-colors"
+                    >
+                        Get Started
+                    </a>
+                    <a
+                        href="/services"
+                        class="px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
+                    >
+                        View All Services
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+</BaseLayout>

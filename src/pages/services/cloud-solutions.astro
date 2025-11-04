@@ -1,0 +1,536 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+import { Image } from "astro:assets";
+
+import bannerImage from "../../img/cloud-computing-infrastructure-with-servers-and-ne.jpg";
+import processImage from "../../img/cloud-infrastructure-dashboard-showing-performance.jpg";
+---
+
+<BaseLayout>
+    <main class="min-h-screen bg-[#0a0a0f]">
+        {/* Hero Section */}
+        <section
+            class="relative overflow-hidden bg-gradient-to-b from-[#0a0a0f] to-[#1a1a2e] pt-8 pb-24"
+        >
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="inline-block mb-4">
+                            <span
+                                class="text-[#2563eb] text-sm font-semibold tracking-wider uppercase"
+                                >Cloud Solutions</span
+                            >
+                        </div>
+                        <h1
+                            class="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight text-balance"
+                        >
+                            Scale with confidence in the cloud
+                        </h1>
+                        <p
+                            class="text-xl text-gray-400 leading-relaxed mb-8 text-pretty"
+                        >
+                            Harness the power of cloud computing to scale your
+                            business. We design, build, and manage cloud
+                            infrastructure that's secure, reliable, and
+                            cost-effective.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a
+                                href="/contact"
+                                class="px-8 py-4 bg-white text-[#0a0a0f] font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+                            >
+                                Get Started
+                            </a>
+                            <a
+                                href="#services"
+                                class="px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
+                            >
+                                View Services
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <div
+                            class="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-[#2563eb]/20 to-transparent border border-[#2563eb]/30"
+                        >
+                            <Image
+                                src={bannerImage}
+                                alt="Cloud Solutions"
+                                class="w-full h-full object-cover opacity-80"
+                                loading="eager"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {/* Services Section */}
+        <section id="services" class="py-24 bg-[#0a0a0f]">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                        Cloud Services We Offer
+                    </h2>
+                    <p
+                        class="text-xl text-gray-400 max-w-3xl mx-auto text-pretty"
+                    >
+                        Comprehensive cloud solutions tailored to your business
+                        needs
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {/* Cloud Migration */}
+                    <div
+                        class="bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 hover:border-[#2563eb]/50 transition-colors"
+                    >
+                        <div
+                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6"
+                        >
+                            <svg
+                                class="w-6 h-6 text-[#2563eb]"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">
+                            Cloud Migration
+                        </h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Seamlessly move your infrastructure to the cloud
+                            with minimal downtime
+                        </p>
+                        <ul class="space-y-3">
+                            {
+                                [
+                                    "Assessment & planning",
+                                    "Data migration strategies",
+                                    "Zero-downtime migration",
+                                    "Post-migration support",
+                                ].map((b) => (
+                                    <li class="flex items-start gap-3">
+                                        <svg
+                                            class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M5 13l4 4L19 7"
+                                            />
+                                        </svg>
+                                        <span class="text-gray-300">{b}</span>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+
+                    {/* AWS Solutions */}
+                    <div
+                        class="bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 hover:border-[#2563eb]/50 transition-colors"
+                    >
+                        <div
+                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6"
+                        >
+                            <svg
+                                class="w-6 h-6 text-[#2563eb]"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183 0 .08-.048.16-.152.24l-.503.335a.383.383 0 01-.208.072c-.08 0-.16-.04-.239-.112a2.47 2.47 0 01-.287-.375 6.18 6.18 0 01-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67 0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533 0-.678.239-1.226.726-1.644.487-.417 1.133-.626 1.955-.626.272 0 .551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28 0-.568.031-.863.103-.295.072-.583.16-.862.272a2.287 2.287 0 01-.28.104.488.488 0 01-.127.023c-.112 0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597 0 01.224-.167c.279-.144.614-.264 1.005-.36a4.84 4.84 0 011.246-.151c.95 0 1.644.215 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263 0 .534-.048.822-.144.287-.096.543-.271.758-.51.128-.152.224-.32.272-.512.047-.191.08-.423.08-.694v-.335a6.66 6.66 0 00-.735-.136 6.02 6.02 0 00-.75-.048c-.535 0-.926.104-1.19.32-.263.215-.39.518-.39.917 0 .375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144 0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398 0 01-.072-.32c0-.128.064-.2.191-.2h.783c.151 0 .255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549 0 01.32-.08h.638c.152 0 .256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52 0 01.311-.08h.743c.127 0 .2.065.2.2 0 .04-.009.08-.017.128a1.137 1.137 0 01-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51 0 01-.303.08h-.687c-.151 0-.255-.024-.32-.08-.063-.056-.119-.16-.151-.32l-1.237-5.132-1.229 5.133c-.04.16-.087.263-.151.32-.064.055-.175.08-.32.08h-.686zM27 12"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">
+                            AWS Solutions
+                        </h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Leverage Amazon Web Services for scalable cloud
+                            infrastructure
+                        </p>
+                        <ul class="space-y-3">
+                            {
+                                [
+                                    "EC2, S3, Lambda",
+                                    "RDS & DynamoDB",
+                                    "CloudFront & Route 53",
+                                    "AWS certified architects",
+                                ].map((b) => (
+                                    <li class="flex items-start gap-3">
+                                        <svg
+                                            class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M5 13l4 4L19 7"
+                                            />
+                                        </svg>
+                                        <span class="text-gray-300">{b}</span>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+
+                    {/* Azure Solutions */}
+                    <div
+                        class="bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 hover:border-[#2563eb]/50 transition-colors"
+                    >
+                        <div
+                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6"
+                        >
+                            <svg
+                                class="w-6 h-6 text-[#2563eb]"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    d="M5.483 21.3H3.659L10.5 2.7h2.197l-7.214 18.6zm8.018 0h6.841L13.659 2.7h-2.197l7.039 18.6z"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">
+                            Azure Solutions
+                        </h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Build and deploy with Microsoft Azure cloud platform
+                        </p>
+                        <ul class="space-y-3">
+                            {
+                                [
+                                    "Azure VMs & App Services",
+                                    "Azure SQL & Cosmos DB",
+                                    "Azure Functions",
+                                    "Active Directory integration",
+                                ].map((b) => (
+                                    <li class="flex items-start gap-3">
+                                        <svg
+                                            class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M5 13l4 4L19 7"
+                                            />
+                                        </svg>
+                                        <span class="text-gray-300">{b}</span>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+
+                    {/* DevOps & CI/CD */}
+                    <div
+                        class="bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 hover:border-[#2563eb]/50 transition-colors"
+                    >
+                        <div
+                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6"
+                        >
+                            <svg
+                                class="w-6 h-6 text-[#2563eb]"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">
+                            DevOps &amp; CI/CD
+                        </h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Automate your deployment pipeline for faster
+                            releases
+                        </p>
+                        <ul class="space-y-3">
+                            {
+                                [
+                                    "GitHub Actions & GitLab CI",
+                                    "Docker & Kubernetes",
+                                    "Infrastructure as Code",
+                                    "Automated testing",
+                                ].map((b) => (
+                                    <li class="flex items-start gap-3">
+                                        <svg
+                                            class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M5 13l4 4L19 7"
+                                            />
+                                        </svg>
+                                        <span class="text-gray-300">{b}</span>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+
+                    {/* Cloud Security */}
+                    <div
+                        class="bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 hover:border-[#2563eb]/50 transition-colors"
+                    >
+                        <div
+                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6"
+                        >
+                            <svg
+                                class="w-6 h-6 text-[#2563eb]"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">
+                            Cloud Security
+                        </h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Protect your cloud infrastructure with
+                            enterprise-grade security
+                        </p>
+                        <ul class="space-y-3">
+                            {
+                                [
+                                    "Identity & access management",
+                                    "Encryption & compliance",
+                                    "Security audits",
+                                    "Threat monitoring",
+                                ].map((b) => (
+                                    <li class="flex items-start gap-3">
+                                        <svg
+                                            class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M5 13l4 4L19 7"
+                                            />
+                                        </svg>
+                                        <span class="text-gray-300">{b}</span>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+
+                    {/* Cloud Optimization */}
+                    <div
+                        class="bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 hover:border-[#2563eb]/50 transition-colors"
+                    >
+                        <div
+                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6"
+                        >
+                            <svg
+                                class="w-6 h-6 text-[#2563eb]"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">
+                            Cloud Optimization
+                        </h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Reduce costs and improve performance of your cloud
+                            infrastructure
+                        </p>
+                        <ul class="space-y-3">
+                            {
+                                [
+                                    "Cost analysis & reduction",
+                                    "Performance tuning",
+                                    "Auto-scaling configuration",
+                                    "Resource right-sizing",
+                                ].map((b) => (
+                                    <li class="flex items-start gap-3">
+                                        <svg
+                                            class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M5 13l4 4L19 7"
+                                            />
+                                        </svg>
+                                        <span class="text-gray-300">{b}</span>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {/* Benefits Section */}
+        <section class="py-24 bg-[#1a1a2e]">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <h2
+                            class="text-4xl md:text-5xl font-bold text-white mb-6"
+                        >
+                            Why Choose Cloud?
+                        </h2>
+                        <p
+                            class="text-xl text-gray-400 mb-8 leading-relaxed text-pretty"
+                        >
+                            Cloud computing offers unmatched flexibility,
+                            scalability, and cost-efficiency for modern
+                            businesses.
+                        </p>
+
+                        <div class="space-y-6">
+                            {
+                                [
+                                    {
+                                        t: "Scalability",
+                                        d: "Scale resources up or down based on demand without infrastructure constraints",
+                                    },
+                                    {
+                                        t: "Cost Efficiency",
+                                        d: "Pay only for what you use with flexible pricing models and no upfront costs",
+                                    },
+                                    {
+                                        t: "Reliability",
+                                        d: "Enterprise-grade infrastructure with 99.9% uptime and automatic failover",
+                                    },
+                                    {
+                                        t: "Global Reach",
+                                        d: "Deploy applications worldwide with low latency and high performance",
+                                    },
+                                ].map((item) => (
+                                    <div class="flex gap-4">
+                                        <div class="flex-shrink-0 w-12 h-12 bg-[#2563eb] rounded-lg flex items-center justify-center">
+                                            <svg
+                                                class="w-6 h-6 text-white"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    d="M5 13l4 4L19 7"
+                                                />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-xl font-bold text-white mb-2">
+                                                {item.t}
+                                            </h3>
+                                            <p class="text-gray-400 leading-relaxed">
+                                                {item.d}
+                                            </p>
+                                        </div>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <div
+                            class="aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-[#2563eb]/20 to-transparent border border-[#2563eb]/30"
+                        >
+                            <Image
+                                src={processImage}
+                                alt="Cloud Benefits"
+                                class="w-full h-full object-cover opacity-80"
+                                loading="lazy"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {/* CTA Section */}
+        <section class="py-24 bg-gradient-to-b from-[#1a1a2e] to-[#0a0a0f]">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h2
+                    class="text-4xl md:text-5xl font-bold text-white mb-6 text-balance"
+                >
+                    Ready to Move to the Cloud?
+                </h2>
+                <p
+                    class="text-xl text-gray-400 mb-10 leading-relaxed text-pretty"
+                >
+                    Let's discuss how cloud solutions can transform your
+                    business and reduce costs.
+                </p>
+                <div class="flex flex-wrap gap-4 justify-center">
+                    <a
+                        href="/contact"
+                        class="px-8 py-4 bg-[#2563eb] text-white font-semibold rounded-lg hover:bg-[#1d4ed8] transition-colors"
+                    >
+                        Get Started
+                    </a>
+                    <a
+                        href="/services"
+                        class="px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
+                    >
+                        View All Services
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+</BaseLayout>

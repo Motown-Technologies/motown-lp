@@ -1,0 +1,953 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+import { Image } from "astro:assets";
+
+import bannerImage from "../../img/digital-marketing-analytics-dashboard-with-graphs-.jpg";
+import processImage from "../../img/digital-marketing-team-analyzing-data-and-metrics-.jpg";
+---
+
+<BaseLayout>
+    <main class="min-h-screen bg-[#0a0a0f]">
+        <!-- Hero Section -->
+        <section
+            class="relative overflow-hidden bg-gradient-to-b from-[#0a0a0f] to-[#1a1a2e] pt-8 pb-24"
+        >
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="inline-block mb-4">
+                            <span
+                                class="text-[#2563eb] text-sm font-semibold tracking-wider uppercase"
+                                >Digital Marketing</span
+                            >
+                        </div>
+                        <h1
+                            class="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight text-balance"
+                        >
+                            Grow Your Brand Online
+                        </h1>
+                        <p
+                            class="text-xl text-gray-400 leading-relaxed mb-8 text-pretty"
+                        >
+                            Drive measurable results with data-driven digital
+                            marketing strategies. We help you reach your target
+                            audience, increase engagement, and convert visitors
+                            into loyal customers.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a
+                                href="#contact"
+                                class="px-8 py-4 bg-white text-[#0a0a0f] font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+                            >
+                                Start Growing Today
+                            </a>
+                            <a
+                                href="#services"
+                                class="px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
+                            >
+                                View Services
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <div
+                            class="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-[#2563eb]/20 to-transparent border border-[#2563eb]/30"
+                        >
+                            <Image
+                                src={bannerImage}
+                                alt="Digital Marketing Solutions"
+                                class="w-full h-full object-cover opacity-80"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-24 bg-[#0a0a0f]">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                        Digital Marketing Services
+                    </h2>
+                    <p
+                        class="text-xl text-gray-400 max-w-3xl mx-auto text-pretty"
+                    >
+                        Comprehensive digital marketing solutions to elevate
+                        your brand and drive growth
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- SEO & SEM -->
+                    <div
+                        class="bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 hover:border-[#2563eb]/50 transition-colors"
+                    >
+                        <div
+                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6"
+                        >
+                            <svg
+                                class="w-6 h-6 text-[#2563eb]"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">
+                            SEO &amp; SEM
+                        </h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Dominate search results and drive qualified traffic
+                            to your website
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <!-- Check icon -->
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        d="M20 6 9 17l-5-5"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"></path>
+                                </svg>
+                                <span class="text-gray-300"
+                                    >Keyword research &amp; strategy</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        d="M20 6 9 17l-5-5"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"></path>
+                                </svg>
+                                <span class="text-gray-300"
+                                    >On-page &amp; technical SEO</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        d="M20 6 9 17l-5-5"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"></path>
+                                </svg>
+                                <span class="text-gray-300"
+                                    >Google Ads campaigns</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        d="M20 6 9 17l-5-5"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"></path>
+                                </svg>
+                                <span class="text-gray-300"
+                                    >Local SEO optimization</span
+                                >
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Social Media Marketing -->
+                    <div
+                        class="bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 hover:border-[#2563eb]/50 transition-colors"
+                    >
+                        <div
+                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6"
+                        >
+                            <svg
+                                class="w-6 h-6 text-[#2563eb]"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a2 2 0 01-2-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">
+                            Social Media Marketing
+                        </h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Build engaged communities and amplify your brand
+                            across social platforms
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    ><path
+                                        d="M20 6 9 17l-5-5"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"></path></svg
+                                >
+                                <span class="text-gray-300"
+                                    >Content strategy &amp; creation</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    ><path
+                                        d="M20 6 9 17l-5-5"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"></path></svg
+                                >
+                                <span class="text-gray-300"
+                                    >Community management</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    ><path
+                                        d="M20 6 9 17l-5-5"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"></path></svg
+                                >
+                                <span class="text-gray-300"
+                                    >Paid social advertising</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    ><path
+                                        d="M20 6 9 17l-5-5"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"></path></svg
+                                >
+                                <span class="text-gray-300"
+                                    >Influencer partnerships</span
+                                >
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Content Marketing -->
+                    <div
+                        class="bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 hover:border-[#2563eb]/50 transition-colors"
+                    >
+                        <div
+                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6"
+                        >
+                            <svg
+                                class="w-6 h-6 text-[#2563eb]"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">
+                            Content Marketing
+                        </h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Create compelling content that attracts, engages,
+                            and converts your audience
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    ><path
+                                        d="M20 6 9 17l-5-5"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"></path></svg
+                                ><span class="text-gray-300"
+                                    >Blog writing &amp; optimization</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    ><path
+                                        d="M20 6 9 17l-5-5"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"></path></svg
+                                ><span class="text-gray-300"
+                                    >Video production &amp; marketing</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    ><path
+                                        d="M20 6 9 17l-5-5"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"></path></svg
+                                ><span class="text-gray-300"
+                                    >Infographics &amp; visual content</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    ><path
+                                        d="M20 6 9 17l-5-5"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"></path></svg
+                                ><span class="text-gray-300"
+                                    >E-books &amp; whitepapers</span
+                                >
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Email Marketing -->
+                    <div
+                        class="bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 hover:border-[#2563eb]/50 transition-colors"
+                    >
+                        <div
+                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6"
+                        >
+                            <svg
+                                class="w-6 h-6 text-[#2563eb]"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">
+                            Email Marketing
+                        </h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Nurture leads and drive conversions with targeted
+                            email campaigns
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    ><path
+                                        d="M20 6 9 17l-5-5"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"></path></svg
+                                ><span class="text-gray-300"
+                                    >Campaign strategy &amp; design</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    ><path
+                                        d="M20 6 9 17l-5-5"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"></path></svg
+                                ><span class="text-gray-300"
+                                    >List segmentation &amp; targeting</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    ><path
+                                        d="M20 6 9 17l-5-5"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"></path></svg
+                                ><span class="text-gray-300"
+                                    >Automated drip campaigns</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    ><path
+                                        d="M20 6 9 17l-5-5"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"></path></svg
+                                ><span class="text-gray-300"
+                                    >A/B testing &amp; optimization</span
+                                >
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- PPC Advertising -->
+                    <div
+                        class="bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 hover:border-[#2563eb]/50 transition-colors"
+                    >
+                        <div
+                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6"
+                        >
+                            <svg
+                                class="w-6 h-6 text-[#2563eb]"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">
+                            PPC Advertising
+                        </h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Maximize ROI with strategic pay-per-click
+                            advertising campaigns
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    ><path
+                                        d="M20 6 9 17l-5-5"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"></path></svg
+                                ><span class="text-gray-300"
+                                    >Google Ads management</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    ><path
+                                        d="M20 6 9 17l-5-5"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"></path></svg
+                                ><span class="text-gray-300"
+                                    >Display &amp; remarketing ads</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    ><path
+                                        d="M20 6 9 17l-5-5"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"></path></svg
+                                ><span class="text-gray-300"
+                                    >Shopping campaigns</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    ><path
+                                        d="M20 6 9 17l-5-5"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"></path></svg
+                                ><span class="text-gray-300"
+                                    >Bid optimization &amp; reporting</span
+                                >
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Analytics & Reporting -->
+                    <div
+                        class="bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 hover:border-[#2563eb]/50 transition-colors"
+                    >
+                        <div
+                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6"
+                        >
+                            <svg
+                                class="w-6 h-6 text-[#2563eb]"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">
+                            Analytics &amp; Reporting
+                        </h3>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Make data-driven decisions with comprehensive
+                            analytics and insights
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    ><path
+                                        d="M20 6 9 17l-5-5"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"></path></svg
+                                ><span class="text-gray-300"
+                                    >Google Analytics setup &amp; tracking</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    ><path
+                                        d="M20 6 9 17l-5-5"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"></path></svg
+                                ><span class="text-gray-300"
+                                    >Custom dashboard creation</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    ><path
+                                        d="M20 6 9 17l-5-5"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"></path></svg
+                                ><span class="text-gray-300"
+                                    >Conversion tracking &amp; attribution</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg
+                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    ><path
+                                        d="M20 6 9 17l-5-5"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"></path></svg
+                                ><span class="text-gray-300"
+                                    >Monthly performance reports</span
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section class="py-24 bg-[#1a1a2e]">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="relative">
+                        <div
+                            class="aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-[#2563eb]/20 to-transparent border border-[#2563eb]/30"
+                        >
+                            <Image
+                                src={processImage}
+                                alt="Digital Marketing Results"
+                                class="w-full h-full object-cover opacity-80"
+                            />
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2
+                            class="text-4xl md:text-5xl font-bold text-white mb-6"
+                        >
+                            Proven Results That Matter
+                        </h2>
+                        <p
+                            class="text-xl text-gray-400 mb-8 leading-relaxed text-pretty"
+                        >
+                            Our data-driven approach delivers measurable
+                            outcomes that drive real business growth.
+                        </p>
+
+                        <div class="space-y-6">
+                            <div class="flex gap-4">
+                                <div class="flex-shrink-0">
+                                    <svg
+                                        class="w-8 h-8 text-[#2563eb]"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        aria-hidden="true"
+                                    >
+                                        <path
+                                            d="M20 6 9 17l-5-5"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3
+                                        class="text-xl font-bold text-white mb-2"
+                                    >
+                                        300% Average ROI
+                                    </h3>
+                                    <p class="text-gray-400 leading-relaxed">
+                                        Our clients see an average 3x return on
+                                        their marketing investment
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-4">
+                                <div class="flex-shrink-0">
+                                    <svg
+                                        class="w-8 h-8 text-[#2563eb]"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        aria-hidden="true"
+                                    >
+                                        <path
+                                            d="M20 6 9 17l-5-5"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3
+                                        class="text-xl font-bold text-white mb-2"
+                                    >
+                                        150% Traffic Growth
+                                    </h3>
+                                    <p class="text-gray-400 leading-relaxed">
+                                        Increase qualified website traffic with
+                                        strategic SEO and content
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-4">
+                                <div class="flex-shrink-0">
+                                    <svg
+                                        class="w-8 h-8 text-[#2563eb]"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        aria-hidden="true"
+                                    >
+                                        <path
+                                            d="M20 6 9 17l-5-5"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3
+                                        class="text-xl font-bold text-white mb-2"
+                                    >
+                                        45% Higher Conversion Rates
+                                    </h3>
+                                    <p class="text-gray-400 leading-relaxed">
+                                        Turn more visitors into customers with
+                                        optimized campaigns
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-4">
+                                <div class="flex-shrink-0">
+                                    <svg
+                                        class="w-8 h-8 text-[#2563eb]"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        aria-hidden="true"
+                                    >
+                                        <path
+                                            d="M20 6 9 17l-5-5"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3
+                                        class="text-xl font-bold text-white mb-2"
+                                    >
+                                        85% Client Retention
+                                    </h3>
+                                    <p class="text-gray-400 leading-relaxed">
+                                        Long-term partnerships built on
+                                        consistent results and transparency
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="py-24 bg-[#0a0a0f]">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                        Our Marketing Process
+                    </h2>
+                    <p
+                        class="text-xl text-gray-400 max-w-3xl mx-auto text-pretty"
+                    >
+                        A strategic approach that delivers consistent growth and
+                        measurable results
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="text-center">
+                        <div
+                            class="w-16 h-16 bg-[#2563eb] rounded-full flex items-center justify-center text-white font-bold text-2xl mx-auto mb-6"
+                        >
+                            1
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">
+                            Research &amp; Strategy
+                        </h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            Analyze your market, competitors, and audience to
+                            build a winning strategy
+                        </p>
+                    </div>
+
+                    <div class="text-center">
+                        <div
+                            class="w-16 h-16 bg-[#2563eb] rounded-full flex items-center justify-center text-white font-bold text-2xl mx-auto mb-6"
+                        >
+                            2
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">
+                            Campaign Creation
+                        </h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            Develop compelling content and campaigns across all
+                            channels
+                        </p>
+                    </div>
+
+                    <div class="text-center">
+                        <div
+                            class="w-16 h-16 bg-[#2563eb] rounded-full flex items-center justify-center text-white font-bold text-2xl mx-auto mb-6"
+                        >
+                            3
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">
+                            Launch &amp; Monitor
+                        </h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            Execute campaigns and track performance in real-time
+                        </p>
+                    </div>
+
+                    <div class="text-center">
+                        <div
+                            class="w-16 h-16 bg-[#2563eb] rounded-full flex items-center justify-center text-white font-bold text-2xl mx-auto mb-6"
+                        >
+                            4
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">
+                            Optimize &amp; Scale
+                        </h3>
+                        <p class="text-gray-400 leading-relaxed">
+                            Continuously improve performance and scale what
+                            works
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section
+            id="contact"
+            class="py-24 bg-gradient-to-b from-[#1a1a2e] to-[#0a0a0f]"
+        >
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h2
+                    class="text-4xl md:text-5xl font-bold text-white mb-6 text-balance"
+                >
+                    Ready to Grow Your Business?
+                </h2>
+                <p
+                    class="text-xl text-gray-400 mb-10 leading-relaxed text-pretty"
+                >
+                    Let's create a digital marketing strategy that drives real
+                    results. Schedule your free consultation today.
+                </p>
+                <div class="flex flex-wrap gap-4 justify-center">
+                    <a
+                        href="/contact"
+                        class="px-8 py-4 bg-[#2563eb] text-white font-semibold rounded-lg hover:bg-[#1d4ed8] transition-colors"
+                    >
+                        Get Started
+                    </a>
+                    <a
+                        href="/"
+                        class="px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
+                    >
+                        View All Services
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-8 bg-[#0a0a0f] border-t border-gray-800">
+            <div class="max-w-7xl mx-auto px-6 text-center text-gray-500">
+                <p>&copy; 2025 Motown Tech. Where Ideas Become Reality.</p>
+            </div>
+        </footer>
+    </main>
+</BaseLayout>
