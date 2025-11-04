@@ -55,14 +55,14 @@ const ICONS: Record<string, any> = {
                 {
                     services.map((svc) => {
                         const Icon = ICONS[svc.icon] ?? SoftwareIcon;
-                        const fallbackSlug =
-                            "/" +
-                            (svc.slug ??
-                                svc.title
-                                    .toLowerCase()
-                                    .replace(/[^a-z0-9]+/g, "-")
-                                    .replace(/(^-|-$)/g, ""));
-                        const href = svc.href || fallbackSlug;
+
+                        const toSlug = (s: string) =>
+                            s
+                                .toLowerCase()
+                                .replace(/[^a-z0-9]+/g, "-")
+                                .replace(/(^-|-$)/g, "");
+
+                        const href = svc.href ?? "/" + toSlug(svc.title);
 
                         return (
                             <a
