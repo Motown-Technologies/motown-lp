@@ -29,11 +29,11 @@ export function Navigation() {
   const services = [
     { name: "Software Development", href: "/services/software-development" },
     { name: "Web Design & Development", href: "/services/web-design" },
-    { name: "Mobile App Development", href: "/services/mobile-app-development" },
-    { name: "Cloud Solutions", href: "/services/cloud-solutions" },
-    { name: "IT Consulting", href: "/services/it-consulting" },
-    { name: "Cybersecurity", href: "/services/cybersecurity" },
+    { name: "Mobile Development", href: "/services/mobile-development" },
     { name: "Automation", href: "/services/automation" },
+    { name: "Consulting", href: "/services/consulting" },
+    // { name: "Cloud Solutions", href: "/services/cloud-solutions" },
+    // { name: "Cybersecurity", href: "/services/cybersecurity" },
   ]
 
   const linkBase = "text-gray-300 hover:text-blue-400 transition-colors font-medium"
@@ -74,7 +74,7 @@ export function Navigation() {
                 <div className="relative group">
                     {/* Trigger */}
                     <a
-                        href="#"
+                        href="/services"
                         className={`${linkBase} inline-flex items-center gap-1`}
                         aria-haspopup="menu"
                     >
