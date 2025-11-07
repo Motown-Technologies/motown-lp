@@ -1,5 +1,5 @@
 ---
-import services from "../../data/services.json";
+import services, { type Service } from "../../data/services";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 // Icons
@@ -40,7 +40,7 @@ const ICONS: Record<string, any> = {
                     Comprehensive Solutions for Your Business
                 </h1>
                 <p class="text-xl text-gray-400 leading-relaxed text-pretty">
-                    From software development to digital marketing, we provide
+                    From software development to automation, we provide
                     end-to-end technology solutions that drive growth and
                     innovation
                 </p>
@@ -51,9 +51,9 @@ const ICONS: Record<string, any> = {
     <!-- Services Grid -->
     <section class="py-24 bg-[#0a0a0f]">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-12">
                 {
-                    services.map((svc) => {
+                    services.map((svc: Service, idx: number) => {
                         const Icon = ICONS[svc.icon] ?? SoftwareIcon;
 
                         const toSlug = (s: string) =>
@@ -64,10 +64,13 @@ const ICONS: Record<string, any> = {
 
                         const href = svc.href ?? "/" + toSlug(svc.title);
 
+                        const spanClass =
+                            idx < 2 ? "lg:col-span-6" : "lg:col-span-4";
+
                         return (
                             <a
                                 href={href}
-                                class="group block bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 hover:border-[#2563eb]/50 transition-all hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-[#2563eb]/60"
+                                class={`group block bg-[#1a1a2e] rounded-xl p-8 border border-gray-800 transition-all focus:outline-none focus:ring-2 focus:ring-[#2563eb]/60 hover:-translate-y-1 hover:border-[#2563eb]/60 hover:shadow-[0_25px_50px_rgba(37,99,235,0.2)] ${spanClass}`}
                                 aria-label={`${svc.title} – Learn more`}
                             >
                                 <div class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6 group-hover:bg-[#2563eb]/30 transition-colors">
