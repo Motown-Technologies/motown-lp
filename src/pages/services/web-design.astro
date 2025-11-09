@@ -3,6 +3,9 @@ import { Image } from "astro:assets";
 import bannerImage from "../../img/modern-web-design-workspace-with-multiple-screens-.jpg";
 import processImage from "../../img/web-design-process-with-wireframes-and-mockups-on-.jpg";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Card from "../../components/Card.astro";
+import CardIcon from "../../components/CardIcon.astro";
+import CardTitle from "../../components/CardTitle.astro";
 ---
 
 <BaseLayout>
@@ -83,12 +86,8 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {/* Responsive Web Design */}
-                    <div
-                        class="group h-full rounded-2xl border border-gray-800 bg-[#1a1a2e] p-8 shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-[#2563eb]/60 hover:shadow-[0_25px_50px_rgba(37,99,235,0.2)]"
-                    >
-                        <div
-                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6 transition-colors group-hover:bg-[#2563eb]/30"
-                        >
+                    <Card>
+                        <CardIcon>
                             <svg
                                 class="w-6 h-6 text-[#2563eb]"
                                 fill="none"
@@ -102,10 +101,10 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
                                     d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                                 ></path>
                             </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4 transition-colors group-hover:text-[#2563eb]">
+                        </CardIcon>
+                        <CardTitle>
                             Responsive Design
-                        </h3>
+                        </CardTitle>
                         <p class="text-gray-400 mb-6 leading-relaxed">
                             Websites that look perfect on every device, from
                             mobile to desktop
@@ -180,15 +179,11 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
                                 >
                             </li>
                         </ul>
-                    </div>
+                    </Card>
 
                     {/* UI/UX Design */}
-                    <div
-                        class="group h-full rounded-2xl border border-gray-800 bg-[#1a1a2e] p-8 shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-[#2563eb]/60 hover:shadow-[0_25px_50px_rgba(37,99,235,0.2)]"
-                    >
-                        <div
-                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6 transition-colors group-hover:bg-[#2563eb]/30"
-                        >
+                    <Card>
+                        <CardIcon>
                             <svg
                                 class="w-6 h-6 text-[#2563eb]"
                                 fill="none"
@@ -202,10 +197,10 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
                                     d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
                                 ></path>
                             </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4 transition-colors group-hover:text-[#2563eb]">
+                        </CardIcon>
+                        <CardTitle>
                             UI/UX Design
-                        </h3>
+                        </CardTitle>
                         <p class="text-gray-400 mb-6 leading-relaxed">
                             Intuitive interfaces designed with your users in
                             mind
@@ -280,15 +275,11 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
                                 >
                             </li>
                         </ul>
-                    </div>
+                    </Card>
 
                     {/* E-commerce Design */}
-                    <div
-                        class="group h-full rounded-2xl border border-gray-800 bg-[#1a1a2e] p-8 shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-[#2563eb]/60 hover:shadow-[0_25px_50px_rgba(37,99,235,0.2)]"
-                    >
-                        <div
-                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6 transition-colors group-hover:bg-[#2563eb]/30"
-                        >
+                    <Card>
+                        <CardIcon>
                             <svg
                                 class="w-6 h-6 text-[#2563eb]"
                                 fill="none"
@@ -302,10 +293,10 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
                                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                                 ></path>
                             </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4 transition-colors group-hover:text-[#2563eb]">
+                        </CardIcon>
+                        <CardTitle>
                             E-commerce Design
-                        </h3>
+                        </CardTitle>
                         <p class="text-gray-400 mb-6 leading-relaxed">
                             Online stores designed to maximize conversions and
                             sales
@@ -380,15 +371,11 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
                                 >
                             </li>
                         </ul>
-                    </div>
+                    </Card>
 
                     {/* Landing Pages */}
-                    <div
-                        class="group h-full rounded-2xl border border-gray-800 bg-[#1a1a2e] p-8 shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-[#2563eb]/60 hover:shadow-[0_25px_50px_rgba(37,99,235,0.2)]"
-                    >
-                        <div
-                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6 transition-colors group-hover:bg-[#2563eb]/30"
-                        >
+                    <Card>
+                        <CardIcon>
                             <svg
                                 class="w-6 h-6 text-[#2563eb]"
                                 fill="none"
@@ -401,10 +388,10 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
                                     stroke-width="2"
                                     d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                             </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4 transition-colors group-hover:text-[#2563eb]">
+                        </CardIcon>
+                        <CardTitle>
                             Landing Pages
-                        </h3>
+                        </CardTitle>
                         <p class="text-gray-400 mb-6 leading-relaxed">
                             High-converting pages designed to capture leads and
                             drive action
@@ -479,15 +466,11 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
                                 >
                             </li>
                         </ul>
-                    </div>
+                    </Card>
 
                     {/* Brand Identity */}
-                    <div
-                        class="group h-full rounded-2xl border border-gray-800 bg-[#1a1a2e] p-8 shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-[#2563eb]/60 hover:shadow-[0_25px_50px_rgba(37,99,235,0.2)]"
-                    >
-                        <div
-                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6 transition-colors group-hover:bg-[#2563eb]/30"
-                        >
+                    <Card>
+                        <CardIcon>
                             <svg
                                 class="w-6 h-6 text-[#2563eb]"
                                 fill="none"
@@ -501,10 +484,10 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
                                     d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
                                 ></path>
                             </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4 transition-colors group-hover:text-[#2563eb]">
+                        </CardIcon>
+                        <CardTitle>
                             Brand Identity
-                        </h3>
+                        </CardTitle>
                         <p class="text-gray-400 mb-6 leading-relaxed">
                             Cohesive visual identity that represents your brand
                             values
@@ -579,15 +562,11 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
                                 >
                             </li>
                         </ul>
-                    </div>
+                    </Card>
 
                     {/* Website Redesign */}
-                    <div
-                        class="group h-full rounded-2xl border border-gray-800 bg-[#1a1a2e] p-8 shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-[#2563eb]/60 hover:shadow-[0_25px_50px_rgba(37,99,235,0.2)]"
-                    >
-                        <div
-                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6 transition-colors group-hover:bg-[#2563eb]/30"
-                        >
+                    <Card>
+                        <CardIcon>
                             <svg
                                 class="w-6 h-6 text-[#2563eb]"
                                 fill="none"
@@ -601,10 +580,10 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
                                     d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
                                 ></path>
                             </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4 transition-colors group-hover:text-[#2563eb]">
+                        </CardIcon>
+                        <CardTitle>
                             Website Redesign
-                        </h3>
+                        </CardTitle>
                         <p class="text-gray-400 mb-6 leading-relaxed">
                             Modernize your existing website with fresh design
                             and improved UX
@@ -679,7 +658,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
                                 >
                             </li>
                         </ul>
-                    </div>
+                    </Card>
                 </div>
             </div>
         </section>

@@ -1,5 +1,8 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Card from "../../components/Card.astro";
+import CardIcon from "../../components/CardIcon.astro";
+import CardTitle from "../../components/CardTitle.astro";
 
 import { Image } from "astro:assets";
 
@@ -83,12 +86,8 @@ import processImage from "../../img/digital-marketing-team-analyzing-data-and-me
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- SEO & SEM -->
-                    <div
-                        class="group h-full rounded-2xl border border-gray-800 bg-[#1a1a2e] p-8 shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-[#2563eb]/60 hover:shadow-[0_25px_50px_rgba(37,99,235,0.2)]"
-                    >
-                        <div
-                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6 transition-colors group-hover:bg-[#2563eb]/30"
-                        >
+                    <Card>
+                        <CardIcon>
                             <svg
                                 class="w-6 h-6 text-[#2563eb]"
                                 fill="none"
@@ -103,10 +102,10 @@ import processImage from "../../img/digital-marketing-team-analyzing-data-and-me
                                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                                 ></path>
                             </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4 transition-colors group-hover:text-[#2563eb]">
+                        </CardIcon>
+                        <CardTitle>
                             SEO &amp; SEM
-                        </h3>
+                        </CardTitle>
                         <p class="text-gray-400 mb-6 leading-relaxed">
                             Dominate search results and drive qualified traffic
                             to your website
@@ -186,15 +185,11 @@ import processImage from "../../img/digital-marketing-team-analyzing-data-and-me
                                 >
                             </li>
                         </ul>
-                    </div>
+                    </Card>
 
                     <!-- Social Media Marketing -->
-                    <div
-                        class="group h-full rounded-2xl border border-gray-800 bg-[#1a1a2e] p-8 shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-[#2563eb]/60 hover:shadow-[0_25px_50px_rgba(37,99,235,0.2)]"
-                    >
-                        <div
-                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6 transition-colors group-hover:bg-[#2563eb]/30"
-                        >
+                    <Card>
+                        <CardIcon>
                             <svg
                                 class="w-6 h-6 text-[#2563eb]"
                                 fill="none"
@@ -209,10 +204,10 @@ import processImage from "../../img/digital-marketing-team-analyzing-data-and-me
                                     d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a2 2 0 01-2-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
                                 ></path>
                             </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4 transition-colors group-hover:text-[#2563eb]">
+                        </CardIcon>
+                        <CardTitle>
                             Social Media Marketing
-                        </h3>
+                        </CardTitle>
                         <p class="text-gray-400 mb-6 leading-relaxed">
                             Build engaged communities and amplify your brand
                             across social platforms
@@ -287,15 +282,11 @@ import processImage from "../../img/digital-marketing-team-analyzing-data-and-me
                                 >
                             </li>
                         </ul>
-                    </div>
+                    </Card>
 
                     <!-- Content Marketing -->
-                    <div
-                        class="group h-full rounded-2xl border border-gray-800 bg-[#1a1a2e] p-8 shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-[#2563eb]/60 hover:shadow-[0_25px_50px_rgba(37,99,235,0.2)]"
-                    >
-                        <div
-                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6 transition-colors group-hover:bg-[#2563eb]/30"
-                        >
+                    <Card>
+                        <CardIcon>
                             <svg
                                 class="w-6 h-6 text-[#2563eb]"
                                 fill="none"
@@ -310,10 +301,10 @@ import processImage from "../../img/digital-marketing-team-analyzing-data-and-me
                                     d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
                                 ></path>
                             </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4 transition-colors group-hover:text-[#2563eb]">
+                        </CardIcon>
+                        <CardTitle>
                             Content Marketing
-                        </h3>
+                        </CardTitle>
                         <p class="text-gray-400 mb-6 leading-relaxed">
                             Create compelling content that attracts, engages,
                             and converts your audience
@@ -384,15 +375,11 @@ import processImage from "../../img/digital-marketing-team-analyzing-data-and-me
                                 >
                             </li>
                         </ul>
-                    </div>
+                    </Card>
 
                     <!-- Email Marketing -->
-                    <div
-                        class="group h-full rounded-2xl border border-gray-800 bg-[#1a1a2e] p-8 shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-[#2563eb]/60 hover:shadow-[0_25px_50px_rgba(37,99,235,0.2)]"
-                    >
-                        <div
-                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6 transition-colors group-hover:bg-[#2563eb]/30"
-                        >
+                    <Card>
+                        <CardIcon>
                             <svg
                                 class="w-6 h-6 text-[#2563eb]"
                                 fill="none"
@@ -407,10 +394,10 @@ import processImage from "../../img/digital-marketing-team-analyzing-data-and-me
                                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                                 ></path>
                             </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4 transition-colors group-hover:text-[#2563eb]">
+                        </CardIcon>
+                        <CardTitle>
                             Email Marketing
-                        </h3>
+                        </CardTitle>
                         <p class="text-gray-400 mb-6 leading-relaxed">
                             Nurture leads and drive conversions with targeted
                             email campaigns
@@ -481,15 +468,11 @@ import processImage from "../../img/digital-marketing-team-analyzing-data-and-me
                                 >
                             </li>
                         </ul>
-                    </div>
+                    </Card>
 
                     <!-- PPC Advertising -->
-                    <div
-                        class="group h-full rounded-2xl border border-gray-800 bg-[#1a1a2e] p-8 shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-[#2563eb]/60 hover:shadow-[0_25px_50px_rgba(37,99,235,0.2)]"
-                    >
-                        <div
-                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6 transition-colors group-hover:bg-[#2563eb]/30"
-                        >
+                    <Card>
+                        <CardIcon>
                             <svg
                                 class="w-6 h-6 text-[#2563eb]"
                                 fill="none"
@@ -504,10 +487,10 @@ import processImage from "../../img/digital-marketing-team-analyzing-data-and-me
                                     d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
                                 ></path>
                             </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4 transition-colors group-hover:text-[#2563eb]">
+                        </CardIcon>
+                        <CardTitle>
                             PPC Advertising
-                        </h3>
+                        </CardTitle>
                         <p class="text-gray-400 mb-6 leading-relaxed">
                             Maximize ROI with strategic pay-per-click
                             advertising campaigns
@@ -578,15 +561,11 @@ import processImage from "../../img/digital-marketing-team-analyzing-data-and-me
                                 >
                             </li>
                         </ul>
-                    </div>
+                    </Card>
 
                     <!-- Analytics & Reporting -->
-                    <div
-                        class="group h-full rounded-2xl border border-gray-800 bg-[#1a1a2e] p-8 shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-[#2563eb]/60 hover:shadow-[0_25px_50px_rgba(37,99,235,0.2)]"
-                    >
-                        <div
-                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6 transition-colors group-hover:bg-[#2563eb]/30"
-                        >
+                    <Card>
+                        <CardIcon>
                             <svg
                                 class="w-6 h-6 text-[#2563eb]"
                                 fill="none"
@@ -601,10 +580,10 @@ import processImage from "../../img/digital-marketing-team-analyzing-data-and-me
                                     d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
                                 ></path>
                             </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4 transition-colors group-hover:text-[#2563eb]">
+                        </CardIcon>
+                        <CardTitle>
                             Analytics &amp; Reporting
-                        </h3>
+                        </CardTitle>
                         <p class="text-gray-400 mb-6 leading-relaxed">
                             Make data-driven decisions with comprehensive
                             analytics and insights
@@ -675,7 +654,7 @@ import processImage from "../../img/digital-marketing-team-analyzing-data-and-me
                                 >
                             </li>
                         </ul>
-                    </div>
+                    </Card>
                 </div>
             </div>
         </section>

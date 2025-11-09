@@ -1,5 +1,8 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Card from "../../components/Card.astro";
+import CardIcon from "../../components/CardIcon.astro";
+import CardTitle from "../../components/CardTitle.astro";
 
 import { Image } from "astro:assets";
 
@@ -84,12 +87,8 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {/* Cloud Migration */}
-                    <div
-                        class="group h-full rounded-2xl border border-gray-800 bg-[#1a1a2e] p-8 shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-[#2563eb]/60 hover:shadow-[0_25px_50px_rgba(37,99,235,0.2)]"
-                    >
-                        <div
-                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6 transition-colors group-hover:bg-[#2563eb]/30"
-                        >
+                    <Card>
+                        <CardIcon>
                             <svg
                                 class="w-6 h-6 text-[#2563eb]"
                                 fill="none"
@@ -103,10 +102,10 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
                                     d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                                 ></path>
                             </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4 transition-colors group-hover:text-[#2563eb]">
+                        </CardIcon>
+                        <CardTitle>
                             Cloud Migration
-                        </h3>
+                        </CardTitle>
                         <p class="text-gray-400 mb-6 leading-relaxed">
                             Seamlessly move your infrastructure to the cloud
                             with minimal downtime
@@ -138,15 +137,11 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
                                 ))
                             }
                         </ul>
-                    </div>
+                    </Card>
 
                     {/* AWS Solutions */}
-                    <div
-                        class="group h-full rounded-2xl border border-gray-800 bg-[#1a1a2e] p-8 shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-[#2563eb]/60 hover:shadow-[0_25px_50px_rgba(37,99,235,0.2)]"
-                    >
-                        <div
-                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6 transition-colors group-hover:bg-[#2563eb]/30"
-                        >
+                    <Card>
+                        <CardIcon>
                             <svg
                                 class="w-6 h-6 text-[#2563eb]"
                                 fill="currentColor"
@@ -156,10 +151,10 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
                                     d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183 0 .08-.048.16-.152.24l-.503.335a.383.383 0 01-.208.072c-.08 0-.16-.04-.239-.112a2.47 2.47 0 01-.287-.375 6.18 6.18 0 01-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67 0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533 0-.678.239-1.226.726-1.644.487-.417 1.133-.626 1.955-.626.272 0 .551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28 0-.568.031-.863.103-.295.072-.583.16-.862.272a2.287 2.287 0 01-.28.104.488.488 0 01-.127.023c-.112 0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597 0 01.224-.167c.279-.144.614-.264 1.005-.36a4.84 4.84 0 011.246-.151c.95 0 1.644.215 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263 0 .534-.048.822-.144.287-.096.543-.271.758-.51.128-.152.224-.32.272-.512.047-.191.08-.423.08-.694v-.335a6.66 6.66 0 00-.735-.136 6.02 6.02 0 00-.75-.048c-.535 0-.926.104-1.19.32-.263.215-.39.518-.39.917 0 .375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144 0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398 0 01-.072-.32c0-.128.064-.2.191-.2h.783c.151 0 .255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549 0 01.32-.08h.638c.152 0 .256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52 0 01.311-.08h.743c.127 0 .2.065.2.2 0 .04-.009.08-.017.128a1.137 1.137 0 01-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51 0 01-.303.08h-.687c-.151 0-.255-.024-.32-.08-.063-.056-.119-.16-.151-.32l-1.237-5.132-1.229 5.133c-.04.16-.087.263-.151.32-.064.055-.175.08-.32.08h-.686zM27 12"
                                 ></path>
                             </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4 transition-colors group-hover:text-[#2563eb]">
+                        </CardIcon>
+                        <CardTitle>
                             AWS Solutions
-                        </h3>
+                        </CardTitle>
                         <p class="text-gray-400 mb-6 leading-relaxed">
                             Leverage Amazon Web Services for scalable cloud
                             infrastructure
@@ -191,15 +186,11 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
                                 ))
                             }
                         </ul>
-                    </div>
+                    </Card>
 
                     {/* Azure Solutions */}
-                    <div
-                        class="group h-full rounded-2xl border border-gray-800 bg-[#1a1a2e] p-8 shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-[#2563eb]/60 hover:shadow-[0_25px_50px_rgba(37,99,235,0.2)]"
-                    >
-                        <div
-                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6 transition-colors group-hover:bg-[#2563eb]/30"
-                        >
+                    <Card>
+                        <CardIcon>
                             <svg
                                 class="w-6 h-6 text-[#2563eb]"
                                 fill="currentColor"
@@ -209,10 +200,10 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
                                     d="M5.483 21.3H3.659L10.5 2.7h2.197l-7.214 18.6zm8.018 0h6.841L13.659 2.7h-2.197l7.039 18.6z"
                                 ></path>
                             </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4 transition-colors group-hover:text-[#2563eb]">
+                        </CardIcon>
+                        <CardTitle>
                             Azure Solutions
-                        </h3>
+                        </CardTitle>
                         <p class="text-gray-400 mb-6 leading-relaxed">
                             Build and deploy with Microsoft Azure cloud platform
                         </p>
@@ -243,15 +234,11 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
                                 ))
                             }
                         </ul>
-                    </div>
+                    </Card>
 
                     {/* DevOps & CI/CD */}
-                    <div
-                        class="group h-full rounded-2xl border border-gray-800 bg-[#1a1a2e] p-8 shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-[#2563eb]/60 hover:shadow-[0_25px_50px_rgba(37,99,235,0.2)]"
-                    >
-                        <div
-                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6 transition-colors group-hover:bg-[#2563eb]/30"
-                        >
+                    <Card>
+                        <CardIcon>
                             <svg
                                 class="w-6 h-6 text-[#2563eb]"
                                 fill="none"
@@ -265,10 +252,10 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
                                     d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
                                 ></path>
                             </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4 transition-colors group-hover:text-[#2563eb]">
+                        </CardIcon>
+                        <CardTitle>
                             DevOps &amp; CI/CD
-                        </h3>
+                        </CardTitle>
                         <p class="text-gray-400 mb-6 leading-relaxed">
                             Automate your deployment pipeline for faster
                             releases
@@ -300,15 +287,11 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
                                 ))
                             }
                         </ul>
-                    </div>
+                    </Card>
 
                     {/* Cloud Security */}
-                    <div
-                        class="group h-full rounded-2xl border border-gray-800 bg-[#1a1a2e] p-8 shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-[#2563eb]/60 hover:shadow-[0_25px_50px_rgba(37,99,235,0.2)]"
-                    >
-                        <div
-                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6 transition-colors group-hover:bg-[#2563eb]/30"
-                        >
+                    <Card>
+                        <CardIcon>
                             <svg
                                 class="w-6 h-6 text-[#2563eb]"
                                 fill="none"
@@ -322,10 +305,10 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
                                     d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
                                 ></path>
                             </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4 transition-colors group-hover:text-[#2563eb]">
+                        </CardIcon>
+                        <CardTitle>
                             Cloud Security
-                        </h3>
+                        </CardTitle>
                         <p class="text-gray-400 mb-6 leading-relaxed">
                             Protect your cloud infrastructure with
                             enterprise-grade security
@@ -357,15 +340,11 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
                                 ))
                             }
                         </ul>
-                    </div>
+                    </Card>
 
                     {/* Cloud Optimization */}
-                    <div
-                        class="group h-full rounded-2xl border border-gray-800 bg-[#1a1a2e] p-8 shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:border-[#2563eb]/60 hover:shadow-[0_25px_50px_rgba(37,99,235,0.2)]"
-                    >
-                        <div
-                            class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6 transition-colors group-hover:bg-[#2563eb]/30"
-                        >
+                    <Card>
+                        <CardIcon>
                             <svg
                                 class="w-6 h-6 text-[#2563eb]"
                                 fill="none"
@@ -378,10 +357,10 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
                                     stroke-width="2"
                                     d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
                             </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4 transition-colors group-hover:text-[#2563eb]">
+                        </CardIcon>
+                        <CardTitle>
                             Cloud Optimization
-                        </h3>
+                        </CardTitle>
                         <p class="text-gray-400 mb-6 leading-relaxed">
                             Reduce costs and improve performance of your cloud
                             infrastructure
@@ -413,7 +392,7 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
                                 ))
                             }
                         </ul>
-                    </div>
+                    </Card>
                 </div>
             </div>
         </section>
