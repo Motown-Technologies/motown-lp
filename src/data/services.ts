@@ -21,6 +21,20 @@ const services: Service[] = [
         ],
         href: "/services/software-development",
     },
+    // {
+    //     icon: "marketing",
+    //     title: "Digital Marketing",
+    //     description:
+    //         "Strategic campaigns that increase visibility, drive traffic, and convert leads.",
+    //     bullets: [
+    //         "Search Engine Optimization (SEO)",
+    //         "Social Media Marketing",
+    //         "Content Strategy & Creation",
+    //         "Pay-Per-Click Advertising",
+    //         "Analytics & Reporting",
+    //     ],
+    //     href: "/services/digital-marketing",
+    // },
     {
         icon: "web",
         title: "Web Design & Development",
@@ -103,7 +117,7 @@ const services: Service[] = [
             "Security & Compliance",
             "Project Management",
         ],
-        href: "/services/it-consulting",
+        href: "/services/consulting",
     },
 ];
 
