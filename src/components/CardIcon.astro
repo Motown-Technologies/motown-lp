@@ -1,0 +1,10 @@
+---
+const { class: className = "" } = Astro.props;
+
+const baseClasses =
+    "w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center mb-6 transition-colors group-hover:bg-[#2563eb]/30";
+---
+
+<div class={`${baseClasses} ${className}`.trim()}>
+    <slot />
+</div>
