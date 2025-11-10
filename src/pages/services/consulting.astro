@@ -1,8 +1,8 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
 import Card from "../../components/Card.astro";
 import CardIcon from "../../components/CardIcon.astro";
 import CardTitle from "../../components/CardTitle.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 
 import { Image } from "astro:assets";
 
@@ -84,7 +84,7 @@ import bannerImage from "../../img/it-consulting-meeting-with-business-professio
                     </p>
                 </div>
 
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="grid md:grid-cols-2 gap-8">
                     <!-- IT Strategy -->
                     <Card>
                         <CardIcon>
@@ -102,9 +102,7 @@ import bannerImage from "../../img/it-consulting-meeting-with-business-professio
                                 ></path>
                             </svg>
                         </CardIcon>
-                        <CardTitle>
-                            IT Strategy
-                        </CardTitle>
+                        <CardTitle> IT Strategy </CardTitle>
                         <p class="text-gray-400 mb-6 leading-relaxed">
                             Develop comprehensive IT roadmaps aligned with
                             business objectives
@@ -180,102 +178,6 @@ import bannerImage from "../../img/it-consulting-meeting-with-business-professio
                         </ul>
                     </Card>
 
-                    <!-- Infrastructure Planning -->
-                    <Card>
-                        <CardIcon>
-                            <svg
-                                class="w-6 h-6 text-[#2563eb]"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
-                                ></path>
-                            </svg>
-                        </CardIcon>
-                        <CardTitle>
-                            Infrastructure Planning
-                        </CardTitle>
-                        <p class="text-gray-400 mb-6 leading-relaxed">
-                            Design scalable, reliable IT infrastructure for your
-                            organization
-                        </p>
-                        <ul class="space-y-3">
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-gray-300"
-                                    >Network architecture</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-gray-300"
-                                    >Server & storage planning</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-gray-300"
-                                    >Disaster recovery</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-gray-300"
-                                    >Capacity planning</span
-                                >
-                            </li>
-                        </ul>
-                    </Card>
-
                     <!-- Software Selection -->
                     <Card>
                         <CardIcon>
@@ -293,9 +195,7 @@ import bannerImage from "../../img/it-consulting-meeting-with-business-professio
                                 ></path>
                             </svg>
                         </CardIcon>
-                        <CardTitle>
-                            Software Selection
-                        </CardTitle>
+                        <CardTitle> Software Selection </CardTitle>
                         <p class="text-gray-400 mb-6 leading-relaxed">
                             Choose the right software solutions for your
                             business needs
@@ -388,9 +288,7 @@ import bannerImage from "../../img/it-consulting-meeting-with-business-professio
                                     d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                             </svg>
                         </CardIcon>
-                        <CardTitle>
-                            Process Optimization
-                        </CardTitle>
+                        <CardTitle> Process Optimization </CardTitle>
                         <p class="text-gray-400 mb-6 leading-relaxed">
                             Streamline operations with technology-driven
                             efficiency improvements
@@ -467,102 +365,6 @@ import bannerImage from "../../img/it-consulting-meeting-with-business-professio
                         </ul>
                     </Card>
 
-                    <!-- Compliance & Governance -->
-                    <Card>
-                        <CardIcon>
-                            <svg
-                                class="w-6 h-6 text-[#2563eb]"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                                ></path>
-                            </svg>
-                        </CardIcon>
-                        <CardTitle>
-                            Compliance & Governance
-                        </CardTitle>
-                        <p class="text-gray-400 mb-6 leading-relaxed">
-                            Ensure regulatory compliance and establish IT
-                            governance frameworks
-                        </p>
-                        <ul class="space-y-3">
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-gray-300"
-                                    >Compliance audits</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-gray-300"
-                                    >Policy development</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-gray-300"
-                                    >Risk management</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-gray-300"
-                                    >GDPR, HIPAA, SOC 2</span
-                                >
-                            </li>
-                        </ul>
-                    </Card>
-
                     <!-- Technology Training -->
                     <Card>
                         <CardIcon>
@@ -580,12 +382,10 @@ import bannerImage from "../../img/it-consulting-meeting-with-business-professio
                                 ></path>
                             </svg>
                         </CardIcon>
-                        <CardTitle>
-                            Technology Training
-                        </CardTitle>
+                        <CardTitle> Platform Modernization Advisory </CardTitle>
                         <p class="text-gray-400 mb-6 leading-relaxed">
-                            Empower your team with knowledge and skills for new
-                            technologies
+                            Evaluate legacy stacks, plan migrations, and
+                            optimize cloud investments
                         </p>
                         <ul class="space-y-3">
                             <li class="flex items-start gap-3">
@@ -602,7 +402,7 @@ import bannerImage from "../../img/it-consulting-meeting-with-business-professio
                                         d="M5 13l4 4L19 7"></path>
                                 </svg>
                                 <span class="text-gray-300"
-                                    >Custom training programs</span
+                                    >Current-state architecture reviews</span
                                 >
                             </li>
                             <li class="flex items-start gap-3">
