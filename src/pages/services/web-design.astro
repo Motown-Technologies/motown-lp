@@ -1,11 +1,11 @@
 ---
 import { Image } from "astro:assets";
-import bannerImage from "../../img/modern-web-design-workspace-with-multiple-screens-.jpg";
-import processImage from "../../img/web-design-process-with-wireframes-and-mockups-on-.jpg";
-import BaseLayout from "../../layouts/BaseLayout.astro";
 import Card from "../../components/Card.astro";
 import CardIcon from "../../components/CardIcon.astro";
 import CardTitle from "../../components/CardTitle.astro";
+import bannerImage from "../../img/modern-web-design-workspace-with-multiple-screens-.jpg";
+import processImage from "../../img/web-design-process-with-wireframes-and-mockups-on-.jpg";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout>
@@ -84,9 +84,9 @@ import CardTitle from "../../components/CardTitle.astro";
                     </p>
                 </div>
 
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="grid md:grid-cols-2 lg:grid-cols-12 gap-8">
                     {/* Responsive Web Design */}
-                    <Card>
+                    <Card class="lg:col-span-4">
                         <CardIcon>
                             <svg
                                 class="w-6 h-6 text-[#2563eb]"
@@ -102,9 +102,7 @@ import CardTitle from "../../components/CardTitle.astro";
                                 ></path>
                             </svg>
                         </CardIcon>
-                        <CardTitle>
-                            Responsive Design
-                        </CardTitle>
+                        <CardTitle> Responsive Design </CardTitle>
                         <p class="text-gray-400 mb-6 leading-relaxed">
                             Websites that look perfect on every device, from
                             mobile to desktop
@@ -182,7 +180,7 @@ import CardTitle from "../../components/CardTitle.astro";
                     </Card>
 
                     {/* UI/UX Design */}
-                    <Card>
+                    <Card class="lg:col-span-4">
                         <CardIcon>
                             <svg
                                 class="w-6 h-6 text-[#2563eb]"
@@ -198,9 +196,7 @@ import CardTitle from "../../components/CardTitle.astro";
                                 ></path>
                             </svg>
                         </CardIcon>
-                        <CardTitle>
-                            UI/UX Design
-                        </CardTitle>
+                        <CardTitle> UI/UX Design </CardTitle>
                         <p class="text-gray-400 mb-6 leading-relaxed">
                             Intuitive interfaces designed with your users in
                             mind
@@ -278,7 +274,7 @@ import CardTitle from "../../components/CardTitle.astro";
                     </Card>
 
                     {/* E-commerce Design */}
-                    <Card>
+                    <Card class="lg:col-span-4">
                         <CardIcon>
                             <svg
                                 class="w-6 h-6 text-[#2563eb]"
@@ -294,9 +290,7 @@ import CardTitle from "../../components/CardTitle.astro";
                                 ></path>
                             </svg>
                         </CardIcon>
-                        <CardTitle>
-                            E-commerce Design
-                        </CardTitle>
+                        <CardTitle> E-commerce Design </CardTitle>
                         <p class="text-gray-400 mb-6 leading-relaxed">
                             Online stores designed to maximize conversions and
                             sales
@@ -374,7 +368,7 @@ import CardTitle from "../../components/CardTitle.astro";
                     </Card>
 
                     {/* Landing Pages */}
-                    <Card>
+                    <Card class="lg:col-span-6">
                         <CardIcon>
                             <svg
                                 class="w-6 h-6 text-[#2563eb]"
@@ -389,9 +383,7 @@ import CardTitle from "../../components/CardTitle.astro";
                                     d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                             </svg>
                         </CardIcon>
-                        <CardTitle>
-                            Landing Pages
-                        </CardTitle>
+                        <CardTitle> Landing Pages </CardTitle>
                         <p class="text-gray-400 mb-6 leading-relaxed">
                             High-converting pages designed to capture leads and
                             drive action
@@ -445,54 +437,9 @@ import CardTitle from "../../components/CardTitle.astro";
                                         d="M5 13l4 4L19 7"></path>
                                 </svg>
                                 <span class="text-gray-300"
-                                    >A/B testing ready</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-gray-300"
                                     >Lead capture forms</span
                                 >
                             </li>
-                        </ul>
-                    </Card>
-
-                    {/* Brand Identity */}
-                    <Card>
-                        <CardIcon>
-                            <svg
-                                class="w-6 h-6 text-[#2563eb]"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
-                                ></path>
-                            </svg>
-                        </CardIcon>
-                        <CardTitle>
-                            Brand Identity
-                        </CardTitle>
-                        <p class="text-gray-400 mb-6 leading-relaxed">
-                            Cohesive visual identity that represents your brand
-                            values
-                        </p>
-                        <ul class="space-y-3">
                             <li class="flex items-start gap-3">
                                 <svg
                                     class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
@@ -507,65 +454,14 @@ import CardTitle from "../../components/CardTitle.astro";
                                         d="M5 13l4 4L19 7"></path>
                                 </svg>
                                 <span class="text-gray-300"
-                                    >Logo design &amp; branding</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-gray-300"
-                                    >Color palette &amp; typography</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-gray-300"
-                                    >Style guides &amp; assets</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-gray-300"
-                                    >Brand consistency</span
+                                    >Clear user paths</span
                                 >
                             </li>
                         </ul>
                     </Card>
 
                     {/* Website Redesign */}
-                    <Card>
+                    <Card class="lg:col-span-6">
                         <CardIcon>
                             <svg
                                 class="w-6 h-6 text-[#2563eb]"
@@ -581,9 +477,7 @@ import CardTitle from "../../components/CardTitle.astro";
                                 ></path>
                             </svg>
                         </CardIcon>
-                        <CardTitle>
-                            Website Redesign
-                        </CardTitle>
+                        <CardTitle> Website Redesign </CardTitle>
                         <p class="text-gray-400 mb-6 leading-relaxed">
                             Modernize your existing website with fresh design
                             and improved UX

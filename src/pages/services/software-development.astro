@@ -1,8 +1,8 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
 import Card from "../../components/Card.astro";
 import CardIcon from "../../components/CardIcon.astro";
 import CardTitle from "../../components/CardTitle.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 
 // Reuse existing icons you already created
 import CheckIcon from "../../components/icons/CheckIcon.astro";
@@ -109,10 +109,11 @@ import bannerImage from "../../img/modern-software-development-workspace-with-mu
                         <ul class="space-y-3">
                             {
                                 [
-                                    "React, Next.js, Vue.js",
-                                    "Progressive Web Apps (PWA)",
-                                    "Real-time applications",
-                                    "E-commerce platforms",
+                                    "Custom dashboards & management systems",
+                                    "Progressive Web Apps",
+                                    "E-commerce & client portals",
+                                    // "Realtime collaboration tools",
+                                    "Integrations with third-party APIs & services",
                                 ].map((b) => (
                                     <li class="flex items-start gap-3">
                                         <CheckIcon class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5" />
@@ -165,7 +166,7 @@ import bannerImage from "../../img/modern-software-development-workspace-with-mu
                                 [
                                     "RESTful & GraphQL APIs",
                                     "Third-party integrations",
-                                    "Microservices architecture",
+                                    "Scalable design & architecture",
                                     "API security & authentication",
                                 ].map((b) => (
                                     <li class="flex items-start gap-3">
@@ -274,10 +275,9 @@ import bannerImage from "../../img/modern-software-development-workspace-with-mu
                         <p
                             class="text-xl text-gray-400 mb-8 leading-relaxed text-pretty"
                         >
-                            We follow agile methodologies to deliver
-                            high-quality software on time and within budget. Our
-                            collaborative approach ensures your vision becomes
-                            reality.
+                            Our process focuses on communication, clarity, and
+                            craftsmanship — turning complex ideas into software
+                            that works beautifully and delivers results.
                         </p>
 
                         <div class="space-y-6">
@@ -360,30 +360,30 @@ import bannerImage from "../../img/modern-software-development-workspace-with-mu
                                 items: [
                                     "React & Next.js",
                                     "Vue.js & Nuxt",
-                                    "TypeScript",
-                                    "Tailwind CSS",
-                                    "Redux & Zustand",
-                                    "React Query",
+                                    "Angular",
+                                    "Astro",
+                                    "JavaScript & TypeScript",
+                                    "CSS & Tailwind",
                                 ],
                             },
                             {
                                 title: "Backend Technologies",
                                 items: [
                                     "Node.js & Express",
-                                    "Python & Django",
                                     ".NET Core",
+                                    "Python & Django",
+                                    "PHP & Laravel",
                                     "PostgreSQL",
-                                    "MongoDB",
-                                    "Redis",
+                                    "MySQL/MariaDB",
                                 ],
                             },
                             {
                                 title: "Cloud & DevOps",
                                 items: [
                                     "AWS & Azure",
+                                    "Digital Ocean",
                                     "Docker & Kubernetes",
                                     "GitHub Actions",
-                                    "Terraform",
                                     "Vercel & Netlify",
                                     "CI/CD",
                                 ],
