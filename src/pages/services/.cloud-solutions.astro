@@ -11,10 +11,10 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
 ---
 
 <BaseLayout>
-    <main class="min-h-screen bg-[#0a0a0f]">
+    <main class="min-h-screen bg-[#f7f8fc]">
         {/* Hero Section */}
         <section
-            class="relative overflow-hidden bg-gradient-to-b from-[#0a0a0f] to-[#1a1a2e] pt-8 pb-24"
+            class="relative overflow-hidden bg-gradient-to-b from-[#f8fafc] to-[#eef2ff] pt-8 pb-24"
         >
             <div class="max-w-7xl mx-auto px-6">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -26,12 +26,12 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
                             >
                         </div>
                         <h1
-                            class="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight text-balance"
+                            class="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 mb-6 leading-tight text-balance"
                         >
                             Scale with confidence in the cloud
                         </h1>
                         <p
-                            class="text-xl text-gray-400 leading-relaxed mb-8 text-pretty"
+                            class="text-xl text-slate-600 leading-relaxed mb-8 text-pretty"
                         >
                             Harness the power of cloud computing to scale your
                             business. We design, build, and manage cloud
@@ -41,13 +41,13 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
                         <div class="flex flex-wrap gap-4">
                             <a
                                 href="/contact"
-                                class="px-8 py-4 bg-white text-[#0a0a0f] font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+                                class="px-8 py-4 bg-[#2563eb] text-white font-semibold rounded-lg hover:bg-[#1d4ed8] transition-colors"
                             >
                                 Get Started
                             </a>
                             <a
                                 href="#services"
-                                class="px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
+                                class="px-8 py-4 bg-transparent border-2 border-slate-300 text-slate-700 font-semibold rounded-lg hover:bg-slate-100 transition-colors"
                             >
                                 View Services
                             </a>
@@ -56,7 +56,7 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
 
                     <div class="relative">
                         <div
-                            class="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-[#2563eb]/20 to-transparent border border-[#2563eb]/30"
+                            class="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-[#2563eb]/10 to-transparent border border-[#2563eb]/20"
                         >
                             <Image
                                 src={bannerImage}
@@ -71,14 +71,14 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
         </section>
 
         {/* Services Section */}
-        <section id="services" class="py-24 bg-[#0a0a0f]">
+        <section id="services" class="py-24 bg-[#f7f8fc]">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
                         Cloud Services We Offer
                     </h2>
                     <p
-                        class="text-xl text-gray-400 max-w-3xl mx-auto text-pretty"
+                        class="text-xl text-slate-600 max-w-3xl mx-auto text-pretty"
                     >
                         Comprehensive cloud solutions tailored to your business
                         needs
@@ -106,7 +106,7 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
                         <CardTitle>
                             Cloud Migration
                         </CardTitle>
-                        <p class="text-gray-400 mb-6 leading-relaxed">
+                        <p class="text-slate-600 mb-6 leading-relaxed">
                             Seamlessly move your infrastructure to the cloud
                             with minimal downtime
                         </p>
@@ -132,7 +132,7 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
                                                 d="M5 13l4 4L19 7"
                                             />
                                         </svg>
-                                        <span class="text-gray-300">{b}</span>
+                                        <span class="text-slate-700">{b}</span>
                                     </li>
                                 ))
                             }
@@ -155,7 +155,7 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
                         <CardTitle>
                             AWS Solutions
                         </CardTitle>
-                        <p class="text-gray-400 mb-6 leading-relaxed">
+                        <p class="text-slate-600 mb-6 leading-relaxed">
                             Leverage Amazon Web Services for scalable cloud
                             infrastructure
                         </p>
@@ -181,7 +181,7 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
                                                 d="M5 13l4 4L19 7"
                                             />
                                         </svg>
-                                        <span class="text-gray-300">{b}</span>
+                                        <span class="text-slate-700">{b}</span>
                                     </li>
                                 ))
                             }
@@ -204,7 +204,7 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
                         <CardTitle>
                             Azure Solutions
                         </CardTitle>
-                        <p class="text-gray-400 mb-6 leading-relaxed">
+                        <p class="text-slate-600 mb-6 leading-relaxed">
                             Build and deploy with Microsoft Azure cloud platform
                         </p>
                         <ul class="space-y-3">
@@ -229,7 +229,7 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
                                                 d="M5 13l4 4L19 7"
                                             />
                                         </svg>
-                                        <span class="text-gray-300">{b}</span>
+                                        <span class="text-slate-700">{b}</span>
                                     </li>
                                 ))
                             }
@@ -256,7 +256,7 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
                         <CardTitle>
                             DevOps &amp; CI/CD
                         </CardTitle>
-                        <p class="text-gray-400 mb-6 leading-relaxed">
+                        <p class="text-slate-600 mb-6 leading-relaxed">
                             Automate your deployment pipeline for faster
                             releases
                         </p>
@@ -282,7 +282,7 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
                                                 d="M5 13l4 4L19 7"
                                             />
                                         </svg>
-                                        <span class="text-gray-300">{b}</span>
+                                        <span class="text-slate-700">{b}</span>
                                     </li>
                                 ))
                             }
@@ -309,7 +309,7 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
                         <CardTitle>
                             Cloud Security
                         </CardTitle>
-                        <p class="text-gray-400 mb-6 leading-relaxed">
+                        <p class="text-slate-600 mb-6 leading-relaxed">
                             Protect your cloud infrastructure with
                             enterprise-grade security
                         </p>
@@ -335,7 +335,7 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
                                                 d="M5 13l4 4L19 7"
                                             />
                                         </svg>
-                                        <span class="text-gray-300">{b}</span>
+                                        <span class="text-slate-700">{b}</span>
                                     </li>
                                 ))
                             }
@@ -361,7 +361,7 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
                         <CardTitle>
                             Cloud Optimization
                         </CardTitle>
-                        <p class="text-gray-400 mb-6 leading-relaxed">
+                        <p class="text-slate-600 mb-6 leading-relaxed">
                             Reduce costs and improve performance of your cloud
                             infrastructure
                         </p>
@@ -387,7 +387,7 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
                                                 d="M5 13l4 4L19 7"
                                             />
                                         </svg>
-                                        <span class="text-gray-300">{b}</span>
+                                        <span class="text-slate-700">{b}</span>
                                     </li>
                                 ))
                             }
@@ -398,17 +398,17 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
         </section>
 
         {/* Benefits Section */}
-        <section class="py-24 bg-[#1a1a2e]">
+        <section class="py-24 bg-[#f1f5f9]">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="grid lg:grid-cols-2 gap-16 items-center">
                     <div>
                         <h2
-                            class="text-4xl md:text-5xl font-bold text-white mb-6"
+                            class="text-4xl md:text-5xl font-bold text-slate-900 mb-6"
                         >
                             Why Choose Cloud?
                         </h2>
                         <p
-                            class="text-xl text-gray-400 mb-8 leading-relaxed text-pretty"
+                            class="text-xl text-slate-600 mb-8 leading-relaxed text-pretty"
                         >
                             Cloud computing offers unmatched flexibility,
                             scalability, and cost-efficiency for modern
@@ -438,7 +438,7 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
                                     <div class="flex gap-4">
                                         <div class="flex-shrink-0 w-12 h-12 bg-[#2563eb] rounded-lg flex items-center justify-center">
                                             <svg
-                                                class="w-6 h-6 text-white"
+                                                class="w-6 h-6 text-slate-900"
                                                 viewBox="0 0 24 24"
                                                 fill="none"
                                                 stroke="currentColor"
@@ -452,10 +452,10 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
                                             </svg>
                                         </div>
                                         <div>
-                                            <h3 class="text-xl font-bold text-white mb-2">
+                                            <h3 class="text-xl font-bold text-slate-900 mb-2">
                                                 {item.t}
                                             </h3>
-                                            <p class="text-gray-400 leading-relaxed">
+                                            <p class="text-slate-600 leading-relaxed">
                                                 {item.d}
                                             </p>
                                         </div>
@@ -467,7 +467,7 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
 
                     <div class="relative">
                         <div
-                            class="aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-[#2563eb]/20 to-transparent border border-[#2563eb]/30"
+                            class="aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-[#2563eb]/10 to-transparent border border-[#2563eb]/20"
                         >
                             <Image
                                 src={processImage}
@@ -482,15 +482,15 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
         </section>
 
         {/* CTA Section */}
-        <section class="py-24 bg-gradient-to-b from-[#1a1a2e] to-[#0a0a0f]">
+        <section class="py-24 bg-gradient-to-b from-[#eef2ff] to-[#f8fafc]">
             <div class="max-w-4xl mx-auto px-6 text-center">
                 <h2
-                    class="text-4xl md:text-5xl font-bold text-white mb-6 text-balance"
+                    class="text-4xl md:text-5xl font-bold text-slate-900 mb-6 text-balance"
                 >
                     Ready to Move to the Cloud?
                 </h2>
                 <p
-                    class="text-xl text-gray-400 mb-10 leading-relaxed text-pretty"
+                    class="text-xl text-slate-600 mb-10 leading-relaxed text-pretty"
                 >
                     Let's discuss how cloud solutions can transform your
                     business and reduce costs.
@@ -504,7 +504,7 @@ import processImage from "../../img/cloud-infrastructure-dashboard-showing-perfo
                     </a>
                     <a
                         href="/services"
-                        class="px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
+                        class="px-8 py-4 bg-transparent border-2 border-slate-300 text-slate-700 font-semibold rounded-lg hover:bg-slate-100 transition-colors"
                     >
                         View All Services
                     </a>

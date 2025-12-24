@@ -33,7 +33,7 @@ const toSlug = (text: string) =>
 <BaseLayout>
     <!-- Hero Section -->
     <section
-        class="relative overflow-hidden bg-gradient-to-b from-[#0a0a0f] via-[#1a1a2e] to-[#0a0a0f] pt-8 pb-32"
+        class="relative overflow-hidden bg-gradient-to-b from-[#f8fafc] via-[#eef2ff] to-[#f8fafc] pt-8 pb-32"
     >
         <div class="max-w-7xl mx-auto px-6">
             <!-- Hero Content -->
@@ -46,12 +46,12 @@ const toSlug = (text: string) =>
                         >
                     </div>
                     <h1
-                        class="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight text-balance"
+                        class="text-6xl md:text-7xl lg:text-8xl font-bold text-slate-900 mb-8 leading-tight text-balance"
                     >
                         Where Ideas Become Reality
                     </h1>
                     <p
-                        class="text-xl text-gray-400 leading-relaxed mb-10 text-pretty"
+                        class="text-xl text-slate-600 leading-relaxed mb-10 text-pretty"
                     >
                         We transform your vision into powerful digital
                         solutions. From custom software to comprehensive digital
@@ -80,7 +80,7 @@ const toSlug = (text: string) =>
                         </a>
                         <a
                             href="/services"
-                            class="px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
+                            class="px-8 py-4 bg-transparent border-2 border-slate-300 text-slate-700 font-semibold rounded-lg hover:bg-slate-100 transition-colors"
                         >
                             Explore Services
                         </a>
@@ -89,7 +89,7 @@ const toSlug = (text: string) =>
 
                 <div class="relative">
                     <div
-                        class="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-[#2563eb]/20 to-transparent border border-[#2563eb]/30"
+                        class="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-[#2563eb]/10 to-transparent border border-[#2563eb]/20"
                     >
                         <Image
                             src={heroImage}
@@ -99,22 +99,22 @@ const toSlug = (text: string) =>
                     </div>
                     <!-- Floating Stats -->
                     <!-- <div
-                        class="absolute -bottom-8 -left-8 bg-[#1a1a2e] border border-gray-800 rounded-xl p-6 backdrop-blur-sm"
+                        class="absolute -bottom-8 -left-8 bg-[#f1f5f9] border border-slate-200 rounded-xl p-6 backdrop-blur-sm"
                     >
                         <div class="text-4xl font-bold text-[#2563eb] mb-1">
                             100+
                         </div>
-                        <div class="text-gray-400 text-sm">
+                        <div class="text-slate-600 text-sm">
                             Projects Delivered
                         </div>
                     </div>
                     <div
-                        class="absolute -top-8 -right-8 bg-[#1a1a2e] border border-gray-800 rounded-xl p-6 backdrop-blur-sm"
+                        class="absolute -top-8 -right-8 bg-[#f1f5f9] border border-slate-200 rounded-xl p-6 backdrop-blur-sm"
                     >
                         <div class="text-4xl font-bold text-[#2563eb] mb-1">
                             50+
                         </div>
-                        <div class="text-gray-400 text-sm">Happy Clients</div>
+                        <div class="text-slate-600 text-sm">Happy Clients</div>
                     </div> -->
                 </div>
             </div>
@@ -122,13 +122,13 @@ const toSlug = (text: string) =>
     </section>
 
     <!-- Services Overview -->
-    <section class="py-24 bg-[#0a0a0f]">
+    <section class="py-24 bg-[#f7f8fc]">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
                     What We Do Best
                 </h2>
-                <p class="text-xl text-gray-400 max-w-3xl mx-auto text-pretty">
+                <p class="text-xl text-slate-600 max-w-3xl mx-auto text-pretty">
                     Comprehensive technology solutions tailored to your business
                     needs
                 </p>
@@ -160,7 +160,7 @@ const toSlug = (text: string) =>
                                     <Icon class="w-6 h-6 text-[#2563eb]" />
                                 </CardIcon>
                                 <CardTitle class="mb-3">{svc.title}</CardTitle>
-                                <p class="text-gray-400 leading-relaxed mb-4">
+                                <p class="text-slate-600 leading-relaxed mb-4">
                                     {svc.description}
                                 </p>
                                 {href && (
@@ -212,12 +212,12 @@ const toSlug = (text: string) =>
     </section>
 
     <!-- Why Choose Us -->
-    <section class="py-24 bg-[#1a1a2e]">
+    <section class="py-24 section-dark">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div class="relative">
                     <div
-                        class="aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-[#2563eb]/20 to-transparent border border-[#2563eb]/30"
+                        class="aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-[#2563eb]/10 to-transparent border border-[#2563eb]/20"
                     >
                         <Image
                             src={colabImage}
@@ -228,11 +228,11 @@ const toSlug = (text: string) =>
                 </div>
 
                 <div>
-                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                    <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
                         Why Choose Motown Tech?
                     </h2>
                     <p
-                        class="text-xl text-gray-400 mb-8 leading-relaxed text-pretty"
+                        class="text-xl text-slate-600 mb-8 leading-relaxed text-pretty"
                     >
                         We combine technical expertise with creative innovation
                         to deliver solutions that exceed expectations
@@ -257,10 +257,10 @@ const toSlug = (text: string) =>
                                 </svg>
                             </div>
                             <div>
-                                <h3 class="text-xl font-bold text-white mb-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-2">
                                     Expert Team
                                 </h3>
-                                <p class="text-gray-400 leading-relaxed">
+                                <p class="text-slate-600 leading-relaxed">
                                     Skilled professionals with years of
                                     experience in cutting-edge technologies
                                 </p>
@@ -284,10 +284,10 @@ const toSlug = (text: string) =>
                                 </svg>
                             </div>
                             <div>
-                                <h3 class="text-xl font-bold text-white mb-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-2">
                                     Proven Track Record
                                 </h3>
-                                <p class="text-gray-400 leading-relaxed">
+                                <p class="text-slate-600 leading-relaxed">
                                     Successfully delivered projects across
                                     various industries
                                 </p>
@@ -311,10 +311,10 @@ const toSlug = (text: string) =>
                                 </svg>
                             </div>
                             <div>
-                                <h3 class="text-xl font-bold text-white mb-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-2">
                                     Agile Approach
                                 </h3>
-                                <p class="text-gray-400 leading-relaxed">
+                                <p class="text-slate-600 leading-relaxed">
                                     Flexible methodologies that adapt to your
                                     changing needs and priorities
                                 </p>
@@ -338,10 +338,10 @@ const toSlug = (text: string) =>
                                 </svg>
                             </div>
                             <div>
-                                <h3 class="text-xl font-bold text-white mb-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-2">
                                     Ongoing Support
                                 </h3>
-                                <p class="text-gray-400 leading-relaxed">
+                                <p class="text-slate-600 leading-relaxed">
                                     Dedicated maintenance and support to ensure
                                     your success long-term
                                 </p>
@@ -354,14 +354,14 @@ const toSlug = (text: string) =>
     </section>
 
     <!-- CTA Section -->
-    <section class="py-24 bg-gradient-to-b from-[#0a0a0f] to-[#1a1a2e]">
+    <section class="py-24 bg-gradient-to-b from-[#f8fafc] to-[#eef2ff]">
         <div class="max-w-4xl mx-auto px-6 text-center">
             <h2
-                class="text-4xl md:text-5xl font-bold text-white mb-6 text-balance"
+                class="text-4xl md:text-5xl font-bold text-slate-900 mb-6 text-balance"
             >
                 Ready to Bring Your Ideas to Life?
             </h2>
-            <p class="text-xl text-gray-400 mb-10 leading-relaxed text-pretty">
+            <p class="text-xl text-slate-600 mb-10 leading-relaxed text-pretty">
                 Let's collaborate to create something extraordinary. Get in
                 touch with our team today and start your journey to digital
                 success.
@@ -388,7 +388,7 @@ const toSlug = (text: string) =>
                 </a>
                 <a
                     href="/services"
-                    class="px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
+                    class="px-8 py-4 bg-transparent border-2 border-slate-300 text-slate-700 font-semibold rounded-lg hover:bg-slate-100 transition-colors"
                 >
                     Explore Services
                 </a>

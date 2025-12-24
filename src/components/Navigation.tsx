@@ -36,8 +36,8 @@ export function Navigation() {
     // { name: "Cybersecurity", href: "/services/cybersecurity" },
   ]
 
-  const linkBase = "text-gray-300 hover:text-blue-400 transition-colors font-medium"
-  const isActive = (href: string) => (pathname === href ? "text-white" : "")
+  const linkBase = "text-slate-700 hover:text-blue-600 transition-colors font-medium"
+  const isActive = (href: string) => (pathname === href ? "text-slate-900" : "")
 
   return (
     <>
@@ -49,8 +49,8 @@ export function Navigation() {
           "fixed left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl top-4",
           "transition-[background-color,box-shadow,transform,opacity] duration-300 will-change-transform",
           isScrolled
-            ? "bg-[#1a1a2e]/95 backdrop-blur-md shadow-xl rounded-md md:rounded-full scale-100 opacity-100"
-            : "bg-[#1a1a2e]/90 backdrop-blur-sm shadow-xl rounded-md md:rounded-full scale-[0.995] opacity-95"
+            ? "bg-white/95 backdrop-blur-md shadow-[0_12px_30px_rgba(15,23,42,0.12)] border border-slate-200/80 rounded-md md:rounded-full scale-100 opacity-100"
+            : "bg-white/90 backdrop-blur-sm shadow-[0_12px_30px_rgba(15,23,42,0.12)] border border-slate-200/80 rounded-md md:rounded-full scale-[0.995] opacity-95"
         ].join(" ")}
       >
         <div className="px-6 py-4">
@@ -60,7 +60,7 @@ export function Navigation() {
               <div className="relative w-32 h-3w-32">
                <img src={logo.src} alt="" />
               </div>
-              {/* <span className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
+              {/* <span className="text-xl font-bold text-slate-900 group-hover:text-blue-400 transition-colors">
                 MOTOWN TECH
               </span> */}
             </a>
@@ -93,8 +93,8 @@ export function Navigation() {
                     {/* Menu */}
                     <div
                         role="menu"
-                        className="absolute top-full left-0 mt-2 w-64 bg-[#1a1a2e] rounded-lg shadow-xl
-                                border border-gray-800 py-2
+                        className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-[0_16px_40px_rgba(15,23,42,0.12)]
+                                border border-slate-200 py-2
                                 opacity-0 translate-y-1
                                 invisible pointer-events-none
                                 transition-all duration-150
@@ -107,8 +107,8 @@ export function Navigation() {
                         <a
                             key={s.href}
                             href={s.href}
-                            className={`block px-4 py-2 hover:text-blue-400 hover:bg-[#0a0a0f] transition-colors ${
-                            pathname === s.href ? "text-white" : "text-gray-300"
+                            className={`block px-4 py-2 hover:text-blue-600 hover:bg-slate-100 transition-colors ${
+                            pathname === s.href ? "text-slate-900" : "text-slate-700"
                             }`}
                         >
                             {s.name}
@@ -127,7 +127,7 @@ export function Navigation() {
             {/* Mobile button */}
             <button
               onClick={() => setIsMobileMenuOpen((v) => !v)}
-              className="md:hidden text-white p-2"
+              className="md:hidden text-slate-900 p-2"
               aria-label="Toggle menu"
               aria-expanded={isMobileMenuOpen}
             >
@@ -137,7 +137,7 @@ export function Navigation() {
 
           {/* Mobile menu */}
           {isMobileMenuOpen && (
-            <div className="md:hidden mt-4 pt-4 border-t border-gray-800">
+            <div className="md:hidden mt-4 pt-4 border-t border-slate-200">
               <div className="flex flex-col gap-4">
                 <a href="/" className={linkBase} onClick={() => setIsMobileMenuOpen(false)}>Home</a>
                 <a href="/about" className={linkBase} onClick={() => setIsMobileMenuOpen(false)}>About</a>
@@ -157,7 +157,7 @@ export function Navigation() {
                         <a
                           key={s.href}
                           href={s.href}
-                          className="text-gray-400 hover:text-blue-400 hover:bg-[#0a0a0f] hover:shadow-md rounded-md transition-colors text-sm p-2"
+                          className="text-slate-600 hover:text-blue-600 hover:bg-slate-100 hover:shadow-md rounded-md transition-colors text-sm p-2"
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
                           {s.name}

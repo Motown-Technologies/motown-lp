@@ -12,13 +12,61 @@ const { meta_title, meta_description } = Astro.props;
         <title>{meta_title}</title>
         <meta name="description" content={meta_description} />
         <ClientRouter />
+        <style is:global>
+            :root {
+                color-scheme: light;
+            }
+
+            .section-dark {
+                background-color: #0f172a;
+                color: #e2e8f0;
+            }
+
+            .section-dark .text-slate-900 {
+                color: #f8fafc;
+            }
+
+            .section-dark .text-slate-700 {
+                color: #e2e8f0;
+            }
+
+            .section-dark .text-slate-600 {
+                color: #cbd5f5;
+            }
+
+            .section-dark .text-slate-500 {
+                color: #94a3b8;
+            }
+
+            .section-dark .text-slate-400 {
+                color: #94a3b8;
+            }
+
+            .section-dark .border-slate-200 {
+                border-color: rgba(148, 163, 184, 0.22);
+            }
+
+            .section-dark .border-slate-300 {
+                border-color: rgba(148, 163, 184, 0.38);
+            }
+
+            .section-dark .bg-white,
+            .section-dark .bg-\[\#f7f8fc\],
+            .section-dark .bg-\[\#f1f5f9\] {
+                background-color: #111827;
+            }
+
+            .section-dark .hover\:bg-slate-100:hover {
+                background-color: rgba(148, 163, 184, 0.12);
+            }
+        </style>
     </head>
-    <body class="pt-28 bg-[#0a0a0f]">
+    <body class="pt-28 bg-[#f7f8fc] text-slate-900">
         <Navigation client:load />
         <slot />
         <!-- Footer -->
-        <footer class="py-8 bg-[#0a0a0f] border-t border-gray-800">
-            <div class="max-w-7xl mx-auto px-6 text-center text-gray-500">
+        <footer class="py-8 bg-[#f7f8fc] border-t border-slate-200">
+            <div class="max-w-7xl mx-auto px-6 text-center text-slate-500">
                 <p>&copy; 2025 Motown Tech. Where Ideas Become Reality.</p>
             </div>
         </footer>

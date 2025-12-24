@@ -2,7 +2,7 @@
 const { as = "h3", class: className = "" } = Astro.props;
 const Tag = as;
 const baseClasses =
-    "text-2xl font-bold text-white mb-4 transition-colors group-hover:text-[#2563eb]";
+    "text-2xl font-bold text-slate-900 mb-4 transition-colors group-hover:text-[#2563eb]";
 ---
 
 <Tag class={`${baseClasses} ${className}`.trim()}>

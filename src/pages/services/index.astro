@@ -27,7 +27,7 @@ const ICONS: Record<string, any> = {
 <BaseLayout>
     <!-- Hero Section -->
     <section
-        class="relative overflow-hidden bg-gradient-to-b from-[#0a0a0f] to-[#1a1a2e] pt-8 pb-24"
+        class="relative overflow-hidden bg-gradient-to-b from-[#f8fafc] to-[#eef2ff] pt-8 pb-24"
     >
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center max-w-4xl mx-auto">
@@ -38,11 +38,11 @@ const ICONS: Record<string, any> = {
                     >
                 </div>
                 <h1
-                    class="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight text-balance"
+                    class="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 mb-6 leading-tight text-balance"
                 >
                     Comprehensive Solutions for Your Business
                 </h1>
-                <p class="text-xl text-gray-400 leading-relaxed text-pretty">
+                <p class="text-xl text-slate-600 leading-relaxed text-pretty">
                     From software development to automation, we provide
                     end-to-end technology solutions that drive growth and
                     innovation
@@ -52,7 +52,7 @@ const ICONS: Record<string, any> = {
     </section>
 
     <!-- Services Grid -->
-    <section class="py-24 bg-[#0a0a0f]">
+    <section class="py-24 bg-[#f7f8fc]">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-12">
                 {
@@ -82,7 +82,7 @@ const ICONS: Record<string, any> = {
 
                                 <CardTitle>{svc.title}</CardTitle>
 
-                                <p class="text-gray-400 mb-6 leading-relaxed">
+                                <p class="text-slate-600 mb-6 leading-relaxed">
                                     {svc.description}
                                 </p>
 
@@ -90,7 +90,7 @@ const ICONS: Record<string, any> = {
                                     {svc.bullets.map((b: string) => (
                                         <li class="flex items-start gap-3">
                                             <CheckIcon />
-                                            <span class="text-gray-300">
+                                            <span class="text-slate-700">
                                                 {b}
                                             </span>
                                         </li>
@@ -128,14 +128,14 @@ const ICONS: Record<string, any> = {
     </section>
 
     <!-- CTA Section -->
-    <section class="py-24 bg-gradient-to-b from-[#1a1a2e] to-[#0a0a0f]">
+    <section class="py-24 section-dark">
         <div class="max-w-4xl mx-auto px-6 text-center">
             <h2
-                class="text-4xl md:text-5xl font-bold text-white mb-6 text-balance"
+                class="text-4xl md:text-5xl font-bold text-slate-900 mb-6 text-balance"
             >
                 Ready to Transform Your Business?
             </h2>
-            <p class="text-xl text-gray-400 mb-10 leading-relaxed text-pretty">
+            <p class="text-xl text-slate-600 mb-10 leading-relaxed text-pretty">
                 Let's discuss how our services can help you achieve your goals.
                 Get in touch with our team today.
             </p>
@@ -148,7 +148,7 @@ const ICONS: Record<string, any> = {
                 </a>
                 <a
                     href="/"
-                    class="px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
+                    class="px-8 py-4 bg-transparent border-2 border-slate-300 text-slate-700 font-semibold rounded-lg hover:bg-slate-100 transition-colors"
                 >
                     Back to Home
                 </a>
