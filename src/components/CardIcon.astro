@@ -2,7 +2,7 @@
 const { class: className = "" } = Astro.props;
 
 const baseClasses =
-    "w-12 h-12 bg-[#2563eb]/10 rounded-lg flex items-center justify-center mb-6 transition-colors group-hover:bg-[#2563eb]/10";
+    "w-12 h-12 border-[1.5px] border-ink flex items-center justify-center mb-6 text-ink transition-colors group-hover:border-paper group-hover:text-paper";
 ---
 
 <div class={`${baseClasses} ${className}`.trim()}>

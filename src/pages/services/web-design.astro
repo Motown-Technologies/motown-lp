@@ -1,667 +1,336 @@
 ---
 import { Image } from "astro:assets";
-import Card from "../../components/Card.astro";
-import CardIcon from "../../components/CardIcon.astro";
-import CardTitle from "../../components/CardTitle.astro";
-import bannerImage from "../../img/modern-web-design-workspace-with-multiple-screens-.jpg";
 import processImage from "../../img/web-design-process-with-wireframes-and-mockups-on-.jpg";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const services = [
+    {
+        title: "Responsive Design",
+        desc: "Websites that look perfect on every device, from mobile to desktop",
+        iconPath:
+            "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+        bullets: [
+            "Mobile-first approach",
+            "Cross-browser compatibility",
+            "Fluid layouts & grids",
+            "Touch-optimized interfaces",
+        ],
+    },
+    {
+        title: "UI/UX Design",
+        desc: "Intuitive interfaces designed with your users in mind",
+        iconPath:
+            "M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01",
+        bullets: [
+            "User research & personas",
+            "Wireframing & prototyping",
+            "Usability testing",
+            "Accessibility standards",
+        ],
+    },
+    {
+        title: "E-commerce Design",
+        desc: "Online stores designed to maximize conversions and sales",
+        iconPath:
+            "M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z",
+        bullets: [
+            "Product catalog design",
+            "Shopping cart optimization",
+            "Checkout flow design",
+            "Payment integration",
+        ],
+    },
+    {
+        title: "Landing Pages",
+        desc: "High-converting pages designed to capture leads and drive action",
+        iconPath: "M13 10V3L4 14h7v7l9-11h-7z",
+        bullets: [
+            "Compelling headlines & copy",
+            "Clear call-to-actions",
+            "Lead capture forms",
+            "Clear user paths",
+        ],
+    },
+    {
+        title: "Website Redesign",
+        desc: "Modernize your existing website with fresh design and improved UX",
+        iconPath:
+            "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15",
+        bullets: [
+            "Site audit & analysis",
+            "Modern design trends",
+            "Performance optimization",
+            "SEO improvements",
+        ],
+    },
+];
+
+const process = [
+    {
+        t: "Research & Strategy",
+        d: "We analyze your brand, competitors, and target audience to create a strategic foundation",
+    },
+    {
+        t: "Wireframing & Prototyping",
+        d: "We create wireframes and interactive prototypes to visualize the user experience",
+    },
+    {
+        t: "Visual Design",
+        d: "Our designers craft beautiful, on-brand visuals that captivate your audience",
+    },
+    {
+        t: "Development & Launch",
+        d: "We build your website with clean code and launch it with comprehensive testing",
+    },
+];
 ---
 
-<BaseLayout meta_title="Web Design & Development | Motown Tech" meta_description="Design and launch high-performing websites with modern UX, crisp visuals, and measurable results.">
-    <main class="min-h-screen bg-[#f7f8fc]">
-        {/* Hero Section */}
-        <section
-            class="relative overflow-hidden bg-gradient-to-b from-[#f8fafc] to-[#eef2ff] pt-8 pb-24"
-        >
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <div class="inline-block mb-4">
-                            <span
-                                class="text-[#2563eb] text-sm font-semibold tracking-wider uppercase"
-                            >
-                                Web Design &amp; Development
-                            </span>
-                        </div>
-                        <h1
-                            class="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 mb-6 leading-tight text-balance"
+<BaseLayout
+    meta_title="Web Design & Development | Motown Solutions"
+    meta_description="Design and launch high-performing websites with modern UX, crisp visuals, and measurable results."
+>
+    <!-- Hero -->
+    <section class="relative border-b-2 border-ink overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 pt-16 md:pt-24 pb-20 md:pb-28">
+            <div class="grid grid-cols-12 gap-6">
+                <div class="col-span-12 lg:col-span-10">
+                    <div class="flex items-center gap-3 mb-8">
+                        <span
+                            aria-hidden
+                            class="inline-block w-8 h-px bg-ink"></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >Service / Web Design & Development</span
                         >
-                            Beautiful websites that convert
-                        </h1>
-                        <p
-                            class="text-xl text-slate-600 leading-relaxed mb-8 text-pretty"
-                        >
-                            We create stunning, user-friendly websites that
-                            captivate your audience and drive business growth.
-                            From concept to launch, we deliver digital
-                            experiences that make an impact.
-                        </p>
-                        <div class="flex flex-wrap gap-4">
-                            <a
-                                href="/contact"
-                                class="px-8 py-4 bg-[#2563eb] text-white font-semibold rounded-lg hover:bg-[#1d4ed8] transition-colors"
-                            >
-                                Start Your Project
-                            </a>
-                            <a
-                                href="#services"
-                                class="px-8 py-4 bg-transparent border-2 border-slate-300 text-slate-700 font-semibold rounded-lg hover:bg-slate-100 transition-colors"
-                            >
-                                View Services
-                            </a>
-                        </div>
                     </div>
-
-                    <div class="relative">
-                        <div
-                            class="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-[#2563eb]/10 to-transparent border border-[#2563eb]/20"
+                    <h1
+                        class="font-display font-bold text-display text-ink text-balance"
+                    >
+                        Beautiful websites
+                        <br />
+                        that <span class="italic text-accent">convert</span>
+                    </h1>
+                </div>
+                <div class="col-span-12 lg:col-span-7 lg:col-start-4 mt-10 md:mt-16">
+                    <p
+                        class="text-lg md:text-xl text-ink-muted leading-relaxed text-pretty max-w-xl"
+                    >
+                        We create stunning, user-friendly websites that
+                        captivate your audience and drive business growth.
+                        From concept to launch, we deliver digital experiences
+                        that make an impact.
+                    </p>
+                    <div class="mt-10 flex flex-wrap gap-3" data-reveal>
+                        <a
+                            href="/contact"
+                            class="group inline-flex items-center gap-2 bg-ink text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-ink hover:bg-paper hover:text-ink transition-colors"
                         >
-                            <Image
-                                src={bannerImage}
-                                alt="Web Design"
-                                class="w-full h-full object-cover opacity-80"
-                                loading="eager"
-                            />
-                        </div>
+                            Start Your Project
+                            <span
+                                class="transition-transform group-hover:translate-x-0.5"
+                                aria-hidden>→</span
+                            >
+                        </a>
+                        <a
+                            href="#services"
+                            class="inline-flex items-center gap-2 bg-transparent text-ink font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-ink hover:bg-ink hover:text-paper transition-colors"
+                        >
+                            View Services
+                        </a>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        {/* Services Section */}
-        <section id="services" class="py-24 bg-[#f7f8fc]">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+    <!-- Services grid -->
+    <section id="services" class="py-20 md:py-28" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span
+                            aria-hidden
+                            class="inline-block w-8 h-px bg-ink"></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >What We Design</span
+                        >
+                    </div>
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
                         What We Design
                     </h2>
+                </div>
+                <div
+                    class="col-span-12 md:col-span-5 md:col-start-8 md:self-end"
+                >
                     <p
-                        class="text-xl text-slate-600 max-w-3xl mx-auto text-pretty"
+                        class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
                     >
-                        From landing pages to complex web applications, we craft
-                        digital experiences that engage and convert
+                        From landing pages to complex web applications, we
+                        craft digital experiences that engage and convert
                     </p>
                 </div>
+            </div>
 
-                <div class="grid md:grid-cols-2 lg:grid-cols-12 gap-8">
-                    {/* Responsive Web Design */}
-                    <Card class="lg:col-span-4">
-                        <CardIcon>
-                            <svg
-                                class="w-6 h-6 text-[#2563eb]"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                                ></path>
-                            </svg>
-                        </CardIcon>
-                        <CardTitle> Responsive Design </CardTitle>
-                        <p class="text-slate-600 mb-6 leading-relaxed">
-                            Websites that look perfect on every device, from
-                            mobile to desktop
-                        </p>
-                        <ul class="space-y-3">
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Mobile-first approach</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Cross-browser compatibility</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Fluid layouts &amp; grids</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Touch-optimized interfaces</span
-                                >
-                            </li>
-                        </ul>
-                    </Card>
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border border-ink"
+            >
+                {
+                    services.map((svc) => (
+                        <div class="p-8 md:p-10 border-ink border-b border-r last:border-b-0 md:[&:nth-last-child(-n+2)]:border-b-0 lg:[&:nth-last-child(-n+3)]:border-b-0 md:[&:nth-child(even)]:border-r-0 lg:[&:nth-child(3n)]:border-r-0 lg:[&:nth-child(even)]:border-r">
+                            <div class="flex items-center gap-4 mb-6">
+                                <span class="w-10 h-10 border-[1.5px] border-ink flex items-center justify-center">
+                                    <svg
+                                        class="w-5 h-5"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d={svc.iconPath}
+                                        />
+                                    </svg>
+                                </span>
+                            </div>
+                            <h3 class="font-display text-2xl md:text-3xl font-bold tracking-tight leading-tight mb-3">
+                                {svc.title}
+                            </h3>
+                            <p class="text-ink-muted leading-relaxed mb-5">
+                                {svc.desc}
+                            </p>
+                            <ul class="space-y-2 text-sm">
+                                {svc.bullets.map((b) => (
+                                    <li class="flex items-start gap-3">
+                                        <span
+                                            aria-hidden
+                                            class="font-mono mt-[2px]"
+                                        >
+                                            →
+                                        </span>
+                                        <span>{b}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
 
-                    {/* UI/UX Design */}
-                    <Card class="lg:col-span-4">
-                        <CardIcon>
-                            <svg
-                                class="w-6 h-6 text-[#2563eb]"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
-                                ></path>
-                            </svg>
-                        </CardIcon>
-                        <CardTitle> UI/UX Design </CardTitle>
-                        <p class="text-slate-600 mb-6 leading-relaxed">
-                            Intuitive interfaces designed with your users in
-                            mind
-                        </p>
-                        <ul class="space-y-3">
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >User research &amp; personas</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Wireframing &amp; prototyping</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Usability testing</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Accessibility standards</span
-                                >
-                            </li>
-                        </ul>
-                    </Card>
-
-                    {/* E-commerce Design */}
-                    <Card class="lg:col-span-4">
-                        <CardIcon>
-                            <svg
-                                class="w-6 h-6 text-[#2563eb]"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                                ></path>
-                            </svg>
-                        </CardIcon>
-                        <CardTitle> E-commerce Design </CardTitle>
-                        <p class="text-slate-600 mb-6 leading-relaxed">
-                            Online stores designed to maximize conversions and
-                            sales
-                        </p>
-                        <ul class="space-y-3">
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Product catalog design</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Shopping cart optimization</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Checkout flow design</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Payment integration</span
-                                >
-                            </li>
-                        </ul>
-                    </Card>
-
-                    {/* Landing Pages */}
-                    <Card class="lg:col-span-6">
-                        <CardIcon>
-                            <svg
-                                class="w-6 h-6 text-[#2563eb]"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                            </svg>
-                        </CardIcon>
-                        <CardTitle> Landing Pages </CardTitle>
-                        <p class="text-slate-600 mb-6 leading-relaxed">
-                            High-converting pages designed to capture leads and
-                            drive action
-                        </p>
-                        <ul class="space-y-3">
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Compelling headlines &amp; copy</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Clear call-to-actions</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Lead capture forms</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Clear user paths</span
-                                >
-                            </li>
-                        </ul>
-                    </Card>
-
-                    {/* Website Redesign */}
-                    <Card class="lg:col-span-6">
-                        <CardIcon>
-                            <svg
-                                class="w-6 h-6 text-[#2563eb]"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                                ></path>
-                            </svg>
-                        </CardIcon>
-                        <CardTitle> Website Redesign </CardTitle>
-                        <p class="text-slate-600 mb-6 leading-relaxed">
-                            Modernize your existing website with fresh design
-                            and improved UX
-                        </p>
-                        <ul class="space-y-3">
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Site audit &amp; analysis</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Modern design trends</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Performance optimization</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >SEO improvements</span
-                                >
-                            </li>
-                        </ul>
-                    </Card>
+    <!-- Design Process -->
+    <section class="border-t-2 border-ink bg-paper-2" data-reveal>
+        <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span
+                            aria-hidden
+                            class="inline-block w-8 h-px bg-ink"></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >How We Work</span
+                        >
+                    </div>
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        Our Design Process
+                    </h2>
+                </div>
+                <div
+                    class="col-span-12 md:col-span-5 md:col-start-8 md:self-end"
+                >
+                    <p
+                        class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
+                    >
+                        We follow a proven design process that ensures your
+                        website not only looks great but achieves your business
+                        goals.
+                    </p>
                 </div>
             </div>
-        </section>
 
-        {/* Design Process Section */}
-        <section class="py-24 section-dark">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="grid lg:grid-cols-2 gap-16 items-center">
-                    <div class="relative">
-                        <div
-                            class="aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-[#2563eb]/10 to-transparent border border-[#2563eb]/20"
-                        >
-                            <Image
-                                src={processImage}
-                                alt="Design Process"
-                                class="w-full h-full object-cover opacity-80"
-                                loading="lazy"
-                            />
-                        </div>
+            <div class="grid grid-cols-12 gap-6 md:gap-10">
+                <div class="col-span-12 md:col-span-5">
+                    <div class="border border-ink aspect-[4/3] overflow-hidden">
+                        <Image
+                            src={processImage}
+                            alt="Design Process"
+                            class="w-full h-full object-cover"
+                            loading="lazy"
+                        />
                     </div>
-
-                    <div>
-                        <h2
-                            class="text-4xl md:text-5xl font-bold text-slate-900 mb-6"
-                        >
-                            Our Design Process
-                        </h2>
-                        <p
-                            class="text-xl text-slate-600 mb-8 leading-relaxed text-pretty"
-                        >
-                            We follow a proven design process that ensures your
-                            website not only looks great but achieves your
-                            business goals.
-                        </p>
-
-                        <div class="space-y-6">
-                            {
-                                [
-                                    {
-                                        n: 1,
-                                        t: "Research & Strategy",
-                                        d: "We analyze your brand, competitors, and target audience to create a strategic foundation",
-                                    },
-                                    {
-                                        n: 2,
-                                        t: "Wireframing & Prototyping",
-                                        d: "We create wireframes and interactive prototypes to visualize the user experience",
-                                    },
-                                    {
-                                        n: 3,
-                                        t: "Visual Design",
-                                        d: "Our designers craft beautiful, on-brand visuals that captivate your audience",
-                                    },
-                                    {
-                                        n: 4,
-                                        t: "Development & Launch",
-                                        d: "We build your website with clean code and launch it with comprehensive testing",
-                                    },
-                                ].map((step) => (
-                                    <div class="flex gap-4">
-                                        <div class="flex-shrink-0 w-12 h-12 bg-[#2563eb] rounded-lg flex items-center justify-center text-white font-bold text-xl">
-                                            {step.n}
-                                        </div>
-                                        <div>
-                                            <h3 class="text-xl font-bold text-slate-900 mb-2">
-                                                {step.t}
-                                            </h3>
-                                            <p class="text-slate-600 leading-relaxed">
-                                                {step.d}
-                                            </p>
-                                        </div>
-                                    </div>
-                                ))
-                            }
-                        </div>
+                </div>
+                <div class="col-span-12 md:col-span-7">
+                    <div class="border-t border-ink">
+                        {
+                            process.map((step) => (
+                                <div class="grid grid-cols-12 gap-4 md:gap-8 items-start py-8 px-1 border-b border-ink">
+                                    <h3 class="col-span-12 md:col-span-5 font-display text-xl md:text-2xl font-bold tracking-tight leading-tight">
+                                        {step.t}
+                                    </h3>
+                                    <p class="col-span-12 md:col-span-7 md:pl-4 text-ink-muted leading-relaxed text-sm md:text-base">
+                                        {step.d}
+                                    </p>
+                                </div>
+                            ))
+                        }
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        {/* CTA Section */}
-        <section class="py-24 bg-gradient-to-b from-[#eef2ff] to-[#f8fafc]">
-            <div class="max-w-4xl mx-auto px-6 text-center">
-                <h2
-                    class="text-4xl md:text-5xl font-bold text-slate-900 mb-6 text-balance"
+    <!-- Final CTA -->
+    <section class="section-ink border-t-2 border-ink" data-reveal>
+        <div
+            class="max-w-7xl mx-auto px-6 py-24 md:py-36 flex flex-col items-start"
+        >
+            <div class="flex items-center gap-3 mb-8">
+                <span
+                    aria-hidden
+                    class="inline-block w-8 h-px bg-paper"></span>
+                <span
+                    class="font-mono text-xs uppercase tracking-eyebrow text-paper/60"
+                    >Let's Build</span
                 >
-                    Ready to Transform Your Online Presence?
-                </h2>
-                <p
-                    class="text-xl text-slate-600 mb-10 leading-relaxed text-pretty"
-                >
-                    Let's create a website that not only looks amazing but
-                    drives real results for your business.
-                </p>
-                <div class="flex flex-wrap gap-4 justify-center">
-                    <a
-                        href="/contact"
-                        class="px-8 py-4 bg-[#2563eb] text-white font-semibold rounded-lg hover:bg-[#1d4ed8] transition-colors"
-                    >
-                        Get Started
-                    </a>
-                    <a
-                        href="/services"
-                        class="px-8 py-4 bg-transparent border-2 border-slate-300 text-slate-700 font-semibold rounded-lg hover:bg-slate-100 transition-colors"
-                    >
-                        View All Services
-                    </a>
-                </div>
             </div>
-        </section>
-    </main>
+            <h2
+                class="font-display font-bold text-display text-paper text-balance mb-10 max-w-5xl leading-[0.95]"
+            >
+                Ready to Transform Your Online <span
+                    class="italic text-accent">Presence</span
+                >?
+            </h2>
+            <p class="text-lg md:text-xl text-paper/70 max-w-xl mb-10">
+                Let's create a website that not only looks amazing but drives
+                real results for your business.
+            </p>
+            <div class="flex flex-wrap gap-3">
+                <a
+                    href="/contact"
+                    class="group inline-flex items-center gap-2 bg-paper text-ink font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-paper hover:bg-ink hover:text-paper transition-colors"
+                >
+                    Get Started
+                    <span
+                        class="transition-transform group-hover:translate-x-0.5"
+                        aria-hidden>→</span
+                    >
+                </a>
+                <a
+                    href="/services"
+                    class="inline-flex items-center gap-2 bg-transparent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-paper hover:bg-paper hover:text-ink transition-colors"
+                >
+                    View All Services
+                </a>
+            </div>
+        </div>
+    </section>
 </BaseLayout>

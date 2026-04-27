@@ -1,34 +1,38 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-
-import MailIcon from "../components/icons/MailIcon.astro";
-import PhoneIcon from "../components/icons/PhoneIcon.astro";
-import SendIcon from "../components/icons/SendIcon.astro";
 ---
 
-<BaseLayout meta_title="Contact Motown Tech" meta_description="Start your project with Motown Tech. Share your goals and get a fast response from our team.">
-    <main class="min-h-screen bg-[#f7f8fc]">
-        <!-- Hero Section -->
-        <section
-            class="relative overflow-hidden bg-gradient-to-b from-[#f8fafc] to-[#eef2ff] pt-8 pb-24"
-        >
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="max-w-3xl">
-                    <div class="inline-block mb-4">
+<BaseLayout
+    meta_title="Contact Motown Solutions"
+    meta_description="Start your project with Motown Solutions. Share your goals and get a fast response from our team."
+>
+    <!-- Hero -->
+    <section class="relative border-b-2 border-ink overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 pt-16 md:pt-24 pb-20 md:pb-28">
+            <div class="grid grid-cols-12 gap-6">
+                <div class="col-span-12 lg:col-span-10">
+                    <div class="flex items-center gap-3 mb-8">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
                         <span
-                            class="text-[#2563eb] text-sm font-semibold tracking-wider uppercase"
-                            >Get In Touch</span
-                            data-success-message="Thanks! We'll get back to you shortly."
-                            data-error-message="Something went wrong. Please try again."
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >Contact / Get in touch</span
                         >
                     </div>
                     <h1
-                        class="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 mb-6 leading-tight text-balance"
+                        class="font-display font-bold text-display text-ink text-balance"
                     >
-                        Let's start building together
+                        Let's start
+                        <br />
+                        building <span class="italic text-accent">together</span
+                        >.
                     </h1>
+                </div>
+                <div
+                    class="col-span-12 lg:col-span-7 lg:col-start-4 mt-10 md:mt-16"
+                >
                     <p
-                        class="text-xl text-slate-600 leading-relaxed text-pretty"
+                        class="text-lg md:text-xl text-ink-muted leading-relaxed text-pretty max-w-xl"
                     >
                         Have a project in mind? We'd love to hear about it.
                         Reach out and let's discuss how we can help bring your
@@ -36,387 +40,344 @@ import SendIcon from "../components/icons/SendIcon.astro";
                     </p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Contact Form & Info Section -->
-        <section class="py-24 bg-[#f7f8fc]">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="grid lg:grid-cols-2 gap-16">
-                    <!-- Contact Form -->
-                    <div>
-                        <h2 class="text-3xl font-bold text-slate-900 mb-8">
-                            Send us a message
-                        </h2>
-                        <form
-                            class="space-y-6"
-                            action="https://api.web3forms.com/submit"
-                            method="POST"
-                            data-contact-form
-                            novalidate
+    <!-- Form + Info -->
+    <section class="py-16 md:py-24" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-12 gap-10 md:gap-16">
+                <!-- Form -->
+                <div class="col-span-12 lg:col-span-7">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >Send us a message</span
                         >
-                            <input
-                                type="hidden"
-                                name="access_key"
-                                value="9333b567-0c0f-46d0-a446-f4b9795d1885"
-                            />
-                            <div class="grid md:grid-cols-2 gap-6">
-                                <div>
-                                    <label
-                                        for="firstName"
-                                        class="block text-sm font-medium text-slate-700 mb-2"
-                                        >First Name</label
-                                    >
-                                    <input
-                                        type="text"
-                                        id="firstName"
-                                        name="firstName"
-                                        class="w-full px-4 py-3 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2563eb] transition-colors"
-                                        placeholder="John"
-                                        required
-                                    />
-                                </div>
-                                <div>
-                                    <label
-                                        for="lastName"
-                                        class="block text-sm font-medium text-slate-700 mb-2"
-                                        >Last Name</label
-                                    >
-                                    <input
-                                        type="text"
-                                        id="lastName"
-                                        name="lastName"
-                                        class="w-full px-4 py-3 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2563eb] transition-colors"
-                                        placeholder="Doe"
-                                        required
-                                    />
-                                </div>
-                            </div>
-
-                            <div>
-                                <label
-                                    for="email"
-                                    class="block text-sm font-medium text-slate-700 mb-2"
-                                    >Email Address</label
-                                >
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    class="w-full px-4 py-3 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2563eb] transition-colors"
-                                    placeholder="john@example.com"
-                                    required
-                                />
-                            </div>
-
-                            <div>
-                                <label
-                                    for="phone"
-                                    class="block text-sm font-medium text-slate-700 mb-2"
-                                    >Phone Number</label
-                                >
-                                <input
-                                    type="tel"
-                                    id="phone"
-                                    name="phone"
-                                    class="w-full px-4 py-3 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2563eb] transition-colors"
-                                    placeholder="(555) 123-4567"
-                                />
-                            </div>
-
-                            <!-- <div>
-                                <label
-                                    for="service"
-                                    class="block text-sm font-medium text-slate-700 mb-2"
-                                    >Service Interested In</label
-                                >
-                                <select
-                                    id="service"
-                                    name="service"
-                                    class="w-full px-4 py-3 bg-white border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:border-[#2563eb] transition-colors"
-                                    required
-                                >
-                                    <option value="">Select a service</option>
-                                    <option value="software-development"
-                                        >Software Development</option
-                                    >
-                                    <option value="web-design"
-                                        >Web Design</option
-                                    >
-                                    <option value="mobile-apps"
-                                        >Mobile Apps</option
-                                    >
-                                    <option value="consulting"
-                                        >Consulting</option
-                                    >
-                                    <option value="other">Other</option>
-                                </select>
-                            </div> -->
-
-                            <div>
-                                <label
-                                    for="message"
-                                    class="block text-sm font-medium text-slate-700 mb-2"
-                                    >Project Details</label
-                                >
-                                <textarea
-                                    id="message"
-                                    name="message"
-                                    rows="6"
-                                    class="w-full px-4 py-3 bg-white border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#2563eb] transition-colors resize-none"
-                                    placeholder="Tell us about your project..."
-                                    required></textarea>
-                            </div>
-
-                            <div
-                                class="h-captcha"
-                                data-captcha="true"
-                                data-lang="en"
-                                data-theme="light"
-                            >
-                            </div>
-
-                            <p
-                                class="hidden rounded-lg border border-[#22c55e]/40 bg-[#22c55e]/10 px-4 py-3 text-sm font-semibold text-[#86efac]"
-                                data-form-success
-                                role="status"
-                            ></p>
-                            <p
-                                class="hidden rounded-lg border border-[#f87171]/40 bg-[#f87171]/10 px-4 py-3 text-sm font-semibold text-[#fca5a5]"
-                                data-form-error
-                                role="alert"
-                            ></p>
-
-                            <button
-                                type="submit"
-                                class="w-full px-8 py-4 bg-[#2563eb] text-white font-semibold rounded-lg hover:bg-[#1d4ed8] transition-colors flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
-                                data-submit-button
-                            >
-                                <span
-                                    class="hidden h-5 w-5 border-2 border-white/30 border-t-white rounded-full animate-spin"
-                                    aria-hidden="true"
-                                    data-submit-loader
-                                ></span>
-                                <SendIcon class="w-5 h-5" data-submit-icon />
-                                <span data-submit-label>Send Message</span>
-                            </button>
-                        </form>
                     </div>
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance mb-10"
+                    >
+                        Tell us about
+                        <br />
+                        your project.
+                    </h2>
 
-                    <!-- Contact Information -->
-                    <div class="space-y-8">
+                    <form
+                        class="space-y-8"
+                        action="https://api.web3forms.com/submit"
+                        method="POST"
+                        data-contact-form
+                        data-success-message="Thanks! We'll get back to you shortly."
+                        data-error-message="Something went wrong. Please try again."
+                        novalidate
+                    >
+                        <input
+                            type="hidden"
+                            name="access_key"
+                            value="9333b567-0c0f-46d0-a446-f4b9795d1885"
+                        />
+
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="relative">
+                                <label
+                                    for="firstName"
+                                    class="block font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted mb-2"
+                                    >First Name</label
+                                >
+                                <input
+                                    type="text"
+                                    id="firstName"
+                                    name="firstName"
+                                    class="w-full bg-transparent border-0 border-b border-ink/30 py-3 text-ink placeholder:text-ink-muted/50 focus:outline-none focus:border-ink transition-colors"
+                                    placeholder="John"
+                                    required
+                                />
+                            </div>
+                            <div class="relative">
+                                <label
+                                    for="lastName"
+                                    class="block font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted mb-2"
+                                    >Last Name</label
+                                >
+                                <input
+                                    type="text"
+                                    id="lastName"
+                                    name="lastName"
+                                    class="w-full bg-transparent border-0 border-b border-ink/30 py-3 text-ink placeholder:text-ink-muted/50 focus:outline-none focus:border-ink transition-colors"
+                                    placeholder="Doe"
+                                    required
+                                />
+                            </div>
+                        </div>
+
                         <div>
-                            <h2 class="text-3xl font-bold text-slate-900 mb-8">
-                                Contact Information
-                            </h2>
-                            <p class="text-slate-600 leading-relaxed mb-8">
-                                We're here to answer your questions and discuss
-                                your next project. Reach out through any of
-                                these channels.
-                            </p>
+                            <label
+                                for="email"
+                                class="block font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted mb-2"
+                                >Email Address</label
+                            >
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                class="w-full bg-transparent border-0 border-b border-ink/30 py-3 text-ink placeholder:text-ink-muted/50 focus:outline-none focus:border-ink transition-colors"
+                                placeholder="john@example.com"
+                                required
+                            />
                         </div>
 
-                        <div class="space-y-6">
-                            <div
-                                class="bg-[#f1f5f9] rounded-xl p-6 border border-slate-200"
+                        <div>
+                            <label
+                                for="phone"
+                                class="block font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted mb-2"
+                                >Phone Number</label
                             >
-                                <div class="flex items-start gap-4">
-                                    <div
-                                        class="w-12 h-12 bg-[#2563eb]/10 rounded-lg flex items-center justify-center flex-shrink-0"
-                                    >
-                                        <MailIcon />
-                                    </div>
-                                    <div>
-                                        <h3
-                                            class="text-lg font-semibold text-slate-900 mb-2"
-                                        >
-                                            Email Us
-                                        </h3>
-                                        <a
-                                            href="mailto:contact@motowntech.com"
-                                            class="text-slate-600 hover:text-[#2563eb] transition-colors"
-                                        >
-                                            contact@motowntech.com
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div
-                                class="bg-[#f1f5f9] rounded-xl p-6 border border-slate-200"
-                            >
-                                <div class="flex items-start gap-4">
-                                    <div
-                                        class="w-12 h-12 bg-[#2563eb]/10 rounded-lg flex items-center justify-center flex-shrink-0"
-                                    >
-                                        <PhoneIcon />
-                                    </div>
-                                    <div>
-                                        <h3
-                                            class="text-lg font-semibold text-slate-900 mb-2"
-                                        >
-                                            Call Us
-                                        </h3>
-                                        <a
-                                            href="tel:+13137751223"
-                                            class="text-slate-600 hover:text-[#2563eb] transition-colors"
-                                        >
-                                            (313) 775-1223
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- <div
-                                class="bg-[#f1f5f9] rounded-xl p-6 border border-slate-200"
-                            >
-                                <div class="flex items-start gap-4">
-                                    <div
-                                        class="w-12 h-12 bg-[#2563eb]/10 rounded-lg flex items-center justify-center flex-shrink-0"
-                                    >
-                                        <MapPinIcon />
-                                    </div>
-                                    <div>
-                                        <h3
-                                            class="text-lg font-semibold text-slate-900 mb-2"
-                                        >
-                                            Visit Us
-                                        </h3>
-                                        <p class="text-slate-600">
-                                            123 Tech Street<br />Detroit, MI
-                                            48201
-                                        </p>
-                                    </div>
-                                </div>
-                            </div> -->
-
-                            <!-- <div
-                                class="bg-[#f1f5f9] rounded-xl p-6 border border-slate-200"
-                            >
-                                <div class="flex items-start gap-4">
-                                    <div
-                                        class="w-12 h-12 bg-[#2563eb]/10 rounded-lg flex items-center justify-center flex-shrink-0"
-                                    >
-                                        <ClockIcon />
-                                    </div>
-                                    <div>
-                                        <h3
-                                            class="text-lg font-semibold text-slate-900 mb-2"
-                                        >
-                                            Business Hours
-                                        </h3>
-                                        <div class="text-slate-600 space-y-1">
-                                            <p>
-                                                Monday - Friday: 9:00 AM - 6:00
-                                                PM
-                                            </p>
-                                            <p>Saturday: 10:00 AM - 4:00 PM</p>
-                                            <p>Sunday: Closed</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                class="w-full bg-transparent border-0 border-b border-ink/30 py-3 text-ink placeholder:text-ink-muted/50 focus:outline-none focus:border-ink transition-colors"
+                                placeholder="(555) 123-4567"
+                            />
                         </div>
+
+                        <div>
+                            <label
+                                for="message"
+                                class="block font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted mb-2"
+                                >Project Details</label
+                            >
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows="5"
+                                class="w-full bg-transparent border-0 border-b border-ink/30 py-3 text-ink placeholder:text-ink-muted/50 focus:outline-none focus:border-ink transition-colors resize-none"
+                                placeholder="Tell us about your project..."
+                                required></textarea>
+                        </div>
+
+                        <div
+                            class="h-captcha"
+                            data-captcha="true"
+                            data-lang="en"
+                            data-theme="light"
+                        >
+                        </div>
+
+                        <p
+                            class="hidden border border-ink bg-paper-2 px-4 py-3 text-sm font-mono text-ink"
+                            data-form-success
+                            role="status"
+                        >
+                        </p>
+                        <p
+                            class="hidden border border-ink bg-ink text-paper px-4 py-3 text-sm font-mono"
+                            data-form-error
+                            role="alert"
+                        >
+                        </p>
+
+                        <button
+                            type="submit"
+                            class="group w-full inline-flex items-center justify-center gap-3 bg-ink text-paper font-mono text-xs md:text-sm uppercase tracking-[0.15em] px-6 py-5 border-2 border-ink hover:bg-paper hover:text-ink transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                            data-submit-button
+                        >
+                            <span
+                                class="hidden h-4 w-4 border-2 border-current/30 border-t-current rounded-full animate-spin"
+                                aria-hidden="true"
+                                data-submit-loader></span>
+                            <span data-submit-label>Send Message</span>
+                            <span
+                                aria-hidden
+                                class="transition-transform group-hover:translate-x-0.5"
+                                data-submit-icon>→</span
+                            >
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact info -->
+                <aside class="col-span-12 lg:col-span-4 lg:col-start-9">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >Direct</span
+                        >
                     </div>
+                    <h2
+                        class="font-display text-3xl md:text-4xl font-bold tracking-tight leading-tight mb-8"
+                    >
+                        Or reach us
+                        <br />
+                        directly.
+                    </h2>
+
+                    <dl class="border-t border-ink">
+                        <div
+                            class="flex items-start gap-4 py-5 border-b border-ink"
+                        >
+                            <dt
+                                class="font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted w-16 shrink-0 pt-1"
+                            >
+                                Email
+                            </dt>
+                            <dd>
+                                <a
+                                    href="mailto:contact@motowntech.com"
+                                    class="link-underline font-medium"
+                                >
+                                    contact@motowntech.com
+                                </a>
+                            </dd>
+                        </div>
+                        <div
+                            class="flex items-start gap-4 py-5 border-b border-ink"
+                        >
+                            <dt
+                                class="font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted w-16 shrink-0 pt-1"
+                            >
+                                Phone
+                            </dt>
+                            <dd>
+                                <a
+                                    href="tel:+13137751223"
+                                    class="link-underline font-medium"
+                                >
+                                    (845) 825-2661
+                                </a>
+                            </dd>
+                        </div>
+                    </dl>
+
+                    <p class="mt-8 text-ink-muted leading-relaxed">
+                        We're here to answer your questions and discuss your
+                        next project. Typical response time is under 24 hours.
+                    </p>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="border-t-2 border-ink bg-paper-2" data-reveal>
+        <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+            <div class="grid grid-cols-12 gap-6 mb-12">
+                <div class="col-span-12 md:col-span-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >FAQ</span
+                        >
+                    </div>
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        Common questions.
+                    </h2>
                 </div>
             </div>
-        </section>
 
-        <!-- FAQ Section -->
-        <section class="py-24 section-dark">
-            <div class="max-w-4xl mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-                        Frequently Asked Questions
-                    </h2>
-                    <p class="text-xl text-slate-600 text-pretty">
-                        Quick answers to common questions about working with us
-                    </p>
-                </div>
-
-                <div class="space-y-6">
-                    <div
-                        class="bg-[#f7f8fc] rounded-xl p-6 border border-slate-200"
+            <div class="border-t border-ink">
+                <details class="group border-b border-ink">
+                    <summary
+                        class="flex items-start justify-between gap-4 py-6 cursor-pointer list-none"
                     >
-                        <h3 class="text-xl font-semibold text-slate-900 mb-3">
+                        <h3
+                            class="font-display text-2xl md:text-3xl font-bold tracking-tight leading-tight"
+                        >
                             How long does a typical project take?
                         </h3>
-                        <p class="text-slate-600 leading-relaxed">
-                            Project timelines vary based on scope and
-                            complexity. A simple website might take 2–4 weeks,
-                            while a complex web application could take 3–6
-                            months. We'll provide a detailed timeline during our
-                            initial consultation.
-                        </p>
-                    </div>
+                        <span
+                            aria-hidden
+                            class="font-mono text-2xl leading-none pt-1 transition-transform group-open:rotate-45"
+                            >+</span
+                        >
+                    </summary>
+                    <p class="pb-6 text-ink-muted leading-relaxed max-w-3xl">
+                        Project timelines vary based on scope and complexity. A
+                        simple website might take 2–4 weeks, while a complex web
+                        application could take 3–6 months. We'll provide a
+                        detailed timeline during our initial consultation.
+                    </p>
+                </details>
 
-                    <div
-                        class="bg-[#f7f8fc] rounded-xl p-6 border border-slate-200"
+                <details class="group border-b border-ink">
+                    <summary
+                        class="flex items-start justify-between gap-4 py-6 cursor-pointer list-none"
                     >
-                        <h3 class="text-xl font-semibold text-slate-900 mb-3">
+                        <h3
+                            class="font-display text-2xl md:text-3xl font-bold tracking-tight leading-tight"
+                        >
                             What is your development process?
                         </h3>
-                        <p class="text-slate-600 leading-relaxed">
-                            We follow an agile methodology with regular
-                            check-ins and iterations. This includes discovery,
-                            design, development, testing, and deployment phases
-                            with continuous client collaboration throughout.
-                        </p>
-                    </div>
+                        <span
+                            aria-hidden
+                            class="font-mono text-2xl leading-none pt-1 transition-transform group-open:rotate-45"
+                            >+</span
+                        >
+                    </summary>
+                    <p class="pb-6 text-ink-muted leading-relaxed max-w-3xl">
+                        We follow an agile methodology with regular check-ins
+                        and iterations. Discovery, design, development, testing,
+                        and deployment phases — with continuous client
+                        collaboration throughout.
+                    </p>
+                </details>
 
-                    <div
-                        class="bg-[#f7f8fc] rounded-xl p-6 border border-slate-200"
+                <details class="group border-b border-ink">
+                    <summary
+                        class="flex items-start justify-between gap-4 py-6 cursor-pointer list-none"
                     >
-                        <h3 class="text-xl font-semibold text-slate-900 mb-3">
+                        <h3
+                            class="font-display text-2xl md:text-3xl font-bold tracking-tight leading-tight"
+                        >
                             Do you provide ongoing support?
                         </h3>
-                        <p class="text-slate-600 leading-relaxed">
-                            Yes! We offer maintenance and support packages to
-                            keep your application running smoothly. This
-                            includes bug fixes, updates, security patches, and
-                            feature enhancements as needed.
-                        </p>
-                    </div>
+                        <span
+                            aria-hidden
+                            class="font-mono text-2xl leading-none pt-1 transition-transform group-open:rotate-45"
+                            >+</span
+                        >
+                    </summary>
+                    <p class="pb-6 text-ink-muted leading-relaxed max-w-3xl">
+                        Yes. We offer maintenance and support packages to keep
+                        your application running smoothly — bug fixes, updates,
+                        security patches, and feature enhancements as needed.
+                    </p>
+                </details>
 
-                    <div
-                        class="bg-[#f7f8fc] rounded-xl p-6 border border-slate-200"
+                <details class="group border-b border-ink">
+                    <summary
+                        class="flex items-start justify-between gap-4 py-6 cursor-pointer list-none"
                     >
-                        <h3 class="text-xl font-semibold text-slate-900 mb-3">
+                        <h3
+                            class="font-display text-2xl md:text-3xl font-bold tracking-tight leading-tight"
+                        >
                             What technologies do you work with?
                         </h3>
-                        <p class="text-slate-600 leading-relaxed">
-                            We specialize in modern web technologies including
-                            React, Next.js, Node.js, Python, and cloud platforms
-                            like AWS and Azure. We choose the best tech stack
-                            for your specific needs and goals.
-                        </p>
-                    </div>
-                </div>
+                        <span
+                            aria-hidden
+                            class="font-mono text-2xl leading-none pt-1 transition-transform group-open:rotate-45"
+                            >+</span
+                        >
+                    </summary>
+                    <p class="pb-6 text-ink-muted leading-relaxed max-w-3xl">
+                        We specialize in modern web technologies including
+                        React, Next.js, Node.js, Python, and cloud platforms
+                        like AWS and Azure. We choose the best tech stack for
+                        your specific needs and goals.
+                    </p>
+                </details>
             </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="py-24 bg-gradient-to-b from-[#f8fafc] to-[#eef2ff]">
-            <div class="max-w-4xl mx-auto px-6 text-center">
-                <h2
-                    class="text-4xl md:text-5xl font-bold text-slate-900 mb-6 text-balance"
-                >
-                    Ready to Start Your Project?
-                </h2>
-                <p
-                    class="text-xl text-slate-600 mb-10 leading-relaxed text-pretty"
-                >
-                    Fill out the form above or reach out directly. We typically
-                    respond within 24 hours.
-                </p>
-                <a
-                    href="/services"
-                    class="inline-block px-8 py-4 bg-transparent border-2 border-slate-300 text-slate-700 font-semibold rounded-lg hover:bg-slate-100 transition-colors"
-                >
-                    View Our Services
-                </a>
-            </div>
-        </section>
-    </main>
+        </div>
+    </section>
 </BaseLayout>
 
 <script type="module">

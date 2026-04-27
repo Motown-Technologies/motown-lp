@@ -1,398 +1,273 @@
 ---
-import { Image } from "astro:assets";
-import Card from "../components/Card.astro";
-import CardIcon from "../components/CardIcon.astro";
-import CardTitle from "../components/CardTitle.astro";
-import AutomationIcon from "../components/icons/AutomationIcon.astro";
-import ConsultingIcon from "../components/icons/ConsultingIcon.astro";
-import MarketingIcon from "../components/icons/MarketingIcon.astro";
-import MobileIcon from "../components/icons/MobileIcon.astro";
-import SoftwareIcon from "../components/icons/SoftwareIcon.astro";
-import WebIcon from "../components/icons/WebIcon.astro";
 import servicesData, { type Service } from "../data/services";
-import heroImage from "../img/modern-technology-workspace-with-multiple-monitors.jpg";
-import colabImage from "../img/professional-team-collaborating-on-technology-proj.jpg";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import NumberedRow from "../components/NumberedRow.astro";
 
-const ICONS: Record<string, any> = {
-    software: SoftwareIcon,
-    marketing: MarketingIcon,
-    mobile: MobileIcon,
-    automation: AutomationIcon,
-    consulting: ConsultingIcon,
-    web: WebIcon,
-};
-
-const toSlug = (text: string) =>
-    text
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, "-")
-        .replace(/(^-|-$)/g, "");
+const whyChoose = [
+    {
+        title: "Expert Team",
+        description:
+            "Skilled professionals with years of experience in cutting-edge technologies.",
+    },
+    {
+        title: "Proven Track Record",
+        description:
+            "Successfully delivered projects across a range of industries.",
+    },
+    {
+        title: "Agile Approach",
+        description:
+            "Flexible methodologies that adapt to your changing needs and priorities.",
+    },
+    {
+        title: "Ongoing Support",
+        description:
+            "Dedicated maintenance and support to ensure your success long-term.",
+    },
+];
 ---
 
-<BaseLayout meta_title="Motown Tech | Technology Solutions" meta_description="Custom software, web design, automation, and consulting services that turn ideas into modern digital products.">
-    <!-- Hero Section -->
-    <section
-        class="relative overflow-hidden bg-gradient-to-b from-[#f8fafc] via-[#eef2ff] to-[#f8fafc] pt-8 pb-32"
-    >
-        <div class="max-w-7xl mx-auto px-6">
-            <!-- Hero Content -->
-            <div class="grid lg:grid-cols-2 gap-16 items-center mb-24">
-                <div>
-                    <div class="inline-block mb-6">
+<BaseLayout
+    meta_title="Motown Solutions | Technology Solutions"
+    meta_description="Custom software, web design, automation, and consulting services that turn ideas into modern digital products."
+>
+    <!-- Hero -->
+    <section class="relative overflow-hidden border-b-2 border-ink">
+        <!-- Contour-line decoration -->
+        <svg
+            aria-hidden
+            class="absolute inset-0 w-full h-full pointer-events-none opacity-[0.12] text-ink"
+            viewBox="0 0 1200 700"
+            preserveAspectRatio="xMidYMid slice"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+        >
+            <path d="M-50 520 Q 200 440 430 490 T 880 470 T 1260 440" />
+            <path d="M-50 580 Q 200 500 430 550 T 880 530 T 1260 500" />
+            <path d="M-50 640 Q 200 560 430 610 T 880 590 T 1260 560" />
+            <path d="M-50 460 Q 200 380 430 430 T 880 410 T 1260 380" />
+            <path d="M-50 400 Q 200 320 430 370 T 880 350 T 1260 320" />
+        </svg>
+
+        <div class="relative max-w-7xl mx-auto px-6 pt-16 md:pt-24 pb-24 md:pb-32">
+            <div class="grid grid-cols-12 gap-6">
+                <div class="col-span-12 lg:col-span-10">
+                    <div class="flex items-center gap-3 mb-8">
                         <span
-                            class="text-[#2563eb] text-sm font-semibold tracking-wider uppercase"
-                            >Technology Solutions</span
+                            aria-hidden
+                            class="inline-block w-8 h-px bg-ink"></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
                         >
+                            Technology Solutions
+                        </span>
                     </div>
+
                     <h1
-                        class="text-6xl md:text-7xl lg:text-8xl font-bold text-slate-900 mb-8 leading-tight text-balance"
+                        class="font-display font-bold text-display text-ink text-balance"
                     >
-                        Where Ideas Become Reality
+                        Where ideas
+                        <br />
+                        become <span class="text-accent italic">reality</span>.
                     </h1>
+                </div>
+
+                <div class="col-span-12 lg:col-span-7 lg:col-start-4 mt-10 md:mt-16">
                     <p
-                        class="text-xl text-slate-600 leading-relaxed mb-10 text-pretty"
+                        class="text-lg md:text-xl text-ink-muted leading-relaxed text-pretty max-w-xl"
+                        data-reveal
                     >
                         We transform your vision into powerful digital
-                        solutions. From custom software to comprehensive digital
-                        strategies, we're your partner in innovation and growth.
+                        solutions. From custom software to comprehensive
+                        digital strategies, we're your partner in innovation
+                        and growth.
                     </p>
-                    <div class="flex flex-wrap gap-4">
+
+                    <div class="mt-10 flex flex-wrap gap-3" data-reveal>
                         <a
                             href="/contact"
-                            class="px-8 py-4 bg-[#2563eb] text-white font-semibold rounded-lg hover:bg-[#1d4ed8] transition-colors inline-flex items-center gap-2"
+                            class="group inline-flex items-center gap-2 bg-ink text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-ink hover:bg-paper hover:text-ink transition-colors"
                         >
                             Start Your Project
-                            <!-- ArrowRight -->
-                            <svg
-                                class="w-5 h-5"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                aria-hidden="true"
+                            <span
+                                class="transition-transform group-hover:translate-x-0.5"
+                                aria-hidden>→</span
                             >
-                                <path d="M5 12h14"></path>
-                                <path d="m12 5 7 7-7 7"></path>
-                            </svg>
                         </a>
                         <a
                             href="/services"
-                            class="px-8 py-4 bg-transparent border-2 border-slate-300 text-slate-700 font-semibold rounded-lg hover:bg-slate-100 transition-colors"
+                            class="inline-flex items-center gap-2 bg-transparent text-ink font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-ink hover:bg-ink hover:text-paper transition-colors"
                         >
                             Explore Services
                         </a>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <div class="relative">
-                    <div
-                        class="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-[#2563eb]/10 to-transparent border border-[#2563eb]/20"
-                    >
-                        <Image
-                            src={heroImage}
-                            alt="Technology Workspace"
-                            class="w-full h-full object-cover opacity-80"
-                        />
-                    </div>
-                    <!-- Floating Stats -->
-                    <!-- <div
-                        class="absolute -bottom-8 -left-8 bg-[#f1f5f9] border border-slate-200 rounded-xl p-6 backdrop-blur-sm"
-                    >
-                        <div class="text-4xl font-bold text-[#2563eb] mb-1">
-                            100+
-                        </div>
-                        <div class="text-slate-600 text-sm">
-                            Projects Delivered
-                        </div>
-                    </div>
-                    <div
-                        class="absolute -top-8 -right-8 bg-[#f1f5f9] border border-slate-200 rounded-xl p-6 backdrop-blur-sm"
-                    >
-                        <div class="text-4xl font-bold text-[#2563eb] mb-1">
-                            50+
-                        </div>
-                        <div class="text-slate-600 text-sm">Happy Clients</div>
-                    </div> -->
-                </div>
+        <!-- Metadata strip -->
+        <div class="relative border-t border-ink/40 bg-paper">
+            <div
+                class="max-w-7xl mx-auto px-6 py-5 flex flex-wrap items-center justify-between gap-x-8 gap-y-2 font-mono text-[10px] md:text-xs uppercase tracking-eyebrow text-ink-muted"
+            >
+                <span>Custom Software</span>
+                <span class="hidden md:inline" aria-hidden>·</span>
+                <span>Web Design</span>
+                <span class="hidden md:inline" aria-hidden>·</span>
+                <span>Mobile Apps</span>
+                <span class="hidden md:inline" aria-hidden>·</span>
+                <span>Automation</span>
+                <span class="hidden md:inline" aria-hidden>·</span>
+                <span>Consulting</span>
             </div>
         </div>
     </section>
 
-    <!-- Services Overview -->
-    <section class="py-24 bg-[#f7f8fc]">
+    <!-- Services showroom -->
+    <section class="py-20 md:py-28" data-reveal>
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-                    What We Do Best
-                </h2>
-                <p class="text-xl text-slate-600 max-w-3xl mx-auto text-pretty">
-                    Comprehensive technology solutions tailored to your business
-                    needs
-                </p>
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-5">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span
+                            aria-hidden
+                            class="inline-block w-8 h-px bg-ink"></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                        >
+                            What We Do
+                        </span>
+                    </div>
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        What we do best.
+                    </h2>
+                </div>
+                <div
+                    class="col-span-12 md:col-span-6 md:col-start-7 md:self-end"
+                >
+                    <p
+                        class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
+                    >
+                        We build custom software, websites, mobile apps, and
+                        automation tools — and consult on the strategy behind
+                        them. Every project starts with understanding what
+                        you're actually trying to solve, then choosing the
+                        simplest path that works. Pick a service below to see
+                        what we build and how we work with you.
+                    </p>
+                </div>
             </div>
 
-            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-12">
+            <div>
                 {
-                    servicesData.map((svc: Service, idx: number) => {
-                        const Icon = ICONS[svc.icon] ?? SoftwareIcon;
-
-                        const toSlug = (s: string) =>
-                            s
-                                .toLowerCase()
-                                .replace(/[^a-z0-9]+/g, "-")
-                                .replace(/(^-|-$)/g, "");
-
-                        const href = svc.href ?? "/" + toSlug(svc.title);
-
-                        const spanClass =
-                            idx < 2 ? "lg:col-span-6" : "lg:col-span-4";
-
-                        return (
-                            <Card
-                                href={href}
-                                class={spanClass}
-                                aria-label={`${svc.title} – Learn more`}
-                            >
-                                <CardIcon>
-                                    <Icon class="w-6 h-6 text-[#2563eb]" />
-                                </CardIcon>
-                                <CardTitle class="mb-3">{svc.title}</CardTitle>
-                                <p class="text-slate-600 leading-relaxed mb-4">
-                                    {svc.description}
-                                </p>
-                                {href && (
-                                    <div class="flex items-center text-[#2563eb] font-semibold">
-                                        Learn More
-                                        <svg
-                                            class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            stroke-width="2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            aria-hidden="true"
-                                        >
-                                            <path d="M5 12h14" />
-                                            <path d="m12 5 7 7-7 7" />
-                                        </svg>
-                                    </div>
-                                )}
-                            </Card>
-                        );
-                    })
+                    servicesData.map((svc: Service) => (
+                        <NumberedRow
+                            title={svc.title}
+                            description={svc.description}
+                            href={svc.href}
+                        />
+                    ))
                 }
             </div>
 
-            <div class="text-center mt-12">
+            <div class="mt-14">
                 <a
                     href="/services"
-                    class="inline-flex items-center gap-2 text-[#2563eb] hover:text-[#1d4ed8] font-semibold text-lg transition-colors"
+                    class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-eyebrow link-underline"
                 >
-                    View All Services
-                    <svg
-                        class="w-5 h-5"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        aria-hidden="true"
-                    >
-                        <path d="M5 12h14"></path>
-                        <path d="m12 5 7 7-7 7"></path>
-                    </svg>
+                    <span aria-hidden>→</span>
+                    View all services
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Why Choose Us -->
-    <section class="py-24 section-dark">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="relative">
-                    <div
-                        class="aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-[#2563eb]/10 to-transparent border border-[#2563eb]/20"
-                    >
-                        <Image
-                            src={colabImage}
-                            alt="Team Collaboration"
-                            class="w-full h-full object-cover opacity-80"
-                        />
+    <!-- Why Choose Us matrix -->
+    <section class="border-t-2 border-ink bg-paper-2" data-reveal>
+        <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-7">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span
+                            aria-hidden
+                            class="inline-block w-8 h-px bg-ink"></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                        >
+                            Why Choose Us
+                        </span>
                     </div>
-                </div>
-
-                <div>
-                    <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-                        Why Choose Motown Tech?
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        Technical expertise,
+                        <br />
+                        creative conviction.
                     </h2>
-                    <p
-                        class="text-xl text-slate-600 mb-8 leading-relaxed text-pretty"
-                    >
-                        We combine technical expertise with creative innovation
-                        to deliver solutions that exceed expectations
-                    </p>
-
-                    <div class="space-y-6">
-                        <!-- Item -->
-                        <div class="flex gap-4">
-                            <div class="flex-shrink-0">
-                                <!-- Check -->
-                                <svg
-                                    class="w-6 h-6 text-[#2563eb]"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    aria-hidden="true"
-                                >
-                                    <path d="M20 6 9 17l-5-5"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-slate-900 mb-2">
-                                    Expert Team
-                                </h3>
-                                <p class="text-slate-600 leading-relaxed">
-                                    Skilled professionals with years of
-                                    experience in cutting-edge technologies
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Item -->
-                        <div class="flex gap-4">
-                            <div class="flex-shrink-0">
-                                <svg
-                                    class="w-6 h-6 text-[#2563eb]"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    aria-hidden="true"
-                                >
-                                    <path d="M20 6 9 17l-5-5"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-slate-900 mb-2">
-                                    Proven Track Record
-                                </h3>
-                                <p class="text-slate-600 leading-relaxed">
-                                    Successfully delivered projects across
-                                    various industries
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Item -->
-                        <div class="flex gap-4">
-                            <div class="flex-shrink-0">
-                                <svg
-                                    class="w-6 h-6 text-[#2563eb]"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    aria-hidden="true"
-                                >
-                                    <path d="M20 6 9 17l-5-5"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-slate-900 mb-2">
-                                    Agile Approach
-                                </h3>
-                                <p class="text-slate-600 leading-relaxed">
-                                    Flexible methodologies that adapt to your
-                                    changing needs and priorities
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Item -->
-                        <div class="flex gap-4">
-                            <div class="flex-shrink-0">
-                                <svg
-                                    class="w-6 h-6 text-[#2563eb]"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    aria-hidden="true"
-                                >
-                                    <path d="M20 6 9 17l-5-5"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-slate-900 mb-2">
-                                    Ongoing Support
-                                </h3>
-                                <p class="text-slate-600 leading-relaxed">
-                                    Dedicated maintenance and support to ensure
-                                    your success long-term
-                                </p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
+                <div
+                    class="col-span-12 md:col-span-5 md:self-end text-ink-muted text-lg leading-relaxed"
+                >
+                    We combine craft with discipline to deliver solutions
+                    that exceed expectations — and hold up in production.
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 border border-ink">
+                {
+                    whyChoose.map((item) => (
+                        <div class="p-8 md:p-10 border-ink border-b md:[&:nth-child(odd)]:border-r md:[&:nth-child(n+3)]:border-b-0 last:border-b-0">
+                            <h3 class="font-display text-2xl md:text-3xl font-bold tracking-tight leading-tight mb-3">
+                                {item.title}
+                            </h3>
+                            <p class="text-ink-muted leading-relaxed">
+                                {item.description}
+                            </p>
+                        </div>
+                    ))
+                }
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="py-24 bg-gradient-to-b from-[#f8fafc] to-[#eef2ff]">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2
-                class="text-4xl md:text-5xl font-bold text-slate-900 mb-6 text-balance"
-            >
-                Ready to Bring Your Ideas to Life?
-            </h2>
-            <p class="text-xl text-slate-600 mb-10 leading-relaxed text-pretty">
-                Let's collaborate to create something extraordinary. Get in
-                touch with our team today and start your journey to digital
-                success.
-            </p>
-            <div class="flex flex-wrap gap-4 justify-center">
-                <a
-                    href="/contact"
-                    class="px-8 py-4 bg-[#2563eb] text-white font-semibold rounded-lg hover:bg-[#1d4ed8] transition-colors inline-flex items-center gap-2"
+    <!-- Final CTA -->
+    <section class="border-t-2 border-ink" data-reveal>
+        <div
+            class="max-w-7xl mx-auto px-6 py-24 md:py-36 flex flex-col items-start"
+        >
+            <div class="flex items-center gap-3 mb-8">
+                <span
+                    aria-hidden
+                    class="inline-block w-8 h-px bg-ink"></span>
+                <span
+                    class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
                 >
-                    Contact Us
-                    <svg
-                        class="w-5 h-5"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        aria-hidden="true"
-                    >
-                        <path d="M5 12h14"></path>
-                        <path d="m12 5 7 7-7 7"></path>
-                    </svg>
-                </a>
-                <a
-                    href="/services"
-                    class="px-8 py-4 bg-transparent border-2 border-slate-300 text-slate-700 font-semibold rounded-lg hover:bg-slate-100 transition-colors"
-                >
-                    Explore Services
-                </a>
+                    Let's Build
+                </span>
             </div>
+            <h2
+                class="font-display font-bold text-display text-ink text-balance mb-10 max-w-5xl leading-[0.95]"
+            >
+                Ready to bring your
+                <br />ideas to <span class="italic text-accent">life</span>?
+            </h2>
+            <p class="text-lg md:text-xl text-ink-muted max-w-xl mb-10">
+                Let's collaborate to create something extraordinary. Get in
+                touch and start your journey.
+            </p>
+            <a
+                href="/contact"
+                class="group inline-flex items-center gap-3 bg-ink text-paper font-mono text-xs md:text-sm uppercase tracking-[0.15em] px-8 py-5 border-2 border-ink hover:bg-paper hover:text-ink transition-colors"
+            >
+                Contact Us
+                <span
+                    class="transition-transform group-hover:translate-x-0.5"
+                    aria-hidden>→</span
+                >
+            </a>
         </div>
     </section>
 </BaseLayout>

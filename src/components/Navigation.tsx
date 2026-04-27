@@ -1,6 +1,6 @@
 import { ChevronDown, Menu, X } from "lucide-react"
 import { useEffect, useState } from "react"
-import logo from "../img/logo.png"
+import logo from "../img/motown_solutions_logo.png"
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -15,7 +15,7 @@ export function Navigation() {
     const onScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          setIsScrolled(window.scrollY > 50)
+          setIsScrolled(window.scrollY > 10)
           ticking = false
         })
         ticking = true
@@ -28,41 +28,36 @@ export function Navigation() {
 
   const services = [
     { name: "Software Development", href: "/services/software-development" },
+    { name: "AI Development", href: "/services/ai-development" },
     { name: "Web Design & Development", href: "/services/web-design" },
     { name: "Mobile Development", href: "/services/mobile-development" },
     { name: "Automation", href: "/services/automation" },
     { name: "Consulting", href: "/services/consulting" },
-    // { name: "Cloud Solutions", href: "/services/cloud-solutions" },
-    // { name: "Cybersecurity", href: "/services/cybersecurity" },
   ]
 
-  const linkBase = "text-slate-700 hover:text-blue-600 transition-colors font-medium"
-  const isActive = (href: string) => (pathname === href ? "text-slate-900" : "")
+  const linkBase =
+    "inline-flex items-center font-mono text-xs uppercase tracking-[0.15em] leading-none text-ink hover:text-accent transition-colors"
+  const isActive = (href: string) => (pathname === href ? "text-accent" : "")
 
   return (
     <>
-      {/* Optional spacer to ensure content never “jumps under” the fixed nav */}
-      <div aria-hidden className="h-20 md:h-20" />
+      <div aria-hidden className="h-16 md:h-20" />
 
       <nav
         className={[
-          "fixed left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl top-4",
-          "transition-[background-color,box-shadow,transform,opacity] duration-300 will-change-transform",
+          "fixed inset-x-0 top-0 z-50",
+          "bg-[#f5f2ea]/95 backdrop-blur supports-[backdrop-filter]:bg-[#f5f2ea]/80",
+          "border-b transition-[border-color,box-shadow] duration-200",
           isScrolled
-            ? "bg-white/95 backdrop-blur-md shadow-[0_12px_30px_rgba(15,23,42,0.12)] border border-slate-200/80 rounded-md md:rounded-full scale-100 opacity-100"
-            : "bg-white/90 backdrop-blur-sm shadow-[0_12px_30px_rgba(15,23,42,0.12)] border border-slate-200/80 rounded-md md:rounded-full scale-[0.995] opacity-95"
+            ? "border-[#0b0b0c] shadow-[0_1px_0_0_#0b0b0c]"
+            : "border-[#0b0b0c]/20",
         ].join(" ")}
       >
-        <div className="px-6 py-4">
-          <div className="flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
-            <a href="/" className="flex items-center gap-3 group">
-              <div className="relative w-32 h-3w-32">
-               <img src={logo.src} alt="" />
-              </div>
-              {/* <span className="text-xl font-bold text-slate-900 group-hover:text-blue-400 transition-colors">
-                MOTOWN TECH
-              </span> */}
+            <a href="/" className="flex items-center gap-3 shrink-0" aria-label="Motown Solutions — home">
+              <img src={logo.src} alt="Motown Solutions" className="h-11 md:h-14 w-auto" />
             </a>
 
             {/* Desktop */}
@@ -70,64 +65,62 @@ export function Navigation() {
               <a href="/" className={`${linkBase} ${isActive("/")}`}>Home</a>
               <a href="/about" className={`${linkBase} ${isActive("/about")}`}>About</a>
 
-              {/* Services */}
-                <div className="relative group">
-                    {/* Trigger */}
+              <div className="relative group inline-flex items-center">
+                <a
+                  href="/services"
+                  className={`${linkBase} gap-1`}
+                  aria-haspopup="menu"
+                >
+                  Services
+                  <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
+                </a>
+
+                <span
+                  aria-hidden
+                  className="absolute left-0 right-0 top-full h-3 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto"
+                />
+
+                <div
+                  role="menu"
+                  className="absolute top-full left-0 mt-3 w-72 bg-paper border border-ink py-1
+                            opacity-0 translate-y-1 invisible pointer-events-none
+                            transition-all duration-150
+                            group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible group-hover:pointer-events-auto
+                            group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:visible group-focus-within:pointer-events-auto"
+                >
+                  {services.map((s, idx) => (
                     <a
-                        href="/services"
-                        className={`${linkBase} inline-flex items-center gap-1`}
-                        aria-haspopup="menu"
+                      key={s.href}
+                      href={s.href}
+                      className={`flex items-center justify-between gap-3 px-4 py-3 text-sm font-medium hover:bg-ink hover:text-paper transition-colors ${
+                        pathname === s.href ? "bg-paper-2" : ""
+                      }`}
                     >
-                        Services
-                        <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
+                      <span className="flex items-center gap-3">
+                        <span className="font-mono text-[10px] text-ink-muted">
+                          0{idx + 1}
+                        </span>
+                        {s.name}
+                      </span>
+                      <span aria-hidden>→</span>
                     </a>
-
-                    {/* Hover bridge: keeps hover alive between button and menu */}
-                    <span
-                        aria-hidden
-                        className="absolute left-0 right-0 top-full h-3
-                                opacity-0 group-hover:opacity-100
-                                pointer-events-none group-hover:pointer-events-auto"
-                    />
-
-                    {/* Menu */}
-                    <div
-                        role="menu"
-                        className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-[0_16px_40px_rgba(15,23,42,0.12)]
-                                border border-slate-200 py-2
-                                opacity-0 translate-y-1
-                                invisible pointer-events-none
-                                transition-all duration-150
-                                group-hover:opacity-100 group-hover:translate-y-0
-                                group-hover:visible group-hover:pointer-events-auto
-                                group-focus-within:opacity-100 group-focus-within:translate-y-0
-                                group-focus-within:visible group-focus-within:pointer-events-auto"
-                    >
-                        {services.map((s) => (
-                        <a
-                            key={s.href}
-                            href={s.href}
-                            className={`block px-4 py-2 hover:text-blue-600 hover:bg-slate-100 transition-colors ${
-                            pathname === s.href ? "text-slate-900" : "text-slate-700"
-                            }`}
-                        >
-                            {s.name}
-                        </a>
-                        ))}
-                    </div>
+                  ))}
                 </div>
+              </div>
 
-
-              <a href="/contact" className={`${linkBase} ${isActive("/contact")}`}>Contact</a>
-              <a href="/contact" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full transition-colors font-medium">
-                Get Started
+              <a
+                href="/contact"
+                className="group inline-flex items-center gap-2 bg-ink text-paper font-mono text-xs uppercase tracking-[0.15em] px-5 py-3 border-2 border-ink hover:bg-paper hover:text-ink transition-colors"
+              >
+                Start Project
+                <span className="relative -top-[1px] leading-none transition-transform group-hover:translate-x-0.5" aria-hidden>→</span>
               </a>
             </div>
 
             {/* Mobile button */}
             <button
               onClick={() => setIsMobileMenuOpen((v) => !v)}
-              className="md:hidden text-slate-900 p-2"
+              className="md:hidden text-ink p-2 -mr-2"
               aria-label="Toggle menu"
               aria-expanded={isMobileMenuOpen}
             >
@@ -135,31 +128,43 @@ export function Navigation() {
             </button>
           </div>
 
-          {/* Mobile menu */}
           {isMobileMenuOpen && (
-            <div className="md:hidden mt-4 pt-4 border-t border-slate-200">
-              <div className="flex flex-col gap-4">
-                <a href="/" className={linkBase} onClick={() => setIsMobileMenuOpen(false)}>Home</a>
-                <a href="/about" className={linkBase} onClick={() => setIsMobileMenuOpen(false)}>About</a>
+            <div className="md:hidden pb-6 pt-2 border-t border-ink/20">
+              <div className="flex flex-col">
+                <a
+                  href="/"
+                  className="py-3 font-mono text-xs uppercase tracking-[0.15em] text-ink border-b border-ink/10"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Home
+                </a>
+                <a
+                  href="/about"
+                  className="py-3 font-mono text-xs uppercase tracking-[0.15em] text-ink border-b border-ink/10"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  About
+                </a>
 
-                <div>
+                <div className="border-b border-ink/10">
                   <button
                     onClick={() => setIsServicesOpen((v) => !v)}
-                    className={`${linkBase} w-full inline-flex items-center gap-1`}
+                    className="w-full flex items-center justify-between py-3 font-mono text-xs uppercase tracking-[0.15em] text-ink"
                     aria-expanded={isServicesOpen}
                   >
                     Services
-                    <ChevronDown className={`w-4 h-4 transition-transform ${isServicesOpen ? "rotate-180" : ""}`} />
+                    <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isServicesOpen ? "rotate-180" : ""}`} />
                   </button>
                   {isServicesOpen && (
-                    <div className="ml-4 mt-2 flex flex-col gap-2">
-                      {services.map((s) => (
+                    <div className="pl-4 pb-3 flex flex-col gap-2">
+                      {services.map((s, idx) => (
                         <a
                           key={s.href}
                           href={s.href}
-                          className="text-slate-600 hover:text-blue-600 hover:bg-slate-100 hover:shadow-md rounded-md transition-colors text-sm p-2"
+                          className="flex items-center gap-3 text-sm text-ink-muted hover:text-accent transition-colors py-1.5"
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
+                          <span className="font-mono text-[10px]">0{idx + 1}</span>
                           {s.name}
                         </a>
                       ))}
@@ -167,14 +172,13 @@ export function Navigation() {
                   )}
                 </div>
 
-                <a href="/contact" className={linkBase} onClick={() => setIsMobileMenuOpen(false)}>Contact</a>
-
                 <a
                   href="/contact"
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full transition-colors font-medium text-center"
+                  className="mt-4 inline-flex items-center justify-center gap-2 bg-ink text-paper font-mono text-xs uppercase tracking-[0.15em] px-5 py-3 border-2 border-ink"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Get Started
+                  Start Project
+                  <span className="relative -top-[1px] leading-none" aria-hidden>→</span>
                 </a>
               </div>
             </div>
