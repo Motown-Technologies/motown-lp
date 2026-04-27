@@ -1,158 +1,152 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
-// Reuse existing icons you already created
-import MobileIcon from "../../components/icons/MobileIcon.astro";
-import WebIcon from "../../components/icons/WebIcon.astro";
-
-// New icons from above
+import AiIcon from "../../components/icons/AiIcon.astro";
 import ApiIcon from "../../components/icons/ApiIcon.astro";
+import AutomationIcon from "../../components/icons/AutomationIcon.astro";
 import CloudIcon from "../../components/icons/CloudIcon.astro";
 import DatabaseIcon from "../../components/icons/DatabaseIcon.astro";
-import EnterpriseIcon from "../../components/icons/EnterpriseIcon.astro";
-
-import { Image } from "astro:assets";
-import agileImage from "../../img/agile-software-development-team-collaboration-whit.jpg";
+import SoftwareIcon from "../../components/icons/SoftwareIcon.astro";
 
 const capabilities = [
     {
-        title: "Web Applications",
-        desc: "Responsive, scalable web apps built with modern frameworks and best practices",
-        icon: WebIcon,
+        title: "Custom AI Models",
+        desc: "Models built for your domain — trained, distilled, or composed from open-source foundations.",
+        icon: AiIcon,
         bullets: [
-            "Custom dashboards & management systems",
-            "Progressive Web Apps",
-            "E-commerce & client portals",
-            "Integrations with third-party APIs & services",
+            "Domain-specific model design",
+            "Open-weight fine-tunes (Llama, Mistral, Qwen)",
+            "Distillation & smaller specialist models",
+            "Private deployment on your infrastructure",
         ],
     },
     {
-        title: "Enterprise Solutions",
-        desc: "Robust systems designed to scale with your growing business needs",
-        icon: EnterpriseIcon,
+        title: "LLM Fine-Tuning",
+        desc: "Adapt frontier models to your data, tone, and judgment — with rigorous evaluation at every step.",
+        icon: SoftwareIcon,
         bullets: [
-            "Custom CRM & ERP systems",
-            "Business intelligence dashboards",
-            "Workflow automation",
-            "Legacy system modernization",
+            "Supervised fine-tuning (SFT) & DPO",
+            "Instruction & preference datasets",
+            "Eval harness design & regression testing",
+            "Cost vs. quality tradeoff analysis",
         ],
     },
     {
-        title: "API Development",
-        desc: "Secure, well-documented APIs that power seamless integrations",
-        icon: ApiIcon,
-        bullets: [
-            "RESTful & GraphQL APIs",
-            "Third-party integrations",
-            "Scalable design & architecture",
-            "API security & authentication",
-        ],
-    },
-    {
-        title: "Cloud Solutions",
-        desc: "Cloud-native applications built for performance and reliability",
-        icon: CloudIcon,
-        bullets: [
-            "AWS, Azure, Google Cloud",
-            "Serverless architecture",
-            "Container orchestration",
-            "DevOps & CI/CD pipelines",
-        ],
-    },
-    {
-        title: "Mobile Backend",
-        desc: "Powerful backend systems that support mobile applications at scale",
-        icon: MobileIcon,
-        bullets: [
-            "Push notifications",
-            "User authentication & authorization",
-            "Real-time data sync",
-            "Analytics & monitoring",
-        ],
-    },
-    {
-        title: "Database Design",
-        desc: "Optimized data architecture for performance and scalability",
+        title: "RAG & Retrieval",
+        desc: "Wire your AI into the knowledge it actually needs — your docs, your data, your truth.",
         icon: DatabaseIcon,
         bullets: [
-            "SQL & NoSQL databases",
-            "Data modeling & optimization",
-            "Migration & replication",
-            "Backup & disaster recovery",
+            "Vector & hybrid search pipelines",
+            "Document chunking & embedding strategy",
+            "Query rewriting & re-ranking",
+            "Citation & grounding for trust",
+        ],
+    },
+    {
+        title: "AI Agents & Automation",
+        desc: "Multi-step agents that take action — drafting, deciding, and executing inside your workflows.",
+        icon: AutomationIcon,
+        bullets: [
+            "Tool-using agents & function calling",
+            "Long-horizon task planning",
+            "Human-in-the-loop checkpoints",
+            "Workflow integration with existing systems",
+        ],
+    },
+    {
+        title: "AI Integrations",
+        desc: "Bring AI into the products and tools your team already uses — without the vendor lock-in.",
+        icon: ApiIcon,
+        bullets: [
+            "Provider-agnostic abstractions",
+            "Streaming, batching, & cost controls",
+            "Identity, audit, & access policy",
+            "OpenAI, Anthropic, Google, open-source",
+        ],
+    },
+    {
+        title: "MLOps & Guardrails",
+        desc: "Production AI you can actually trust — monitored, evaluated, and safe by design.",
+        icon: CloudIcon,
+        bullets: [
+            "Online evals & drift detection",
+            "Prompt injection & safety guardrails",
+            "Cost, latency, & quality dashboards",
+            "Versioning, rollback, & A/B testing",
         ],
     },
 ];
 
 const process = [
     {
-        t: "Discovery & Planning",
-        d: "We analyze your requirements, define project scope, and create a detailed roadmap",
+        t: "Use Case & Feasibility",
+        d: "We map the business problem, identify where AI helps versus where it doesn't, and de-risk early with a clear evaluation plan.",
     },
     {
-        t: "Design & Architecture",
-        d: "Our team designs intuitive interfaces and scalable system architecture",
+        t: "Data & Eval Setup",
+        d: "We assess data readiness, build labeled eval sets, and define the metrics you'll judge the model on before any training begins.",
     },
     {
-        t: "Development & Testing",
-        d: "We build your solution using best practices with continuous testing and QA",
+        t: "Modeling & Iteration",
+        d: "Prompt, fine-tune, or train — we pick the simplest approach that meets the bar and iterate against your eval set.",
     },
     {
-        t: "Deployment & Support",
-        d: "We launch your application and provide ongoing maintenance and support",
+        t: "Deployment & Monitoring",
+        d: "We ship to production with guardrails, observability, and a feedback loop so the system gets better with use.",
     },
 ];
 
 const techBlocks = [
     {
-        title: "Frontend Technologies",
+        title: "Foundation Models",
         items: [
-            "React & Next.js",
-            "Vue.js & Nuxt",
-            "Angular",
-            "Astro",
-            "JavaScript & TypeScript",
-            "CSS & Tailwind",
+            "OpenAI (GPT, o-series)",
+            "Anthropic Claude",
+            "Google Gemini",
+            "Meta Llama",
+            "Mistral",
+            "Qwen & DeepSeek",
         ],
     },
     {
-        title: "Backend Technologies",
+        title: "Frameworks & Tooling",
         items: [
-            "Node.js & Express",
-            ".NET Core",
-            "Python & Django",
-            "PHP & Laravel",
-            "PostgreSQL",
-            "MySQL/MariaDB",
+            "PyTorch",
+            "Hugging Face",
+            "LangChain & LlamaIndex",
+            "DSPy",
+            "vLLM & Ollama",
+            "OpenAI Evals",
         ],
     },
     {
-        title: "Cloud & DevOps",
+        title: "Vector & Data",
         items: [
-            "AWS & Azure",
-            "Digital Ocean",
+            "Pinecone",
+            "Weaviate",
+            "Qdrant",
+            "pgvector",
+            "Postgres & S3",
+            "DuckDB & Parquet",
+        ],
+    },
+    {
+        title: "Deployment & Ops",
+        items: [
+            "AWS Bedrock",
+            "Azure OpenAI",
+            "Modal & Replicate",
+            "RunPod",
+            "Hugging Face Inference",
             "Docker & Kubernetes",
-            "GitHub Actions",
-            "Vercel & Netlify",
-            "CI/CD",
-        ],
-    },
-    {
-        title: "Mobile & More",
-        items: [
-            "React Native",
-            "Flutter",
-            "GraphQL",
-            "WebSockets",
-            "Stripe & Payments",
-            "Auth0 & OAuth",
         ],
     },
 ];
 ---
 
 <BaseLayout
-    meta_title="Software Development | Motown Solutions"
-    meta_description="Build custom software, scalable platforms, and secure applications tailored to your business goals."
+    meta_title="AI Development | Motown Solutions"
+    meta_description="Custom AI models, LLM fine-tuning, RAG, agents, and production MLOps. We build AI that solves real business problems — not generic chatbots."
 >
     <!-- Hero -->
     <section class="relative border-b-2 border-ink overflow-hidden">
@@ -165,25 +159,26 @@ const techBlocks = [
                             class="inline-block w-8 h-px bg-ink"></span>
                         <span
                             class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
-                            >Service / Software Development</span
+                            >Service / AI Development</span
                         >
                     </div>
                     <h1
                         class="font-display font-bold text-display text-ink text-balance"
                     >
-                        Building the future,
+                        AI that solves
                         <br />
-                        one <span class="italic text-accent">line</span> at a time
+                        real <span class="italic text-accent">problems</span>.
                     </h1>
                 </div>
                 <div class="col-span-12 lg:col-span-7 lg:col-start-4 mt-10 md:mt-16">
                     <p
                         class="text-lg md:text-xl text-ink-muted leading-relaxed text-pretty max-w-xl"
                     >
-                        Transform your vision into powerful, scalable software
-                        solutions. We craft custom applications that drive
-                        innovation and deliver measurable results for your
-                        business.
+                        We design custom AI models, fine-tune frontier LLMs to
+                        your data, and build production-grade AI systems for
+                        teams that need more than a generic chatbot. From
+                        private deployments to retrieval and agents, we make
+                        AI work where it matters.
                     </p>
                     <div class="mt-10 flex flex-wrap gap-3" data-reveal>
                         <a
@@ -234,8 +229,8 @@ const techBlocks = [
                     <p
                         class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
                     >
-                        From concept to deployment, we deliver enterprise-grade
-                        software solutions tailored to your unique needs
+                        End-to-end AI systems — model, retrieval, evaluation,
+                        and deployment — tuned to your problem and your data.
                     </p>
                 </div>
             </div>
@@ -297,7 +292,7 @@ const techBlocks = [
                     <h2
                         class="font-display font-bold text-h2 tracking-tight text-balance"
                     >
-                        Our Development Process
+                        Our AI Process
                     </h2>
                 </div>
                 <div
@@ -306,44 +301,30 @@ const techBlocks = [
                     <p
                         class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
                     >
-                        Our process focuses on communication, clarity, and
-                        craftsmanship — turning complex ideas into software
-                        that works beautifully and delivers results.
+                        We start from your problem, not the model — and only
+                        ship what we can measure.
                     </p>
                 </div>
             </div>
 
-            <div class="grid grid-cols-12 gap-6 md:gap-10 mb-12 md:mb-16">
-                <div class="col-span-12 md:col-span-5">
-                    <div class="border border-ink aspect-[4/3] overflow-hidden">
-                        <Image
-                            src={agileImage}
-                            alt="Development Process"
-                            class="w-full h-full object-cover"
-                        />
-                    </div>
-                </div>
-                <div class="col-span-12 md:col-span-7">
-                    <div class="border-t border-ink">
-                        {
-                            process.map((step) => (
-                                <div class="grid grid-cols-12 gap-4 md:gap-8 items-start py-8 px-1 border-b border-ink">
-                                    <h3 class="col-span-12 md:col-span-5 font-display text-xl md:text-2xl font-bold tracking-tight leading-tight">
-                                        {step.t}
-                                    </h3>
-                                    <p class="col-span-12 md:col-span-7 md:pl-4 text-ink-muted leading-relaxed text-sm md:text-base">
-                                        {step.d}
-                                    </p>
-                                </div>
-                            ))
-                        }
-                    </div>
-                </div>
+            <div class="border-t border-ink">
+                {
+                    process.map((step) => (
+                        <div class="grid grid-cols-12 gap-4 md:gap-8 items-start py-8 px-1 border-b border-ink">
+                            <h3 class="col-span-12 md:col-span-5 font-display text-xl md:text-2xl font-bold tracking-tight leading-tight">
+                                {step.t}
+                            </h3>
+                            <p class="col-span-12 md:col-span-7 md:pl-4 text-ink-muted leading-relaxed text-sm md:text-base">
+                                {step.d}
+                            </p>
+                        </div>
+                    ))
+                }
             </div>
         </div>
     </section>
 
-    <!-- Technologies -->
+    <!-- Stack -->
     <section class="py-20 md:py-28" data-reveal>
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
@@ -360,7 +341,7 @@ const techBlocks = [
                     <h2
                         class="font-display font-bold text-h2 tracking-tight text-balance"
                     >
-                        Technologies We Master
+                        Models & Tools We Use
                     </h2>
                 </div>
                 <div
@@ -369,8 +350,9 @@ const techBlocks = [
                     <p
                         class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
                     >
-                        We leverage cutting-edge technologies to build robust,
-                        scalable solutions
+                        Provider-agnostic by default. We pick the right model
+                        for the job — proprietary, open, or somewhere in
+                        between.
                     </p>
                 </div>
             </div>
@@ -423,13 +405,11 @@ const techBlocks = [
             <h2
                 class="font-display font-bold text-display text-paper text-balance mb-10 max-w-5xl leading-[0.95]"
             >
-                Ready to Build Something <span class="italic text-accent"
-                    >Amazing</span
-                >?
+                Ready to put AI to <span class="italic text-accent">work</span>?
             </h2>
             <p class="text-lg md:text-xl text-paper/70 max-w-xl mb-10">
-                Let's discuss your project and turn your ideas into reality.
-                Our team is ready to help you succeed.
+                Tell us the problem you're trying to solve. We'll tell you
+                whether AI is the right tool — and how we'd build it if it is.
             </p>
             <div class="flex flex-wrap gap-3">
                 <a

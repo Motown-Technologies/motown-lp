@@ -1,0 +1,64 @@
+---
+interface Props {
+    title: string;
+    description?: string;
+    href?: string;
+    class?: string;
+}
+
+const {
+    title,
+    description,
+    href,
+    class: className = "",
+} = Astro.props;
+
+const Tag = href ? "a" : "div";
+---
+
+<Tag
+    href={href}
+    class:list={[
+        "group relative block border-t border-ink/30 hover:border-ink transition-colors",
+        "last:border-b",
+        className,
+    ]}
+>
+    <span
+        aria-hidden
+        class="pointer-events-none absolute inset-0 bg-ink origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+    ></span>
+
+    <div
+        class="relative grid grid-cols-12 gap-4 md:gap-8 items-center py-8 md:py-10 px-4 md:px-6 transition-colors group-hover:text-paper"
+    >
+        <div class="col-span-12 md:col-span-6">
+            <h3
+                class="font-display text-3xl md:text-5xl font-bold tracking-tight leading-[1]"
+            >
+                {title}
+            </h3>
+        </div>
+        {
+            description && (
+                <div class="col-span-12 md:col-span-5 md:pl-4">
+                    <p class="text-base md:text-lg leading-relaxed text-ink-muted group-hover:text-paper/80">
+                        {description}
+                    </p>
+                </div>
+            )
+        }
+        {
+            href && (
+                <div class="col-span-12 md:col-span-1 md:text-right">
+                    <span
+                        aria-hidden
+                        class="inline-block font-mono text-xl md:text-2xl transition-transform group-hover:translate-x-1"
+                    >
+                        →
+                    </span>
+                </div>
+            )
+        }
+    </div>
+</Tag>

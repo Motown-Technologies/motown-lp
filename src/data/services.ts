@@ -21,6 +21,20 @@ const services: Service[] = [
         ],
         href: "/services/software-development",
     },
+    {
+        icon: "ai",
+        title: "AI Development",
+        description:
+            "We design custom AI models, fine-tune frontier LLMs to your data, and build production-grade AI systems that solve real business problems — not generic chatbots. From private deployments to retrieval and agents, we make AI work where it matters.",
+        bullets: [
+            "Custom AI Model Development",
+            "LLM Fine-Tuning & Evaluation",
+            "Retrieval-Augmented Generation (RAG)",
+            "AI Agents & Workflow Automation",
+            "MLOps, Guardrails & Monitoring",
+        ],
+        href: "/services/ai-development",
+    },
     // {
     //     icon: "marketing",
     //     title: "Digital Marketing",

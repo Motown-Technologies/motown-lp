@@ -1,6 +1,11 @@
 ---
 import { ClientRouter } from "astro:transitions";
 import { Navigation } from "../components/Navigation";
+
+import "@fontsource-variable/space-grotesk";
+import "@fontsource-variable/inter";
+import "@fontsource-variable/jetbrains-mono";
+
 const { meta_title, meta_description } = Astro.props;
 ---
 
@@ -17,58 +22,229 @@ const { meta_title, meta_description } = Astro.props;
                 color-scheme: light;
             }
 
-            .section-dark {
-                background-color: #0f172a;
-                color: #e2e8f0;
+            html {
+                background-color: #f5f2ea;
             }
 
-            .section-dark .text-slate-900 {
-                color: #f8fafc;
+            body {
+                font-feature-settings: "ss01", "cv11";
             }
 
-            .section-dark .text-slate-700 {
-                color: #e2e8f0;
+            ::selection {
+                background-color: #0b0b0c;
+                color: #f5f2ea;
             }
 
-            .section-dark .text-slate-600 {
-                color: #cbd5f5;
+            .section-ink {
+                background-color: #0b0b0c;
+                color: #f5f2ea;
             }
 
-            .section-dark .text-slate-500 {
-                color: #94a3b8;
+            .section-ink .text-ink {
+                color: #f5f2ea;
             }
 
-            .section-dark .text-slate-400 {
-                color: #94a3b8;
+            .section-ink .text-ink-muted {
+                color: #a1a1a6;
             }
 
-            .section-dark .border-slate-200 {
-                border-color: rgba(148, 163, 184, 0.22);
+            .section-ink .border-ink {
+                border-color: #f5f2ea;
             }
 
-            .section-dark .border-slate-300 {
-                border-color: rgba(148, 163, 184, 0.38);
+            .section-ink .bg-paper,
+            .section-ink .bg-paper-2 {
+                background-color: #0b0b0c;
             }
 
-            .section-dark .bg-white,
-            .section-dark .bg-\[\#f7f8fc\],
-            .section-dark .bg-\[\#f1f5f9\] {
-                background-color: #111827;
+            .section-ink .hover\:bg-ink:hover {
+                background-color: #f5f2ea;
+                color: #0b0b0c;
             }
 
-            .section-dark .hover\:bg-slate-100:hover {
-                background-color: rgba(148, 163, 184, 0.12);
+            /* Scroll reveal: initial hidden state, revealed via data attr */
+            [data-reveal] {
+                opacity: 0;
+                transform: translateY(8px);
+                transition:
+                    opacity 600ms ease,
+                    transform 600ms ease;
+                will-change: opacity, transform;
+            }
+
+            [data-reveal].is-revealed {
+                opacity: 1;
+                transform: none;
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                [data-reveal] {
+                    opacity: 1;
+                    transform: none;
+                    transition: none;
+                }
+            }
+
+            /* Link underline draw — used on nav and inline links */
+            .link-underline {
+                background-image: linear-gradient(currentColor, currentColor);
+                background-size: 0% 1.5px;
+                background-repeat: no-repeat;
+                background-position: 0 100%;
+                transition: background-size 220ms ease;
+            }
+
+            .link-underline:hover,
+            .link-underline:focus-visible {
+                background-size: 100% 1.5px;
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .link-underline {
+                    transition: none;
+                }
             }
         </style>
     </head>
-    <body class="pt-28 bg-[#f7f8fc] text-slate-900">
+    <body class="font-sans bg-paper text-ink antialiased">
         <Navigation client:load />
         <slot />
         <!-- Footer -->
-        <footer class="py-8 bg-[#f7f8fc] border-t border-slate-200">
-            <div class="max-w-7xl mx-auto px-6 text-center text-slate-500">
-                <p>&copy; 2025 Motown Tech. Where Ideas Become Reality.</p>
+        <footer class="border-t-2 border-ink bg-paper">
+            <div class="max-w-7xl mx-auto px-6 py-16">
+                <div class="grid gap-10 md:grid-cols-12">
+                    <div class="md:col-span-6">
+                        <div class="font-display text-4xl md:text-5xl font-bold leading-none tracking-tight mb-4">
+                            Motown Solutions
+                        </div>
+                        <p class="text-ink-muted max-w-md leading-relaxed">
+                            Where ideas become reality. Custom software, web,
+                            mobile, automation, and consulting for teams with
+                            ambition.
+                        </p>
+                    </div>
+                    <div class="md:col-span-3">
+                        <div class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted mb-4">
+                            — Sitemap
+                        </div>
+                        <ul class="space-y-2">
+                            <li>
+                                <a
+                                    href="/"
+                                    class="link-underline font-medium"
+                                    >Home</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="/about"
+                                    class="link-underline font-medium"
+                                    >About</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="/services"
+                                    class="link-underline font-medium"
+                                    >Services</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="/contact"
+                                    class="link-underline font-medium"
+                                    >Contact</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="md:col-span-3">
+                        <div class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted mb-4">
+                            — Services
+                        </div>
+                        <ul class="space-y-2">
+                            <li>
+                                <a
+                                    href="/services/software-development"
+                                    class="link-underline font-medium"
+                                    >Software</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="/services/ai-development"
+                                    class="link-underline font-medium"
+                                    >AI</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="/services/web-design"
+                                    class="link-underline font-medium"
+                                    >Web</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="/services/mobile-development"
+                                    class="link-underline font-medium"
+                                    >Mobile</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="/services/automation"
+                                    class="link-underline font-medium"
+                                    >Automation</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="/services/consulting"
+                                    class="link-underline font-medium"
+                                    >Consulting</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-14 pt-6 border-t border-ink/20 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                    <p class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted">
+                        &copy; 2025 Motown Solutions — Where Ideas Become Reality
+                    </p>
+                    <div class="flex items-center gap-5 font-mono text-xs uppercase tracking-eyebrow text-ink-muted">
+                        <a href="/terms" class="link-underline">Terms</a>
+                        <span aria-hidden>·</span>
+                        <a href="/privacy" class="link-underline">Privacy</a>
+                    </div>
+                </div>
             </div>
         </footer>
+
+        <script is:inline>
+            (() => {
+                const reveal = () => {
+                    const els = document.querySelectorAll("[data-reveal]");
+                    if (!("IntersectionObserver" in window)) {
+                        els.forEach((el) => el.classList.add("is-revealed"));
+                        return;
+                    }
+                    const io = new IntersectionObserver(
+                        (entries) => {
+                            entries.forEach((entry) => {
+                                if (entry.isIntersecting) {
+                                    entry.target.classList.add("is-revealed");
+                                    io.unobserve(entry.target);
+                                }
+                            });
+                        },
+                        { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+                    );
+                    els.forEach((el) => io.observe(el));
+                };
+                reveal();
+                document.addEventListener("astro:page-load", reveal);
+            })();
+        </script>
     </body>
 </html>

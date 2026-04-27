@@ -1,916 +1,425 @@
 ---
-import Card from "../../components/Card.astro";
-import CardIcon from "../../components/CardIcon.astro";
-import CardTitle from "../../components/CardTitle.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 import { Image } from "astro:assets";
 
 import processImage from "../../img/business-automation-dashboard-with-analytics-and-w.jpg";
-import bannerImage from "../../img/robotic-process-automation-with-digital-workflows-.jpg";
+
+const solutions = [
+    {
+        title: "Business Process Automation",
+        desc: "Streamline your operations with intelligent workflow automation",
+        iconPath:
+            "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4",
+        bullets: [
+            "Document processing & routing",
+            "Approval workflows",
+            "Data entry automation",
+            "Report generation",
+        ],
+    },
+    {
+        title: "Marketing Automation",
+        desc: "Engage customers with personalized, automated marketing campaigns",
+        iconPath:
+            "M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z",
+        bullets: [
+            "Email campaign automation",
+            "Lead nurturing workflows",
+            "Social media scheduling",
+            "Customer segmentation",
+        ],
+    },
+    {
+        title: "Data Integration",
+        desc: "Connect your systems and automate data flow across platforms",
+        iconPath:
+            "M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4",
+        bullets: [
+            "API integrations",
+            "Real-time data sync",
+            "ETL pipelines",
+            "Database automation",
+        ],
+    },
+    {
+        title: "RPA Solutions",
+        desc: "Deploy software robots to handle repetitive, rule-based tasks",
+        iconPath:
+            "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+        bullets: [
+            "Screen scraping & data extraction",
+            "Invoice processing",
+            "Form filling automation",
+            "Legacy system automation",
+        ],
+    },
+    {
+        title: "AI-Powered Automation",
+        desc: "Leverage artificial intelligence for intelligent decision-making",
+        iconPath:
+            "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z",
+        bullets: [
+            "Natural language processing",
+            "Predictive analytics",
+            "Chatbots & virtual assistants",
+            "Intelligent document processing",
+        ],
+    },
+    {
+        title: "Custom Automation",
+        desc: "Tailored automation solutions designed for your unique needs",
+        iconPath:
+            "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z",
+        bullets: [
+            "Custom workflow design",
+            "Industry-specific solutions",
+            "Integration with existing systems",
+            "Scalable architecture",
+        ],
+    },
+];
+
+const benefits = [
+    {
+        title: "Increase Efficiency",
+        desc: "Eliminate manual tasks and reduce processing time dramatically",
+    },
+    {
+        title: "Reduce Errors",
+        desc: "Automated processes ensure consistency and accuracy every time",
+    },
+    {
+        title: "Save Hours Per Week",
+        desc: "Free your team to focus on strategic, high-value activities",
+    },
+    {
+        title: "Return On Investment",
+        desc: "See measurable returns on your automation investment quickly",
+    },
+];
+
+const process = [
+    {
+        t: "Discovery",
+        d: "We analyze your processes to identify automation opportunities",
+    },
+    {
+        t: "Design",
+        d: "Create detailed automation workflows and integration plans",
+    },
+    {
+        t: "Implement",
+        d: "Build and test automation solutions with your team",
+    },
+    {
+        t: "Optimize",
+        d: "Monitor performance and continuously improve automation",
+    },
+];
 ---
 
-<BaseLayout meta_title="Automation | Motown Tech" meta_description="Automate workflows and eliminate manual work with smart integrations and intelligent process design.">
-    <main class="min-h-screen bg-[#f7f8fc]">
-        <!-- Hero Section -->
-        <section
-            class="relative overflow-hidden bg-gradient-to-b from-[#f8fafc] to-[#eef2ff] pt-8 pb-24"
-        >
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <div class="inline-block mb-4">
-                            <span
-                                class="text-[#2563eb] text-sm font-semibold tracking-wider uppercase"
-                                >Automation</span
-                            >
-                        </div>
-                        <h1
-                            class="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 mb-6 leading-tight text-balance"
+<BaseLayout
+    meta_title="Automation | Motown Solutions"
+    meta_description="Automate workflows and eliminate manual work with smart integrations and intelligent process design."
+>
+    <!-- Hero -->
+    <section class="relative border-b-2 border-ink overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 pt-16 md:pt-24 pb-20 md:pb-28">
+            <div class="grid grid-cols-12 gap-6">
+                <div class="col-span-12 lg:col-span-10">
+                    <div class="flex items-center gap-3 mb-8">
+                        <span
+                            aria-hidden
+                            class="inline-block w-8 h-px bg-ink"></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >Service / Automation</span
                         >
-                            Work smarter, not harder
-                        </h1>
-                        <p
-                            class="text-xl text-slate-600 leading-relaxed mb-8 text-pretty"
-                        >
-                            Transform your business operations with intelligent
-                            automation solutions. We help you eliminate
-                            repetitive tasks, reduce errors, and free your team
-                            to focus on what matters most.
-                        </p>
-                        <div class="flex flex-wrap gap-4">
-                            <a
-                                href="/contact"
-                                class="px-8 py-4 bg-[#2563eb] text-white font-semibold rounded-lg hover:bg-[#1d4ed8] transition-colors"
-                            >
-                                Automate Your Workflow
-                            </a>
-                            <a
-                                href="#solutions"
-                                class="px-8 py-4 bg-transparent border-2 border-slate-300 text-slate-700 font-semibold rounded-lg hover:bg-slate-100 transition-colors"
-                            >
-                                View Solutions
-                            </a>
-                        </div>
                     </div>
-
-                    <div class="relative">
-                        <div
-                            class="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-[#2563eb]/10 to-transparent border border-[#2563eb]/20"
+                    <h1
+                        class="font-display font-bold text-display text-ink text-balance"
+                    >
+                        Work smarter,
+                        <br />
+                        not <span class="italic text-accent">harder</span>
+                    </h1>
+                </div>
+                <div class="col-span-12 lg:col-span-7 lg:col-start-4 mt-10 md:mt-16">
+                    <p
+                        class="text-lg md:text-xl text-ink-muted leading-relaxed text-pretty max-w-xl"
+                    >
+                        Transform your business operations with intelligent
+                        automation solutions. We help you eliminate repetitive
+                        tasks, reduce errors, and free your team to focus on
+                        what matters most.
+                    </p>
+                    <div class="mt-10 flex flex-wrap gap-3" data-reveal>
+                        <a
+                            href="/contact"
+                            class="group inline-flex items-center gap-2 bg-ink text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-ink hover:bg-paper hover:text-ink transition-colors"
                         >
-                            <Image
-                                src={bannerImage}
-                                alt="Automation Solutions"
-                                class="w-full h-full object-cover opacity-80"
-                            />
-                        </div>
+                            Automate Your Workflow
+                            <span
+                                class="transition-transform group-hover:translate-x-0.5"
+                                aria-hidden>→</span
+                            >
+                        </a>
+                        <a
+                            href="#solutions"
+                            class="inline-flex items-center gap-2 bg-transparent text-ink font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-ink hover:bg-ink hover:text-paper transition-colors"
+                        >
+                            View Solutions
+                        </a>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Solutions Section -->
-        <section id="solutions" class="py-24 bg-[#f7f8fc]">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+    <!-- Solutions -->
+    <section id="solutions" class="py-20 md:py-28" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span
+                            aria-hidden
+                            class="inline-block w-8 h-px bg-ink"></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >Solutions</span
+                        >
+                    </div>
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
                         Automation Solutions
                     </h2>
+                </div>
+                <div
+                    class="col-span-12 md:col-span-5 md:col-start-8 md:self-end"
+                >
                     <p
-                        class="text-xl text-slate-600 max-w-3xl mx-auto text-pretty"
+                        class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
                     >
                         From simple task automation to complex workflow
                         orchestration, we deliver solutions that drive
                         efficiency
                     </p>
                 </div>
+            </div>
 
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Business Process Automation -->
-                    <Card>
-                        <CardIcon>
-                            <svg
-                                class="w-6 h-6 text-[#2563eb]"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
-                                ></path>
-                            </svg>
-                        </CardIcon>
-                        <CardTitle> Business Process Automation </CardTitle>
-                        <p class="text-slate-600 mb-6 leading-relaxed">
-                            Streamline your operations with intelligent workflow
-                            automation
-                        </p>
-                        <ul class="space-y-3">
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Document processing & routing</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Approval workflows</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Data entry automation</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Report generation</span
-                                >
-                            </li>
-                        </ul>
-                    </Card>
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border border-ink"
+            >
+                {
+                    solutions.map((sol) => (
+                        <div class="p-8 md:p-10 border-ink border-b border-r last:border-b-0 md:[&:nth-last-child(-n+2)]:border-b-0 lg:[&:nth-last-child(-n+3)]:border-b-0 md:[&:nth-child(even)]:border-r-0 lg:[&:nth-child(3n)]:border-r-0 lg:[&:nth-child(even)]:border-r">
+                            <div class="flex items-center gap-4 mb-6">
+                                <span class="w-10 h-10 border-[1.5px] border-ink flex items-center justify-center">
+                                    <svg
+                                        class="w-5 h-5"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d={sol.iconPath}
+                                        />
+                                    </svg>
+                                </span>
+                            </div>
+                            <h3 class="font-display text-2xl md:text-3xl font-bold tracking-tight leading-tight mb-3">
+                                {sol.title}
+                            </h3>
+                            <p class="text-ink-muted leading-relaxed mb-5">
+                                {sol.desc}
+                            </p>
+                            <ul class="space-y-2 text-sm">
+                                {sol.bullets.map((b) => (
+                                    <li class="flex items-start gap-3">
+                                        <span
+                                            aria-hidden
+                                            class="font-mono mt-[2px]"
+                                        >
+                                            →
+                                        </span>
+                                        <span>{b}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
 
-                    <!-- Marketing Automation -->
-                    <Card>
-                        <CardIcon>
-                            <svg
-                                class="w-6 h-6 text-[#2563eb]"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"
-                                ></path>
-                            </svg>
-                        </CardIcon>
-                        <CardTitle> Marketing Automation </CardTitle>
-                        <p class="text-slate-600 mb-6 leading-relaxed">
-                            Engage customers with personalized, automated
-                            marketing campaigns
-                        </p>
-                        <ul class="space-y-3">
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Email campaign automation</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Lead nurturing workflows</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Social media scheduling</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Customer segmentation</span
-                                >
-                            </li>
-                        </ul>
-                    </Card>
-
-                    <!-- Data Integration -->
-                    <Card>
-                        <CardIcon>
-                            <svg
-                                class="w-6 h-6 text-[#2563eb]"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"
-                                ></path>
-                            </svg>
-                        </CardIcon>
-                        <CardTitle> Data Integration </CardTitle>
-                        <p class="text-slate-600 mb-6 leading-relaxed">
-                            Connect your systems and automate data flow across
-                            platforms
-                        </p>
-                        <ul class="space-y-3">
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >API integrations</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Real-time data sync</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700">ETL pipelines</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Database automation</span
-                                >
-                            </li>
-                        </ul>
-                    </Card>
-
-                    <!-- RPA Solutions -->
-                    <Card>
-                        <CardIcon>
-                            <svg
-                                class="w-6 h-6 text-[#2563eb]"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                                ></path>
-                            </svg>
-                        </CardIcon>
-                        <CardTitle> RPA Solutions </CardTitle>
-                        <p class="text-slate-600 mb-6 leading-relaxed">
-                            Deploy software robots to handle repetitive,
-                            rule-based tasks
-                        </p>
-                        <ul class="space-y-3">
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Screen scraping & data extraction</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Invoice processing</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Form filling automation</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Legacy system automation</span
-                                >
-                            </li>
-                        </ul>
-                    </Card>
-
-                    <!-- AI-Powered Automation -->
-                    <Card>
-                        <CardIcon>
-                            <svg
-                                class="w-6 h-6 text-[#2563eb]"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-                                ></path>
-                            </svg>
-                        </CardIcon>
-                        <CardTitle> AI-Powered Automation </CardTitle>
-                        <p class="text-slate-600 mb-6 leading-relaxed">
-                            Leverage artificial intelligence for intelligent
-                            decision-making
-                        </p>
-                        <ul class="space-y-3">
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Natural language processing</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Predictive analytics</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Chatbots & virtual assistants</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Intelligent document processing</span
-                                >
-                            </li>
-                        </ul>
-                    </Card>
-
-                    <!-- Custom Automation -->
-                    <Card>
-                        <CardIcon>
-                            <svg
-                                class="w-6 h-6 text-[#2563eb]"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                                ></path>
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                            </svg>
-                        </CardIcon>
-                        <CardTitle> Custom Automation </CardTitle>
-                        <p class="text-slate-600 mb-6 leading-relaxed">
-                            Tailored automation solutions designed for your
-                            unique needs
-                        </p>
-                        <ul class="space-y-3">
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Custom workflow design</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Industry-specific solutions</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Integration with existing systems</span
-                                >
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <svg
-                                    class="w-5 h-5 text-[#2563eb] flex-shrink-0 mt-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <span class="text-slate-700"
-                                    >Scalable architecture</span
-                                >
-                            </li>
-                        </ul>
-                    </Card>
+    <!-- Benefits -->
+    <section class="border-t-2 border-ink bg-paper-2" data-reveal>
+        <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span
+                            aria-hidden
+                            class="inline-block w-8 h-px bg-ink"></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >Why Automate</span
+                        >
+                    </div>
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        Why Automate with Motown Solutions?
+                    </h2>
+                </div>
+                <div
+                    class="col-span-12 md:col-span-5 md:col-start-8 md:self-end"
+                >
+                    <p
+                        class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
+                    >
+                        Our automation solutions deliver measurable results
+                        that transform your business operations and drive
+                        growth.
+                    </p>
                 </div>
             </div>
-        </section>
 
-        <!-- Benefits Section -->
-        <section class="py-24 section-dark">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="grid lg:grid-cols-2 gap-16 items-center">
-                    <div>
-                        <h2
-                            class="text-4xl md:text-5xl font-bold text-slate-900 mb-6"
-                        >
-                            Why Automate with Motown Tech?
-                        </h2>
-                        <p
-                            class="text-xl text-slate-600 mb-8 leading-relaxed text-pretty"
-                        >
-                            Our automation solutions deliver measurable results
-                            that transform your business operations and drive
-                            growth.
-                        </p>
-
-                        <div class="space-y-6">
-                            <div class="flex gap-4">
-                                <div class="flex-shrink-0">
-                                    <svg
-                                        class="w-8 h-8 text-[#2563eb]"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3
-                                        class="text-xl font-bold text-slate-900 mb-2"
-                                    >
-                                        Increase Efficiency
-                                    </h3>
-                                    <p class="text-slate-600 leading-relaxed">
-                                        Eliminate manual tasks and reduce
-                                        processing time dramatically
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="flex gap-4">
-                                <div class="flex-shrink-0">
-                                    <svg
-                                        class="w-8 h-8 text-[#2563eb]"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3
-                                        class="text-xl font-bold text-slate-900 mb-2"
-                                    >
-                                        Reduce Errors
-                                    </h3>
-                                    <p class="text-slate-600 leading-relaxed">
-                                        Automated processes ensure consistency
-                                        and accuracy every time
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="flex gap-4">
-                                <div class="flex-shrink-0">
-                                    <svg
-                                        class="w-8 h-8 text-[#2563eb]"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3
-                                        class="text-xl font-bold text-slate-900 mb-2"
-                                    >
-                                        Save Hours Per Week
-                                    </h3>
-                                    <p class="text-slate-600 leading-relaxed">
-                                        Free your team to focus on strategic,
-                                        high-value activities
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="flex gap-4">
-                                <div class="flex-shrink-0">
-                                    <svg
-                                        class="w-8 h-8 text-[#2563eb]"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3
-                                        class="text-xl font-bold text-slate-900 mb-2"
-                                    >
-                                        Return On Investment
-                                    </h3>
-                                    <p class="text-slate-600 leading-relaxed">
-                                        See measurable returns on your
-                                        automation investment quickly
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+            <div class="grid grid-cols-12 gap-6 md:gap-10">
+                <div class="col-span-12 md:col-span-5">
+                    <div class="border border-ink aspect-[4/3] overflow-hidden">
+                        <Image
+                            src={processImage}
+                            alt="Automation Benefits"
+                            class="w-full h-full object-cover"
+                        />
                     </div>
-
-                    <div class="relative">
-                        <div
-                            class="aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-[#2563eb]/10 to-transparent border border-[#2563eb]/20"
-                        >
-                            <Image
-                                src={processImage}
-                                alt="Automation Benefits"
-                                class="w-full h-full object-cover opacity-80"
-                            />
-                        </div>
+                </div>
+                <div class="col-span-12 md:col-span-7">
+                    <div class="border-t border-ink">
+                        {
+                            benefits.map((b) => (
+                                <div class="grid grid-cols-12 gap-4 md:gap-8 items-start py-8 px-1 border-b border-ink">
+                                    <h3 class="col-span-12 md:col-span-5 font-display text-xl md:text-2xl font-bold tracking-tight leading-tight">
+                                        {b.title}
+                                    </h3>
+                                    <p class="col-span-12 md:col-span-7 md:pl-4 text-ink-muted leading-relaxed text-sm md:text-base">
+                                        {b.desc}
+                                    </p>
+                                </div>
+                            ))
+                        }
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Process Section -->
-        <section class="py-24 bg-[#f7f8fc]">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+    <!-- Process -->
+    <section class="py-20 md:py-28" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span
+                            aria-hidden
+                            class="inline-block w-8 h-px bg-ink"></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >Process</span
+                        >
+                    </div>
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
                         Our Automation Process
                     </h2>
+                </div>
+                <div
+                    class="col-span-12 md:col-span-5 md:col-start-8 md:self-end"
+                >
                     <p
-                        class="text-xl text-slate-600 max-w-3xl mx-auto text-pretty"
+                        class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
                     >
                         A proven methodology that delivers automation solutions
                         on time and within budget
                     </p>
                 </div>
-
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="text-center">
-                        <div
-                            class="w-16 h-16 bg-[#2563eb] rounded-full flex items-center justify-center text-white font-bold text-2xl mx-auto mb-6"
-                        >
-                            1
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-3">
-                            Discovery
-                        </h3>
-                        <p class="text-slate-600 leading-relaxed">
-                            We analyze your processes to identify automation
-                            opportunities
-                        </p>
-                    </div>
-
-                    <div class="text-center">
-                        <div
-                            class="w-16 h-16 bg-[#2563eb] rounded-full flex items-center justify-center text-white font-bold text-2xl mx-auto mb-6"
-                        >
-                            2
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-3">
-                            Design
-                        </h3>
-                        <p class="text-slate-600 leading-relaxed">
-                            Create detailed automation workflows and integration
-                            plans
-                        </p>
-                    </div>
-
-                    <div class="text-center">
-                        <div
-                            class="w-16 h-16 bg-[#2563eb] rounded-full flex items-center justify-center text-white font-bold text-2xl mx-auto mb-6"
-                        >
-                            3
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-3">
-                            Implement
-                        </h3>
-                        <p class="text-slate-600 leading-relaxed">
-                            Build and test automation solutions with your team
-                        </p>
-                    </div>
-
-                    <div class="text-center">
-                        <div
-                            class="w-16 h-16 bg-[#2563eb] rounded-full flex items-center justify-center text-white font-bold text-2xl mx-auto mb-6"
-                        >
-                            4
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-3">
-                            Optimize
-                        </h3>
-                        <p class="text-slate-600 leading-relaxed">
-                            Monitor performance and continuously improve
-                            automation
-                        </p>
-                    </div>
-                </div>
             </div>
-        </section>
 
-        <!-- CTA Section -->
-        <section id="contact" class="py-24 section-dark">
-            <div class="max-w-4xl mx-auto px-6 text-center">
-                <h2
-                    class="text-4xl md:text-5xl font-bold text-slate-900 mb-6 text-balance"
-                >
-                    Ready to Transform Your Business?
-                </h2>
-                <p
-                    class="text-xl text-slate-600 mb-10 leading-relaxed text-pretty"
-                >
-                    Let's discuss how automation can help you work smarter and
-                    achieve more. Schedule a free consultation today.
-                </p>
-                <div class="flex flex-wrap gap-4 justify-center">
-                    <a
-                        href="/contact"
-                        class="px-8 py-4 bg-[#2563eb] text-white font-semibold rounded-lg hover:bg-[#1d4ed8] transition-colors"
-                    >
-                        Get Started
-                    </a>
-                    <a
-                        href="/"
-                        class="px-8 py-4 bg-transparent border-2 border-slate-300 text-slate-700 font-semibold rounded-lg hover:bg-slate-100 transition-colors"
-                    >
-                        View All Services
-                    </a>
-                </div>
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border border-ink"
+            >
+                {
+                    process.map((step) => (
+                        <div class="p-8 md:p-10 border-ink border-b lg:border-b-0 md:[&:nth-last-child(-n+2)]:border-b-0 md:[&:nth-child(odd)]:border-r lg:border-r lg:[&:nth-child(odd)]:border-r lg:last:border-r-0">
+                            <h3 class="font-display text-2xl md:text-3xl font-bold tracking-tight leading-tight mb-4">
+                                {step.t}
+                            </h3>
+                            <p class="text-ink-muted leading-relaxed">
+                                {step.d}
+                            </p>
+                        </div>
+                    ))
+                }
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section
+        id="contact"
+        class="section-ink border-t-2 border-ink"
+        data-reveal
+    >
+        <div
+            class="max-w-7xl mx-auto px-6 py-24 md:py-36 flex flex-col items-start"
+        >
+            <div class="flex items-center gap-3 mb-8">
+                <span
+                    aria-hidden
+                    class="inline-block w-8 h-px bg-paper"></span>
+                <span
+                    class="font-mono text-xs uppercase tracking-eyebrow text-paper/60"
+                    >Let's Build</span
+                >
+            </div>
+            <h2
+                class="font-display font-bold text-display text-paper text-balance mb-10 max-w-5xl leading-[0.95]"
+            >
+                Ready to Transform Your <span class="italic text-accent"
+                    >Business</span
+                >?
+            </h2>
+            <p class="text-lg md:text-xl text-paper/70 max-w-xl mb-10">
+                Let's discuss how automation can help you work smarter and
+                achieve more. Schedule a free consultation today.
+            </p>
+            <div class="flex flex-wrap gap-3">
+                <a
+                    href="/contact"
+                    class="group inline-flex items-center gap-2 bg-paper text-ink font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-paper hover:bg-ink hover:text-paper transition-colors"
+                >
+                    Get Started
+                    <span
+                        class="transition-transform group-hover:translate-x-0.5"
+                        aria-hidden>→</span
+                    >
+                </a>
+                <a
+                    href="/"
+                    class="inline-flex items-center gap-2 bg-transparent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-paper hover:bg-paper hover:text-ink transition-colors"
+                >
+                    View All Services
+                </a>
+            </div>
+        </div>
+    </section>
 </BaseLayout>

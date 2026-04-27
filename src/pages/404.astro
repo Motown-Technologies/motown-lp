@@ -1,197 +1,92 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const quickLinks = [
+    { href: "/services/software-development", label: "Software Development" },
+    { href: "/services/mobile-development", label: "Mobile Development" },
+    { href: "/about", label: "About Us" },
+    { href: "/contact", label: "Contact Us" },
+];
 ---
 
-<BaseLayout meta_title="Page Not Found | Motown Tech" meta_description="The page you are looking for could not be found. Explore Motown Tech services and resources.">
-    <main
-        class="min-h-screen bg-[#f7f8fc] flex items-center justify-center px-6"
-    >
-        <div class="max-w-4xl mx-auto text-center">
-            <!-- 404 Large Text -->
-            <div class="mb-8">
-                <h1
-                    class="text-[clamp(6rem,16vw,18rem)] font-black leading-none text-slate-300/70 drop-shadow-[0_0_50px_rgba(37,99,235,0.35)]"
+<BaseLayout
+    meta_title="Page Not Found | Motown Solutions"
+    meta_description="The page you are looking for could not be found. Explore Motown Solutions services and resources."
+>
+    <section class="relative border-b-2 border-ink overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 pt-16 md:pt-24 pb-20 md:pb-28">
+            <div class="flex items-center gap-3 mb-8">
+                <span
+                    aria-hidden
+                    class="inline-block w-8 h-px bg-ink"></span>
+                <span
+                    class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                    >Error / 404</span
                 >
-                    <span
-                        class="inline-block bg-gradient-to-b from-[#93c5fd] via-[#2563eb] to-[#1e3a8a] bg-clip-text text-transparent"
-                    >
-                        404
-                    </span>
-                </h1>
             </div>
-
-            <!-- Error Message -->
-            <div class="mb-12">
-                <h2
-                    class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 text-balance"
-                >
-                    Oops! Page Not Found
-                </h2>
-                <p
-                    class="text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto text-pretty"
-                >
-                    The page you're looking for seems to have wandered off into
-                    the digital void. Don't worry, we'll help you get back on
-                    track.
-                </p>
-            </div>
-
-            <!-- Action Buttons -->
-            <div
-                class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
+            <h1
+                class="font-display font-black leading-[0.9] tracking-[-0.04em] text-[clamp(6rem,20vw,20rem)]"
             >
+                4<span class="italic text-accent">0</span>4
+            </h1>
+            <p class="mt-10 text-xl md:text-2xl text-ink-muted max-w-2xl leading-relaxed">
+                The page you're looking for has wandered off into the
+                digital void. Let's get you back on track.
+            </p>
+            <div class="mt-10 flex flex-wrap gap-3">
                 <a
                     href="/"
-                    class="w-full sm:w-auto min-w-[230px] px-8 py-4 bg-[#2563eb] text-white font-semibold rounded-lg inline-flex items-center justify-center gap-2 text-center transition-transform duration-200 border-2 border-transparent hover:bg-[#1d4ed8] hover:-translate-y-0.5"
+                    class="group inline-flex items-center gap-2 bg-ink text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-ink hover:bg-paper hover:text-ink transition-colors"
                 >
-                    <!-- Home icon -->
-                    <svg
-                        class="w-5 h-5 flex-shrink-0"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        aria-hidden="true"
-                    >
-                        <path d="M3 10.5 12 3l9 7.5"></path>
-                        <path d="M5 9v12h14V9"></path>
-                        <path d="M10 21v-6h4v6"></path>
-                    </svg>
                     Back to Home
+                    <span
+                        class="transition-transform group-hover:translate-x-0.5"
+                        aria-hidden>→</span
+                    >
                 </a>
-
                 <a
                     href="/services"
-                    class="w-full sm:w-auto min-w-[230px] px-8 py-4 bg-transparent border-2 border-slate-300 text-slate-700 font-semibold rounded-lg inline-flex items-center justify-center gap-2 text-center transition-transform duration-200 hover:bg-slate-100 hover:-translate-y-0.5"
+                    class="inline-flex items-center gap-2 bg-transparent text-ink font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-ink hover:bg-ink hover:text-paper transition-colors"
                 >
-                    <!-- Search icon -->
-                    <svg
-                        class="w-5 h-5 overflow-visible flex-shrink-0"
-                        viewBox="-1 -1 26 26"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        aria-hidden="true"
-                    >
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <path d="M21 21l-4.35-4.35"></path>
-                    </svg>
                     Browse Services
                 </a>
             </div>
+        </div>
+    </section>
 
-            <!-- Quick Links -->
-            <div
-                class="bg-[#f1f5f9] rounded-xl p-8 border border-slate-200 max-w-2xl mx-auto"
-            >
-                <h3 class="text-xl font-bold text-slate-900 mb-6">Popular Pages</h3>
-                <div class="grid sm:grid-cols-2 gap-4">
-                    <a
-                        href="/services/software-development"
-                        class="text-left p-4 rounded-lg bg-white hover:bg-slate-100 transition-colors group"
-                    >
-                        <div class="flex items-center justify-between">
-                            <span
-                                class="text-slate-700 group-hover:text-[#2563eb] transition-colors"
-                                >Software Development</span
-                            >
-                            <!-- ArrowRight icon -->
-                            <svg
-                                class="w-4 h-4 text-slate-400 group-hover:text-[#2563eb] group-hover:translate-x-1 transition-all"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                aria-hidden="true"
-                            >
-                                <path d="M5 12h14"></path>
-                                <path d="M12 5l7 7-7 7"></path>
-                            </svg>
-                        </div>
-                    </a>
-
-                    <a
-                        href="/services/mobile-development"
-                        class="text-left p-4 rounded-lg bg-white hover:bg-slate-100 transition-colors group"
-                    >
-                        <div class="flex items-center justify-between">
-                            <span
-                                class="text-slate-700 group-hover:text-[#2563eb] transition-colors"
-                                >Mobile Development</span
-                            >
-                            <svg
-                                class="w-4 h-4 text-slate-400 group-hover:text-[#2563eb] group-hover:translate-x-1 transition-all"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                aria-hidden="true"
-                            >
-                                <path d="M5 12h14"></path>
-                                <path d="M12 5l7 7-7 7"></path>
-                            </svg>
-                        </div>
-                    </a>
-
-                    <a
-                        href="/about"
-                        class="text-left p-4 rounded-lg bg-white hover:bg-slate-100 transition-colors group"
-                    >
-                        <div class="flex items-center justify-between">
-                            <span
-                                class="text-slate-700 group-hover:text-[#2563eb] transition-colors"
-                                >About Us</span
-                            >
-                            <svg
-                                class="w-4 h-4 text-slate-400 group-hover:text-[#2563eb] group-hover:translate-x-1 transition-all"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                aria-hidden="true"
-                            >
-                                <path d="M5 12h14"></path>
-                                <path d="M12 5l7 7-7 7"></path>
-                            </svg>
-                        </div>
-                    </a>
-
-                    <a
-                        href="/contact"
-                        class="text-left p-4 rounded-lg bg-white hover:bg-slate-100 transition-colors group"
-                    >
-                        <div class="flex items-center justify-between">
-                            <span
-                                class="text-slate-700 group-hover:text-[#2563eb] transition-colors"
-                                >Contact Us</span
-                            >
-                            <svg
-                                class="w-4 h-4 text-slate-400 group-hover:text-[#2563eb] group-hover:translate-x-1 transition-all"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                aria-hidden="true"
-                            >
-                                <path d="M5 12h14"></path>
-                                <path d="M12 5l7 7-7 7"></path>
-                            </svg>
-                        </div>
-                    </a>
-                </div>
+    <section class="py-20 md:py-28" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-center gap-3 mb-10">
+                <span
+                    aria-hidden
+                    class="inline-block w-8 h-px bg-ink"></span>
+                <span
+                    class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                    >Popular destinations</span
+                >
+            </div>
+            <div class="border-t border-ink">
+                {
+                    quickLinks.map((l) => (
+                        <a
+                            href={l.href}
+                            class="group relative block border-b border-ink hover:bg-ink hover:text-paper transition-colors"
+                        >
+                            <div class="grid grid-cols-12 gap-4 md:gap-8 items-center py-6 md:py-7 px-4 md:px-6">
+                                <h3 class="col-span-11 font-display text-xl md:text-2xl font-bold tracking-tight">
+                                    {l.label}
+                                </h3>
+                                <span
+                                    aria-hidden
+                                    class="col-span-1 text-right font-mono text-xl transition-transform group-hover:translate-x-1"
+                                >
+                                    →
+                                </span>
+                            </div>
+                        </a>
+                    ))
+                }
             </div>
         </div>
-    </main>
+    </section>
 </BaseLayout>

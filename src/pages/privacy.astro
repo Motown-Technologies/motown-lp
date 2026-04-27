@@ -1,0 +1,97 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const sections = [
+    {
+        heading: "Information We Collect",
+        body: "When you contact us through this site, we collect the information you provide — typically your name, email, phone number, and project details. When you visit the site, we may collect basic technical information such as IP address, browser type, and pages visited.",
+    },
+    {
+        heading: "How We Use Information",
+        body: "We use the information you provide to respond to your inquiries, deliver services we have agreed to, and communicate with you about your project. We use technical data to operate, maintain, and improve the site.",
+    },
+    {
+        heading: "Sharing",
+        body: "We do not sell your personal information. We may share information with service providers who help us operate the site (such as form processors and email providers), and we may disclose information when required by law.",
+    },
+    {
+        heading: "Cookies & Analytics",
+        body: "This site uses minimal cookies necessary for operation. If we add analytics in the future, we will update this policy and provide opt-out options where applicable.",
+    },
+    {
+        heading: "Your Rights",
+        body: "You may request access to, correction of, or deletion of personal information we hold about you by contacting us. We will respond within a reasonable timeframe consistent with applicable law.",
+    },
+    {
+        heading: "Data Retention",
+        body: "We retain personal information only as long as necessary to provide our services and for legitimate business or legal purposes.",
+    },
+    {
+        heading: "Changes to This Policy",
+        body: "We may update this Privacy Policy from time to time. The most current version will always be posted on this page.",
+    },
+    {
+        heading: "Contact",
+        body: "Privacy questions or requests can be sent to contact@motowntech.com.",
+    },
+];
+---
+
+<BaseLayout
+    meta_title="Privacy Policy | Motown Solutions"
+    meta_description="How Motown Solutions collects, uses, and protects your information."
+>
+    <!-- Hero -->
+    <section class="relative border-b-2 border-ink overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 pt-16 md:pt-24 pb-20 md:pb-28">
+            <div class="grid grid-cols-12 gap-6">
+                <div class="col-span-12 lg:col-span-10">
+                    <div class="flex items-center gap-3 mb-8">
+                        <span
+                            aria-hidden
+                            class="inline-block w-8 h-px bg-ink"></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >Legal / Privacy</span
+                        >
+                    </div>
+                    <h1
+                        class="font-display font-bold text-display text-ink text-balance"
+                    >
+                        Privacy <span class="italic text-accent">policy</span>.
+                    </h1>
+                </div>
+                <div
+                    class="col-span-12 lg:col-span-7 lg:col-start-4 mt-10 md:mt-16"
+                >
+                    <p
+                        class="text-lg md:text-xl text-ink-muted leading-relaxed text-pretty max-w-xl"
+                    >
+                        How Motown Solutions collects, uses, and protects your
+                        information. Last updated 2026.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Body -->
+    <section class="py-20 md:py-28" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="border-t border-ink">
+                {
+                    sections.map((s) => (
+                        <div class="grid grid-cols-12 gap-4 md:gap-8 items-start py-10 md:py-12 border-b border-ink">
+                            <h2 class="col-span-12 md:col-span-5 font-display text-2xl md:text-3xl font-bold tracking-tight leading-tight">
+                                {s.heading}
+                            </h2>
+                            <p class="col-span-12 md:col-span-7 md:pl-4 text-ink-muted leading-relaxed text-base md:text-lg">
+                                {s.body}
+                            </p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+</BaseLayout>

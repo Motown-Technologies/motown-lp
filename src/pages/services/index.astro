@@ -1,125 +1,110 @@
 ---
-import Card from "../../components/Card.astro";
-import CardIcon from "../../components/CardIcon.astro";
-import CardTitle from "../../components/CardTitle.astro";
 import services, { type Service } from "../../data/services";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
-// Icons
-import AutomationIcon from "../../components/icons/AutomationIcon.astro";
-import CheckIcon from "../../components/icons/CheckIcon.astro";
-import ConsultingIcon from "../../components/icons/ConsultingIcon.astro";
-import MarketingIcon from "../../components/icons/MarketingIcon.astro";
-import MobileIcon from "../../components/icons/MobileIcon.astro";
-import SoftwareIcon from "../../components/icons/SoftwareIcon.astro";
-import WebIcon from "../../components/icons/WebIcon.astro";
-
-const ICONS: Record<string, any> = {
-    software: SoftwareIcon,
-    marketing: MarketingIcon,
-    mobile: MobileIcon,
-    automation: AutomationIcon,
-    consulting: ConsultingIcon,
-    web: WebIcon,
-};
+const toSlug = (s: string) =>
+    s
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/(^-|-$)/g, "");
 ---
 
-<BaseLayout meta_title="Services | Motown Tech" meta_description="Explore Motown Tech services including software development, web design, mobile apps, automation, and consulting.">
-    <!-- Hero Section -->
-    <section
-        class="relative overflow-hidden bg-gradient-to-b from-[#f8fafc] to-[#eef2ff] pt-8 pb-24"
-    >
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-4xl mx-auto">
-                <div class="inline-block mb-4">
-                    <span
-                        class="text-[#2563eb] text-sm font-semibold tracking-wider uppercase"
-                        >Our Services</span
+<BaseLayout
+    meta_title="Services | Motown Solutions"
+    meta_description="Explore Motown Solutions services including software development, web design, mobile apps, automation, and consulting."
+>
+    <!-- Hero -->
+    <section class="relative border-b-2 border-ink overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 pt-16 md:pt-24 pb-20 md:pb-28">
+            <div class="grid grid-cols-12 gap-6">
+                <div class="col-span-12 lg:col-span-10">
+                    <div class="flex items-center gap-3 mb-8">
+                        <span
+                            aria-hidden
+                            class="inline-block w-8 h-px bg-ink"></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >Services / All</span
+                        >
+                    </div>
+                    <h1
+                        class="font-display font-bold text-display text-ink text-balance"
                     >
+                        Comprehensive
+                        <br />
+                        <span class="italic text-accent">solutions</span> for
+                        your business.
+                    </h1>
                 </div>
-                <h1
-                    class="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 mb-6 leading-tight text-balance"
-                >
-                    Comprehensive Solutions for Your Business
-                </h1>
-                <p class="text-xl text-slate-600 leading-relaxed text-pretty">
-                    From software development to automation, we provide
-                    end-to-end technology solutions that drive growth and
-                    innovation
-                </p>
+                <div class="col-span-12 lg:col-span-7 lg:col-start-4 mt-10 md:mt-16">
+                    <p
+                        class="text-lg md:text-xl text-ink-muted leading-relaxed text-pretty max-w-xl"
+                    >
+                        From software development to automation, we provide
+                        end-to-end technology solutions that drive growth and
+                        innovation.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Grid -->
-    <section class="py-24 bg-[#f7f8fc]">
+    <!-- Services showroom with inline bullets -->
+    <section class="py-16 md:py-20" data-reveal>
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-12">
+            <div class="border-t border-ink/30">
                 {
-                    services.map((svc: Service, idx: number) => {
-                        const Icon = ICONS[svc.icon] ?? SoftwareIcon;
-
-                        const toSlug = (s: string) =>
-                            s
-                                .toLowerCase()
-                                .replace(/[^a-z0-9]+/g, "-")
-                                .replace(/(^-|-$)/g, "");
-
-                        const href = svc.href ?? "/" + toSlug(svc.title);
-
-                        const spanClass =
-                            idx < 2 ? "lg:col-span-6" : "lg:col-span-4";
-
+                    services.map((svc: Service) => {
+                        const href =
+                            svc.href ?? "/services/" + toSlug(svc.title);
                         return (
-                            <Card
+                            <a
                                 href={href}
-                                class={spanClass}
-                                aria-label={`${svc.title} – Learn more`}
+                                class="group block relative border-b border-ink/30 hover:border-ink transition-colors"
                             >
-                                <CardIcon>
-                                    <Icon class="w-6 h-6 text-[#2563eb]" />
-                                </CardIcon>
+                                <span
+                                    aria-hidden
+                                    class="pointer-events-none absolute inset-0 bg-ink origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                                />
+                                <div class="relative grid grid-cols-12 gap-4 md:gap-8 py-10 md:py-12 px-4 md:px-6 transition-colors group-hover:text-paper">
+                                    <div class="col-span-12 md:col-span-6">
+                                        <h3 class="font-display text-3xl md:text-5xl font-bold tracking-tight leading-[1] mb-5">
+                                            {svc.title}
+                                        </h3>
+                                        <p class="text-ink-muted group-hover:text-paper/80 leading-relaxed max-w-lg">
+                                            {svc.description}
+                                        </p>
+                                    </div>
 
-                                <CardTitle>{svc.title}</CardTitle>
+                                    <div class="col-span-12 md:col-span-5 md:pl-4">
+                                        <div class="font-mono text-[10px] md:text-xs uppercase tracking-eyebrow text-ink-muted group-hover:text-paper/60 mb-4">
+                                            — What we offer
+                                        </div>
+                                        <ul class="space-y-2">
+                                            {svc.bullets.map((b) => (
+                                                <li class="flex items-start gap-3 text-sm md:text-base leading-relaxed">
+                                                    <span
+                                                        aria-hidden
+                                                        class="font-mono mt-[2px]"
+                                                    >
+                                                        →
+                                                    </span>
+                                                    <span>{b}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
 
-                                <p class="text-slate-600 mb-6 leading-relaxed">
-                                    {svc.description}
-                                </p>
-
-                                <ul class="space-y-3 mb-6">
-                                    {svc.bullets.map((b: string) => (
-                                        <li class="flex items-start gap-3">
-                                            <CheckIcon />
-                                            <span class="text-slate-700">
-                                                {b}
-                                            </span>
-                                        </li>
-                                    ))}
-                                </ul>
-
-                                <span class="inline-flex items-center text-[#2563eb] group-hover:text-[#1d4ed8] font-semibold transition-colors">
-                                    Learn More
-                                    <svg
-                                        class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                        aria-hidden="true"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            d="M5 12h14"
-                                        />
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            d="m12 5 7 7-7 7"
-                                        />
-                                    </svg>
-                                </span>
-                            </Card>
+                                    <div class="col-span-12 md:col-span-1 md:text-right md:self-start md:mt-1">
+                                        <span
+                                            aria-hidden
+                                            class="inline-block font-mono text-xl md:text-2xl transition-transform group-hover:translate-x-1"
+                                        >
+                                            →
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
                         );
                     })
                 }
@@ -127,28 +112,45 @@ const ICONS: Record<string, any> = {
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="py-24 section-dark">
-        <div class="max-w-4xl mx-auto px-6 text-center">
+    <!-- CTA -->
+    <section class="section-ink border-t-2 border-ink" data-reveal>
+        <div
+            class="max-w-7xl mx-auto px-6 py-24 md:py-36 flex flex-col items-start"
+        >
+            <div class="flex items-center gap-3 mb-8">
+                <span
+                    aria-hidden
+                    class="inline-block w-8 h-px bg-paper"></span>
+                <span
+                    class="font-mono text-xs uppercase tracking-eyebrow text-paper/60"
+                    >Let's Talk</span
+                >
+            </div>
             <h2
-                class="text-4xl md:text-5xl font-bold text-slate-900 mb-6 text-balance"
+                class="font-display font-bold text-display text-paper text-balance mb-10 max-w-5xl leading-[0.95]"
             >
-                Ready to Transform Your Business?
+                Ready to transform
+                <br />
+                your <span class="italic text-accent">business</span>?
             </h2>
-            <p class="text-xl text-slate-600 mb-10 leading-relaxed text-pretty">
+            <p class="text-lg md:text-xl text-paper/70 max-w-xl mb-10">
                 Let's discuss how our services can help you achieve your goals.
-                Get in touch with our team today.
+                Get in touch today.
             </p>
-            <div class="flex flex-wrap gap-4 justify-center">
+            <div class="flex flex-wrap gap-3">
                 <a
                     href="/contact"
-                    class="px-8 py-4 bg-[#2563eb] text-white font-semibold rounded-lg hover:bg-[#1d4ed8] transition-colors"
+                    class="group inline-flex items-center gap-2 bg-paper text-ink font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-paper hover:bg-ink hover:text-paper transition-colors"
                 >
                     Get Started
+                    <span
+                        class="transition-transform group-hover:translate-x-0.5"
+                        aria-hidden>→</span
+                    >
                 </a>
                 <a
                     href="/"
-                    class="px-8 py-4 bg-transparent border-2 border-slate-300 text-slate-700 font-semibold rounded-lg hover:bg-slate-100 transition-colors"
+                    class="inline-flex items-center gap-2 bg-transparent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-paper hover:bg-paper hover:text-ink transition-colors"
                 >
                     Back to Home
                 </a>
