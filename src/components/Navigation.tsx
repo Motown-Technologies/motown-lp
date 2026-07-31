@@ -46,7 +46,7 @@ export function Navigation() {
       <nav
         className={[
           "fixed inset-x-0 top-0 z-50",
-          "bg-[#f5f2ea]/95 backdrop-blur supports-[backdrop-filter]:bg-[#f5f2ea]/80",
+          "bg-[#f5f2ea]/95 backdrop-blur-sm supports-[backdrop-filter]:bg-[#f5f2ea]/80",
           "border-b transition-[border-color,box-shadow] duration-200",
           isScrolled
             ? "border-[#0b0b0c] shadow-[0_1px_0_0_#0b0b0c]"

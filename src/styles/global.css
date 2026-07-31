@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+/* Ported from tailwind.config.mjs (v3 theme.extend) */
+@theme {
+    --color-paper: #f5f2ea;
+    --color-paper-2: #ebe7dc;
+    --color-ink: #0b0b0c;
+    --color-ink-muted: #4a4a4f;
+    --color-accent: #1d4ed8;
+    --color-accent-deep: #0b2f8a;
+
+    --font-display: "Space Grotesk Variable", "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+    --font-sans: "Inter Variable", Inter, ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+    --text-display: clamp(3rem, 8vw, 7.5rem);
+    --text-display--line-height: 0.95;
+    --text-display--letter-spacing: -0.03em;
+    --text-h2: clamp(2.25rem, 4vw, 4rem);
+    --text-h2--line-height: 1.05;
+    --text-h2--letter-spacing: -0.02em;
+
+    --tracking-eyebrow: 0.18em;
+    --tracking-navlabel: 0.15em;
+}
