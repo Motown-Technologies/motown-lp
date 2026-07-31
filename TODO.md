@@ -1,0 +1,6 @@
+- Accessibility: run an a11y pass (color contrast on dark sections, focus states, form labels, skip-to-content link).
+- Performance: convert hero images to AVIF/WebP, add width/height to images, and ensure above-the-fold images use priority/loading.
+- SEO: add canonical URLs, Open Graph/Twitter cards, structured data (Organization + Service), and unique H1 copy per service page.
+- Content polish: tighten service intros to be more specific (outcomes, timelines), add proof points (case studies, testimonials).
+- Conversion: add a sticky CTA on service pages, and a short “next steps” panel near the contact form.
+- Design system: centralize tokens (colors, spacing, radii) into CSS variables to make future theme adjustments easier.
