@@ -13,7 +13,9 @@
     --font-sans: "Inter Variable", Inter, ui-sans-serif, system-ui, sans-serif;
     --font-mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
-    --text-display: clamp(3rem, 8vw, 7.5rem);
+    /* Max is bounded by the hero column (7 of 12 at max-w-7xl ≈ 709px), not the
+       viewport — above ~6rem the display face only fits ~8 characters a line. */
+    --text-display: clamp(2.75rem, 7vw, 6rem);
     --text-display--line-height: 0.95;
     --text-display--letter-spacing: -0.03em;
     --text-h2: clamp(2.25rem, 4vw, 4rem);
