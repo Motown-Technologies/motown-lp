@@ -1,0 +1,380 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import ConsultingIcon from "../components/icons/ConsultingIcon.astro";
+import AutomationIcon from "../components/icons/AutomationIcon.astro";
+import SoftwareIcon from "../components/icons/SoftwareIcon.astro";
+import ApiIcon from "../components/icons/ApiIcon.astro";
+import ShieldIcon from "../components/icons/ShieldIcon.astro";
+import AnalyticsIcon from "../components/icons/AnalyticsIcon.astro";
+
+const panel = [
+    { title: "Mapping", icon: ConsultingIcon },
+    { title: "Triggers", icon: AutomationIcon },
+    { title: "Rules", icon: SoftwareIcon },
+    { title: "Integrations", icon: ApiIcon },
+    { title: "Exceptions", icon: ShieldIcon },
+    { title: "Reporting", icon: AnalyticsIcon },
+];
+
+const work = [
+    {
+        title: "Process Mapping",
+        icon: ConsultingIcon,
+        desc: "Documenting what actually happens rather than what the procedure says, including the workarounds people invented and never told anyone about.",
+    },
+    {
+        title: "Triggers & Rules",
+        icon: AutomationIcon,
+        desc: "What starts the process, what conditions branch it, and what the system does when two rules disagree.",
+    },
+    {
+        title: "System Integration",
+        icon: ApiIcon,
+        desc: "Connecting the tools the process crosses, so data moves once and correctly instead of being retyped at each boundary.",
+    },
+    {
+        title: "Exception Handling",
+        icon: ShieldIcon,
+        desc: "The cases outside the rules routed to a person with the context to resolve them, rather than silently failing or stopping the queue.",
+    },
+    {
+        title: "Human Steps",
+        icon: SoftwareIcon,
+        desc: "Approvals kept where judgement genuinely matters, with reminders and escalation so they don't become the new bottleneck.",
+    },
+    {
+        title: "Reporting",
+        icon: AnalyticsIcon,
+        desc: "Volume, timing, and failure rates per step — usually the first time anyone can say what the process really costs.",
+    },
+];
+
+const rows = [
+    {
+        before: "Someone copying data between two systems each morning",
+        after: "A sync that runs, and reports when it cannot",
+    },
+    {
+        before: "Approvals chased through email and chat threads",
+        after: "Routed, escalated, and recorded automatically",
+    },
+    {
+        before: "The process breaks whenever the exception occurs",
+        after: "Exceptions designed for and routed to a person",
+    },
+    {
+        before: "Nobody can say how long the process actually takes",
+        after: "Timing and volume measured at every step",
+    },
+];
+---
+
+<BaseLayout
+    meta_title="Business Process Automation Services | Motown Solutions"
+    meta_description="Business process automation — process mapping, triggers and rules, system integration, exception handling, human approval steps, and reporting on what the process actually costs."
+>
+    <section class="relative overflow-hidden border-b-2 border-ink">
+        <svg
+            aria-hidden
+            class="absolute inset-0 w-full h-full pointer-events-none opacity-[0.12] text-ink"
+            viewBox="0 0 1200 700"
+            preserveAspectRatio="xMidYMid slice"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+        >
+            <path d="M-50 520 Q 200 440 430 490 T 880 470 T 1260 440" />
+            <path d="M-50 580 Q 200 500 430 550 T 880 530 T 1260 500" />
+            <path d="M-50 640 Q 200 560 430 610 T 880 590 T 1260 560" />
+            <path d="M-50 460 Q 200 380 430 430 T 880 410 T 1260 380" />
+            <path d="M-50 400 Q 200 320 430 370 T 880 350 T 1260 320" />
+        </svg>
+
+        <div class="relative max-w-7xl mx-auto px-6 pt-16 md:pt-24 pb-20 md:pb-28">
+            <div class="grid grid-cols-12 gap-6">
+                <div class="col-span-12 lg:col-span-7">
+                    <div class="flex items-center gap-3 mb-8">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >Business Process Automation</span
+                        >
+                    </div>
+
+                    <h1
+                        class="font-display font-bold text-display text-ink text-balance"
+                    >
+                        The work nobody
+                        <br />
+                        should be <span class="italic text-accent">doing</span>.
+                    </h1>
+
+                    <p
+                        class="mt-10 text-lg md:text-xl text-ink-muted leading-relaxed text-pretty max-w-xl"
+                    >
+                        Every company has a handful of processes that exist because two systems don't talk to each other. Someone exports, reformats, and re-enters — every day, for years, and it never appears on any budget.
+                    </p>
+
+                    <div class="mt-10 flex flex-wrap gap-3">
+                        <a
+                            href="/contact"
+                            class="group inline-flex items-center gap-2 bg-accent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-accent hover:bg-paper hover:text-ink hover:border-ink transition-colors"
+                        >
+                            Map a process
+                            <span
+                                class="transition-transform group-hover:translate-x-0.5"
+                                aria-hidden>→</span
+                            >
+                        </a>
+                        <a
+                            href="#work"
+                            class="inline-flex items-center gap-2 bg-transparent text-ink font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-ink hover:bg-ink hover:text-paper transition-colors"
+                        >
+                            What we automate
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-span-12 lg:col-span-5 mt-12 lg:mt-0">
+                    <div
+                        class="border-2 border-ink bg-paper-2 lg:translate-y-2"
+                        data-reveal
+                    >
+                        <div
+                            class="flex items-center justify-between px-5 py-3 border-b-2 border-ink font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted"
+                        >
+                            <span>Your Process / Flow</span>
+                            <span aria-hidden class="text-accent">● running</span>
+                        </div>
+                        {
+                            panel.map((s, i) => {
+                                const Icon = s.icon;
+                                return (
+                                    <div
+                                        class:list={[
+                                            "flex items-center gap-4 px-5 py-4",
+                                            i !== panel.length - 1 &&
+                                                "border-b border-ink/30",
+                                        ]}
+                                    >
+                                        <span class="font-mono text-[10px] text-ink-muted w-6 shrink-0">
+                                            0{i + 1}
+                                        </span>
+                                        <span class="w-9 h-9 shrink-0 border-[1.5px] border-ink flex items-center justify-center bg-paper">
+                                            <Icon class="w-5 h-5" />
+                                        </span>
+                                        <span class="font-display font-bold tracking-tight text-lg leading-none">
+                                            {s.title}
+                                        </span>
+                                    </div>
+                                );
+                            })
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative border-t border-ink/40 bg-paper">
+            <div
+                class="max-w-7xl mx-auto px-6 py-5 flex flex-wrap items-center justify-between gap-x-8 gap-y-2 font-mono text-[10px] md:text-xs uppercase tracking-eyebrow text-ink-muted"
+            >
+                <span>Mapping</span>
+                <span class="hidden md:inline" aria-hidden>·</span>
+                <span>Triggers</span>
+                <span class="hidden md:inline" aria-hidden>·</span>
+                <span>Rules</span>
+                <span class="hidden md:inline" aria-hidden>·</span>
+                <span>Exceptions</span>
+                <span class="hidden md:inline" aria-hidden>·</span>
+                <span>Reporting</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="work" class="py-20 md:py-28" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >What We Automate</span
+                        >
+                    </div>
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        Start with
+                        <br />
+                        the exceptions.
+                    </h2>
+                </div>
+                <div class="col-span-12 md:col-span-5 md:col-start-8 md:self-end">
+                    <p
+                        class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
+                    >
+                        The happy path is easy to automate and rarely the problem. Automations fail because nobody asked what happens when the record is missing, the amount is wrong, or two people act at once.
+                    </p>
+                </div>
+            </div>
+
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border border-ink"
+            >
+                {
+                    work.map((item) => {
+                        const Icon = item.icon;
+                        return (
+                            <div class="p-8 md:p-10 border-ink border-b border-r last:border-b-0 md:[&:nth-last-child(-n+2)]:border-b-0 lg:[&:nth-last-child(-n+3)]:border-b-0 md:[&:nth-child(even)]:border-r-0 lg:[&:nth-child(3n)]:border-r-0 lg:[&:nth-child(even)]:border-r">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <span class="w-10 h-10 border-[1.5px] border-ink flex items-center justify-center">
+                                        <Icon />
+                                    </span>
+                                </div>
+                                <h3 class="font-display text-2xl md:text-3xl font-bold tracking-tight leading-tight mb-3">
+                                    {item.title}
+                                </h3>
+                                <p class="text-ink-muted leading-relaxed">
+                                    {item.desc}
+                                </p>
+                            </div>
+                        );
+                    })
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="border-t-2 border-ink bg-paper-2 py-20 md:py-28" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >Before And After</span
+                        >
+                    </div>
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        Done by hand.
+                        <br />
+                        Done by the system.
+                    </h2>
+                </div>
+                <div class="col-span-12 md:col-span-5 md:col-start-8 md:self-end">
+                    <p
+                        class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
+                    >
+                        The saving is rarely a headcount. It's the same people spending their week on work that needs a person, instead of work that needs a copy and paste.
+                    </p>
+                </div>
+            </div>
+
+            <div class="border-t border-ink">
+                <div
+                    class="hidden md:grid grid-cols-12 gap-8 py-4 border-b border-ink font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted"
+                >
+                    <span class="col-span-6">Manual today</span>
+                    <span class="col-span-6">Automated</span>
+                </div>
+                {
+                    rows.map((row) => (
+                        <div class="grid grid-cols-12 gap-4 md:gap-8 items-center py-7 border-b border-ink">
+                            <div class="col-span-12 md:col-span-6 flex items-start gap-3 text-ink-muted">
+                                <span
+                                    aria-hidden
+                                    class="font-mono text-lg leading-none mt-[2px]"
+                                >
+                                    ×
+                                </span>
+                                <span class="leading-relaxed line-through decoration-ink/30">
+                                    {row.before}
+                                </span>
+                            </div>
+                            <div class="col-span-12 md:col-span-6 flex items-start gap-3">
+                                <span
+                                    aria-hidden
+                                    class="font-mono text-lg leading-none mt-[2px] text-accent"
+                                >
+                                    →
+                                </span>
+                                <span class="font-medium leading-relaxed">
+                                    {row.after}
+                                </span>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+
+            <p class="mt-8 text-ink-muted leading-relaxed max-w-2xl">
+                If the process itself is inefficient, automating it just makes the waste faster — start with <a href="/process-optimization-consulting" class="link-underline font-medium text-ink"
+                    >process optimisation</a
+                >. Where a system has no API, see <a href="/rpa-development" class="link-underline font-medium text-ink"
+                    >RPA development</a
+                >.
+            </p>
+
+        </div>
+    </section>
+
+    <section class="section-ink border-t-2 border-ink" data-reveal>
+        <div class="max-w-7xl mx-auto px-6 py-24 md:py-36 flex flex-col items-start">
+            <div class="flex items-center gap-3 mb-8">
+                <span aria-hidden class="inline-block w-8 h-px bg-paper"></span>
+                <span
+                    class="font-mono text-xs uppercase tracking-eyebrow text-paper/60"
+                    >Get The Time Back</span
+                >
+            </div>
+            <h2
+                class="font-display font-bold text-display text-paper text-balance mb-10 max-w-5xl leading-[0.95]"
+            >
+                Hours <span class="italic text-accent">back</span>.
+            </h2>
+            <p class="text-lg md:text-xl text-paper/70 max-w-xl mb-10">
+                Pick the process everyone complains about. We'll map it, cost it, and tell you what's worth automating and what should simply stop.
+            </p>
+            <div class="flex flex-wrap gap-3 mb-12">
+                <a
+                    href="/contact"
+                    class="group inline-flex items-center gap-2 bg-accent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-accent hover:bg-paper hover:text-ink hover:border-paper transition-colors"
+                >
+                    Map a process
+                    <span
+                        class="transition-transform group-hover:translate-x-0.5"
+                        aria-hidden>→</span
+                    >
+                </a>
+                <a
+                    href="/services/automation"
+                    class="inline-flex items-center gap-2 bg-transparent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-paper hover:bg-paper hover:text-ink transition-colors"
+                >
+                    Automation
+                </a>
+            </div>
+
+            <div
+                class="w-full border-t border-paper/20 pt-8 flex flex-wrap items-center gap-x-10 gap-y-3 font-mono text-xs uppercase tracking-eyebrow text-paper/60"
+            >
+                <a
+                    href="https://motowntech.com"
+                    class="link-underline text-paper"
+                    >motowntech.com</a
+                >
+                <a href="tel:+18459252661" class="link-underline text-paper"
+                    >845-925-2661</a
+                >
+            </div>
+        </div>
+    </section>
+</BaseLayout>

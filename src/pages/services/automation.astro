@@ -17,6 +17,7 @@ const solutions = [
             "Data entry automation",
             "Report generation",
         ],
+        link: { href: "/business-process-automation", label: "Business process automation" },
     },
     {
         title: "Marketing Automation",
@@ -29,6 +30,7 @@ const solutions = [
             "Social media scheduling",
             "Customer segmentation",
         ],
+        link: { href: "/marketing-automation", label: "Marketing automation" },
     },
     {
         title: "Data Integration",
@@ -41,6 +43,7 @@ const solutions = [
             "ETL pipelines",
             "Database automation",
         ],
+        link: { href: "/data-integration-services", label: "Data integration services" },
     },
     {
         title: "RPA Solutions",
@@ -53,6 +56,7 @@ const solutions = [
             "Form filling automation",
             "Legacy system automation",
         ],
+        link: { href: "/rpa-development", label: "RPA development" },
     },
     {
         title: "AI-Powered Automation",
@@ -65,6 +69,7 @@ const solutions = [
             "Chatbots & virtual assistants",
             "Intelligent document processing",
         ],
+        link: { href: "/ai-agent-development", label: "AI agent development" },
     },
     {
         title: "Custom Automation",
@@ -77,6 +82,7 @@ const solutions = [
             "Integration with existing systems",
             "Scalable architecture",
         ],
+        link: { href: "/workflow-automation", label: "Custom workflow automation" },
     },
 ];
 
@@ -252,6 +258,13 @@ const process = [
                                     </li>
                                 ))}
                             </ul>
+                                {sol.link && (
+                                    <a
+                                        href={sol.link.href}
+                                        class="link-underline inline-block mt-6 font-mono text-xs uppercase tracking-[0.15em]"
+                                        >{sol.link.label}&nbsp;→</a
+                                    >
+                                )}
                         </div>
                     ))
                 }

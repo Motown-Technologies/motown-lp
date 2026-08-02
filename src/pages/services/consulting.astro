@@ -17,6 +17,7 @@ const services = [
             "Digital transformation",
             "ROI analysis",
         ],
+        link: { href: "/it-strategy-consulting", label: "IT strategy consulting" },
     },
     {
         title: "Software Selection",
@@ -29,6 +30,7 @@ const services = [
             "Cost-benefit analysis",
             "Implementation planning",
         ],
+        link: { href: "/software-selection-consulting", label: "Software selection consulting" },
     },
     {
         title: "Process Optimization",
@@ -40,6 +42,7 @@ const services = [
             "Best practices implementation",
             "Change management",
         ],
+        link: { href: "/process-optimization-consulting", label: "Process optimisation consulting" },
     },
     {
         title: "Platform Modernization Advisory",
@@ -52,6 +55,7 @@ const services = [
             "Documentation & guides",
             "Ongoing support",
         ],
+        link: { href: "/legacy-system-modernization", label: "Legacy system modernisation" },
     },
 ];
 
@@ -204,10 +208,27 @@ const approach = [
                                     </li>
                                 ))}
                             </ul>
+                            {svc.link && (
+                                <a
+                                    href={svc.link.href}
+                                    class="link-underline inline-block mt-6 font-mono text-xs uppercase tracking-[0.15em]"
+                                    >{svc.link.label}&nbsp;→</a
+                                >
+                            )}
                         </div>
                     ))
                 }
             </div>
+
+            <p class="mt-8 text-ink-muted leading-relaxed max-w-2xl">
+                Earlier-stage company without a technical lead? That's a
+                different engagement —
+                <a
+                    href="/startup-consulting"
+                    class="link-underline font-medium text-ink"
+                    >startup consulting</a
+                >.
+            </p>
         </div>
     </section>
 

@@ -15,6 +15,7 @@ const services = [
             "Fluid layouts & grids",
             "Touch-optimized interfaces",
         ],
+        link: { href: "/responsive-web-design", label: "Responsive web design" },
     },
     {
         title: "UI/UX Design",
@@ -27,6 +28,7 @@ const services = [
             "Usability testing",
             "Accessibility standards",
         ],
+        link: { href: "/ui-ux-design-services", label: "UI/UX design" },
     },
     {
         title: "E-commerce Design",
@@ -39,6 +41,7 @@ const services = [
             "Checkout flow design",
             "Payment integration",
         ],
+        link: { href: "/ecommerce-development", label: "Ecommerce development" },
     },
     {
         title: "Landing Pages",
@@ -50,6 +53,7 @@ const services = [
             "Lead capture forms",
             "Clear user paths",
         ],
+        link: { href: "/landing-page-design", label: "Landing page design" },
     },
     {
         title: "Website Redesign",
@@ -62,6 +66,7 @@ const services = [
             "Performance optimization",
             "SEO improvements",
         ],
+        link: { href: "/website-redesign", label: "Website redesign" },
     },
 ];
 
@@ -217,6 +222,13 @@ const process = [
                                     </li>
                                 ))}
                             </ul>
+                            {svc.link && (
+                                <a
+                                    href={svc.link.href}
+                                    class="link-underline inline-block mt-6 font-mono text-xs uppercase tracking-[0.15em]"
+                                    >{svc.link.label}&nbsp;→</a
+                                >
+                            )}
                         </div>
                     ))
                 }

@@ -16,6 +16,7 @@ const capabilities = [
             "Native performance",
             "Faster time to market",
         ],
+        link: { href: "/cross-platform-app-development", label: "Cross-platform app development" },
     },
     {
         title: "Backend Integration",
@@ -28,6 +29,7 @@ const capabilities = [
             "Push notifications",
             "Cloud storage integration",
         ],
+        link: { href: "/mobile-backend-development", label: "Mobile backend development" },
     },
     {
         title: "App Maintenance",
@@ -40,6 +42,7 @@ const capabilities = [
             "Performance monitoring",
             "Feature enhancements",
         ],
+        link: { href: "/app-maintenance-and-support", label: "App maintenance & support" },
     },
 ];
 
@@ -194,6 +197,13 @@ const process = [
                                     </li>
                                 ))}
                             </ul>
+                                {cap.link && (
+                                    <a
+                                        href={cap.link.href}
+                                        class="link-underline inline-block mt-6 font-mono text-xs uppercase tracking-[0.15em]"
+                                        >{cap.link.label}&nbsp;→</a
+                                    >
+                                )}
                         </div>
                     ))
                 }

@@ -1,0 +1,380 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import DatabaseIcon from "../components/icons/DatabaseIcon.astro";
+import ApiIcon from "../components/icons/ApiIcon.astro";
+import SoftwareIcon from "../components/icons/SoftwareIcon.astro";
+import AutomationIcon from "../components/icons/AutomationIcon.astro";
+import CloudIcon from "../components/icons/CloudIcon.astro";
+import AnalyticsIcon from "../components/icons/AnalyticsIcon.astro";
+
+const panel = [
+    { title: "Sources", icon: DatabaseIcon },
+    { title: "Extraction", icon: ApiIcon },
+    { title: "Mapping", icon: SoftwareIcon },
+    { title: "Transformation", icon: AutomationIcon },
+    { title: "Sync", icon: CloudIcon },
+    { title: "Reconciliation", icon: AnalyticsIcon },
+];
+
+const work = [
+    {
+        title: "Source Connectors",
+        icon: ApiIcon,
+        desc: "Reliable extraction from each system, including the ones with no real API where the only route out is a scheduled export.",
+    },
+    {
+        title: "Identity Resolution",
+        icon: DatabaseIcon,
+        desc: "Working out that three records are the same customer, which is the difference between one view of a relationship and three partial ones.",
+    },
+    {
+        title: "Field Mapping",
+        icon: SoftwareIcon,
+        desc: "A documented contract between systems, so the meaning of a field doesn't live only in the head of whoever built the integration.",
+    },
+    {
+        title: "Transformation",
+        icon: AutomationIcon,
+        desc: "Formats, units, currencies, and time zones normalised once, centrally, rather than patched differently in each consuming system.",
+    },
+    {
+        title: "Sync Strategy",
+        icon: CloudIcon,
+        desc: "Batch or real-time per data type, with a defined answer to which system wins when both have changed the same record.",
+    },
+    {
+        title: "Reconciliation",
+        icon: AnalyticsIcon,
+        desc: "Automated checks that totals match on both sides, so a silent failure surfaces the same day rather than at quarter end.",
+    },
+];
+
+const rows = [
+    {
+        before: "The same customer existing as three separate records",
+        after: "One identity resolved across every system",
+    },
+    {
+        before: "A nightly export that somebody runs by hand",
+        after: "Scheduled sync with alerting when it fails",
+    },
+    {
+        before: "Silent failures discovered weeks after the fact",
+        after: "Reconciliation reports proving the totals match",
+    },
+    {
+        before: "Fields mapped by whoever built it, undocumented",
+        after: "A documented contract between the systems",
+    },
+];
+---
+
+<BaseLayout
+    meta_title="Data Integration Services | Motown Solutions"
+    meta_description="Data integration services — source connectors, field mapping, transformation, sync strategy, identity resolution, conflict handling, and reconciliation reports that prove the totals match."
+>
+    <section class="relative overflow-hidden border-b-2 border-ink">
+        <svg
+            aria-hidden
+            class="absolute inset-0 w-full h-full pointer-events-none opacity-[0.12] text-ink"
+            viewBox="0 0 1200 700"
+            preserveAspectRatio="xMidYMid slice"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+        >
+            <path d="M-50 520 Q 200 440 430 490 T 880 470 T 1260 440" />
+            <path d="M-50 580 Q 200 500 430 550 T 880 530 T 1260 500" />
+            <path d="M-50 640 Q 200 560 430 610 T 880 590 T 1260 560" />
+            <path d="M-50 460 Q 200 380 430 430 T 880 410 T 1260 380" />
+            <path d="M-50 400 Q 200 320 430 370 T 880 350 T 1260 320" />
+        </svg>
+
+        <div class="relative max-w-7xl mx-auto px-6 pt-16 md:pt-24 pb-20 md:pb-28">
+            <div class="grid grid-cols-12 gap-6">
+                <div class="col-span-12 lg:col-span-7">
+                    <div class="flex items-center gap-3 mb-8">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >Data Integration</span
+                        >
+                    </div>
+
+                    <h1
+                        class="font-display font-bold text-display text-ink text-balance"
+                    >
+                        Systems that
+                        <br />
+                        finally <span class="italic text-accent">agree</span>.
+                    </h1>
+
+                    <p
+                        class="mt-10 text-lg md:text-xl text-ink-muted leading-relaxed text-pretty max-w-xl"
+                    >
+                        Every business above a certain size has the same argument in a meeting: two systems, two numbers, and an hour spent working out which one to believe. That's an integration problem, not a reporting one.
+                    </p>
+
+                    <div class="mt-10 flex flex-wrap gap-3">
+                        <a
+                            href="/contact"
+                            class="group inline-flex items-center gap-2 bg-accent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-accent hover:bg-paper hover:text-ink hover:border-ink transition-colors"
+                        >
+                            Map the systems
+                            <span
+                                class="transition-transform group-hover:translate-x-0.5"
+                                aria-hidden>→</span
+                            >
+                        </a>
+                        <a
+                            href="#work"
+                            class="inline-flex items-center gap-2 bg-transparent text-ink font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-ink hover:bg-ink hover:text-paper transition-colors"
+                        >
+                            What's involved
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-span-12 lg:col-span-5 mt-12 lg:mt-0">
+                    <div
+                        class="border-2 border-ink bg-paper-2 lg:translate-y-2"
+                        data-reveal
+                    >
+                        <div
+                            class="flex items-center justify-between px-5 py-3 border-b-2 border-ink font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted"
+                        >
+                            <span>Your Data / Pipeline</span>
+                            <span aria-hidden class="text-accent">● reconciled</span>
+                        </div>
+                        {
+                            panel.map((s, i) => {
+                                const Icon = s.icon;
+                                return (
+                                    <div
+                                        class:list={[
+                                            "flex items-center gap-4 px-5 py-4",
+                                            i !== panel.length - 1 &&
+                                                "border-b border-ink/30",
+                                        ]}
+                                    >
+                                        <span class="font-mono text-[10px] text-ink-muted w-6 shrink-0">
+                                            0{i + 1}
+                                        </span>
+                                        <span class="w-9 h-9 shrink-0 border-[1.5px] border-ink flex items-center justify-center bg-paper">
+                                            <Icon class="w-5 h-5" />
+                                        </span>
+                                        <span class="font-display font-bold tracking-tight text-lg leading-none">
+                                            {s.title}
+                                        </span>
+                                    </div>
+                                );
+                            })
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative border-t border-ink/40 bg-paper">
+            <div
+                class="max-w-7xl mx-auto px-6 py-5 flex flex-wrap items-center justify-between gap-x-8 gap-y-2 font-mono text-[10px] md:text-xs uppercase tracking-eyebrow text-ink-muted"
+            >
+                <span>Sources</span>
+                <span class="hidden md:inline" aria-hidden>·</span>
+                <span>Mapping</span>
+                <span class="hidden md:inline" aria-hidden>·</span>
+                <span>Transform</span>
+                <span class="hidden md:inline" aria-hidden>·</span>
+                <span>Sync</span>
+                <span class="hidden md:inline" aria-hidden>·</span>
+                <span>Reconciliation</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="work" class="py-20 md:py-28" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >What's Involved</span
+                        >
+                    </div>
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        Moving data
+                        <br />
+                        is the easy part.
+                    </h2>
+                </div>
+                <div class="col-span-12 md:col-span-5 md:col-start-8 md:self-end">
+                    <p
+                        class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
+                    >
+                        Copying records between systems takes a day. Deciding which system is right when they disagree, and proving afterwards that nothing was lost, is the actual work.
+                    </p>
+                </div>
+            </div>
+
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border border-ink"
+            >
+                {
+                    work.map((item) => {
+                        const Icon = item.icon;
+                        return (
+                            <div class="p-8 md:p-10 border-ink border-b border-r last:border-b-0 md:[&:nth-last-child(-n+2)]:border-b-0 lg:[&:nth-last-child(-n+3)]:border-b-0 md:[&:nth-child(even)]:border-r-0 lg:[&:nth-child(3n)]:border-r-0 lg:[&:nth-child(even)]:border-r">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <span class="w-10 h-10 border-[1.5px] border-ink flex items-center justify-center">
+                                        <Icon />
+                                    </span>
+                                </div>
+                                <h3 class="font-display text-2xl md:text-3xl font-bold tracking-tight leading-tight mb-3">
+                                    {item.title}
+                                </h3>
+                                <p class="text-ink-muted leading-relaxed">
+                                    {item.desc}
+                                </p>
+                            </div>
+                        );
+                    })
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="border-t-2 border-ink bg-paper-2 py-20 md:py-28" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >Doing It Properly</span
+                        >
+                    </div>
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        Exports and
+                        <br />
+                        hope.
+                    </h2>
+                </div>
+                <div class="col-span-12 md:col-span-5 md:col-start-8 md:self-end">
+                    <p
+                        class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
+                    >
+                        The integration most companies actually run is a spreadsheet, a scheduled export, and one person who knows how to fix it when it breaks.
+                    </p>
+                </div>
+            </div>
+
+            <div class="border-t border-ink">
+                <div
+                    class="hidden md:grid grid-cols-12 gap-8 py-4 border-b border-ink font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted"
+                >
+                    <span class="col-span-6">Copy-paste integration</span>
+                    <span class="col-span-6">Real integration</span>
+                </div>
+                {
+                    rows.map((row) => (
+                        <div class="grid grid-cols-12 gap-4 md:gap-8 items-center py-7 border-b border-ink">
+                            <div class="col-span-12 md:col-span-6 flex items-start gap-3 text-ink-muted">
+                                <span
+                                    aria-hidden
+                                    class="font-mono text-lg leading-none mt-[2px]"
+                                >
+                                    ×
+                                </span>
+                                <span class="leading-relaxed line-through decoration-ink/30">
+                                    {row.before}
+                                </span>
+                            </div>
+                            <div class="col-span-12 md:col-span-6 flex items-start gap-3">
+                                <span
+                                    aria-hidden
+                                    class="font-mono text-lg leading-none mt-[2px] text-accent"
+                                >
+                                    →
+                                </span>
+                                <span class="font-medium leading-relaxed">
+                                    {row.after}
+                                </span>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+
+            <p class="mt-8 text-ink-muted leading-relaxed max-w-2xl">
+                Where a clean interface is needed rather than a pipeline, see <a href="/api-development" class="link-underline font-medium text-ink"
+                    >API development</a
+                >, and the modelling underneath sits with <a href="/database-design" class="link-underline font-medium text-ink"
+                    >database design</a
+                >.
+            </p>
+
+        </div>
+    </section>
+
+    <section class="section-ink border-t-2 border-ink" data-reveal>
+        <div class="max-w-7xl mx-auto px-6 py-24 md:py-36 flex flex-col items-start">
+            <div class="flex items-center gap-3 mb-8">
+                <span aria-hidden class="inline-block w-8 h-px bg-paper"></span>
+                <span
+                    class="font-mono text-xs uppercase tracking-eyebrow text-paper/60"
+                    >One Truth</span
+                >
+            </div>
+            <h2
+                class="font-display font-bold text-display text-paper text-balance mb-10 max-w-5xl leading-[0.95]"
+            >
+                One version of the <span class="italic text-accent">truth</span>.
+            </h2>
+            <p class="text-lg md:text-xl text-paper/70 max-w-xl mb-10">
+                List the systems and the report nobody trusts. We'll map where the numbers diverge and what it takes to make them agree permanently.
+            </p>
+            <div class="flex flex-wrap gap-3 mb-12">
+                <a
+                    href="/contact"
+                    class="group inline-flex items-center gap-2 bg-accent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-accent hover:bg-paper hover:text-ink hover:border-paper transition-colors"
+                >
+                    Map the systems
+                    <span
+                        class="transition-transform group-hover:translate-x-0.5"
+                        aria-hidden>→</span
+                    >
+                </a>
+                <a
+                    href="/services/automation"
+                    class="inline-flex items-center gap-2 bg-transparent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-paper hover:bg-paper hover:text-ink transition-colors"
+                >
+                    Automation
+                </a>
+            </div>
+
+            <div
+                class="w-full border-t border-paper/20 pt-8 flex flex-wrap items-center gap-x-10 gap-y-3 font-mono text-xs uppercase tracking-eyebrow text-paper/60"
+            >
+                <a
+                    href="https://motowntech.com"
+                    class="link-underline text-paper"
+                    >motowntech.com</a
+                >
+                <a href="tel:+18459252661" class="link-underline text-paper"
+                    >845-925-2661</a
+                >
+            </div>
+        </div>
+    </section>
+</BaseLayout>
