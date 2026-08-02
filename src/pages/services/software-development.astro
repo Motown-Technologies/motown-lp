@@ -25,6 +25,10 @@ const capabilities = [
             "E-commerce & client portals",
             "Integrations with third-party APIs & services",
         ],
+        link: {
+            href: "/web-application-development",
+            label: "Web application development",
+        },
     },
     {
         title: "Enterprise Solutions",
@@ -36,6 +40,7 @@ const capabilities = [
             "Workflow automation",
             "Legacy system modernization",
         ],
+        link: { href: "/enterprise-software-development", label: "Enterprise software development" },
     },
     {
         title: "API Development",
@@ -47,6 +52,7 @@ const capabilities = [
             "Scalable design & architecture",
             "API security & authentication",
         ],
+        link: { href: "/api-development", label: "API development" },
     },
     {
         title: "Cloud Solutions",
@@ -58,6 +64,7 @@ const capabilities = [
             "Container orchestration",
             "DevOps & CI/CD pipelines",
         ],
+        link: { href: "/cloud-application-development", label: "Cloud application development" },
     },
     {
         title: "Mobile Backend",
@@ -69,6 +76,7 @@ const capabilities = [
             "Real-time data sync",
             "Analytics & monitoring",
         ],
+        link: { href: "/mobile-backend-development", label: "Mobile backend development" },
     },
     {
         title: "Database Design",
@@ -80,6 +88,7 @@ const capabilities = [
             "Migration & replication",
             "Backup & disaster recovery",
         ],
+        link: { href: "/database-design", label: "Database design" },
     },
 ];
 
@@ -272,6 +281,13 @@ const techBlocks = [
                                         </li>
                                     ))}
                                 </ul>
+                                {cap.link && (
+                                    <a
+                                        href={cap.link.href}
+                                        class="link-underline inline-block mt-6 font-mono text-xs uppercase tracking-[0.15em]"
+                                        >{cap.link.label}&nbsp;→</a
+                                    >
+                                )}
                             </div>
                         );
                     })
