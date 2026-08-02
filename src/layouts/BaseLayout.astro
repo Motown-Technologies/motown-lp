@@ -114,8 +114,8 @@ const { meta_title, meta_description } = Astro.props;
         <!-- Footer -->
         <footer class="border-t-2 border-ink bg-paper">
             <div class="max-w-7xl mx-auto px-6 py-16">
-                <div class="grid gap-10 md:grid-cols-12">
-                    <div class="md:col-span-6">
+                <div class="grid gap-10 grid-cols-2 md:grid-cols-12">
+                    <div class="col-span-2 md:col-span-12 lg:col-span-3">
                         <div class="font-display text-4xl md:text-5xl font-bold leading-none tracking-tight mb-4">
                             Motown Solutions
                         </div>
@@ -125,7 +125,7 @@ const { meta_title, meta_description } = Astro.props;
                             ambition.
                         </p>
                     </div>
-                    <div class="md:col-span-3">
+                    <div class="col-span-1 md:col-span-4 lg:col-span-3">
                         <div class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted mb-4">
                             — Sitemap
                         </div>
@@ -160,7 +160,7 @@ const { meta_title, meta_description } = Astro.props;
                             </li>
                         </ul>
                     </div>
-                    <div class="md:col-span-3">
+                    <div class="col-span-1 md:col-span-4 lg:col-span-3">
                         <div class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted mb-4">
                             — Services
                         </div>
@@ -207,6 +207,46 @@ const { meta_title, meta_description } = Astro.props;
                                     >Consulting</a
                                 >
                             </li>
+                        </ul>
+                    </div>
+                    <div class="col-span-2 md:col-span-4 lg:col-span-3">
+                        <div class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted mb-4">
+                            — What We Build
+                        </div>
+                        <ul class="space-y-2">
+                            {
+                                [
+                                    ["/startup-consulting", "Startup Consulting"],
+                                    ["/mvp-development", "MVP Development"],
+                                    ["/fractional-cto", "Fractional CTO"],
+                                    [
+                                        "/technical-due-diligence",
+                                        "Technical Due Diligence",
+                                    ],
+                                    [
+                                        "/prototype-to-production",
+                                        "Prototype to Production",
+                                    ],
+                                    [
+                                        "/ecommerce-development",
+                                        "Ecommerce Development",
+                                    ],
+                                    ["/shopify-development", "Shopify Development"],
+                                    [
+                                        "/headless-commerce-development",
+                                        "Headless Commerce",
+                                    ],
+                                ].map(([href, label]) => (
+                                    <li>
+                                        <a
+                                            href={href}
+                                            class="link-underline font-medium"
+                                        >
+                                            {label}
+                                        </a>
+                                    </li>
+                                ))
+                            }
                         </ul>
                     </div>
                 </div>
