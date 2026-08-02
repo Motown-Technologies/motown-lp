@@ -1,0 +1,473 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import WebIcon from "../components/icons/WebIcon.astro";
+import ApiIcon from "../components/icons/ApiIcon.astro";
+import DatabaseIcon from "../components/icons/DatabaseIcon.astro";
+import MarketingIcon from "../components/icons/MarketingIcon.astro";
+import CloudIcon from "../components/icons/CloudIcon.astro";
+import ShieldIcon from "../components/icons/ShieldIcon.astro";
+import EnterpriseIcon from "../components/icons/EnterpriseIcon.astro";
+import MobileIcon from "../components/icons/MobileIcon.astro";
+import AnalyticsIcon from "../components/icons/AnalyticsIcon.astro";
+
+// The decoupled stack.
+const stack = [
+    { title: "Storefront", icon: WebIcon },
+    { title: "Commerce API", icon: ApiIcon },
+    { title: "Content / CMS", icon: DatabaseIcon },
+    { title: "Search", icon: MarketingIcon },
+    { title: "Edge & Cache", icon: CloudIcon },
+    { title: "Checkout", icon: ShieldIcon },
+];
+
+// What we build in a headless engagement.
+const pieces = [
+    {
+        title: "The Storefront",
+        icon: WebIcon,
+        desc: "A framework front end — Next, Astro, or Hydrogen — rendered at the edge, with the design freedom a theme system can't give you.",
+    },
+    {
+        title: "Commerce Layer",
+        icon: ApiIcon,
+        desc: "Your existing engine stays. Shopify, commercetools, BigCommerce, or a custom backend keeps carts, orders, and pricing exactly where they are.",
+    },
+    {
+        title: "Content Model",
+        icon: DatabaseIcon,
+        desc: "A CMS your marketing team can publish from without a deploy, modelled around campaigns and landing pages rather than product records.",
+    },
+    {
+        title: "Search & Merchandising",
+        icon: MarketingIcon,
+        desc: "A real search index with synonyms, ranking rules, and faceting — the part of headless that most often pays for the whole project.",
+    },
+    {
+        title: "Edge Delivery",
+        icon: CloudIcon,
+        desc: "Caching and revalidation strategy per route, so a catalogue of 50,000 SKUs stays fast without rebuilding the site on every price change.",
+    },
+    {
+        title: "Multi-Market",
+        icon: EnterpriseIcon,
+        desc: "One storefront serving several locales, currencies, and brands — instead of a separate store to maintain for each one.",
+    },
+];
+
+// Honest counter-section: when this is the wrong call.
+const wrong = [
+    {
+        title: "Your team is two people",
+        desc: "Headless adds a codebase, a deploy pipeline, and a CMS to look after. Without someone owning the front end, it becomes the thing nobody can change.",
+    },
+    {
+        title: "The theme is fine",
+        desc: "If the constraint is design polish rather than an actual platform limit, a custom theme costs a fraction and ships months sooner.",
+    },
+    {
+        title: "You need it in six weeks",
+        desc: "A decoupled build front-loads the work. If the deadline is the fixed constraint, staying on the platform's front end is the honest answer.",
+    },
+];
+
+// The trade.
+const trade = [
+    {
+        before: "Design boxed in by what the theme system allows",
+        after: "A front end that renders whatever the brand needs",
+    },
+    {
+        before: "A separate store to maintain for every market",
+        after: "One storefront, many locales, currencies, and catalogues",
+    },
+    {
+        before: "Marketing waits on a developer to change a landing page",
+        after: "A content model they publish from without a deploy",
+    },
+    {
+        before: "Platform search that misses half its own catalogue",
+        after: "A real index with ranking and merchandising rules",
+    },
+];
+---
+
+<BaseLayout
+    meta_title="Headless Commerce Development | Motown Solutions"
+    meta_description="Headless commerce development — a decoupled storefront on Next, Astro, or Hydrogen over your existing commerce engine, with search, CMS, edge caching, and multi-market support."
+>
+    <!-- Hero -->
+    <section class="relative overflow-hidden border-b-2 border-ink">
+        <!-- Contour-line decoration -->
+        <svg
+            aria-hidden
+            class="absolute inset-0 w-full h-full pointer-events-none opacity-[0.12] text-ink"
+            viewBox="0 0 1200 700"
+            preserveAspectRatio="xMidYMid slice"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+        >
+            <path d="M-50 520 Q 200 440 430 490 T 880 470 T 1260 440" />
+            <path d="M-50 580 Q 200 500 430 550 T 880 530 T 1260 500" />
+            <path d="M-50 640 Q 200 560 430 610 T 880 590 T 1260 560" />
+            <path d="M-50 460 Q 200 380 430 430 T 880 410 T 1260 380" />
+            <path d="M-50 400 Q 200 320 430 370 T 880 350 T 1260 320" />
+        </svg>
+
+        <div class="relative max-w-7xl mx-auto px-6 pt-16 md:pt-24 pb-20 md:pb-28">
+            <div class="grid grid-cols-12 gap-6">
+                <div class="col-span-12 lg:col-span-7">
+                    <div class="flex items-center gap-3 mb-8">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >Headless Commerce</span
+                        >
+                    </div>
+
+                    <h1
+                        class="font-display font-bold text-display text-ink text-balance"
+                    >
+                        Commerce,
+                        <span class="italic text-accent">decoupled</span>.
+                    </h1>
+
+                    <p
+                        class="mt-10 text-lg md:text-xl text-ink-muted leading-relaxed text-pretty max-w-xl"
+                    >
+                        Keep the engine that already handles your carts, orders,
+                        and tax. Replace the front end it ships with. Done for
+                        the right reasons it removes every design and performance
+                        ceiling — done for the wrong ones it just adds a codebase.
+                    </p>
+
+                    <div class="mt-10 flex flex-wrap gap-3">
+                        <a
+                            href="/contact"
+                            class="group inline-flex items-center gap-2 bg-accent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-accent hover:bg-paper hover:text-ink hover:border-ink transition-colors"
+                        >
+                            Talk through the trade-offs
+                            <span
+                                class="transition-transform group-hover:translate-x-0.5"
+                                aria-hidden>→</span
+                            >
+                        </a>
+                        <a
+                            href="#wrong"
+                            class="inline-flex items-center gap-2 bg-transparent text-ink font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-ink hover:bg-ink hover:text-paper transition-colors"
+                        >
+                            When not to
+                        </a>
+                    </div>
+                </div>
+
+                <!-- The stack -->
+                <div class="col-span-12 lg:col-span-5 mt-12 lg:mt-0">
+                    <div
+                        class="border-2 border-ink bg-paper-2 lg:translate-y-2"
+                        data-reveal
+                    >
+                        <div
+                            class="flex items-center justify-between px-5 py-3 border-b-2 border-ink font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted"
+                        >
+                            <span>Your Stack / Headless</span>
+                            <span aria-hidden class="text-accent">● decoupled</span>
+                        </div>
+                        {
+                            stack.map((item, i) => {
+                                const Icon = item.icon;
+                                return (
+                                    <div
+                                        class:list={[
+                                            "flex items-center gap-4 px-5 py-4",
+                                            i !== stack.length - 1 &&
+                                                "border-b border-ink/30",
+                                        ]}
+                                    >
+                                        <span class="font-mono text-[10px] text-ink-muted w-6 shrink-0">
+                                            0{i + 1}
+                                        </span>
+                                        <span class="w-9 h-9 shrink-0 border-[1.5px] border-ink flex items-center justify-center bg-paper">
+                                            <Icon class="w-5 h-5" />
+                                        </span>
+                                        <span class="font-display font-bold tracking-tight text-lg leading-none">
+                                            {item.title}
+                                        </span>
+                                    </div>
+                                );
+                            })
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Metadata strip -->
+        <div class="relative border-t border-ink/40 bg-paper">
+            <div
+                class="max-w-7xl mx-auto px-6 py-5 flex flex-wrap items-center justify-between gap-x-8 gap-y-2 font-mono text-[10px] md:text-xs uppercase tracking-eyebrow text-ink-muted"
+            >
+                <span>Storefront</span>
+                <span class="hidden md:inline" aria-hidden>·</span>
+                <span>APIs</span>
+                <span class="hidden md:inline" aria-hidden>·</span>
+                <span>CMS</span>
+                <span class="hidden md:inline" aria-hidden>·</span>
+                <span>Search</span>
+                <span class="hidden md:inline" aria-hidden>·</span>
+                <span>Edge</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- The pieces -->
+    <section class="py-20 md:py-28" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >The Pieces</span
+                        >
+                    </div>
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        Six parts,
+                        <br />
+                        assembled once.
+                    </h2>
+                </div>
+                <div class="col-span-12 md:col-span-5 md:col-start-8 md:self-end">
+                    <p
+                        class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
+                    >
+                        Headless isn't one product you buy. It's six decisions
+                        that have to agree with each other — which is why it
+                        goes wrong when it's assembled by whoever is free.
+                    </p>
+                </div>
+            </div>
+
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border border-ink"
+            >
+                {
+                    pieces.map((item) => {
+                        const Icon = item.icon;
+                        return (
+                            <div class="p-8 md:p-10 border-ink border-b border-r last:border-b-0 md:[&:nth-last-child(-n+2)]:border-b-0 lg:[&:nth-last-child(-n+3)]:border-b-0 md:[&:nth-child(even)]:border-r-0 lg:[&:nth-child(3n)]:border-r-0 lg:[&:nth-child(even)]:border-r">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <span class="w-10 h-10 border-[1.5px] border-ink flex items-center justify-center">
+                                        <Icon />
+                                    </span>
+                                </div>
+                                <h3 class="font-display text-2xl md:text-3xl font-bold tracking-tight leading-tight mb-3">
+                                    {item.title}
+                                </h3>
+                                <p class="text-ink-muted leading-relaxed">
+                                    {item.desc}
+                                </p>
+                            </div>
+                        );
+                    })
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- When not to -->
+    <section id="wrong" class="border-t-2 border-ink bg-paper-2" data-reveal>
+        <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-7">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >When Not To</span
+                        >
+                    </div>
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        Three reasons
+                        <br />
+                        we'd talk you out of it.
+                    </h2>
+                </div>
+                <div
+                    class="col-span-12 md:col-span-5 md:self-end text-ink-muted text-lg leading-relaxed"
+                >
+                    Headless is sold much more often than it's warranted. We'd
+                    rather lose the project than build something your team can't
+                    maintain after we've gone.
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 border border-ink bg-paper">
+                {
+                    wrong.map((item, i) => (
+                        <div class="flex flex-col p-8 md:p-10 border-ink border-b lg:border-b-0 lg:border-r last:border-b-0 lg:last:border-r-0">
+                            <span
+                                aria-hidden
+                                class="font-mono text-lg leading-none text-ink-muted mb-6"
+                            >
+                                ×
+                            </span>
+                            <h3 class="font-display text-2xl font-bold tracking-tight leading-tight mb-3">
+                                {item.title}
+                            </h3>
+                            <p class="text-ink-muted leading-relaxed">
+                                {item.desc}
+                            </p>
+                        </div>
+                    ))
+                }
+            </div>
+
+            <p class="mt-8 text-ink-muted leading-relaxed max-w-2xl">
+                If any of those sound like you, the better-value conversation is
+                usually a custom theme —
+                <a
+                    href="/shopify-development"
+                    class="link-underline font-medium text-ink"
+                    >Shopify development</a
+                >.
+            </p>
+        </div>
+    </section>
+
+    <!-- The trade -->
+    <section class="py-20 md:py-28" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >The Trade</span
+                        >
+                    </div>
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        What you buy
+                        <br />
+                        with the complexity.
+                    </h2>
+                </div>
+                <div class="col-span-12 md:col-span-5 md:col-start-8 md:self-end">
+                    <p
+                        class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
+                    >
+                        Decoupling costs you simplicity. These are the four
+                        things worth paying that price for — and if none of them
+                        is your problem, it isn't worth it.
+                    </p>
+                </div>
+            </div>
+
+            <div class="border-t border-ink">
+                <div
+                    class="hidden md:grid grid-cols-12 gap-8 py-4 border-b border-ink font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted"
+                >
+                    <span class="col-span-6">On the platform front end</span>
+                    <span class="col-span-6">Decoupled</span>
+                </div>
+                {
+                    trade.map((row) => (
+                        <div class="grid grid-cols-12 gap-4 md:gap-8 items-center py-7 border-b border-ink">
+                            <div class="col-span-12 md:col-span-6 flex items-start gap-3 text-ink-muted">
+                                <span
+                                    aria-hidden
+                                    class="font-mono text-lg leading-none mt-[2px]"
+                                >
+                                    ×
+                                </span>
+                                <span class="leading-relaxed line-through decoration-ink/30">
+                                    {row.before}
+                                </span>
+                            </div>
+                            <div class="col-span-12 md:col-span-6 flex items-start gap-3">
+                                <span
+                                    aria-hidden
+                                    class="font-mono text-lg leading-none mt-[2px] text-accent"
+                                >
+                                    →
+                                </span>
+                                <span class="font-medium leading-relaxed">
+                                    {row.after}
+                                </span>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="section-ink border-t-2 border-ink" data-reveal>
+        <div class="max-w-7xl mx-auto px-6 py-24 md:py-36 flex flex-col items-start">
+            <div class="flex items-center gap-3 mb-8">
+                <span aria-hidden class="inline-block w-8 h-px bg-paper"></span>
+                <span
+                    class="font-mono text-xs uppercase tracking-eyebrow text-paper/60"
+                    >Decide Properly</span
+                >
+            </div>
+            <h2
+                class="font-display font-bold text-display text-paper text-balance mb-10 max-w-5xl leading-[0.95]"
+            >
+                Worth it, or
+                <span class="italic text-accent">not</span>.
+            </h2>
+            <p class="text-lg md:text-xl text-paper/70 max-w-xl mb-10">
+                Tell us what the platform is stopping you doing. We'll tell you
+                whether decoupling actually fixes it, what it costs to run
+                afterwards, and what the cheaper answer would be.
+            </p>
+            <div class="flex flex-wrap gap-3 mb-12">
+                <a
+                    href="/contact"
+                    class="group inline-flex items-center gap-2 bg-accent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-accent hover:bg-paper hover:text-ink hover:border-paper transition-colors"
+                >
+                    Talk through the trade-offs
+                    <span
+                        class="transition-transform group-hover:translate-x-0.5"
+                        aria-hidden>→</span
+                    >
+                </a>
+                <a
+                    href="/ecommerce-development"
+                    class="inline-flex items-center gap-2 bg-transparent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-paper hover:bg-paper hover:text-ink transition-colors"
+                >
+                    All Ecommerce Work
+                </a>
+            </div>
+
+            <!-- Contact strip -->
+            <div
+                class="w-full border-t border-paper/20 pt-8 flex flex-wrap items-center gap-x-10 gap-y-3 font-mono text-xs uppercase tracking-eyebrow text-paper/60"
+            >
+                <a
+                    href="https://motowntech.com"
+                    class="link-underline text-paper"
+                    >motowntech.com</a
+                >
+                <a href="tel:+18459252661" class="link-underline text-paper"
+                    >845-925-2661</a
+                >
+            </div>
+        </div>
+    </section>
+</BaseLayout>
