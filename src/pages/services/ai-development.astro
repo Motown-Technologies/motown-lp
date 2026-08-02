@@ -19,6 +19,7 @@ const capabilities = [
             "Distillation & smaller specialist models",
             "Private deployment on your infrastructure",
         ],
+        link: { href: "/custom-ai-model-development", label: "Custom AI model development" },
     },
     {
         title: "LLM Fine-Tuning",
@@ -30,6 +31,7 @@ const capabilities = [
             "Eval harness design & regression testing",
             "Cost vs. quality tradeoff analysis",
         ],
+        link: { href: "/llm-fine-tuning", label: "LLM fine-tuning" },
     },
     {
         title: "RAG & Retrieval",
@@ -41,6 +43,7 @@ const capabilities = [
             "Query rewriting & re-ranking",
             "Citation & grounding for trust",
         ],
+        link: { href: "/rag-development", label: "RAG development" },
     },
     {
         title: "AI Agents & Automation",
@@ -52,6 +55,7 @@ const capabilities = [
             "Human-in-the-loop checkpoints",
             "Workflow integration with existing systems",
         ],
+        link: { href: "/ai-agent-development", label: "AI agent development" },
     },
     {
         title: "AI Integrations",
@@ -63,6 +67,7 @@ const capabilities = [
             "Identity, audit, & access policy",
             "OpenAI, Anthropic, Google, open-source",
         ],
+        link: { href: "/ai-integration-services", label: "AI integration services" },
     },
     {
         title: "MLOps & Guardrails",
@@ -74,6 +79,7 @@ const capabilities = [
             "Cost, latency, & quality dashboards",
             "Versioning, rollback, & A/B testing",
         ],
+        link: { href: "/mlops-services", label: "MLOps & guardrails" },
     },
 ];
 
@@ -267,6 +273,13 @@ const techBlocks = [
                                         </li>
                                     ))}
                                 </ul>
+                                {cap.link && (
+                                    <a
+                                        href={cap.link.href}
+                                        class="link-underline inline-block mt-6 font-mono text-xs uppercase tracking-[0.15em]"
+                                        >{cap.link.label}&nbsp;→</a
+                                    >
+                                )}
                             </div>
                         );
                     })
