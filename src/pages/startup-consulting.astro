@@ -1,0 +1,489 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import SoftwareIcon from "../components/icons/SoftwareIcon.astro";
+import EnterpriseIcon from "../components/icons/EnterpriseIcon.astro";
+import WebIcon from "../components/icons/WebIcon.astro";
+import AnalyticsIcon from "../components/icons/AnalyticsIcon.astro";
+import ShieldIcon from "../components/icons/ShieldIcon.astro";
+import ConsultingIcon from "../components/icons/ConsultingIcon.astro";
+import SendIcon from "../components/icons/SendIcon.astro";
+
+// The stage ladder in the hero — where a startup actually is when it calls us.
+const stages = [
+    { title: "Idea & Validation", icon: ConsultingIcon },
+    { title: "Scope & Roadmap", icon: SoftwareIcon },
+    { title: "MVP Build", icon: WebIcon },
+    { title: "Launch", icon: SendIcon },
+    { title: "Traction", icon: AnalyticsIcon },
+    { title: "Scale & Hire", icon: EnterpriseIcon },
+];
+
+// Where we help — the six areas a startup without a CTO is usually missing.
+const areas = [
+    {
+        title: "Technical Strategy",
+        icon: SoftwareIcon,
+        desc: "What to build, what to skip, and in what order. A roadmap tied to your runway rather than to a feature wish list.",
+    },
+    {
+        title: "Architecture & Stack",
+        icon: EnterpriseIcon,
+        desc: "Stack decisions you can still defend in two years — chosen for your team, your budget, and the scale you'll actually reach.",
+    },
+    {
+        title: "MVP Scoping",
+        icon: WebIcon,
+        desc: "Cut to the single loop that proves value. Everything else waits until users tell you it matters.",
+    },
+    {
+        title: "Fundraising Support",
+        icon: AnalyticsIcon,
+        desc: "A technical narrative for the deck, clean architecture for the data room, and answers ready before diligence asks.",
+    },
+    {
+        title: "Security & Compliance",
+        icon: ShieldIcon,
+        desc: "Auth, data handling, and the SOC 2 questions enterprise buyers raise before they'll sign anything.",
+    },
+    {
+        title: "Team & Hiring",
+        icon: ConsultingIcon,
+        desc: "Scope the first engineering roles, run the technical screens, and avoid the hire that sets you back six months.",
+    },
+];
+
+// The three ways an engagement actually starts.
+const routes = [
+    {
+        title: "MVP Development",
+        href: "/mvp-development",
+        lede: "You have an idea and no product yet.",
+        desc: "We scope it down to what proves the point, build it, and put it in front of real users.",
+    },
+    {
+        title: "Fractional CTO",
+        href: "/fractional-cto",
+        lede: "You have a team but no senior technical lead.",
+        desc: "We own the architecture calls, the hiring loop, and the technical story your board hears.",
+    },
+    {
+        title: "Technical Due Diligence",
+        href: "/technical-due-diligence",
+        lede: "You're raising or selling.",
+        desc: "We audit the codebase on your timeline, before an investor's engineer does it on theirs.",
+    },
+];
+
+// Founder traps — the failure modes we're hired to prevent.
+const traps = [
+    {
+        before: "Six months building before talking to a user",
+        after: "A scoped MVP in front of real users in weeks",
+    },
+    {
+        before: "Stack chosen because a blog post recommended it",
+        after: "Stack chosen for your team, budget, and 18-month horizon",
+    },
+    {
+        before: "The agency built it and you can't maintain it",
+        after: "You own the code, the docs, and every decision behind them",
+    },
+    {
+        before: "Diligence surfaces surprises in the middle of a raise",
+        after: "Clean architecture and documentation before the data room opens",
+    },
+];
+---
+
+<BaseLayout
+    meta_title="Startup Technology Consulting & Fractional CTO | Motown Solutions"
+    meta_description="Technology consulting for startups without a CTO. Strategy, architecture, MVP scoping, fundraising support, and hiring — from founders' first idea through Series A."
+>
+    <!-- Hero -->
+    <section class="relative overflow-hidden border-b-2 border-ink">
+        <!-- Contour-line decoration -->
+        <svg
+            aria-hidden
+            class="absolute inset-0 w-full h-full pointer-events-none opacity-[0.12] text-ink"
+            viewBox="0 0 1200 700"
+            preserveAspectRatio="xMidYMid slice"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+        >
+            <path d="M-50 520 Q 200 440 430 490 T 880 470 T 1260 440" />
+            <path d="M-50 580 Q 200 500 430 550 T 880 530 T 1260 500" />
+            <path d="M-50 640 Q 200 560 430 610 T 880 590 T 1260 560" />
+            <path d="M-50 460 Q 200 380 430 430 T 880 410 T 1260 380" />
+            <path d="M-50 400 Q 200 320 430 370 T 880 350 T 1260 320" />
+        </svg>
+
+        <div class="relative max-w-7xl mx-auto px-6 pt-16 md:pt-24 pb-20 md:pb-28">
+            <div class="grid grid-cols-12 gap-6">
+                <div class="col-span-12 lg:col-span-7">
+                    <div class="flex items-center gap-3 mb-8">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >Startup Consulting</span
+                        >
+                    </div>
+
+                    <h1
+                        class="font-display font-bold text-display text-ink text-balance"
+                    >
+                        Technical judgment
+                        <br />
+                        <span class="italic text-accent">before</span>
+                        the runway runs out.
+                    </h1>
+
+                    <p
+                        class="mt-10 text-lg md:text-xl text-ink-muted leading-relaxed text-pretty max-w-xl"
+                    >
+                        Startups rarely fail on engineering. They fail on the
+                        decisions made before the engineering — what to build,
+                        what to skip, and when to stop rewriting. We make those
+                        calls with you, and stay to see them through.
+                    </p>
+
+                    <div class="mt-10 flex flex-wrap gap-3">
+                        <a
+                            href="/contact"
+                            class="group inline-flex items-center gap-2 bg-accent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-accent hover:bg-paper hover:text-ink hover:border-ink transition-colors"
+                        >
+                            Book a founder call
+                            <span
+                                class="transition-transform group-hover:translate-x-0.5"
+                                aria-hidden>→</span
+                            >
+                        </a>
+                        <a
+                            href="#areas"
+                            class="inline-flex items-center gap-2 bg-transparent text-ink font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-ink hover:bg-ink hover:text-paper transition-colors"
+                        >
+                            See where we help
+                        </a>
+                    </div>
+                </div>
+
+                <!-- The stage ladder -->
+                <div class="col-span-12 lg:col-span-5 mt-12 lg:mt-0">
+                    <div
+                        class="border-2 border-ink bg-paper-2 lg:translate-y-2"
+                        data-reveal
+                    >
+                        <div
+                            class="flex items-center justify-between px-5 py-3 border-b-2 border-ink font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted"
+                        >
+                            <span>Your Startup / Stage</span>
+                            <span aria-hidden class="text-accent">● pre-seed</span>
+                        </div>
+                        {
+                            stages.map((stage, i) => {
+                                const Icon = stage.icon;
+                                return (
+                                    <div
+                                        class:list={[
+                                            "flex items-center gap-4 px-5 py-4",
+                                            i !== stages.length - 1 &&
+                                                "border-b border-ink/30",
+                                        ]}
+                                    >
+                                        <span class="font-mono text-[10px] text-ink-muted w-6 shrink-0">
+                                            0{i + 1}
+                                        </span>
+                                        <span class="w-9 h-9 shrink-0 border-[1.5px] border-ink flex items-center justify-center bg-paper">
+                                            <Icon class="w-5 h-5" />
+                                        </span>
+                                        <span class="font-display font-bold tracking-tight text-lg leading-none">
+                                            {stage.title}
+                                        </span>
+                                    </div>
+                                );
+                            })
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Metadata strip -->
+        <div class="relative border-t border-ink/40 bg-paper">
+            <div
+                class="max-w-7xl mx-auto px-6 py-5 flex flex-wrap items-center justify-between gap-x-8 gap-y-2 font-mono text-[10px] md:text-xs uppercase tracking-eyebrow text-ink-muted"
+            >
+                <span>Strategy</span>
+                <span class="hidden md:inline" aria-hidden>·</span>
+                <span>Architecture</span>
+                <span class="hidden md:inline" aria-hidden>·</span>
+                <span>MVP</span>
+                <span class="hidden md:inline" aria-hidden>·</span>
+                <span>Fundraising</span>
+                <span class="hidden md:inline" aria-hidden>·</span>
+                <span>Hiring</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Where we help -->
+    <section id="areas" class="py-20 md:py-28" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >Where We Help</span
+                        >
+                    </div>
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        The job a CTO
+                        <br />
+                        would be doing.
+                    </h2>
+                </div>
+                <div class="col-span-12 md:col-span-5 md:col-start-8 md:self-end">
+                    <p
+                        class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
+                    >
+                        Six things go unowned at almost every startup without a
+                        senior technical lead. Left alone, each one quietly sets
+                        a ceiling on how far the company can get.
+                    </p>
+                </div>
+            </div>
+
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border border-ink"
+            >
+                {
+                    areas.map((area) => {
+                        const Icon = area.icon;
+                        return (
+                            <div class="p-8 md:p-10 border-ink border-b border-r last:border-b-0 md:[&:nth-last-child(-n+2)]:border-b-0 lg:[&:nth-last-child(-n+3)]:border-b-0 md:[&:nth-child(even)]:border-r-0 lg:[&:nth-child(3n)]:border-r-0 lg:[&:nth-child(even)]:border-r">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <span class="w-10 h-10 border-[1.5px] border-ink flex items-center justify-center">
+                                        <Icon />
+                                    </span>
+                                </div>
+                                <h3 class="font-display text-2xl md:text-3xl font-bold tracking-tight leading-tight mb-3">
+                                    {area.title}
+                                </h3>
+                                <p class="text-ink-muted leading-relaxed">
+                                    {area.desc}
+                                </p>
+                            </div>
+                        );
+                    })
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Where to start -->
+    <section class="border-t-2 border-ink bg-paper-2" data-reveal>
+        <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-7">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >Where To Start</span
+                        >
+                    </div>
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        Three ways in.
+                    </h2>
+                </div>
+                <div
+                    class="col-span-12 md:col-span-5 md:self-end text-ink-muted text-lg leading-relaxed"
+                >
+                    Most founders arrive at one of three moments. Pick the one
+                    that sounds like this week.
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 border border-ink">
+                {
+                    routes.map((route, i) => (
+                        <a
+                            href={route.href}
+                            class="group flex flex-col p-8 md:p-10 border-ink border-b lg:border-b-0 lg:border-r last:border-b-0 lg:last:border-r-0 bg-paper hover:bg-ink hover:text-paper transition-colors"
+                        >
+                            <span class="font-mono text-[10px] text-ink-muted group-hover:text-paper/60 block mb-6">
+                                0{i + 1}
+                            </span>
+                            <h3 class="font-display text-2xl md:text-3xl font-bold tracking-tight leading-tight mb-3">
+                                {route.title}
+                            </h3>
+                            <p class="font-medium leading-relaxed mb-2">
+                                {route.lede}
+                            </p>
+                            <p class="text-ink-muted group-hover:text-paper/70 leading-relaxed mb-8">
+                                {route.desc}
+                            </p>
+                            <span class="mt-auto font-mono text-xs uppercase tracking-[0.15em] inline-flex items-center gap-2">
+                                Read more
+                                <span
+                                    class="transition-transform group-hover:translate-x-0.5"
+                                    aria-hidden
+                                >
+                                    →
+                                </span>
+                            </span>
+                        </a>
+                    ))
+                }
+            </div>
+
+            <p class="mt-8 text-ink-muted leading-relaxed max-w-2xl">
+                Already have something half-built — a vibe-coded demo or an
+                AI-generated prototype? That's a different job, and it has its
+                own page:
+                <a
+                    href="/prototype-to-production"
+                    class="link-underline font-medium text-ink"
+                    >prototype to production</a
+                >.
+            </p>
+        </div>
+    </section>
+
+    <!-- Founder traps -->
+    <section class="py-20 md:py-28" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >Founder Traps</span
+                        >
+                    </div>
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        Expensive mistakes,
+                        <br />
+                        made early.
+                    </h2>
+                </div>
+                <div class="col-span-12 md:col-span-5 md:col-start-8 md:self-end">
+                    <p
+                        class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
+                    >
+                        None of these look like mistakes at the time. They look
+                        like progress — which is exactly why they cost so much
+                        to undo later.
+                    </p>
+                </div>
+            </div>
+
+            <div class="border-t border-ink">
+                <div
+                    class="hidden md:grid grid-cols-12 gap-8 py-4 border-b border-ink font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted"
+                >
+                    <span class="col-span-6">Without a technical lead</span>
+                    <span class="col-span-6">With one</span>
+                </div>
+                {
+                    traps.map((row) => (
+                        <div class="grid grid-cols-12 gap-4 md:gap-8 items-center py-7 border-b border-ink">
+                            <div class="col-span-12 md:col-span-6 flex items-start gap-3 text-ink-muted">
+                                <span
+                                    aria-hidden
+                                    class="font-mono text-lg leading-none mt-[2px]"
+                                >
+                                    ×
+                                </span>
+                                <span class="leading-relaxed line-through decoration-ink/30">
+                                    {row.before}
+                                </span>
+                            </div>
+                            <div class="col-span-12 md:col-span-6 flex items-start gap-3">
+                                <span
+                                    aria-hidden
+                                    class="font-mono text-lg leading-none mt-[2px] text-accent"
+                                >
+                                    →
+                                </span>
+                                <span class="font-medium leading-relaxed">
+                                    {row.after}
+                                </span>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="section-ink border-t-2 border-ink" data-reveal>
+        <div class="max-w-7xl mx-auto px-6 py-24 md:py-36 flex flex-col items-start">
+            <div class="flex items-center gap-3 mb-8">
+                <span aria-hidden class="inline-block w-8 h-px bg-paper"></span>
+                <span
+                    class="font-mono text-xs uppercase tracking-eyebrow text-paper/60"
+                    >Start Here</span
+                >
+            </div>
+            <h2
+                class="font-display font-bold text-display text-paper text-balance mb-10 max-w-5xl leading-[0.95]"
+            >
+                Build the
+                <span class="italic text-accent">right thing</span>, first.
+            </h2>
+            <p class="text-lg md:text-xl text-paper/70 max-w-xl mb-10">
+                Tell us where you are — an idea on a napkin, a half-built MVP, or
+                a team without a technical lead. We'll tell you what we'd do
+                next, how long it takes, and what it costs.
+            </p>
+            <div class="flex flex-wrap gap-3 mb-12">
+                <a
+                    href="/contact"
+                    class="group inline-flex items-center gap-2 bg-accent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-accent hover:bg-paper hover:text-ink hover:border-paper transition-colors"
+                >
+                    Book a founder call
+                    <span
+                        class="transition-transform group-hover:translate-x-0.5"
+                        aria-hidden>→</span
+                    >
+                </a>
+                <a
+                    href="/services"
+                    class="inline-flex items-center gap-2 bg-transparent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-paper hover:bg-paper hover:text-ink transition-colors"
+                >
+                    View All Services
+                </a>
+            </div>
+
+            <!-- Contact strip -->
+            <div
+                class="w-full border-t border-paper/20 pt-8 flex flex-wrap items-center gap-x-10 gap-y-3 font-mono text-xs uppercase tracking-eyebrow text-paper/60"
+            >
+                <a
+                    href="https://motowntech.com"
+                    class="link-underline text-paper"
+                    >motowntech.com</a
+                >
+                <a href="tel:+18459252661" class="link-underline text-paper"
+                    >845-925-2661</a
+                >
+            </div>
+        </div>
+    </section>
+</BaseLayout>
