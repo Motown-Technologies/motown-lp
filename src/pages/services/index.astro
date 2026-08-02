@@ -142,7 +142,7 @@ const toSlug = (s: string) =>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border border-ink bg-paper">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border border-ink bg-paper">
                 {
                     [
                         {
@@ -158,6 +158,10 @@ const toSlug = (s: string) =>
                                 [
                                     "/prototype-to-production",
                                     "Prototype to Production",
+                                ],
+                                [
+                                    "/dedicated-development-team",
+                                    "Dedicated Teams",
                                 ],
                             ],
                         },
@@ -213,6 +217,10 @@ const toSlug = (s: string) =>
                                     "Mobile Backend",
                                 ],
                                 ["/database-design", "Database Design"],
+                                [
+                                    "/data-warehouse-development",
+                                    "Data Warehouse & BI",
+                                ],
                             ],
                         },
                         {
@@ -225,6 +233,7 @@ const toSlug = (s: string) =>
                                 ["/ui-ux-design-services", "UI/UX Design"],
                                 ["/landing-page-design", "Landing Pages"],
                                 ["/website-redesign", "Website Redesign"],
+                                ["/website-maintenance", "Website Maintenance"],
                             ],
                         },
                         {
@@ -254,6 +263,7 @@ const toSlug = (s: string) =>
                                 ],
                                 ["/rpa-development", "RPA Development"],
                                 ["/workflow-automation", "Workflow Automation"],
+                                ["/freight-edi-integration", "Freight EDI"],
                             ],
                         },
                         {
@@ -272,10 +282,24 @@ const toSlug = (s: string) =>
                                     "/legacy-system-modernization",
                                     "Legacy Modernisation",
                                 ],
+                                ["/soc-2-readiness", "SOC 2 Readiness"],
+                            ],
+                        },
+                        {
+                            group: "Industries",
+                            items: [
+                                [
+                                    "/healthcare-software-development",
+                                    "Healthcare Software",
+                                ],
+                                [
+                                    "/logistics-software-development",
+                                    "Logistics Software",
+                                ],
                             ],
                         },
                     ].map((col) => (
-                        <div class="p-8 md:p-10 border-ink border-b md:border-r lg:border-b-0 last:border-b-0 md:[&:nth-child(even)]:border-r-0 lg:[&:nth-child(even)]:border-r lg:last:border-r-0 md:[&:nth-last-child(-n+2)]:border-b-0">
+                        <div class="p-8 md:p-10 border-ink border-b border-r last:border-b-0 md:[&:nth-last-child(-n+2)]:border-b-0 lg:[&:nth-last-child(-n+3)]:border-b-0 md:[&:nth-child(even)]:border-r-0 lg:[&:nth-child(3n)]:border-r-0 lg:[&:nth-child(even)]:border-r">
                             <div class="font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted mb-6">
                                 {col.group}
                             </div>

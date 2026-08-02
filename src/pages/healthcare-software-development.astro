@@ -1,78 +1,78 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-import DatabaseIcon from "../components/icons/DatabaseIcon.astro";
+import ShieldIcon from "../components/icons/ShieldIcon.astro";
+import ConsultingIcon from "../components/icons/ConsultingIcon.astro";
 import ApiIcon from "../components/icons/ApiIcon.astro";
 import SoftwareIcon from "../components/icons/SoftwareIcon.astro";
-import AutomationIcon from "../components/icons/AutomationIcon.astro";
 import CloudIcon from "../components/icons/CloudIcon.astro";
-import AnalyticsIcon from "../components/icons/AnalyticsIcon.astro";
+import DatabaseIcon from "../components/icons/DatabaseIcon.astro";
 
 const panel = [
-    { title: "Sources", icon: DatabaseIcon },
-    { title: "Extraction", icon: ApiIcon },
-    { title: "Mapping", icon: SoftwareIcon },
-    { title: "Transformation", icon: AutomationIcon },
-    { title: "Sync", icon: CloudIcon },
-    { title: "Reconciliation", icon: AnalyticsIcon },
+    { title: "PHI Handling", icon: ShieldIcon },
+    { title: "Access & Audit", icon: ConsultingIcon },
+    { title: "Interoperability", icon: ApiIcon },
+    { title: "Consent", icon: SoftwareIcon },
+    { title: "Hosting", icon: CloudIcon },
+    { title: "Documentation", icon: DatabaseIcon },
 ];
 
 const work = [
     {
-        title: "Source Connectors",
+        title: "PHI Handling",
+        icon: ShieldIcon,
+        desc: "Every place protected health information is stored, transmitted, or logged mapped deliberately — including the analytics and error tools that quietly capture it by default.",
+    },
+    {
+        title: "Access & Audit",
+        icon: ConsultingIcon,
+        desc: "Least-privilege roles and a record of who viewed which patient record when, which is the first thing any review asks to see.",
+    },
+    {
+        title: "Interoperability",
         icon: ApiIcon,
-        desc: "Reliable extraction from each system, including the ones with no real API where the only route out is a scheduled export.",
+        desc: "HL7 v2 and FHIR interfaces to the systems already in use, so data moves properly rather than through an exported spreadsheet.",
     },
     {
-        title: "Identity Resolution",
-        icon: DatabaseIcon,
-        desc: "Working out that three records are the same customer, which is the difference between one view of a relationship and three partial ones.",
-    },
-    {
-        title: "Field Mapping",
+        title: "Consent & Rights",
         icon: SoftwareIcon,
-        desc: "A documented contract between systems, so the meaning of a field doesn't live only in the head of whoever built the integration.",
+        desc: "Consent captured and honoured, with access, correction, and deletion requests handled as designed features rather than as manual database work.",
     },
     {
-        title: "Transformation",
-        icon: AutomationIcon,
-        desc: "Formats, units, currencies, and time zones normalised once, centrally, rather than patched differently in each consuming system.",
-    },
-    {
-        title: "Sync Strategy",
+        title: "Hosting",
         icon: CloudIcon,
-        desc: "Batch or real-time per data type, with a defined answer to which system wins when both have changed the same record.",
+        desc: "Infrastructure configured for regulated workloads — encryption, key management, network isolation, and the logging retention the agreements require.",
     },
     {
-        title: "Reconciliation",
-        icon: AnalyticsIcon,
-        desc: "Automated checks that totals match on both sides, so a silent failure surfaces the same day rather than at quarter end.",
+        title: "Documentation",
+        icon: DatabaseIcon,
+        desc: "Data flow diagrams, control descriptions, and decision records produced as the system is built, because reconstructing them later takes far longer.",
     },
 ];
 
 const rows = [
     {
-        before: "The same customer existing as three separate records",
-        after: "One identity resolved across every system",
+        before: "Patient data flowing into third-party analytics",
+        after: "Data flows mapped before a single event is sent",
     },
     {
-        before: "A nightly export that somebody runs by hand",
-        after: "Scheduled sync with alerting when it fails",
+        before: "One admin role that can see every record",
+        after: "Least-privilege roles with per-record audit trails",
     },
     {
-        before: "Silent failures discovered weeks after the fact",
-        after: "Reconciliation reports proving the totals match",
+        before: "Data moved by CSV because there's no interface",
+        after: "HL7 or FHIR interfaces to the systems in use",
     },
     {
-        before: "Fields mapped by whoever built it, undocumented",
-        after: "A documented contract between the systems",
+        before: "Security questionnaire answered after the build",
+        after: "Controls documented as the system is built",
     },
 ];
 ---
 
 <BaseLayout
-    meta_title="Data Integration Services | Motown Solutions"
-    meta_description="Data integration services — source connectors, field mapping, transformation, sync strategy, identity resolution, conflict handling, and reconciliation reports that prove the totals match."
+    meta_title="Healthcare Software Development | Motown Solutions"
+    meta_description="Healthcare software development — PHI handling, least-privilege access and audit trails, HL7 and FHIR interoperability, consent management, and controls documented for security review."
 >
     <section class="relative overflow-hidden border-b-2 border-ink">
         <svg
@@ -99,22 +99,22 @@ const rows = [
                         ></span>
                         <span
                             class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
-                            >Data Integration</span
+                            >Healthcare</span
                         >
                     </div>
 
                     <h1
                         class="font-display font-bold text-display text-ink text-balance"
                     >
-                        Systems that
+                        Healthcare software
                         <br />
-                        finally <span class="italic text-accent">agree</span>.
+                        built for the <span class="italic text-accent">review</span>.
                     </h1>
 
                     <p
                         class="mt-10 text-lg md:text-xl text-ink-muted leading-relaxed text-pretty max-w-xl"
                     >
-                        Every business above a certain size has the same argument in a meeting: two systems, two numbers, and an hour spent working out which one to believe. That's an integration problem, not a reporting one.
+                        Clinical software isn't harder to build. It's harder to ship — because every decision about data, access, and audit eventually has to survive a security review run by someone you've never met.
                     </p>
 
                     <div class="mt-10 flex flex-wrap gap-3">
@@ -122,7 +122,7 @@ const rows = [
                             href="/contact"
                             class="group inline-flex items-center gap-2 bg-accent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-accent hover:bg-paper hover:text-ink hover:border-ink transition-colors"
                         >
-                            Map the systems
+                            Discuss a build
                             <span
                                 class="transition-transform group-hover:translate-x-0.5"
                                 aria-hidden>→</span
@@ -132,7 +132,7 @@ const rows = [
                             href="#work"
                             class="inline-flex items-center gap-2 bg-transparent text-ink font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-ink hover:bg-ink hover:text-paper transition-colors"
                         >
-                            What's involved
+                            What changes
                         </a>
                     </div>
                 </div>
@@ -145,8 +145,8 @@ const rows = [
                         <div
                             class="flex items-center justify-between px-5 py-3 border-b-2 border-ink font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted"
                         >
-                            <span>Your Data / Pipeline</span>
-                            <span aria-hidden class="text-accent">● reconciled</span>
+                            <span>Your Build / Healthcare</span>
+                            <span aria-hidden class="text-accent">● auditable</span>
                         </div>
                         {
                             panel.map((s, i) => {
@@ -181,15 +181,15 @@ const rows = [
             <div
                 class="max-w-7xl mx-auto px-6 py-5 flex flex-wrap items-center justify-between gap-x-8 gap-y-2 font-mono text-[10px] md:text-xs uppercase tracking-eyebrow text-ink-muted"
             >
-                <span>Sources</span>
+                <span>PHI</span>
                 <span class="hidden md:inline" aria-hidden>·</span>
-                <span>Mapping</span>
+                <span>Access</span>
                 <span class="hidden md:inline" aria-hidden>·</span>
-                <span>Transform</span>
+                <span>HL7 / FHIR</span>
                 <span class="hidden md:inline" aria-hidden>·</span>
-                <span>Sync</span>
+                <span>Consent</span>
                 <span class="hidden md:inline" aria-hidden>·</span>
-                <span>Reconciliation</span>
+                <span>Audit</span>
             </div>
         </div>
     </section>
@@ -203,22 +203,22 @@ const rows = [
                         ></span>
                         <span
                             class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
-                            >What's Involved</span
+                            >What Changes</span
                         >
                     </div>
                     <h2
                         class="font-display font-bold text-h2 tracking-tight text-balance"
                     >
-                        Moving data
+                        The same build,
                         <br />
-                        is the easy part.
+                        different constraints.
                     </h2>
                 </div>
                 <div class="col-span-12 md:col-span-5 md:col-start-8 md:self-end">
                     <p
                         class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
                     >
-                        Copying records between systems takes a day. Deciding which system is right when they disagree, and proving afterwards that nothing was lost, is the actual work.
+                        Nothing here is exotic engineering. It's ordinary engineering with a set of constraints applied from the first commit instead of retrofitted after a questionnaire arrives.
                     </p>
                 </div>
             </div>
@@ -259,22 +259,22 @@ const rows = [
                         ></span>
                         <span
                             class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
-                            >Doing It Properly</span
+                            >The Gap</span
                         >
                     </div>
                     <h2
                         class="font-display font-bold text-h2 tracking-tight text-balance"
                     >
-                        Exports and
+                        Consumer habits.
                         <br />
-                        hope.
+                        Clinical stakes.
                     </h2>
                 </div>
                 <div class="col-span-12 md:col-span-5 md:col-start-8 md:self-end">
                     <p
                         class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
                     >
-                        The integration most companies actually run is a spreadsheet, a scheduled export, and one person who knows how to fix it when it breaks.
+                        These are the four patterns that get carried over from ordinary product work and cause the most trouble the first time a health system's security team looks properly.
                     </p>
                 </div>
             </div>
@@ -283,8 +283,8 @@ const rows = [
                 <div
                     class="hidden md:grid grid-cols-12 gap-8 py-4 border-b border-ink font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted"
                 >
-                    <span class="col-span-6">Copy-paste integration</span>
-                    <span class="col-span-6">Real integration</span>
+                    <span class="col-span-6">Carried over</span>
+                    <span class="col-span-6">Built for healthcare</span>
                 </div>
                 {
                     rows.map((row) => (
@@ -317,20 +317,10 @@ const rows = [
             </div>
 
             <p class="mt-8 text-ink-muted leading-relaxed max-w-2xl">
-                Where a clean interface is needed rather than a pipeline, see <a href="/api-development" class="link-underline font-medium text-ink"
+                Enterprise health buyers usually ask for a report as well — see <a href="/soc-2-readiness" class="link-underline font-medium text-ink"
+                    >SOC 2 readiness</a
+                >. The interfaces themselves are <a href="/api-development" class="link-underline font-medium text-ink"
                     >API development</a
-                >, and the modelling underneath sits with <a href="/database-design" class="link-underline font-medium text-ink"
-                    >database design</a
-                >. Once the data lands in one place, reporting on it is
-                <a
-                    href="/data-warehouse-development"
-                    class="link-underline font-medium text-ink"
-                    >data warehouse and BI</a
-                >. Trading partner documents are their own discipline —
-                <a
-                    href="/freight-edi-integration"
-                    class="link-underline font-medium text-ink"
-                    >EDI integration</a
                 >.
             </p>
 
@@ -343,33 +333,33 @@ const rows = [
                 <span aria-hidden class="inline-block w-8 h-px bg-paper"></span>
                 <span
                     class="font-mono text-xs uppercase tracking-eyebrow text-paper/60"
-                    >One Truth</span
+                    >Build It Properly</span
                 >
             </div>
             <h2
                 class="font-display font-bold text-display text-paper text-balance mb-10 max-w-5xl leading-[0.95]"
             >
-                One version of the <span class="italic text-accent">truth</span>.
+                Ready for <span class="italic text-accent">review</span>.
             </h2>
             <p class="text-lg md:text-xl text-paper/70 max-w-xl mb-10">
-                List the systems and the report nobody trusts. We'll map where the numbers diverge and what it takes to make them agree permanently.
+                Tell us what the product does and who will be reviewing it. We'll come back with the constraints that apply, what they change about the build, and what they cost.
             </p>
             <div class="flex flex-wrap gap-3 mb-12">
                 <a
                     href="/contact"
                     class="group inline-flex items-center gap-2 bg-accent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-accent hover:bg-paper hover:text-ink hover:border-paper transition-colors"
                 >
-                    Map the systems
+                    Discuss a build
                     <span
                         class="transition-transform group-hover:translate-x-0.5"
                         aria-hidden>→</span
                     >
                 </a>
                 <a
-                    href="/services/automation"
+                    href="/services/software-development"
                     class="inline-flex items-center gap-2 bg-transparent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-paper hover:bg-paper hover:text-ink transition-colors"
                 >
-                    Automation
+                    Software Development
                 </a>
             </div>
 

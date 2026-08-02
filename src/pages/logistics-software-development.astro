@@ -1,78 +1,78 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
+import SoftwareIcon from "../components/icons/SoftwareIcon.astro";
+import MapPinIcon from "../components/icons/MapPinIcon.astro";
+import AnalyticsIcon from "../components/icons/AnalyticsIcon.astro";
 import DatabaseIcon from "../components/icons/DatabaseIcon.astro";
 import ApiIcon from "../components/icons/ApiIcon.astro";
-import SoftwareIcon from "../components/icons/SoftwareIcon.astro";
-import AutomationIcon from "../components/icons/AutomationIcon.astro";
-import CloudIcon from "../components/icons/CloudIcon.astro";
-import AnalyticsIcon from "../components/icons/AnalyticsIcon.astro";
+import ShieldIcon from "../components/icons/ShieldIcon.astro";
 
 const panel = [
-    { title: "Sources", icon: DatabaseIcon },
-    { title: "Extraction", icon: ApiIcon },
-    { title: "Mapping", icon: SoftwareIcon },
-    { title: "Transformation", icon: AutomationIcon },
-    { title: "Sync", icon: CloudIcon },
-    { title: "Reconciliation", icon: AnalyticsIcon },
+    { title: "Orders", icon: SoftwareIcon },
+    { title: "Routing", icon: MapPinIcon },
+    { title: "Tracking", icon: AnalyticsIcon },
+    { title: "Warehouse", icon: DatabaseIcon },
+    { title: "Carriers & EDI", icon: ApiIcon },
+    { title: "Exceptions", icon: ShieldIcon },
 ];
 
 const work = [
     {
-        title: "Source Connectors",
-        icon: ApiIcon,
-        desc: "Reliable extraction from each system, including the ones with no real API where the only route out is a scheduled export.",
-    },
-    {
-        title: "Identity Resolution",
-        icon: DatabaseIcon,
-        desc: "Working out that three records are the same customer, which is the difference between one view of a relationship and three partial ones.",
-    },
-    {
-        title: "Field Mapping",
+        title: "Orders & Shipments",
         icon: SoftwareIcon,
-        desc: "A documented contract between systems, so the meaning of a field doesn't live only in the head of whoever built the integration.",
+        desc: "A data model that can represent partial shipments, multi-leg journeys, consolidations, and returns — not just one order becoming one delivery.",
     },
     {
-        title: "Transformation",
-        icon: AutomationIcon,
-        desc: "Formats, units, currencies, and time zones normalised once, centrally, rather than patched differently in each consuming system.",
+        title: "Routing & Scheduling",
+        icon: MapPinIcon,
+        desc: "Planning that accounts for vehicle capacity, driver hours, time windows, and the reality that the plan changes twice before lunch.",
     },
     {
-        title: "Sync Strategy",
-        icon: CloudIcon,
-        desc: "Batch or real-time per data type, with a defined answer to which system wins when both have changed the same record.",
-    },
-    {
-        title: "Reconciliation",
+        title: "Real-Time Tracking",
         icon: AnalyticsIcon,
-        desc: "Automated checks that totals match on both sides, so a silent failure surfaces the same day rather than at quarter end.",
+        desc: "Events captured where they happen — scan, geofence, or driver action — so status reflects the world rather than someone's memory of it.",
+    },
+    {
+        title: "Warehouse & Inventory",
+        icon: DatabaseIcon,
+        desc: "Stock by location and condition, with cycle counting and the reconciliation that keeps the system and the shelf in agreement.",
+    },
+    {
+        title: "Carriers & EDI",
+        icon: ApiIcon,
+        desc: "An integration layer new carriers plug into, covering modern APIs and the EDI documents much of the industry still runs on.",
+    },
+    {
+        title: "Exception Handling",
+        icon: ShieldIcon,
+        desc: "Failed deliveries, damaged goods, and address changes routed to someone with ownership and a clock, rather than to a whiteboard.",
     },
 ];
 
 const rows = [
     {
-        before: "The same customer existing as three separate records",
-        after: "One identity resolved across every system",
+        before: "A split shipment the system cannot represent",
+        after: "A model that handles partial and multi-leg",
     },
     {
-        before: "A nightly export that somebody runs by hand",
-        after: "Scheduled sync with alerting when it fails",
+        before: "Tracking that updates when someone remembers to scan",
+        after: "Events captured at the point they happen",
     },
     {
-        before: "Silent failures discovered weeks after the fact",
-        after: "Reconciliation reports proving the totals match",
+        before: "Carrier onboarding measured in months",
+        after: "An integration layer new partners plug into",
     },
     {
-        before: "Fields mapped by whoever built it, undocumented",
-        after: "A documented contract between the systems",
+        before: "Exceptions handled by phone calls and a whiteboard",
+        after: "Exception queues with ownership and a clock",
     },
 ];
 ---
 
 <BaseLayout
-    meta_title="Data Integration Services | Motown Solutions"
-    meta_description="Data integration services — source connectors, field mapping, transformation, sync strategy, identity resolution, conflict handling, and reconciliation reports that prove the totals match."
+    meta_title="Logistics Software Development | Motown Solutions"
+    meta_description="Logistics software development — order and shipment management, routing, real-time tracking, warehouse and inventory, carrier and EDI integration, and exception handling built for the edge cases."
 >
     <section class="relative overflow-hidden border-b-2 border-ink">
         <svg
@@ -99,22 +99,22 @@ const rows = [
                         ></span>
                         <span
                             class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
-                            >Data Integration</span
+                            >Logistics</span
                         >
                     </div>
 
                     <h1
                         class="font-display font-bold text-display text-ink text-balance"
                     >
-                        Systems that
+                        Software that knows
                         <br />
-                        finally <span class="italic text-accent">agree</span>.
+                        where the <span class="italic text-accent">freight</span> is.
                     </h1>
 
                     <p
                         class="mt-10 text-lg md:text-xl text-ink-muted leading-relaxed text-pretty max-w-xl"
                     >
-                        Every business above a certain size has the same argument in a meeting: two systems, two numbers, and an hour spent working out which one to believe. That's an integration problem, not a reporting one.
+                        Logistics software fails on the exceptions — the split shipment, the failed delivery, the customer who changes the address while the van is already moving. The happy path is the easy ten percent.
                     </p>
 
                     <div class="mt-10 flex flex-wrap gap-3">
@@ -122,7 +122,7 @@ const rows = [
                             href="/contact"
                             class="group inline-flex items-center gap-2 bg-accent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-accent hover:bg-paper hover:text-ink hover:border-ink transition-colors"
                         >
-                            Map the systems
+                            Scope a build
                             <span
                                 class="transition-transform group-hover:translate-x-0.5"
                                 aria-hidden>→</span
@@ -132,7 +132,7 @@ const rows = [
                             href="#work"
                             class="inline-flex items-center gap-2 bg-transparent text-ink font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-ink hover:bg-ink hover:text-paper transition-colors"
                         >
-                            What's involved
+                            What we build
                         </a>
                     </div>
                 </div>
@@ -145,8 +145,8 @@ const rows = [
                         <div
                             class="flex items-center justify-between px-5 py-3 border-b-2 border-ink font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted"
                         >
-                            <span>Your Data / Pipeline</span>
-                            <span aria-hidden class="text-accent">● reconciled</span>
+                            <span>Your Operation / Systems</span>
+                            <span aria-hidden class="text-accent">● tracked</span>
                         </div>
                         {
                             panel.map((s, i) => {
@@ -181,15 +181,15 @@ const rows = [
             <div
                 class="max-w-7xl mx-auto px-6 py-5 flex flex-wrap items-center justify-between gap-x-8 gap-y-2 font-mono text-[10px] md:text-xs uppercase tracking-eyebrow text-ink-muted"
             >
-                <span>Sources</span>
+                <span>Orders</span>
                 <span class="hidden md:inline" aria-hidden>·</span>
-                <span>Mapping</span>
+                <span>Routing</span>
                 <span class="hidden md:inline" aria-hidden>·</span>
-                <span>Transform</span>
+                <span>Tracking</span>
                 <span class="hidden md:inline" aria-hidden>·</span>
-                <span>Sync</span>
+                <span>Warehouse</span>
                 <span class="hidden md:inline" aria-hidden>·</span>
-                <span>Reconciliation</span>
+                <span>EDI</span>
             </div>
         </div>
     </section>
@@ -203,22 +203,22 @@ const rows = [
                         ></span>
                         <span
                             class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
-                            >What's Involved</span
+                            >What We Build</span
                         >
                     </div>
                     <h2
                         class="font-display font-bold text-h2 tracking-tight text-balance"
                     >
-                        Moving data
+                        Designed around
                         <br />
-                        is the easy part.
+                        the exceptions.
                     </h2>
                 </div>
                 <div class="col-span-12 md:col-span-5 md:col-start-8 md:self-end">
                     <p
                         class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
                     >
-                        Copying records between systems takes a day. Deciding which system is right when they disagree, and proving afterwards that nothing was lost, is the actual work.
+                        Every logistics system models the straightforward shipment well. The ones that survive contact with an operation are the ones whose data model could represent what actually happened.
                     </p>
                 </div>
             </div>
@@ -259,22 +259,22 @@ const rows = [
                         ></span>
                         <span
                             class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
-                            >Doing It Properly</span
+                            >Reality</span
                         >
                     </div>
                     <h2
                         class="font-display font-bold text-h2 tracking-tight text-balance"
                     >
-                        Exports and
+                        The happy path,
                         <br />
-                        hope.
+                        and everything else.
                     </h2>
                 </div>
                 <div class="col-span-12 md:col-span-5 md:col-start-8 md:self-end">
                     <p
                         class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
                     >
-                        The integration most companies actually run is a spreadsheet, a scheduled export, and one person who knows how to fix it when it breaks.
+                        Ask an operations team what breaks and you'll get these four. Ask the software what it can represent and you'll often find it can't represent any of them.
                     </p>
                 </div>
             </div>
@@ -283,8 +283,8 @@ const rows = [
                 <div
                     class="hidden md:grid grid-cols-12 gap-8 py-4 border-b border-ink font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted"
                 >
-                    <span class="col-span-6">Copy-paste integration</span>
-                    <span class="col-span-6">Real integration</span>
+                    <span class="col-span-6">Where it breaks</span>
+                    <span class="col-span-6">Built for it</span>
                 </div>
                 {
                     rows.map((row) => (
@@ -317,16 +317,11 @@ const rows = [
             </div>
 
             <p class="mt-8 text-ink-muted leading-relaxed max-w-2xl">
-                Where a clean interface is needed rather than a pipeline, see <a href="/api-development" class="link-underline font-medium text-ink"
-                    >API development</a
-                >, and the modelling underneath sits with <a href="/database-design" class="link-underline font-medium text-ink"
-                    >database design</a
-                >. Once the data lands in one place, reporting on it is
-                <a
-                    href="/data-warehouse-development"
-                    class="link-underline font-medium text-ink"
-                    >data warehouse and BI</a
-                >. Trading partner documents are their own discipline —
+                Most of this work is systems agreeing with each other — see <a href="/data-integration-services" class="link-underline font-medium text-ink"
+                    >data integration</a
+                > and <a href="/business-process-automation" class="link-underline font-medium text-ink"
+                    >business process automation</a
+                >. The carrier and retailer side of it is
                 <a
                     href="/freight-edi-integration"
                     class="link-underline font-medium text-ink"
@@ -343,33 +338,33 @@ const rows = [
                 <span aria-hidden class="inline-block w-8 h-px bg-paper"></span>
                 <span
                     class="font-mono text-xs uppercase tracking-eyebrow text-paper/60"
-                    >One Truth</span
+                    >See The Network</span
                 >
             </div>
             <h2
                 class="font-display font-bold text-display text-paper text-balance mb-10 max-w-5xl leading-[0.95]"
             >
-                One version of the <span class="italic text-accent">truth</span>.
+                Visibility, <span class="italic text-accent">end to end</span>.
             </h2>
             <p class="text-lg md:text-xl text-paper/70 max-w-xl mb-10">
-                List the systems and the report nobody trusts. We'll map where the numbers diverge and what it takes to make them agree permanently.
+                Describe the operation and where visibility breaks down today. We'll come back with what to build first and what it changes for the people doing the work.
             </p>
             <div class="flex flex-wrap gap-3 mb-12">
                 <a
                     href="/contact"
                     class="group inline-flex items-center gap-2 bg-accent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-accent hover:bg-paper hover:text-ink hover:border-paper transition-colors"
                 >
-                    Map the systems
+                    Scope a build
                     <span
                         class="transition-transform group-hover:translate-x-0.5"
                         aria-hidden>→</span
                     >
                 </a>
                 <a
-                    href="/services/automation"
+                    href="/services/software-development"
                     class="inline-flex items-center gap-2 bg-transparent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-paper hover:bg-paper hover:text-ink transition-colors"
                 >
-                    Automation
+                    Software Development
                 </a>
             </div>
 
