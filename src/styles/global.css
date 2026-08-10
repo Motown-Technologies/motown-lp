@@ -18,6 +18,11 @@
     --text-display: clamp(2.75rem, 7vw, 6rem);
     --text-display--line-height: 0.95;
     --text-display--letter-spacing: -0.03em;
+    /* Case-study heroes carry longer sentences than a landing page hero, so they
+       cap lower than --text-display — ~14 characters a line instead of ~8. */
+    --text-hero: clamp(2.5rem, 5.2vw, 4.5rem);
+    --text-hero--line-height: 1;
+    --text-hero--letter-spacing: -0.03em;
     --text-h2: clamp(2.25rem, 4vw, 4rem);
     --text-h2--line-height: 1.05;
     --text-h2--letter-spacing: -0.02em;

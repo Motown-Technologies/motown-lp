@@ -1,0 +1,553 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const outcomes = [
+    {
+        before: "Inventory tracked across spreadsheets, a shared photo folder, and a group chat",
+        after: "One record per item, from intake to sold, with every change attributed",
+    },
+    {
+        before: "Item status kept in three places that quietly disagreed with each other",
+        after: "Status computed by the database itself — it cannot drift, and code cannot overwrite it",
+    },
+    {
+        before: "Catalog copy typed by hand, item by item, in the format the auction software wanted",
+        after: "Photos in, draft title, description and keywords out — reviewed and approved by a cataloger",
+    },
+    {
+        before: "Photos emailed around or dropped in a folder, named by whoever took them",
+        after: "Phone camera straight to storage, converted and optimized on the way in",
+    },
+    {
+        before: "Changing a hundred items meant a hundred edits, or a mass update nobody could trace",
+        after: "Queued bulk actions across thousands of items, with live progress and a full audit trail",
+    },
+    {
+        before: "Deleting the wrong thing meant it was gone",
+        after: "Soft deletes throughout, a recently-deleted screen with bulk restore, and a retention schedule",
+    },
+];
+
+const pillars = [
+    {
+        n: "01",
+        title: "The lifecycle is the spine",
+        body: "Inventory moves through seven stages — quick catalog, photograph, store, assign, review, catalog, auction — and then forks to sold or unsold. That path is not a status dropdown bolted on afterwards. Filters, dashboards, bulk actions and the item stepper all key off the same lifecycle, so where a piece stands is the same answer everywhere in the system.",
+    },
+    {
+        n: "02",
+        title: "State you cannot corrupt",
+        body: "Where an item stands is derived by the database from stage timestamps, not stored alongside them and hoped to agree. Sold and unsold are made mutually exclusive by a constraint, not by a method someone might route around. Trust in an operations tool is not a feature you add — it is what you get by making the wrong state impossible to write.",
+    },
+    {
+        n: "03",
+        title: "AI drafts, people approve",
+        body: "A vision model reads the photos and returns catalog data already shaped to the columns the auction software downstream expects. A cataloger reviews it, regenerates with feedback where it is off, and approves it into real inventory. The model never publishes anything on its own, and when the API is down a circuit breaker stops the queue instead of retrying into a wall.",
+    },
+];
+
+const build = [
+    {
+        title: "Status the app cannot lie about",
+        body: "Three sources of truth for stage completion were collapsed into one. Timestamps became the only record; status and progress became generated columns computed from them and indexed. No backfill, no drift, and no write path — including raw SQL — that can disagree.",
+    },
+    {
+        title: "Auditing writes that fire no events",
+        body: "A bulk edit through the query builder skips model events, so a twenty-five-thousand-item change used to leave no trail. Auditing moved into a custom builder, which covers every mass update written since — and every one written in future — without anyone having to remember.",
+    },
+    {
+        title: "A circuit breaker on the AI",
+        body: "Failures are counted in cache; past a threshold the circuit opens and jobs fail fast for a cooldown window rather than hammering a provider that is already struggling. Concurrent categorization batches are throttled on the way in.",
+    },
+    {
+        title: "Built for a phone camera",
+        body: "Uploads are presigned and go straight to storage. iPhone photos are converted from HEIC and compressed in the browser before they ever leave, then optimized again by a queue worker — so cataloging from a phone on the warehouse floor is the normal path, not the degraded one.",
+    },
+    {
+        title: "Lot numbers that reuse their gaps",
+        body: "Numbers are allocated as the lowest unused value in an auction rather than from a counter, so renaming or removing a lot frees its number instead of stranding it. Inserts serialize on a row lock, and a unique constraint keeps an item from landing in two lots.",
+    },
+    {
+        title: "Realtime, with a fallback",
+        body: "Job progress, image processing and bulk actions broadcast over WebSockets and the interface subscribes — but it also polls if the socket never arrives, and failed broadcasts are retried. Progress bars are the thing users trust least when they are wrong.",
+    },
+];
+
+const rigor = [
+    {
+        risk: "Somebody bulk-edits a few thousand items and gets it wrong",
+        undo: "Every change is attributed and recorded, so it can be found and reversed rather than reconstructed from memory",
+    },
+    {
+        risk: "Something is deleted the week before the sale",
+        undo: "Nothing is really deleted — a recently-deleted screen restores it in bulk, on a retention window the house sets",
+    },
+    {
+        risk: "Two people disagree about where a lot stands",
+        undo: "One status, derived from the record itself, reading the same on every screen and in every export",
+    },
+    {
+        risk: "A lot number is skipped, reused, or lands on two items",
+        undo: "Numbers are allocated from what actually exists, and an item cannot sit in two lots at once",
+    },
+    {
+        risk: "The AI writes something wrong into the catalog",
+        undo: "Nothing it produces becomes inventory until a cataloger has read it and approved it",
+    },
+    {
+        risk: "Cataloging stalls because a phone or a service is having a bad day",
+        undo: "Photos upload from the floor as the normal path, and a failing provider stops the queue instead of poisoning the batch",
+    },
+];
+---
+
+<BaseLayout
+    meta_title="Case Study: An Auction House Operations Platform | Motown Solutions"
+    meta_description="Spreadsheets, a photo folder and a group chat, replaced by one auditable system of record — inventory intake, AI-assisted cataloging, media handling and auction management for an auction house."
+>
+    <section class="relative overflow-hidden border-b-2 border-ink">
+        <svg
+            aria-hidden
+            class="absolute inset-0 w-full h-full pointer-events-none opacity-[0.12] text-ink"
+            viewBox="0 0 1200 700"
+            preserveAspectRatio="xMidYMid slice"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+        >
+            <path d="M0 140 H 1200 M0 220 H 1200 M0 300 H 1200 M0 380 H 1200 M0 460 H 1200 M0 540 H 1200 M0 620 H 1200" />
+            <path d="M120 100 V 660 M340 100 V 660 M560 100 V 660 M780 100 V 660 M1000 100 V 660" />
+            <rect x="340" y="300" width="220" height="80" fill="currentColor" opacity="0.35" />
+            <rect x="560" y="380" width="220" height="80" fill="currentColor" opacity="0.2" />
+        </svg>
+
+        <div class="relative max-w-7xl mx-auto px-6 pt-16 md:pt-24 pb-20 md:pb-28">
+            <div class="grid grid-cols-12 gap-6 lg:items-center">
+                <div class="col-span-12 lg:col-span-7">
+                    <div class="flex items-center gap-3 mb-8">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >Case Study — Auction House Operations</span
+                        >
+                    </div>
+
+                    <h1
+                        class="font-display font-bold text-hero text-ink text-balance"
+                    >
+                        A spreadsheet knows
+                        <br />
+                        what. It never knows
+                        <span class="italic text-accent">who, or when</span>.
+                    </h1>
+
+                    <p
+                        class="mt-10 text-lg md:text-xl text-ink-muted leading-relaxed text-pretty max-w-xl"
+                    >
+                        An auction house ran its inventory across spreadsheets,
+                        a shared photo folder and a group chat. Every piece of
+                        it worked, right up until two people disagreed about
+                        where a lot stood and nothing in the system could settle
+                        it. We built the system of record: intake to catalog to
+                        auction, with AI drafting the tedious part and a person
+                        approving all of it.
+                    </p>
+
+                    <div class="mt-10 flex flex-wrap gap-3">
+                        <a
+                            href="/contact"
+                            class="group inline-flex items-center gap-2 bg-accent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-accent hover:bg-paper hover:text-ink hover:border-ink transition-colors"
+                        >
+                            Scope your operations tool
+                            <span
+                                class="transition-transform group-hover:translate-x-0.5"
+                                aria-hidden>→</span
+                            >
+                        </a>
+                        <a
+                            href="#outcomes"
+                            class="inline-flex items-center gap-2 bg-transparent text-ink font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-ink hover:bg-ink hover:text-paper transition-colors"
+                        >
+                            What changed
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-span-12 lg:col-span-5 mt-12 lg:mt-0">
+                    <div
+                        class="border-2 border-ink bg-paper-2 lg:translate-y-2"
+                        data-reveal
+                    >
+                        <div
+                            class="flex items-center justify-between px-5 py-3 border-b-2 border-ink font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted"
+                        >
+                            <span>At A Glance</span>
+                            <span aria-hidden class="text-accent">● in use</span
+                            >
+                        </div>
+
+                        <div class="flex items-end gap-5 px-5 py-6 border-b border-ink/30">
+                            <span
+                                class="font-display font-bold text-6xl leading-[0.85] tracking-tight"
+                                >7</span
+                            >
+                            <span
+                                class="text-sm text-ink-muted leading-snug pb-1"
+                                >lifecycle stages, from<br />quick catalog to sold</span
+                            >
+                        </div>
+                        {
+                            [
+                                ["Sector", "Auction house — internal ops"],
+                                ["Scope", "68 screens, one system of record"],
+                                ["Stack", "Laravel 13 · Vue 3 · Postgres 17"],
+                                ["The AI's job", "Drafts the catalog copy; a person approves"],
+                                ["Deletes", "Soft everywhere, with bulk restore"],
+                            ].map(([k, v], i, arr) => (
+                                <div
+                                    class:list={[
+                                        "px-5 py-3.5",
+                                        i !== arr.length - 1 &&
+                                            "border-b border-ink/30",
+                                    ]}
+                                >
+                                    <div class="font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted">
+                                        {k}
+                                    </div>
+                                    <div class="mt-1 font-display font-bold tracking-tight text-lg leading-snug">
+                                        {v}
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before / after -->
+    <section id="outcomes" class="py-20 md:py-28" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >What Changed</span
+                        >
+                    </div>
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        Same work.
+                        <br />
+                        One place it now lives.
+                    </h2>
+                </div>
+                <div class="col-span-12 md:col-span-5 md:col-start-8 md:self-end">
+                    <p
+                        class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
+                    >
+                        The staff already knew how to run an auction. The tools
+                        were the problem: three of them, none aware of the
+                        others, and no way to answer who changed what. Nothing
+                        here reinvents the operation — it just gives it a memory.
+                    </p>
+                </div>
+            </div>
+
+            <div class="border-t border-ink">
+                <div
+                    class="hidden md:grid grid-cols-12 gap-8 py-4 border-b border-ink font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted"
+                >
+                    <span class="col-span-6">Before</span>
+                    <span class="col-span-6">Now</span>
+                </div>
+                {
+                    outcomes.map((row) => (
+                        <div class="grid grid-cols-12 gap-4 md:gap-8 items-center py-7 border-b border-ink">
+                            <div class="col-span-12 md:col-span-6 flex items-start gap-3 text-ink-muted">
+                                <span
+                                    aria-hidden
+                                    class="font-mono text-lg leading-none mt-[2px]"
+                                >
+                                    ×
+                                </span>
+                                <span class="leading-relaxed line-through decoration-ink/30">
+                                    {row.before}
+                                </span>
+                            </div>
+                            <div class="col-span-12 md:col-span-6 flex items-start gap-3">
+                                <span
+                                    aria-hidden
+                                    class="font-mono text-lg leading-none mt-[2px] text-accent"
+                                >
+                                    →
+                                </span>
+                                <span class="font-medium leading-relaxed">
+                                    {row.after}
+                                </span>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Three pillars -->
+    <section class="border-t-2 border-ink bg-paper-2 py-20 md:py-28" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-7">
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        Three ideas the whole
+                        <br />
+                        system is built on.
+                    </h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 border border-ink bg-paper">
+                {
+                    pillars.map((p, i, arr) => (
+                        <div
+                            class:list={[
+                                "p-8 md:p-10 border-ink",
+                                i !== arr.length - 1 &&
+                                    "border-b md:border-b-0 md:border-r",
+                            ]}
+                        >
+                            <div class="font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted mb-6">
+                                {p.n}
+                            </div>
+                            <h3 class="font-display text-2xl md:text-3xl font-bold tracking-tight leading-tight mb-4">
+                                {p.title}
+                            </h3>
+                            <p class="text-ink-muted leading-relaxed">
+                                {p.body}
+                            </p>
+                        </div>
+                    ))
+                }
+            </div>
+
+            <blockquote
+                class="mt-14 border-l-2 border-accent pl-6 md:pl-8 max-w-3xl"
+            >
+                <p
+                    class="font-display font-bold text-2xl md:text-3xl tracking-tight leading-tight text-balance"
+                >
+                    An internal tool is where teams accept bad software. We took
+                    the exception and then didn't use it.
+                </p>
+                <p class="mt-4 text-ink-muted leading-relaxed">
+                    The design system is checked into the repository — a colour
+                    scale, a five-role type scale, component specs, and named
+                    anti-references: not the default template, not enterprise
+                    grey, not consumer playful, not the spreadsheet it replaced.
+                    Dense where staff scan, calm and deliberate at the commit
+                    points — deleting, publishing, marking a lot sold. Status is
+                    never communicated by colour alone.
+                </p>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- Inside the build -->
+    <section class="border-t-2 border-ink py-20 md:py-28" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >Inside The Build</span
+                        >
+                    </div>
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        The decisions
+                        <br />
+                        nobody sees.
+                    </h2>
+                </div>
+                <div class="col-span-12 md:col-span-5 md:col-start-8 md:self-end">
+                    <p
+                        class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
+                    >
+                        None of these are visible in a screenshot. They are the
+                        reason the tool is still trusted after nine months of
+                        daily use, and the reason a bad afternoon is
+                        recoverable.
+                    </p>
+                </div>
+            </div>
+
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border border-ink"
+            >
+                {
+                    build.map((item) => (
+                        <div class="p-8 md:p-10 border-ink border-b border-r last:border-b-0 md:[&:nth-last-child(-n+2)]:border-b-0 lg:[&:nth-last-child(-n+3)]:border-b-0 md:[&:nth-child(even)]:border-r-0 lg:[&:nth-child(3n)]:border-r-0 lg:[&:nth-child(even)]:border-r">
+                            <h3 class="font-display text-2xl md:text-3xl font-bold tracking-tight leading-tight mb-3">
+                                {item.title}
+                            </h3>
+                            <p class="text-ink-muted leading-relaxed">
+                                {item.body}
+                            </p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Rigor -->
+    <section class="border-t-2 border-ink bg-paper-2 py-20 md:py-28" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >On The Bad Day</span
+                        >
+                    </div>
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        Every operation has one.
+                        <br />
+                        This is what it costs.
+                    </h2>
+                </div>
+                <div class="col-span-12 md:col-span-5 md:col-start-8 md:self-end">
+                    <p
+                        class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
+                    >
+                        A team that stops trusting its own tool goes back to the
+                        spreadsheet, and nobody tells you they have. So the
+                        question worth asking of an operations system is not
+                        what it does on a good day — it's what the worst
+                        afternoon of the quarter costs you.
+                    </p>
+                </div>
+            </div>
+
+            <div class="border-t border-ink">
+                <div
+                    class="hidden md:grid grid-cols-12 gap-8 py-4 border-b border-ink font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted"
+                >
+                    <span class="col-span-5">What could go wrong</span>
+                    <span class="col-span-7">What happens instead</span>
+                </div>
+                {
+                    rigor.map((row) => (
+                        <div class="grid grid-cols-12 gap-4 md:gap-8 items-center py-6 border-b border-ink">
+                            <div class="col-span-12 md:col-span-5 text-ink-muted leading-relaxed">
+                                {row.risk}
+                            </div>
+                            <div class="col-span-12 md:col-span-7 flex items-start gap-3">
+                                <span
+                                    aria-hidden
+                                    class="font-mono text-lg leading-none mt-[2px] text-accent"
+                                >
+                                    →
+                                </span>
+                                <span class="font-medium leading-relaxed">
+                                    {row.undo}
+                                </span>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+
+            <p class="mt-12 text-ink-muted leading-relaxed max-w-2xl">
+                Work of this shape is
+                <a
+                    href="/enterprise-software-development"
+                    class="link-underline font-medium text-ink"
+                    >custom operations software</a
+                >, the cataloging half is
+                <a
+                    href="/ai-integration-services"
+                    class="link-underline font-medium text-ink"
+                    >AI integration</a
+                >, and the way it replaced the spreadsheets is
+                <a
+                    href="/business-process-automation"
+                    class="link-underline font-medium text-ink"
+                    >process automation</a
+                >.
+            </p>
+        </div>
+    </section>
+
+    <section class="section-ink border-t-2 border-ink" data-reveal>
+        <div class="max-w-7xl mx-auto px-6 py-24 md:py-36 flex flex-col items-start">
+            <div class="flex items-center gap-3 mb-8">
+                <span aria-hidden class="inline-block w-8 h-px bg-paper"></span>
+                <span
+                    class="font-mono text-xs uppercase tracking-eyebrow text-paper/60"
+                    >Still Running On Spreadsheets?</span
+                >
+            </div>
+            <h2
+                class="font-display font-bold text-display text-paper text-balance mb-10 max-w-5xl leading-[0.95]"
+            >
+                The spreadsheet was
+                <span class="italic text-accent">never the problem</span>.
+                Outgrowing it is.
+            </h2>
+            <p class="text-lg md:text-xl text-paper/70 max-w-xl mb-10">
+                Tell us how the work actually moves today — the files, the group
+                chats, the one person who knows. We will map it, tell you which
+                parts are worth building software for and which are fine as they
+                are, and what the first version costs.
+            </p>
+            <div class="flex flex-wrap gap-3 mb-12">
+                <a
+                    href="/contact"
+                    class="group inline-flex items-center gap-2 bg-accent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-accent hover:bg-paper hover:text-ink hover:border-paper transition-colors"
+                >
+                    Scope your operations tool
+                    <span
+                        class="transition-transform group-hover:translate-x-0.5"
+                        aria-hidden>→</span
+                    >
+                </a>
+                <a
+                    href="/enterprise-software-development"
+                    class="inline-flex items-center gap-2 bg-transparent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-paper hover:bg-paper hover:text-ink transition-colors"
+                >
+                    Operations Software
+                </a>
+            </div>
+
+            <div
+                class="w-full border-t border-paper/20 pt-8 flex flex-wrap items-center gap-x-10 gap-y-3 font-mono text-xs uppercase tracking-eyebrow text-paper/60"
+            >
+                <a
+                    href="https://motowntech.com"
+                    class="link-underline text-paper">motowntech.com</a
+                >
+                <a href="tel:+18459252661" class="link-underline text-paper"
+                    >845-925-2661</a
+                >
+            </div>
+        </div>
+    </section>
+</BaseLayout>

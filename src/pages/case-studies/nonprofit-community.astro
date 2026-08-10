@@ -1,0 +1,595 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const outcomes = [
+    {
+        before: "No product surface at all — the story, the applications and the community lived in conversations",
+        after: "A public site that tells it and an application funnel that ends in a reviewed cohort",
+    },
+    {
+        before: "Nowhere for members to find each other between events",
+        after: "A member app: calendar, registration, paid events, and a waitlist that promotes people on its own",
+    },
+    {
+        before: "No way to hold the anniversaries that matter most to the people they serve",
+        after: "A memorial wall built on Hebrew-calendar dates, with reminders and community wishes before the day",
+    },
+    {
+        before: "No way to see who nobody had checked in on lately",
+        after: "Assignable reach-out tasks that surface exactly that, with a workload view per staff member",
+    },
+    {
+        before: "No system for giving, receipts, or annual statements",
+        after: "One-off and recurring donations with dedications, PDF receipts, and giving statements",
+    },
+    {
+        before: "No record of who did what to whose account",
+        after: "An audit log throughout, with lifecycle and destructive actions gated to a single role",
+    },
+];
+
+const pillars = [
+    {
+        n: "01",
+        title: "The software disappears around the need",
+        body: "Members arrive grieving, often distressed, frequently on a phone, sometimes not especially technical. Nobody came here wanting to use software. So the arrival flow asks one group of questions at a time, leaving a memorial wish offers preset words before it offers a blank box, and nothing important is ever a single unguarded click.",
+    },
+    {
+        n: "02",
+        title: "A religious calendar is a real domain problem",
+        body: "A Yahrtzeit — the anniversary of a death — is recorded as a Hebrew date, so its date in the civil calendar moves every year and has to be recomputed. In a leap year, an anniversary in plain Adar is observed in Adar II. That is domain logic, not a formatting detail, and it is handled natively rather than approximated.",
+    },
+    {
+        n: "03",
+        title: "Dignity written into the permissions",
+        body: "Her record is hers. Staff who need to see the member app on live data impersonate a dedicated test account and nothing else, behind three separate guards. Closing an account is a request rather than a button. Erasing the personal details is a different, deliberate action — and it leaves the memorial standing.",
+    },
+];
+
+const build = [
+    {
+        title: "Hebrew dates, computed not approximated",
+        body: "Anniversaries are found in two steps: narrow by day of month in the database, then confirm each candidate by converting it into the target year's Hebrew calendar — including the leap-year rule that moves a plain-Adar date into Adar II. It uses the calendar extension already in the language rather than a dependency, and the logic was extracted once a second command needed it.",
+    },
+    {
+        title: "Impersonation that cannot reach a member",
+        body: "Admins can view the member experience on live data, but only as a dedicated test account — guarded three ways, and the only place in the codebase that logs a user in directly, so that account can hold a password nobody knows. Every entry and exit is written to the audit log.",
+    },
+    {
+        title: "Closure and erasure are different acts",
+        body: "A member asks to close her account; an admin erases the personal details later, and only on an already-closed account. The erasure anonymizes her without tearing down what she left behind — the parent she commemorated and the wishes written for her stay. The audit entry records her name and email as they go, because that becomes the last place she is named at all.",
+    },
+    {
+        title: "Email in lanes she controls",
+        body: "Bulk email is split into categories a member can decline and one she cannot, because transactional mail is not marketing. Unsubscribing asks for confirmation and doesn't promise an instant effect it can't deliver. Every send records who it reached and what the mail provider did with it.",
+    },
+    {
+        title: "A schedule shaped by the hosting bill",
+        body: "The cluster scales to zero, and waking it holds it awake for a full sleep timeout — so a check every fifteen minutes bills around the clock. Reminders run hourly instead, and the command is written to be idempotent and to catch up, so a longer interval can delay a reminder but never skip one.",
+    },
+    {
+        title: "Payments swapped mid-project",
+        body: "The processor changed late, which meant reworking refunds into voids of unsettled payments and simplifying the donation types. Recurring billing runs in the application rather than at the processor, because each cycle needs its own record to produce a receipt and an annual statement — and it runs without overlapping, since two concurrent passes could charge the same donor twice.",
+    },
+];
+
+const rigor = [
+    {
+        risk: "Coverage slips a little at a time until nobody trusts it",
+        undo: "The gate demands exactly 100% line coverage and 100% type coverage — not a minimum, an equality — on every push",
+    },
+    {
+        risk: "A link goes stale after a route is renamed",
+        undo: "Routes generate typed functions for the frontend, so a URL is never written by hand",
+    },
+    {
+        risk: "Contrast quietly fails on the text nobody checks",
+        undo: "Nothing renders below 4.5:1 — including placeholders and disabled labels — and hue is never the only signal",
+    },
+    {
+        risk: "A scheduled job double-charges or silently skips",
+        undo: "Billing runs without overlapping, and reminders are idempotent and catch up rather than assuming they ran",
+    },
+    {
+        risk: "An admin action can't be traced afterwards",
+        undo: "Audit logging throughout, with destructive and lifecycle actions restricted to the highest role",
+    },
+];
+---
+
+<BaseLayout
+    meta_title="Case Study: A Nonprofit Community Platform | Motown Solutions"
+    meta_description="A public site, a members' app and the back office a nonprofit runs itself from — built for people arriving in grief, with a Hebrew-calendar memorial at its centre."
+>
+    <section class="relative overflow-hidden border-b-2 border-ink">
+        <svg
+            aria-hidden
+            class="absolute inset-0 w-full h-full pointer-events-none opacity-[0.12] text-ink"
+            viewBox="0 0 1200 700"
+            preserveAspectRatio="xMidYMid slice"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+        >
+            <path d="M-50 380 Q 150 320 350 380 T 750 380 T 1150 380 T 1550 380" />
+            <path d="M-50 440 Q 150 380 350 440 T 750 440 T 1150 440 T 1550 440" />
+            <path d="M-50 500 Q 150 440 350 500 T 750 500 T 1150 500 T 1550 500" />
+            <path d="M-50 560 Q 150 500 350 560 T 750 560 T 1150 560 T 1550 560" />
+            <circle cx="600" cy="200" r="70" />
+            <circle cx="600" cy="200" r="110" />
+            <circle cx="600" cy="200" r="150" />
+        </svg>
+
+        <div class="relative max-w-7xl mx-auto px-6 pt-16 md:pt-24 pb-20 md:pb-28">
+            <div class="grid grid-cols-12 gap-6 lg:items-center">
+                <div class="col-span-12 lg:col-span-7">
+                    <div class="flex items-center gap-3 mb-8">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >Case Study — Nonprofit Community Platform</span
+                        >
+                    </div>
+
+                    <h1
+                        class="font-display font-bold text-hero text-ink text-balance"
+                    >
+                        Nobody arrives here
+                        <br />
+                        wanting to
+                        <span class="italic text-accent">use software</span>.
+                    </h1>
+
+                    <p
+                        class="mt-10 text-lg md:text-xl text-ink-muted leading-relaxed text-pretty max-w-xl"
+                    >
+                        A small nonprofit supports women through the loss of a
+                        parent — community events, grief support groups,
+                        subsidized therapy, and the anniversaries that come
+                        around every year. It had no product at all. We built
+                        both halves: the public site that has to earn an
+                        application, and the members' app and back office the
+                        whole organization now runs on.
+                    </p>
+
+                    <div class="mt-10 flex flex-wrap gap-3">
+                        <a
+                            href="/contact"
+                            class="group inline-flex items-center gap-2 bg-accent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-accent hover:bg-paper hover:text-ink hover:border-ink transition-colors"
+                        >
+                            Build your platform
+                            <span
+                                class="transition-transform group-hover:translate-x-0.5"
+                                aria-hidden>→</span
+                            >
+                        </a>
+                        <a
+                            href="#outcomes"
+                            class="inline-flex items-center gap-2 bg-transparent text-ink font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-ink hover:bg-ink hover:text-paper transition-colors"
+                        >
+                            What it does
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-span-12 lg:col-span-5 mt-12 lg:mt-0">
+                    <div
+                        class="border-2 border-ink bg-paper-2 lg:translate-y-2"
+                        data-reveal
+                    >
+                        <div
+                            class="flex items-center justify-between px-5 py-3 border-b-2 border-ink font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted"
+                        >
+                            <span>At A Glance</span>
+                            <span aria-hidden class="text-accent">● built</span>
+                        </div>
+
+                        <div class="flex items-end gap-5 px-5 py-6 border-b border-ink/30">
+                            <span
+                                class="font-display font-bold text-6xl leading-[0.85] tracking-tight"
+                                >47</span
+                            >
+                            <span
+                                class="text-sm text-ink-muted leading-snug pb-1"
+                                >screens across the public site,<br />the member app and the back office</span
+                            >
+                        </div>
+                        {
+                            [
+                                ["Sector", "Nonprofit — grief support"],
+                                ["Audience", "Members in grief, often on a phone"],
+                                ["Scope", "Public site · member app · back office"],
+                                ["Stack", "Laravel 13 · Vue 3 · Inertia"],
+                                ["Memorial dates", "Hebrew calendar, recomputed each year"],
+                            ].map(([k, v], i, arr) => (
+                                <div
+                                    class:list={[
+                                        "px-5 py-3.5",
+                                        i !== arr.length - 1 &&
+                                            "border-b border-ink/30",
+                                    ]}
+                                >
+                                    <div class="font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted">
+                                        {k}
+                                    </div>
+                                    <div class="mt-1 font-display font-bold tracking-tight text-lg leading-snug">
+                                        {v}
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before / after -->
+    <section id="outcomes" class="py-20 md:py-28" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >What It Does</span
+                        >
+                    </div>
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        Both halves,
+                        <br />
+                        built at once.
+                    </h2>
+                </div>
+                <div class="col-span-12 md:col-span-5 md:col-start-8 md:self-end">
+                    <p
+                        class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
+                    >
+                        A public face and an operating system for the
+                        organization behind it — because a site that converts
+                        strangers into applicants is worth very little if
+                        nobody has anywhere to review the applications.
+                    </p>
+                </div>
+            </div>
+
+            <div class="border-t border-ink">
+                <div
+                    class="hidden md:grid grid-cols-12 gap-8 py-4 border-b border-ink font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted"
+                >
+                    <span class="col-span-6">Before the platform</span>
+                    <span class="col-span-6">Now</span>
+                </div>
+                {
+                    outcomes.map((row) => (
+                        <div class="grid grid-cols-12 gap-4 md:gap-8 items-center py-7 border-b border-ink">
+                            <div class="col-span-12 md:col-span-6 flex items-start gap-3 text-ink-muted">
+                                <span
+                                    aria-hidden
+                                    class="font-mono text-lg leading-none mt-[2px]"
+                                >
+                                    ×
+                                </span>
+                                <span class="leading-relaxed line-through decoration-ink/30">
+                                    {row.before}
+                                </span>
+                            </div>
+                            <div class="col-span-12 md:col-span-6 flex items-start gap-3">
+                                <span
+                                    aria-hidden
+                                    class="font-mono text-lg leading-none mt-[2px] text-accent"
+                                >
+                                    →
+                                </span>
+                                <span class="font-medium leading-relaxed">
+                                    {row.after}
+                                </span>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Three pillars -->
+    <section class="border-t-2 border-ink bg-paper-2 py-20 md:py-28" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-7">
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        What the audience
+                        <br />
+                        changed about the build.
+                    </h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 border border-ink bg-paper">
+                {
+                    pillars.map((p, i, arr) => (
+                        <div
+                            class:list={[
+                                "p-8 md:p-10 border-ink",
+                                i !== arr.length - 1 &&
+                                    "border-b md:border-b-0 md:border-r",
+                            ]}
+                        >
+                            <div class="font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted mb-6">
+                                {p.n}
+                            </div>
+                            <h3 class="font-display text-2xl md:text-3xl font-bold tracking-tight leading-tight mb-4">
+                                {p.title}
+                            </h3>
+                            <p class="text-ink-muted leading-relaxed">
+                                {p.body}
+                            </p>
+                        </div>
+                    ))
+                }
+            </div>
+
+            <blockquote
+                class="mt-14 border-l-2 border-accent pl-6 md:pl-8 max-w-3xl"
+            >
+                <p
+                    class="font-display font-bold text-2xl md:text-3xl tracking-tight leading-tight text-balance"
+                >
+                    Warmth and dignity, without slipping into either sterility
+                    or sentimentality.
+                </p>
+                <p class="mt-4 text-ink-muted leading-relaxed">
+                    The design system names what it is not as carefully as what
+                    it is: not clinical, not corporate, not greeting-card, not
+                    funereal. Two registers meet at the login — a warm public
+                    voice that has to persuade someone to apply, and a calmer
+                    interior built for repeat use — sharing one hue doing two
+                    jobs, so the accent colour is spent only on the action that
+                    ends a form. Crossing the login is a change of register, not
+                    a change of brand.
+                </p>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- Inside the build -->
+    <section class="border-t-2 border-ink py-20 md:py-28" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >Inside The Build</span
+                        >
+                    </div>
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        Where the care
+                        <br />
+                        turns into code.
+                    </h2>
+                </div>
+                <div class="col-span-12 md:col-span-5 md:col-start-8 md:self-end">
+                    <p
+                        class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
+                    >
+                        Every one of these started as a sentence about a person
+                        — what she should never accidentally do, what should
+                        survive her leaving, what a staff member needs to see
+                        without being able to read someone's private record.
+                    </p>
+                </div>
+            </div>
+
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border border-ink"
+            >
+                {
+                    build.map((item) => (
+                        <div class="p-8 md:p-10 border-ink border-b border-r last:border-b-0 md:[&:nth-last-child(-n+2)]:border-b-0 lg:[&:nth-last-child(-n+3)]:border-b-0 md:[&:nth-child(even)]:border-r-0 lg:[&:nth-child(3n)]:border-r-0 lg:[&:nth-child(even)]:border-r">
+                            <h3 class="font-display text-2xl md:text-3xl font-bold tracking-tight leading-tight mb-3">
+                                {item.title}
+                            </h3>
+                            <p class="text-ink-muted leading-relaxed">
+                                {item.body}
+                            </p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Rigor -->
+    <section class="border-t-2 border-ink bg-paper-2 py-20 md:py-28" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >How It Holds Up</span
+                        >
+                    </div>
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        A team of four
+                        <br />
+                        can't debug this at midnight.
+                    </h2>
+                </div>
+                <div class="col-span-12 md:col-span-5 md:col-start-8 md:self-end">
+                    <p
+                        class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
+                    >
+                        A small nonprofit has no engineering staff and no
+                        appetite for surprises. Everything that could be made a
+                        rule the machine enforces was made one, so the software
+                        doesn't need supervision to stay correct.
+                    </p>
+                </div>
+            </div>
+
+            <div class="border-t border-ink">
+                <div
+                    class="hidden md:grid grid-cols-12 gap-8 py-4 border-b border-ink font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted"
+                >
+                    <span class="col-span-5">The way it goes wrong</span>
+                    <span class="col-span-7">What stops it</span>
+                </div>
+                {
+                    rigor.map((row) => (
+                        <div class="grid grid-cols-12 gap-4 md:gap-8 items-center py-6 border-b border-ink">
+                            <div class="col-span-12 md:col-span-5 text-ink-muted leading-relaxed">
+                                {row.risk}
+                            </div>
+                            <div class="col-span-12 md:col-span-7 flex items-start gap-3">
+                                <span
+                                    aria-hidden
+                                    class="font-mono text-lg leading-none mt-[2px] text-accent"
+                                >
+                                    →
+                                </span>
+                                <span class="font-medium leading-relaxed">
+                                    {row.undo}
+                                </span>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+
+            <div class="grid grid-cols-12 gap-6 mt-14">
+                <div class="col-span-12 lg:col-span-6 border-2 border-ink bg-paper p-8 md:p-10">
+                    <div
+                        class="font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted mb-6"
+                    >
+                        — The gate every change clears
+                    </div>
+                    <p class="text-ink-muted leading-relaxed mb-4">
+                        Four gates, all of which must pass before anything
+                        merges: coverage at exactly 100% by line and by type,
+                        three formatters with zero diff, and static analysis
+                        with a single documented exception. Alongside the
+                        feature tests are architectural ones — conventions the
+                        codebase must keep obeying, including a test that the
+                        design system's own typography stays as specified.
+                    </p>
+                    <p class="text-ink-muted leading-relaxed">
+                        Coverage as an equality rather than a minimum is a
+                        deliberately awkward rule. It is also the only version
+                        that doesn't quietly erode.
+                    </p>
+                </div>
+                <div class="col-span-12 lg:col-span-6 border-2 border-ink bg-paper p-8 md:p-10">
+                    <div
+                        class="font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted mb-6"
+                    >
+                        — And one word we removed everywhere
+                    </div>
+                    <p class="text-ink-muted leading-relaxed mb-4">
+                        The platform described the community as "peer-led" until
+                        we looked at what that sentence was doing. It described
+                        how the organization is run rather than what a visitor
+                        gets — and it undersold the programme, because support
+                        groups and subsidized therapy are not peer-led. It came
+                        out of every page.
+                    </p>
+                    <p class="text-ink-muted leading-relaxed">
+                        The client's own rewrite of the public copy was then
+                        taken wholesale. They know how to say this to the person
+                        arriving; our job was to make sure the software didn't
+                        contradict them.
+                    </p>
+                </div>
+            </div>
+
+            <p class="mt-12 text-ink-muted leading-relaxed max-w-2xl">
+                This is
+                <a
+                    href="/web-application-development"
+                    class="link-underline font-medium text-ink"
+                    >web application development</a
+                > with
+                <a
+                    href="/ui-ux-design-services"
+                    class="link-underline font-medium text-ink"
+                    >UI and UX design</a
+                > done as one job, on the timeline of
+                <a
+                    href="/mvp-development"
+                    class="link-underline font-medium text-ink"
+                    >an MVP build</a
+                >.
+            </p>
+        </div>
+    </section>
+
+    <section class="section-ink border-t-2 border-ink" data-reveal>
+        <div class="max-w-7xl mx-auto px-6 py-24 md:py-36 flex flex-col items-start">
+            <div class="flex items-center gap-3 mb-8">
+                <span aria-hidden class="inline-block w-8 h-px bg-paper"></span>
+                <span
+                    class="font-mono text-xs uppercase tracking-eyebrow text-paper/60"
+                    >Software For People, Not Users</span
+                >
+            </div>
+            <h2
+                class="font-display font-bold text-display text-paper text-balance mb-10 max-w-5xl leading-[0.95]"
+            >
+                Build it like someone
+                <span class="italic text-accent">is having a hard day</span>.
+            </h2>
+            <p class="text-lg md:text-xl text-paper/70 max-w-xl mb-10">
+                Tell us who arrives at your product and what state they arrive
+                in. That answer changes more of the build than the feature list
+                does — and it is the part most software gets wrong before a
+                line is written.
+            </p>
+            <div class="flex flex-wrap gap-3 mb-12">
+                <a
+                    href="/contact"
+                    class="group inline-flex items-center gap-2 bg-accent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-accent hover:bg-paper hover:text-ink hover:border-paper transition-colors"
+                >
+                    Build your platform
+                    <span
+                        class="transition-transform group-hover:translate-x-0.5"
+                        aria-hidden>→</span
+                    >
+                </a>
+                <a
+                    href="/web-application-development"
+                    class="inline-flex items-center gap-2 bg-transparent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-paper hover:bg-paper hover:text-ink transition-colors"
+                >
+                    Web Applications
+                </a>
+            </div>
+
+            <div
+                class="w-full border-t border-paper/20 pt-8 flex flex-wrap items-center gap-x-10 gap-y-3 font-mono text-xs uppercase tracking-eyebrow text-paper/60"
+            >
+                <a
+                    href="https://motowntech.com"
+                    class="link-underline text-paper">motowntech.com</a
+                >
+                <a href="tel:+18459252661" class="link-underline text-paper"
+                    >845-925-2661</a
+                >
+            </div>
+        </div>
+    </section>
+</BaseLayout>

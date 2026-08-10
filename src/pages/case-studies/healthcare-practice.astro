@@ -1,0 +1,608 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const outcomes = [
+    {
+        before: "Every URL served the same empty shell — search engines saw nothing until JavaScript ran",
+        after: "352 real HTML pages, rendered at build time and served complete",
+    },
+    {
+        before: "Every visit re-fetched every word of content from the API",
+        after: "Nothing is fetched at runtime — the site stands up even when the API doesn't",
+    },
+    {
+        before: "Editors worked in a database admin: no drafts, no preview, no scheduling, no media library",
+        after: "A real CMS — drafts, revisions, preview, scheduled publishing, editor roles",
+    },
+    {
+        before: "Publishing a change meant asking a developer to run a deploy script",
+        after: "Hitting publish rebuilds the site on its own",
+    },
+    {
+        before: "A production key in the repository and a dependency list that couldn't be rebuilt twice the same way",
+        after: "Pinned dependencies, monitored errors, and framework versions with years of support left",
+    },
+];
+
+const pillars = [
+    {
+        n: "01",
+        title: "Static, all the way down",
+        body: "The site is HTML on a CDN. Content is pulled once, at build time, by a single typed data layer — not by the browser, on every visit, for every visitor. Interactive pieces load as isolated islands; everything else ships no JavaScript at all.",
+    },
+    {
+        n: "02",
+        title: "A CMS editors can actually use",
+        body: "Wagtail replaced the Django admin panel that had been standing in for one. Fifteen content types, roughly thirty models and 38 raw HTML fields moved to a real authoring surface, with the page tree, previews and permissions that come with it.",
+    },
+    {
+        n: "03",
+        title: "A build that can refuse to deploy",
+        body: "Every push builds in CI before production moves. Publishing content triggers the same build. A change that breaks the site fails in the pipeline rather than on the site — which was not true of the shell script we inherited.",
+    },
+];
+
+const timeline = [
+    {
+        when: "Aug 2023",
+        title: "Handover",
+        body: "A Create React App deployed to S3 by a one-line shell script, talking to a Django 3.2 API whose admin panel was the CMS. The first month produced no features — it went on making someone else's system runnable, deployable and reproducible.",
+    },
+    {
+        when: "Oct 2023",
+        title: "Rebuilt on Gatsby",
+        body: "Prerendered HTML, real metadata, an image pipeline, a build that could fail before it shipped. It landed, was backed out five days later, and re-landed at the end of the month. It did not solve everything: content was still fetched twice, once at build and again in the browser.",
+    },
+    {
+        when: "2024 – 2026",
+        title: "Two and a half years of quiet work",
+        body: "Framework upgrades, pinned dependencies, error monitoring, automatic rebuilds on publish. The content model kept growing with the practice. And we kept hand-building editor features — draft states, a preview mode, a page registry — into an admin panel that was never meant to have them.",
+    },
+    {
+        when: "Mar 2026",
+        title: "Rebuilt on Astro",
+        body: "Specified before a line was written, with three rules: as little browser JavaScript as possible, nothing fetched at runtime, and pixel parity with the live site. No redesign, no new features — both explicit non-goals.",
+    },
+    {
+        when: "Jun 2026",
+        title: "Moved to Wagtail",
+        body: "Django 4.2 reached end of support in April 2026, so the framework upgrade was happening regardless. Rather than pay for two migrations, we bundled the CMS replacement with it — shipping the upgrade as its own release first, so its fallout stayed separate.",
+    },
+];
+
+const reversibility = [
+    {
+        risk: "The new API is wrong",
+        undo: "The old one stayed mounted and frozen — nothing was removed to make the new one work",
+    },
+    {
+        risk: "The site breaks on the new API",
+        undo: "Rollback is flipping a single environment variable",
+    },
+    {
+        risk: "The content move loses something",
+        undo: "It copies, never deletes, and re-runs safely to pick up anything that changed since",
+    },
+    {
+        risk: "A row can't be traced to its original",
+        undo: "Every migrated record carries an indexed pointer back to the row it came from",
+    },
+    {
+        risk: "Something surfaces a week later",
+        undo: "The old tables were kept a month past cutover, alongside a database snapshot",
+    },
+];
+---
+
+<BaseLayout
+    meta_title="Case Study: Rebuilding an Inherited Healthcare Site | Motown Solutions"
+    meta_description="We inherited a Create React App and a Django admin panel doing duty as a CMS. Three years later: a fully static site, a real authoring experience, and a build that can refuse to deploy."
+>
+    <section class="relative overflow-hidden border-b-2 border-ink">
+        <svg
+            aria-hidden
+            class="absolute inset-0 w-full h-full pointer-events-none opacity-[0.12] text-ink"
+            viewBox="0 0 1200 700"
+            preserveAspectRatio="xMidYMid slice"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+        >
+            <path d="M0 640 H 1200" />
+            <path d="M180 640 V 120" />
+            <path d="M420 640 V 220" />
+            <path d="M660 640 V 180" />
+            <path d="M900 640 V 300" />
+            <path d="M1080 640 V 240" />
+            <circle cx="180" cy="120" r="6" />
+            <circle cx="420" cy="220" r="6" />
+            <circle cx="660" cy="180" r="6" />
+            <circle cx="900" cy="300" r="6" />
+            <circle cx="1080" cy="240" r="6" />
+        </svg>
+
+        <div class="relative max-w-7xl mx-auto px-6 pt-16 md:pt-24 pb-20 md:pb-28">
+            <div class="grid grid-cols-12 gap-6 lg:items-center">
+                <div class="col-span-12 lg:col-span-7">
+                    <div class="flex items-center gap-3 mb-8">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >Case Study — Multi-Site Specialty Practice</span
+                        >
+                    </div>
+
+                    <h1
+                        class="font-display font-bold text-hero text-ink text-balance"
+                    >
+                        We inherited their stack.
+                        <br />
+                        We left them a site that
+                        <span class="italic text-accent">publishes itself</span>.
+                    </h1>
+
+                    <p
+                        class="mt-10 text-lg md:text-xl text-ink-muted leading-relaxed text-pretty max-w-xl"
+                    >
+                        The practice came to us as someone else's codebase. Nothing was
+                        broken, which is the difficult kind of inheritance —
+                        everything was simply fragile, and every fragile part
+                        was load-bearing. Today the practice publishes its own
+                        content, the site is static files on a CDN, and a
+                        broken build cannot reach production.
+                    </p>
+
+                    <div class="mt-10 flex flex-wrap gap-3">
+                        <a
+                            href="/contact"
+                            class="group inline-flex items-center gap-2 bg-accent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-accent hover:bg-paper hover:text-ink hover:border-ink transition-colors"
+                        >
+                            Talk about your codebase
+                            <span
+                                class="transition-transform group-hover:translate-x-0.5"
+                                aria-hidden>→</span
+                            >
+                        </a>
+                        <a
+                            href="#outcomes"
+                            class="inline-flex items-center gap-2 bg-transparent text-ink font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-ink hover:bg-ink hover:text-paper transition-colors"
+                        >
+                            What changed
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-span-12 lg:col-span-5 mt-12 lg:mt-0">
+                    <div
+                        class="border-2 border-ink bg-paper-2 lg:translate-y-2"
+                        data-reveal
+                    >
+                        <div
+                            class="flex items-center justify-between px-5 py-3 border-b-2 border-ink font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted"
+                        >
+                            <span>At A Glance</span>
+                            <span aria-hidden class="text-accent">● live</span>
+                        </div>
+
+                        <div class="flex items-end gap-5 px-5 py-6 border-b border-ink/30">
+                            <span
+                                class="font-display font-bold text-6xl leading-[0.85] tracking-tight"
+                                >352</span
+                            >
+                            <span
+                                class="text-sm text-ink-muted leading-snug pb-1"
+                                >pages rendered at build,<br />across 58 routes</span
+                            >
+                        </div>
+                        {
+                            [
+                                ["Sector", "Healthcare — multi-site practice"],
+                                ["Stack", "Astro · Wagtail · Django 5.2 LTS"],
+                                [
+                                    "Fetched at runtime",
+                                    "Nothing — the API can be down",
+                                ],
+                                [
+                                    "Publishing",
+                                    "Editors publish, the site rebuilds itself",
+                                ],
+                                ["Rollback", "One environment variable"],
+                            ].map(([k, v], i, arr) => (
+                                <div
+                                    class:list={[
+                                        "px-5 py-3.5",
+                                        i !== arr.length - 1 &&
+                                            "border-b border-ink/30",
+                                    ]}
+                                >
+                                    <div class="font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted">
+                                        {k}
+                                    </div>
+                                    <div class="mt-1 font-display font-bold tracking-tight text-lg leading-snug">
+                                        {v}
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before / after -->
+    <section id="outcomes" class="py-20 md:py-28" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >What Changed</span
+                        >
+                    </div>
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        Same site.
+                        <br />
+                        Nothing underneath it is the same.
+                    </h2>
+                </div>
+                <div class="col-span-12 md:col-span-5 md:col-start-8 md:self-end">
+                    <p
+                        class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
+                    >
+                        The practice never asked for a redesign, and never got
+                        one. Every rebuild was measured against the live site it
+                        replaced. What changed is everything a patient doesn't
+                        see and an editor feels every day.
+                    </p>
+                </div>
+            </div>
+
+            <div class="border-t border-ink">
+                <div
+                    class="hidden md:grid grid-cols-12 gap-8 py-4 border-b border-ink font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted"
+                >
+                    <span class="col-span-6">As inherited</span>
+                    <span class="col-span-6">Today</span>
+                </div>
+                {
+                    outcomes.map((row) => (
+                        <div class="grid grid-cols-12 gap-4 md:gap-8 items-center py-7 border-b border-ink">
+                            <div class="col-span-12 md:col-span-6 flex items-start gap-3 text-ink-muted">
+                                <span
+                                    aria-hidden
+                                    class="font-mono text-lg leading-none mt-[2px]"
+                                >
+                                    ×
+                                </span>
+                                <span class="leading-relaxed line-through decoration-ink/30">
+                                    {row.before}
+                                </span>
+                            </div>
+                            <div class="col-span-12 md:col-span-6 flex items-start gap-3">
+                                <span
+                                    aria-hidden
+                                    class="font-mono text-lg leading-none mt-[2px] text-accent"
+                                >
+                                    →
+                                </span>
+                                <span class="font-medium leading-relaxed">
+                                    {row.after}
+                                </span>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Three pillars -->
+    <section class="border-t-2 border-ink bg-paper-2 py-20 md:py-28" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-7">
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        Three things we were
+                        <br />
+                        actually trying to fix.
+                    </h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 border border-ink bg-paper">
+                {
+                    pillars.map((p, i, arr) => (
+                        <div
+                            class:list={[
+                                "p-8 md:p-10 border-ink",
+                                i !== arr.length - 1 &&
+                                    "border-b md:border-b-0 md:border-r",
+                            ]}
+                        >
+                            <div class="font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted mb-6">
+                                {p.n}
+                            </div>
+                            <h3 class="font-display text-2xl md:text-3xl font-bold tracking-tight leading-tight mb-4">
+                                {p.title}
+                            </h3>
+                            <p class="text-ink-muted leading-relaxed">
+                                {p.body}
+                            </p>
+                        </div>
+                    ))
+                }
+            </div>
+
+            <blockquote
+                class="mt-14 border-l-2 border-accent pl-6 md:pl-8 max-w-3xl"
+            >
+                <p
+                    class="font-display font-bold text-2xl md:text-3xl tracking-tight leading-tight text-balance"
+                >
+                    We built a small CMS inside the Django admin. That is when we
+                    knew we needed a real one.
+                </p>
+                <p class="mt-4 text-ink-muted leading-relaxed">
+                    By mid-2026 we had hand-written draft states, a preview
+                    mode, and a registry of pages the editors couldn't reach —
+                    all of it custom code we would then own and maintain, badly
+                    reimplementing what a CMS gives you on day one. The patches
+                    were the argument.
+                </p>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="border-t-2 border-ink py-20 md:py-28" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >How It Got There</span
+                        >
+                    </div>
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        Three years,
+                        <br />
+                        five moves.
+                    </h2>
+                </div>
+                <div class="col-span-12 md:col-span-5 md:col-start-8 md:self-end">
+                    <p
+                        class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
+                    >
+                        None of these were rewrites for their own sake. Each one
+                        had something forcing it: no search visibility, a
+                        framework going unmaintained, an end-of-support date, or
+                        editors who couldn't publish without us.
+                    </p>
+                </div>
+            </div>
+
+            <div class="border-t border-ink">
+                {
+                    timeline.map((t) => (
+                        <div class="grid grid-cols-12 gap-4 md:gap-8 py-8 border-b border-ink">
+                            <div class="col-span-12 md:col-span-2 font-mono text-xs uppercase tracking-eyebrow text-ink-muted pt-1">
+                                {t.when}
+                            </div>
+                            <div class="col-span-12 md:col-span-4">
+                                <h3 class="font-display text-2xl md:text-3xl font-bold tracking-tight leading-tight">
+                                    {t.title}
+                                </h3>
+                            </div>
+                            <div class="col-span-12 md:col-span-6 text-ink-muted leading-relaxed">
+                                {t.body}
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- De-risking -->
+    <section class="border-t-2 border-ink bg-paper-2 py-20 md:py-28" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >How We De-Risked It</span
+                        >
+                    </div>
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        Every scary step
+                        <br />
+                        had one move back.
+                    </h2>
+                </div>
+                <div class="col-span-12 md:col-span-5 md:col-start-8 md:self-end">
+                    <p
+                        class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
+                    >
+                        Replacing the CMS under a live medical practice is the
+                        kind of work that goes wrong quietly. So the cutover was
+                        built to be undone: rehearsed on a full copy of
+                        production first, and reversible at every step after.
+                    </p>
+                </div>
+            </div>
+
+            <div class="border-t border-ink">
+                <div
+                    class="hidden md:grid grid-cols-12 gap-8 py-4 border-b border-ink font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted"
+                >
+                    <span class="col-span-5">If this went wrong</span>
+                    <span class="col-span-7">The undo</span>
+                </div>
+                {
+                    reversibility.map((row) => (
+                        <div class="grid grid-cols-12 gap-4 md:gap-8 items-center py-6 border-b border-ink">
+                            <div class="col-span-12 md:col-span-5 text-ink-muted leading-relaxed">
+                                {row.risk}
+                            </div>
+                            <div class="col-span-12 md:col-span-7 flex items-start gap-3">
+                                <span
+                                    aria-hidden
+                                    class="font-mono text-lg leading-none mt-[2px] text-accent"
+                                >
+                                    →
+                                </span>
+                                <span class="font-medium leading-relaxed">
+                                    {row.undo}
+                                </span>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+
+            <div class="grid grid-cols-12 gap-6 mt-14">
+                <div class="col-span-12 lg:col-span-6 border-2 border-ink bg-paper p-8 md:p-10">
+                    <div
+                        class="font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted mb-6"
+                    >
+                        — And then we went looking for what broke
+                    </div>
+                    <p class="text-ink-muted leading-relaxed mb-4">
+                        The first full build on the new CMS produced 351 pages
+                        with zero errors. That is not the same as the site being
+                        right, so we diffed it field by field against the old
+                        one and walked it screen by screen.
+                    </p>
+                    <p class="text-ink-muted leading-relaxed">
+                        It found headings being silently stripped out of
+                        location pages, fields that had started arriving as
+                        objects and rendering as
+                        <span class="font-mono text-sm text-ink"
+                            >[object Object]</span
+                        >, formatting collapsed out of older hand-written HTML,
+                        and a review widget quietly showing blank cards because
+                        the vendor had changed and the new one returns
+                        star-ratings with no text. None of those are build
+                        errors. All of them are things a patient would have
+                        seen.
+                    </p>
+                </div>
+                <div class="col-span-12 lg:col-span-6 border-2 border-ink bg-paper p-8 md:p-10">
+                    <div
+                        class="font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted mb-6"
+                    >
+                        — We audit our own migrations
+                    </div>
+                    <p class="text-ink-muted leading-relaxed mb-4">
+                        The same thing happened a rebuild earlier. Our own
+                        post-migration audit of the Astro build, written before
+                        launch, opened with a homepage hero shipped as a plain
+                        blue gradient with its animation missing, a providers
+                        page that had lost its location filter, and one page
+                        containing the literal words
+                        <span class="font-mono text-sm text-ink"
+                            >PATIENTS PAGE</span
+                        > and nothing else.
+                    </p>
+                    <p class="text-ink-muted leading-relaxed">
+                        Triaged, fixed, then launched. A migration reported to
+                        have gone perfectly is usually one nobody checked
+                        closely enough — and parity was only auditable because
+                        we refused to redesign anything at the same time.
+                    </p>
+                </div>
+            </div>
+
+            <p class="mt-12 text-ink-muted leading-relaxed max-w-2xl">
+                The shape of this work is
+                <a
+                    href="/legacy-system-modernization"
+                    class="link-underline font-medium text-ink"
+                    >legacy system modernization</a
+                >; the site it produced is
+                <a
+                    href="/web-application-development"
+                    class="link-underline font-medium text-ink"
+                    >web application development</a
+                >, and the practice it serves is
+                <a
+                    href="/healthcare-software-development"
+                    class="link-underline font-medium text-ink"
+                    >healthcare software</a
+                >.
+            </p>
+        </div>
+    </section>
+
+    <section class="section-ink border-t-2 border-ink" data-reveal>
+        <div class="max-w-7xl mx-auto px-6 py-24 md:py-36 flex flex-col items-start">
+            <div class="flex items-center gap-3 mb-8">
+                <span aria-hidden class="inline-block w-8 h-px bg-paper"></span>
+                <span
+                    class="font-mono text-xs uppercase tracking-eyebrow text-paper/60"
+                    >Inherited Something?</span
+                >
+            </div>
+            <h2
+                class="font-display font-bold text-display text-paper text-balance mb-10 max-w-5xl leading-[0.95]"
+            >
+                Someone else's code is
+                <span class="italic text-accent">still your code</span>.
+            </h2>
+            <p class="text-lg md:text-xl text-paper/70 max-w-xl mb-10">
+                Send us the repository and the thing that worries you most about
+                it. We will tell you what is fragile, what is urgent, what can
+                wait, and what it costs — before anyone commits to a rebuild.
+            </p>
+            <div class="flex flex-wrap gap-3 mb-12">
+                <a
+                    href="/contact"
+                    class="group inline-flex items-center gap-2 bg-accent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-accent hover:bg-paper hover:text-ink hover:border-paper transition-colors"
+                >
+                    Talk about your codebase
+                    <span
+                        class="transition-transform group-hover:translate-x-0.5"
+                        aria-hidden>→</span
+                    >
+                </a>
+                <a
+                    href="/technical-due-diligence"
+                    class="inline-flex items-center gap-2 bg-transparent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-paper hover:bg-paper hover:text-ink transition-colors"
+                >
+                    Technical Due Diligence
+                </a>
+            </div>
+
+            <div
+                class="w-full border-t border-paper/20 pt-8 flex flex-wrap items-center gap-x-10 gap-y-3 font-mono text-xs uppercase tracking-eyebrow text-paper/60"
+            >
+                <a
+                    href="https://motowntech.com"
+                    class="link-underline text-paper">motowntech.com</a
+                >
+                <a href="tel:+18459252661" class="link-underline text-paper"
+                    >845-925-2661</a
+                >
+            </div>
+        </div>
+    </section>
+</BaseLayout>

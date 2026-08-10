@@ -1,0 +1,600 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const outcomes = [
+    {
+        before: "Call a screening vendor from inside the donation path",
+        after: "The watchlists live locally and are queried in about half a millisecond — no third party between a donor and their gift",
+    },
+    {
+        before: "Tell a blocked donor why they were blocked",
+        after: "A neutral decline that never mentions a watchlist — telling a designated party they matched is itself the violation",
+    },
+    {
+        before: "Let the donation through when the screening service is unavailable",
+        after: "Fail closed. A control that switches itself off during an outage was never a control",
+    },
+    {
+        before: "Log the blocks",
+        after: "Log the clears too, because \"we screen everyone\" is only defensible with the clears on record",
+    },
+    {
+        before: "Treat a charity missing from the federal list as unverified and stop it",
+        after: "Advisory only — churches are exempt without ever applying and mostly aren't listed at all",
+    },
+    {
+        before: "Assume a payment partner's API is safe to retry",
+        after: "Idempotent reservations and explicit unknown-outcome handling on our side of the call",
+    },
+];
+
+const pillars = [
+    {
+        n: "01",
+        title: "Compliance sits in the path",
+        body: "Every donor is screened against the sanctions lists at the one function every donation route passes through to resolve a donor — before a row is written, before a payment object exists, card and donor-advised-fund grants alike. A check that lives beside the critical path instead of inside it is a check somebody eventually routes around.",
+    },
+    {
+        n: "02",
+        title: "Two lists, two postures",
+        body: "Sanctions screening blocks. Charity-status verification does not. They look like the same feature — match a name against a government list — but sanctions violations carry strict liability, while being absent from the charity roll is ordinary and expected. Same shape, opposite defaults, because the legal exposure is not the same.",
+    },
+    {
+        n: "03",
+        title: "Ship it dark, then flip a boolean",
+        body: "Commercial tiers and a second grant provider are built, tested and merged behind flags, refusing politely until the day they're switched on. The move to cookie-based auth across two independently deployed apps went out behind three flags that all defaulted to off, with a written rollout order, so nothing broke mid-migration.",
+    },
+];
+
+const build = [
+    {
+        title: "Matching names nobody spells the same way",
+        body: "Donor names and list entries are normalized into a sorted set of tokens — diacritics stripped, punctuation dropped, honorifics and corporate suffixes removed — so a list's \"SMITH, John\" and a donor's \"John Smith\" compare as equal. The known gap is written down rather than glossed: there is no fuzzy matching, so transliteration variants can still slip past.",
+    },
+    {
+        title: "Money safety without a safety net",
+        body: "Donor-advised-fund providers are third-party HTTP APIs with no idempotency guarantees of their own, so every provider routes through one shared skeleton: an idempotent pending reservation, explicit handling for outcomes that come back unknown, and receipts issued from our own record. Per-organization credentials are encrypted at rest, and production refuses to start without the key.",
+    },
+    {
+        title: "Migrations that run once, on their own",
+        body: "Schema changes run inside the container as it boots, guarded by a database advisory lock so two instances starting at the same moment cannot race each other. There is no separate migrate step to forget, and no window where a new image is serving against an old schema.",
+    },
+    {
+        title: "A release you have to mean",
+        body: "Merging to the main branch deploys staging automatically, gated on the test suite. Production deploys only when someone pushes a version tag — so going live is a deliberate act naming an exact commit, not a side effect of merging a pull request on a Friday.",
+    },
+    {
+        title: "One instance, on purpose",
+        body: "Rate-limit counters live in one process's memory, so spreading traffic across instances would silently multiply every limit — five login attempts a minute becomes fifteen across three shards. Traffic is deliberately pinned to a single container until shared counters land. The ceiling is documented in the README with the ticket that lifts it.",
+    },
+    {
+        title: "Tests that watch the routes themselves",
+        body: "Coverage is enforced in continuous integration at 100% of lines and functions across the business-logic surface, with every exclusion carrying a written reason. Route files are verified by introspecting the built router, so an endpoint cannot be added without a test noticing it exists.",
+    },
+];
+
+const rigor = [
+    {
+        risk: "Coverage erodes a percent at a time",
+        undo: "A hard gate in CI, scoped to business logic, with a written rationale for every exclusion instead of a quietly shrinking denominator",
+    },
+    {
+        risk: "A secret reaches the repository",
+        undo: "Secret scanning across the full history on every run, not just the diff",
+    },
+    {
+        risk: "Two green pull requests break the build once both land",
+        undo: "Branches are updated before merge, and a failing main branch opens and updates its own tracking issue rather than waiting to be noticed",
+    },
+    {
+        risk: "Documentation drifts away from the code",
+        undo: "Docs change in the same commit as the code — endpoints, environment variables and limitations included",
+    },
+    {
+        risk: "A deploy ships code nobody committed",
+        undo: "The container image builds from the committed tree, and the README says so plainly next to the command that would otherwise mislead you",
+    },
+];
+---
+
+<BaseLayout
+    meta_title="Case Study: A Multi-Tenant Donation Platform | Motown Solutions"
+    meta_description="Sanctions screening in the donation path, charity verification that deliberately blocks nothing, and donor-advised-fund grants made safe to retry — a multi-tenant giving platform built compliance-first."
+>
+    <section class="relative overflow-hidden border-b-2 border-ink">
+        <svg
+            aria-hidden
+            class="absolute inset-0 w-full h-full pointer-events-none opacity-[0.12] text-ink"
+            viewBox="0 0 1200 700"
+            preserveAspectRatio="xMidYMid slice"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+        >
+            <path d="M60 350 H 440" />
+            <path d="M400 330 l 40 20 l -40 20" />
+            <rect x="440" y="230" width="240" height="240" />
+            <path d="M480 350 h 160" />
+            <path d="M560 270 v 160" />
+            <path d="M680 350 H 1060" />
+            <path d="M1020 330 l 40 20 l -40 20" />
+            <circle cx="1120" cy="350" r="40" />
+            <path d="M60 200 H 300 M60 500 H 300" />
+        </svg>
+
+        <div class="relative max-w-7xl mx-auto px-6 pt-16 md:pt-24 pb-20 md:pb-28">
+            <div class="grid grid-cols-12 gap-6 lg:items-center">
+                <div class="col-span-12 lg:col-span-7">
+                    <div class="flex items-center gap-3 mb-8">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >Case Study — Multi-Tenant Donation Platform</span
+                        >
+                    </div>
+
+                    <h1
+                        class="font-display font-bold text-hero text-ink text-balance"
+                    >
+                        Screen every donor.
+                        <br />
+                        Tell
+                        <span class="italic text-accent">none of them</span>.
+                    </h1>
+
+                    <p
+                        class="mt-10 text-lg md:text-xl text-ink-muted leading-relaxed text-pretty max-w-xl"
+                    >
+                        A platform where nonprofits run campaigns and always-on
+                        giving pages, and donors give by card, wallet, or grant
+                        from a donor-advised fund. Take payments for other
+                        organizations and you inherit obligations that have
+                        nothing to do with payments — sanctions screening,
+                        charity verification, records that hold up years later.
+                        Those obligations shaped the architecture rather than
+                        arriving after it.
+                    </p>
+
+                    <div class="mt-10 flex flex-wrap gap-3">
+                        <a
+                            href="/contact"
+                            class="group inline-flex items-center gap-2 bg-accent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-accent hover:bg-paper hover:text-ink hover:border-ink transition-colors"
+                        >
+                            Build it compliance-first
+                            <span
+                                class="transition-transform group-hover:translate-x-0.5"
+                                aria-hidden>→</span
+                            >
+                        </a>
+                        <a
+                            href="#outcomes"
+                            class="inline-flex items-center gap-2 bg-transparent text-ink font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-ink hover:bg-ink hover:text-paper transition-colors"
+                        >
+                            The decisions
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-span-12 lg:col-span-5 mt-12 lg:mt-0">
+                    <div
+                        class="border-2 border-ink bg-paper-2 lg:translate-y-2"
+                        data-reveal
+                    >
+                        <div
+                            class="flex items-center justify-between px-5 py-3 border-b-2 border-ink font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted"
+                        >
+                            <span>At A Glance</span>
+                            <span aria-hidden class="text-accent">● in build</span
+                            >
+                        </div>
+
+                        <div class="flex items-end gap-5 px-5 py-6 border-b border-ink/30">
+                            <span
+                                class="font-display font-bold text-6xl leading-[0.85] tracking-tight"
+                                >100%</span
+                            >
+                            <span
+                                class="text-sm text-ink-muted leading-snug pb-1"
+                                >of each gift reaches the charity,<br />less the processor's own fee</span
+                            >
+                        </div>
+                        {
+                            [
+                                ["Sector", "Nonprofit fundraising, multi-tenant"],
+                                ["Scope", "Giving · DAF grants · donor CRM · receipts"],
+                                ["Stack", "Node · Postgres · Cloudflare Workers"],
+                                ["Screening", "In the donation path, and fails closed"],
+                                ["Funds", "Direct charges — never a platform balance"],
+                            ].map(([k, v], i, arr) => (
+                                <div
+                                    class:list={[
+                                        "px-5 py-3.5",
+                                        i !== arr.length - 1 &&
+                                            "border-b border-ink/30",
+                                    ]}
+                                >
+                                    <div class="font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted">
+                                        {k}
+                                    </div>
+                                    <div class="mt-1 font-display font-bold tracking-tight text-lg leading-snug">
+                                        {v}
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before / after -->
+    <section id="outcomes" class="py-20 md:py-28" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >The Decisions</span
+                        >
+                    </div>
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        Six places the
+                        <br />
+                        obvious version is wrong.
+                    </h2>
+                </div>
+                <div class="col-span-12 md:col-span-5 md:col-start-8 md:self-end">
+                    <p
+                        class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
+                    >
+                        Nothing here is exotic engineering. Each one is a
+                        default that looks reasonable, ships quickly, and is
+                        wrong for a system that moves other people's charitable
+                        money — and each is cheap to get right at the start and
+                        expensive to retrofit.
+                    </p>
+                </div>
+            </div>
+
+            <div class="border-t border-ink">
+                <div
+                    class="hidden md:grid grid-cols-12 gap-8 py-4 border-b border-ink font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted"
+                >
+                    <span class="col-span-6">The obvious version</span>
+                    <span class="col-span-6">What we built</span>
+                </div>
+                {
+                    outcomes.map((row) => (
+                        <div class="grid grid-cols-12 gap-4 md:gap-8 items-center py-7 border-b border-ink">
+                            <div class="col-span-12 md:col-span-6 flex items-start gap-3 text-ink-muted">
+                                <span
+                                    aria-hidden
+                                    class="font-mono text-lg leading-none mt-[2px]"
+                                >
+                                    ×
+                                </span>
+                                <span class="leading-relaxed line-through decoration-ink/30">
+                                    {row.before}
+                                </span>
+                            </div>
+                            <div class="col-span-12 md:col-span-6 flex items-start gap-3">
+                                <span
+                                    aria-hidden
+                                    class="font-mono text-lg leading-none mt-[2px] text-accent"
+                                >
+                                    →
+                                </span>
+                                <span class="font-medium leading-relaxed">
+                                    {row.after}
+                                </span>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Three pillars -->
+    <section class="border-t-2 border-ink bg-paper-2 py-20 md:py-28" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-7">
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        Compliance as
+                        <br />
+                        architecture.
+                    </h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 border border-ink bg-paper">
+                {
+                    pillars.map((p, i, arr) => (
+                        <div
+                            class:list={[
+                                "p-8 md:p-10 border-ink",
+                                i !== arr.length - 1 &&
+                                    "border-b md:border-b-0 md:border-r",
+                            ]}
+                        >
+                            <div class="font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted mb-6">
+                                {p.n}
+                            </div>
+                            <h3 class="font-display text-2xl md:text-3xl font-bold tracking-tight leading-tight mb-4">
+                                {p.title}
+                            </h3>
+                            <p class="text-ink-muted leading-relaxed">
+                                {p.body}
+                            </p>
+                        </div>
+                    ))
+                }
+            </div>
+
+            <blockquote
+                class="mt-14 border-l-2 border-accent pl-6 md:pl-8 max-w-3xl"
+            >
+                <p
+                    class="font-display font-bold text-2xl md:text-3xl tracking-tight leading-tight text-balance"
+                >
+                    A control that switches itself off during an outage was
+                    never a control.
+                </p>
+                <p class="mt-4 text-ink-muted leading-relaxed">
+                    Which is why screening fails closed: if the lists cannot be
+                    queried, the donation is declined rather than waved through.
+                    The same instinct runs through the rest of it — production
+                    refuses to boot without its encryption key, unknown outcomes
+                    from a payment partner are handled as their own case rather
+                    than assumed successful, and the decisions that cleared are
+                    recorded alongside the ones that blocked.
+                </p>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- Inside the build -->
+    <section class="border-t-2 border-ink py-20 md:py-28" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >Inside The Build</span
+                        >
+                    </div>
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        Six problems and
+                        <br />
+                        what they cost.
+                    </h2>
+                </div>
+                <div class="col-span-12 md:col-span-5 md:col-start-8 md:self-end">
+                    <p
+                        class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
+                    >
+                        Every one of these carries a tradeoff we took
+                        deliberately, and in most cases wrote into the
+                        repository next to the code — including the ceiling it
+                        imposes and the work that would lift it.
+                    </p>
+                </div>
+            </div>
+
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border border-ink"
+            >
+                {
+                    build.map((item) => (
+                        <div class="p-8 md:p-10 border-ink border-b border-r last:border-b-0 md:[&:nth-last-child(-n+2)]:border-b-0 lg:[&:nth-last-child(-n+3)]:border-b-0 md:[&:nth-child(even)]:border-r-0 lg:[&:nth-child(3n)]:border-r-0 lg:[&:nth-child(even)]:border-r">
+                            <h3 class="font-display text-2xl md:text-3xl font-bold tracking-tight leading-tight mb-3">
+                                {item.title}
+                            </h3>
+                            <p class="text-ink-muted leading-relaxed">
+                                {item.body}
+                            </p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Rigor -->
+    <section class="border-t-2 border-ink bg-paper-2 py-20 md:py-28" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >How It Holds Up</span
+                        >
+                    </div>
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        The discipline is
+                        <br />
+                        mechanical, not moral.
+                    </h2>
+                </div>
+                <div class="col-span-12 md:col-span-5 md:col-start-8 md:self-end">
+                    <p
+                        class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
+                    >
+                        Standards that depend on everyone remembering are
+                        standards for a good week. These are checked by
+                        machines, on every change, and the ones that cannot be
+                        are named as such.
+                    </p>
+                </div>
+            </div>
+
+            <div class="border-t border-ink">
+                <div
+                    class="hidden md:grid grid-cols-12 gap-8 py-4 border-b border-ink font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted"
+                >
+                    <span class="col-span-5">The way it goes wrong</span>
+                    <span class="col-span-7">What stops it</span>
+                </div>
+                {
+                    rigor.map((row) => (
+                        <div class="grid grid-cols-12 gap-4 md:gap-8 items-center py-6 border-b border-ink">
+                            <div class="col-span-12 md:col-span-5 text-ink-muted leading-relaxed">
+                                {row.risk}
+                            </div>
+                            <div class="col-span-12 md:col-span-7 flex items-start gap-3">
+                                <span
+                                    aria-hidden
+                                    class="font-mono text-lg leading-none mt-[2px] text-accent"
+                                >
+                                    →
+                                </span>
+                                <span class="font-medium leading-relaxed">
+                                    {row.undo}
+                                </span>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+
+            <div class="grid grid-cols-12 gap-6 mt-14">
+                <div class="col-span-12 lg:col-span-6 border-2 border-ink bg-paper p-8 md:p-10">
+                    <div
+                        class="font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted mb-6"
+                    >
+                        — The threshold we had to tune
+                    </div>
+                    <p class="text-ink-muted leading-relaxed mb-4">
+                        A naive substring match against the real lists flagged
+                        six of twenty ordinary donor names in our own July
+                        testing. "Maria Garcia" is contained inside a longer
+                        listed name, and a platform that declines her is worse
+                        than useless. Allowing exactly one extra token brought
+                        it to three of twenty — and those three are genuine
+                        possible matches that a person should look at.
+                    </p>
+                    <p class="text-ink-muted leading-relaxed">
+                        There is no threshold that produces zero false positives
+                        and zero misses. The work is choosing where to sit,
+                        measuring it against the actual lists, and writing down
+                        what the choice still lets through.
+                    </p>
+                </div>
+                <div class="col-span-12 lg:col-span-6 border-2 border-ink bg-paper p-8 md:p-10">
+                    <div
+                        class="font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted mb-6"
+                    >
+                        — What we don't call finished
+                    </div>
+                    <p class="text-ink-muted leading-relaxed mb-4">
+                        The platform is mid-flight, and the README carries a
+                        known-limitations section that names the open items
+                        outright: list imports are still run by hand rather than
+                        on a schedule, the cookie and CSRF migration is still
+                        behind flags waiting on the frontend release, and the
+                        rate-limiting ceiling stands until shared counters land.
+                    </p>
+                    <p class="text-ink-muted leading-relaxed">
+                        A documentation section that only lists what works is a
+                        sales page. The value of writing the limits down is that
+                        the next person — including the next us — inherits them
+                        as decisions instead of discovering them as surprises.
+                    </p>
+                </div>
+            </div>
+
+            <p class="mt-12 text-ink-muted leading-relaxed max-w-2xl">
+                This is
+                <a
+                    href="/enterprise-software-development"
+                    class="link-underline font-medium text-ink"
+                    >platform engineering</a
+                >, built on
+                <a
+                    href="/api-development"
+                    class="link-underline font-medium text-ink"
+                    >API development</a
+                >, with the posture that carries a team through
+                <a
+                    href="/soc-2-readiness"
+                    class="link-underline font-medium text-ink"
+                    >a compliance review</a
+                >.
+            </p>
+        </div>
+    </section>
+
+    <section class="section-ink border-t-2 border-ink" data-reveal>
+        <div class="max-w-7xl mx-auto px-6 py-24 md:py-36 flex flex-col items-start">
+            <div class="flex items-center gap-3 mb-8">
+                <span aria-hidden class="inline-block w-8 h-px bg-paper"></span>
+                <span
+                    class="font-mono text-xs uppercase tracking-eyebrow text-paper/60"
+                    >Handling Other People's Money?</span
+                >
+            </div>
+            <h2
+                class="font-display font-bold text-display text-paper text-balance mb-10 max-w-5xl leading-[0.95]"
+            >
+                The rules don't wait for
+                <span class="italic text-accent">version two</span>.
+            </h2>
+            <p class="text-lg md:text-xl text-paper/70 max-w-xl mb-10">
+                Tell us what your product moves — payments, donations, claims,
+                regulated data — and who you'd have to answer to about it. We
+                will tell you which obligations belong in the architecture now
+                and which can honestly wait.
+            </p>
+            <div class="flex flex-wrap gap-3 mb-12">
+                <a
+                    href="/contact"
+                    class="group inline-flex items-center gap-2 bg-accent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-accent hover:bg-paper hover:text-ink hover:border-paper transition-colors"
+                >
+                    Build it compliance-first
+                    <span
+                        class="transition-transform group-hover:translate-x-0.5"
+                        aria-hidden>→</span
+                    >
+                </a>
+                <a
+                    href="/api-development"
+                    class="inline-flex items-center gap-2 bg-transparent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-paper hover:bg-paper hover:text-ink transition-colors"
+                >
+                    API Development
+                </a>
+            </div>
+
+            <div
+                class="w-full border-t border-paper/20 pt-8 flex flex-wrap items-center gap-x-10 gap-y-3 font-mono text-xs uppercase tracking-eyebrow text-paper/60"
+            >
+                <a
+                    href="https://motowntech.com"
+                    class="link-underline text-paper">motowntech.com</a
+                >
+                <a href="tel:+18459252661" class="link-underline text-paper"
+                    >845-925-2661</a
+                >
+            </div>
+        </div>
+    </section>
+</BaseLayout>
