@@ -1,79 +1,78 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-import ConsultingIcon from "../components/icons/ConsultingIcon.astro";
-import SoftwareIcon from "../components/icons/SoftwareIcon.astro";
-import EnterpriseIcon from "../components/icons/EnterpriseIcon.astro";
-import DatabaseIcon from "../components/icons/DatabaseIcon.astro";
 import AnalyticsIcon from "../components/icons/AnalyticsIcon.astro";
+import ConsultingIcon from "../components/icons/ConsultingIcon.astro";
+import CloudIcon from "../components/icons/CloudIcon.astro";
+import DatabaseIcon from "../components/icons/DatabaseIcon.astro";
 import SendIcon from "../components/icons/SendIcon.astro";
 import ShieldIcon from "../components/icons/ShieldIcon.astro";
 
 const panel = [
-    { title: "Assessment", icon: ConsultingIcon },
-    { title: "Finding Seams", icon: SoftwareIcon },
-    { title: "Incremental Build", icon: EnterpriseIcon },
-    { title: "Data Migration", icon: DatabaseIcon },
-    { title: "Parallel Running", icon: AnalyticsIcon },
-    { title: "Decommission", icon: SendIcon },
+    { title: "Bill Audit", icon: AnalyticsIcon },
+    { title: "Workload Map", icon: ConsultingIcon },
+    { title: "Workers / Pages", icon: CloudIcon },
+    { title: "R2 · D1 · KV", icon: DatabaseIcon },
+    { title: "Cutover", icon: SendIcon },
+    { title: "Guardrails", icon: ShieldIcon },
 ];
 
 const work = [
     {
-        title: "Assessment",
-        icon: ConsultingIcon,
-        desc: "What the system does, what still matters, and what's been dead for years. Old systems typically carry a great deal of functionality nobody uses.",
+        title: "Compute → Workers",
+        icon: CloudIcon,
+        desc: "API routes, handlers, and the glue between services move to Workers. No instances to size, no idle capacity reserved for a peak that arrives twice a year.",
     },
     {
-        title: "Finding the Seams",
-        icon: SoftwareIcon,
-        desc: "Identifying where the system can be cut — the boundaries where a piece can be lifted out and served by something new without the rest noticing.",
+        title: "Frontends → Pages",
+        icon: SendIcon,
+        desc: "Static sites and SSR frameworks deploy to Pages with the CDN, TLS, and preview environments included rather than assembled from four separate services.",
     },
     {
-        title: "Behaviour as Tests",
-        icon: ShieldIcon,
-        desc: "Capturing what the old system actually does, including the bugs people now depend on, before anything replaces it.",
-    },
-    {
-        title: "Incremental Replacement",
-        icon: EnterpriseIcon,
-        desc: "New capability behind a facade that routes each request to old or new, so the switch happens per feature rather than per system.",
-    },
-    {
-        title: "Data Migration",
+        title: "S3 → R2",
         icon: DatabaseIcon,
-        desc: "Moving decades of records with their inconsistencies handled deliberately, rather than discovered during the first month of live running.",
+        desc: "Same S3 API, zero egress. For anything that serves files to users, this line item alone is often the whole business case.",
     },
     {
-        title: "Parallel Running",
+        title: "Databases → D1 or Hyperdrive",
         icon: AnalyticsIcon,
-        desc: "Both systems processing the same work and their outputs compared until the numbers reconcile — then, and only then, the old one goes.",
+        desc: "Small relational workloads move to D1. Postgres and MySQL that need to stay put get Hyperdrive in front, so the Worker is not paying a cold connection tax on every request.",
+    },
+    {
+        title: "Cron & Queues",
+        icon: ConsultingIcon,
+        desc: "Scheduled jobs become Cron Triggers, background work becomes Queues, and the EC2 box whose only job was running crontab is retired.",
+    },
+    {
+        title: "What Stays",
+        icon: ShieldIcon,
+        desc: "GPU workloads, long-running stateful services, and anything with a hard-won compliance boundary stay where they are, fronted through Cloudflare so the rest can move.",
     },
 ];
 
 const rows = [
     {
-        before: "A two-year rewrite that has to land all at once",
-        after: "Pieces replaced behind a facade while it runs",
+        before: "Egress billed on every file a user downloads",
+        after: "R2 with zero egress, behind the same URLs",
     },
     {
-        before: "The old system switched off on a Friday night",
-        after: "Parallel running until the numbers reconcile",
+        before: "Instances sized for peak, idle the rest of the month",
+        after: "Workers billed per request, scaled to zero when quiet",
     },
     {
-        before: "Business logic rediscovered by reading old code",
-        after: "Behaviour captured as tests before replacement",
+        before: "Load balancer, WAF, CDN and TLS each on their own bill",
+        after: "Included with the platform, configured once",
     },
     {
-        before: "The project stalls and you now maintain two systems",
-        after: "Each phase delivers value and can be stopped",
+        before: "A big-bang rewrite nobody wants to sign off on",
+        after: "Route-by-route cutover behind the DNS you already have",
     },
 ];
 ---
 
 <BaseLayout
-    meta_title="Legacy System Modernization | Motown Solutions"
-    meta_description="Legacy system modernisation — assessment, finding the seams, incremental replacement behind a facade, data migration, parallel running, and decommissioning without a big-bang cutover."
+    meta_title="Cloudflare Migration from AWS, GCP & Azure | Motown Solutions"
+    meta_description="Migrate applications from AWS, GCP, or Azure to Cloudflare — Workers, Pages, R2, D1 and Queues — cut over route by route, with engagements structured against the savings found."
 >
     <section class="relative overflow-hidden border-b-2 border-ink">
         <svg
@@ -100,22 +99,22 @@ const rows = [
                         ></span>
                         <span
                             class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
-                            >Legacy Modernization</span
+                            >Cloudflare Migration</span
                         >
                     </div>
 
                     <h1
                         class="font-display font-bold text-display text-ink text-balance"
                     >
-                        Replace it
+                        Off the big three.
                         <br />
-                        without <span class="italic text-accent">stopping</span>.
+                        Onto the <span class="italic text-accent">edge</span>.
                     </h1>
 
                     <p
                         class="mt-10 text-lg md:text-xl text-ink-muted leading-relaxed text-pretty max-w-xl"
                     >
-                        The system everyone wants replaced is also the system the business runs on. That's the whole difficulty — it has to keep working perfectly throughout the years it takes to retire it.
+                        The bill is rarely the compute. It is egress, capacity reserved for a peak that never comes, and managed services priced for a scale you are not at. Most of an application moves to Cloudflare cleanly. The work is knowing which parts, and in what order.
                     </p>
 
                     <div class="mt-10 flex flex-wrap gap-3">
@@ -123,7 +122,7 @@ const rows = [
                             href="/contact"
                             class="group inline-flex items-center gap-2 bg-accent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-accent hover:bg-paper hover:text-ink hover:border-ink transition-colors"
                         >
-                            Assess the system
+                            Review my cloud bill
                             <span
                                 class="transition-transform group-hover:translate-x-0.5"
                                 aria-hidden>→</span
@@ -133,7 +132,7 @@ const rows = [
                             href="#work"
                             class="inline-flex items-center gap-2 bg-transparent text-ink font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-ink hover:bg-ink hover:text-paper transition-colors"
                         >
-                            How we do it
+                            What moves
                         </a>
                     </div>
                 </div>
@@ -146,8 +145,8 @@ const rows = [
                         <div
                             class="flex items-center justify-between px-5 py-3 border-b-2 border-ink font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted"
                         >
-                            <span>Your Migration / Path</span>
-                            <span aria-hidden class="text-accent">● incremental</span>
+                            <span>Your App / Migration</span>
+                            <span aria-hidden class="text-accent">● cut over</span>
                         </div>
                         {
                             panel.map((s, i) => {
@@ -182,15 +181,17 @@ const rows = [
             <div
                 class="max-w-7xl mx-auto px-6 py-5 flex flex-wrap items-center justify-between gap-x-8 gap-y-2 font-mono text-[10px] md:text-xs uppercase tracking-eyebrow text-ink-muted"
             >
-                <span>Assessment</span>
+                <span>Workers</span>
                 <span class="hidden md:inline" aria-hidden>·</span>
-                <span>Seams</span>
+                <span>Pages</span>
                 <span class="hidden md:inline" aria-hidden>·</span>
-                <span>Replacement</span>
+                <span>R2</span>
                 <span class="hidden md:inline" aria-hidden>·</span>
-                <span>Migration</span>
+                <span>D1</span>
                 <span class="hidden md:inline" aria-hidden>·</span>
-                <span>Cutover</span>
+                <span>KV</span>
+                <span class="hidden md:inline" aria-hidden>·</span>
+                <span>Queues</span>
             </div>
         </div>
     </section>
@@ -204,22 +205,22 @@ const rows = [
                         ></span>
                         <span
                             class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
-                            >How We Do It</span
+                            >What Moves</span
                         >
                     </div>
                     <h2
                         class="font-display font-bold text-h2 tracking-tight text-balance"
                     >
-                        Piece by piece,
+                        Most of it moves.
                         <br />
-                        never all at once.
+                        Some of it shouldn't.
                     </h2>
                 </div>
                 <div class="col-span-12 md:col-span-5 md:col-start-8 md:self-end">
                     <p
                         class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
                     >
-                        Big-bang rewrites fail at a rate that ought to have ended the practice. The alternative is slower on paper and far more likely to finish: replace behind a facade, one capability at a time.
+                        A migration is an inventory first. Each workload either has a Cloudflare-native home, needs a bridge, or belongs where it is. Deciding that honestly is what keeps the cutover boring.
                     </p>
                 </div>
             </div>
@@ -260,22 +261,22 @@ const rows = [
                         ></span>
                         <span
                             class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
-                            >Two Approaches</span
+                            >Where It Costs</span
                         >
                     </div>
                     <h2
                         class="font-display font-bold text-h2 tracking-tight text-balance"
                     >
-                        Big bang,
+                        Paying for scale.
                         <br />
-                        or incremental.
+                        Not using it.
                     </h2>
                 </div>
                 <div class="col-span-12 md:col-span-5 md:col-start-8 md:self-end">
                     <p
                         class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
                     >
-                        One of these can be stopped at any point with value already delivered. The other can only be judged at the end, which is also the only moment it can fail.
+                        The legacy cloud bill was designed around instances and regions. Most applications built in the last decade are neither, and pay every month for the mismatch.
                     </p>
                 </div>
             </div>
@@ -284,8 +285,8 @@ const rows = [
                 <div
                     class="hidden md:grid grid-cols-12 gap-8 py-4 border-b border-ink font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted"
                 >
-                    <span class="col-span-6">Big-bang rewrite</span>
-                    <span class="col-span-6">Incremental replacement</span>
+                    <span class="col-span-6">Common setup</span>
+                    <span class="col-span-6">Built properly</span>
                 </div>
                 {
                     rows.map((row) => (
@@ -318,12 +319,12 @@ const rows = [
             </div>
 
             <p class="mt-8 text-ink-muted leading-relaxed max-w-2xl">
-                The replacement itself is usually <a href="/enterprise-software-development" class="link-underline font-medium text-ink"
-                    >enterprise software development</a
-                >, and the sequencing decisions belong in <a href="/it-strategy-consulting" class="link-underline font-medium text-ink"
-                    >IT strategy</a
-                >. When the legacy part is the cloud bill itself, that is <a href="/cloudflare-migration" class="link-underline font-medium text-ink"
-                    >Cloudflare migration</a
+                What the application looks like once it is there is <a href="/cloud-application-development" class="link-underline font-medium text-ink"
+                    >cloud application development</a
+                >; when the code has to change on the way, it is <a href="/legacy-system-modernization" class="link-underline font-medium text-ink"
+                    >legacy modernization</a
+                >. For a platform already running on Workers, see the <a href="/case-studies/donation-platform" class="link-underline font-medium text-ink"
+                    >donation platform case study</a
                 >.
             </p>
 
@@ -336,33 +337,33 @@ const rows = [
                 <span aria-hidden class="inline-block w-8 h-px bg-paper"></span>
                 <span
                     class="font-mono text-xs uppercase tracking-eyebrow text-paper/60"
-                    >Start Small</span
+                    >The Trade</span
                 >
             </div>
             <h2
                 class="font-display font-bold text-display text-paper text-balance mb-10 max-w-5xl leading-[0.95]"
             >
-                Off the old system, <span class="italic text-accent">safely</span>.
+                Pay less. <span class="italic text-accent">Ship the same app</span>.
             </h2>
             <p class="text-lg md:text-xl text-paper/70 max-w-xl mb-10">
-                Tell us what the system is, what it still does, and what's stopping you replacing it. We'll come back with the seams and a first phase worth doing on its own.
+                Send us a recent invoice and a rough map of what runs where. We will tell you what moves, what stays, and what the bill looks like afterward. Engagements can be structured against the savings we find, so the audit costs nothing if there is nothing to save.
             </p>
             <div class="flex flex-wrap gap-3 mb-12">
                 <a
                     href="/contact"
                     class="group inline-flex items-center gap-2 bg-accent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-accent hover:bg-paper hover:text-ink hover:border-paper transition-colors"
                 >
-                    Assess the system
+                    Review my cloud bill
                     <span
                         class="transition-transform group-hover:translate-x-0.5"
                         aria-hidden>→</span
                     >
                 </a>
                 <a
-                    href="/services/consulting"
+                    href="/services/software-development"
                     class="inline-flex items-center gap-2 bg-transparent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-paper hover:bg-paper hover:text-ink transition-colors"
                 >
-                    Consulting
+                    Software Development
                 </a>
             </div>
 
