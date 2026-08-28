@@ -159,13 +159,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                                 required></textarea>
                         </div>
 
-                        <div
-                            class="h-captcha"
-                            data-captcha="true"
-                            data-lang="en"
-                            data-theme="light"
-                        >
-                        </div>
+                        <!-- honeypot: bots fill this, Web3Forms drops the submission -->
+                        <input
+                            type="checkbox"
+                            name="botcheck"
+                            class="hidden"
+                            style="display: none;"
+                            tabindex="-1"
+                            autocomplete="off"
+                            aria-hidden="true"
+                        />
 
                         <p
                             class="hidden border border-ink bg-paper-2 px-4 py-3 text-sm font-mono text-ink"
@@ -245,10 +248,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                             </dt>
                             <dd>
                                 <a
-                                    href="tel:+13137751223"
+                                    href="tel:+18459252661"
                                     class="link-underline font-medium"
                                 >
-                                    (845) 825-2661
+                                    845-925-2661
                                 </a>
                             </dd>
                         </div>
@@ -462,5 +465,3 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     });
 </script>
 
-<script is:inline src="https://web3forms.com/client/script.js" async defer
-></script>
