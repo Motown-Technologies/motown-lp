@@ -65,14 +65,16 @@ const { meta_title, meta_description, noindex } = Astro.props;
                 color: #0b0b0c;
             }
 
-            /* Scroll reveal: initial hidden state, revealed via data attr */
+            /* Scroll reveal: initial hidden state, revealed via data attr.
+               Entrances use ease-out — `ease` delays the first frame, which is
+               the frame being watched. No will-change: these are full sections,
+               and a permanent compositor layer costs more than an 8px fade. */
             [data-reveal] {
                 opacity: 0;
                 transform: translateY(8px);
                 transition:
-                    opacity 600ms ease,
-                    transform 600ms ease;
-                will-change: opacity, transform;
+                    opacity 400ms var(--ease-out),
+                    transform 400ms var(--ease-out);
             }
 
             [data-reveal].is-revealed {
@@ -85,6 +87,35 @@ const { meta_title, meta_description, noindex } = Astro.props;
                     opacity: 1;
                     transform: none;
                     transition: none;
+                }
+            }
+
+            /* Press feedback. Every pressable thing must confirm it heard the
+               user; the site had 700+ hover states and no active state.
+               Matches the CTA signature (inline-flex + border-2) plus real
+               interactive elements. */
+            button,
+            summary,
+            a[class*="inline-flex"][class*="border-2"] {
+                transition: transform 160ms var(--ease-out);
+            }
+
+            button:active,
+            summary:active,
+            a[class*="inline-flex"][class*="border-2"]:active {
+                transform: scale(0.97);
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                button,
+                summary,
+                a[class*="inline-flex"][class*="border-2"] {
+                    transition: none;
+                }
+                button:active,
+                summary:active,
+                a[class*="inline-flex"][class*="border-2"]:active {
+                    transform: none;
                 }
             }
 
@@ -326,7 +357,7 @@ const { meta_title, meta_description, noindex } = Astro.props;
                                 }
                             });
                         },
-                        { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+                        { threshold: 0, rootMargin: "0px 0px -40px 0px" },
                     );
                     els.forEach((el) => io.observe(el));
                 };

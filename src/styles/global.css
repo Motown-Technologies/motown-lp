@@ -27,6 +27,14 @@
     --text-h2--line-height: 1.05;
     --text-h2--letter-spacing: -0.02em;
 
+    /* The CSS built-ins are too weak to read as intentional. --ease-out
+       deliberately overrides Tailwind's default so every `ease-out` utility
+       gets the stronger curve. */
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    /* Long hover sweeps. Shared by the fill AND every colour riding on it, so
+       text never changes ahead of the edge that is supposed to cause it. */
+    --ease-sweep: cubic-bezier(0.22, 1, 0.36, 1);
+
     --tracking-eyebrow: 0.18em;
     --tracking-navlabel: 0.15em;
 }

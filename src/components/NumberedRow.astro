@@ -26,11 +26,11 @@ const Tag = href ? "a" : "div";
 >
     <span
         aria-hidden
-        class="pointer-events-none absolute inset-0 bg-ink origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+        class="pointer-events-none absolute inset-0 bg-ink origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[400ms] ease-sweep"
     ></span>
 
     <div
-        class="relative grid grid-cols-12 gap-4 md:gap-8 items-center py-8 md:py-10 px-4 md:px-6 transition-colors group-hover:text-paper"
+        class="relative grid grid-cols-12 gap-4 md:gap-8 items-center py-8 md:py-10 px-4 md:px-6 transition-colors duration-[400ms] ease-sweep group-hover:text-paper"
     >
         <div class="col-span-12 md:col-span-6">
             <h3
@@ -42,7 +42,7 @@ const Tag = href ? "a" : "div";
         {
             description && (
                 <div class="col-span-12 md:col-span-5 md:pl-4">
-                    <p class="text-base md:text-lg leading-relaxed text-ink-muted group-hover:text-paper/80">
+                    <p class="text-base md:text-lg leading-relaxed text-ink-muted transition-colors duration-[400ms] ease-sweep group-hover:text-paper/80">
                         {description}
                     </p>
                 </div>

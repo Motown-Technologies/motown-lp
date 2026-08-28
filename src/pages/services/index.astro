@@ -64,20 +64,20 @@ const toSlug = (s: string) =>
                             >
                                 <span
                                     aria-hidden
-                                    class="pointer-events-none absolute inset-0 bg-ink origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                                    class="pointer-events-none absolute inset-0 bg-ink origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[400ms] ease-sweep"
                                 />
-                                <div class="relative grid grid-cols-12 gap-4 md:gap-8 py-10 md:py-12 px-4 md:px-6 transition-colors group-hover:text-paper">
+                                <div class="relative grid grid-cols-12 gap-4 md:gap-8 py-10 md:py-12 px-4 md:px-6 transition-colors duration-[400ms] ease-sweep group-hover:text-paper">
                                     <div class="col-span-12 md:col-span-6">
                                         <h3 class="font-display text-3xl md:text-5xl font-bold tracking-tight leading-[1] mb-5">
                                             {svc.title}
                                         </h3>
-                                        <p class="text-ink-muted group-hover:text-paper/80 leading-relaxed max-w-lg">
+                                        <p class="text-ink-muted transition-colors duration-[400ms] ease-sweep group-hover:text-paper/80 leading-relaxed max-w-lg">
                                             {svc.description}
                                         </p>
                                     </div>
 
                                     <div class="col-span-12 md:col-span-5 md:pl-4">
-                                        <div class="font-mono text-[10px] md:text-xs uppercase tracking-eyebrow text-ink-muted group-hover:text-paper/60 mb-4">
+                                        <div class="font-mono text-[10px] md:text-xs uppercase tracking-eyebrow text-ink-muted transition-colors duration-[400ms] ease-sweep group-hover:text-paper/60 mb-4">
                                             — What we offer
                                         </div>
                                         <ul class="space-y-2">
