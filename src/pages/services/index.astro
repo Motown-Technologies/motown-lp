@@ -64,7 +64,8 @@ const toSlug = (s: string) =>
                             >
                                 <span
                                     aria-hidden
-                                    class="pointer-events-none absolute inset-0 bg-ink origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[400ms] ease-sweep"
+                                    data-sweep
+                                    class="pointer-events-none absolute inset-0 bg-ink origin-left scale-x-0 group-hover:scale-x-100 group-active:scale-x-100 transition-transform duration-[400ms] ease-sweep group-active:duration-[120ms]"
                                 />
                                 <div class="relative grid grid-cols-12 gap-4 md:gap-8 py-10 md:py-12 px-4 md:px-6 transition-colors duration-[400ms] ease-sweep group-hover:text-paper">
                                     <div class="col-span-12 md:col-span-6">

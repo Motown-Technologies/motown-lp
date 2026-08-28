@@ -60,9 +60,11 @@ const { meta_title, meta_description, noindex } = Astro.props;
                 background-color: #0b0b0c;
             }
 
-            .section-ink .hover\:bg-ink:hover {
-                background-color: #f5f2ea;
-                color: #0b0b0c;
+            @media (hover: hover) and (pointer: fine) {
+                .section-ink .hover\:bg-ink:hover {
+                    background-color: #f5f2ea;
+                    color: #0b0b0c;
+                }
             }
 
             /* Scroll reveal: initial hidden state, revealed via data attr.
@@ -119,6 +121,20 @@ const { meta_title, meta_description, noindex } = Astro.props;
                 }
             }
 
+            /* Mobile panel rows. The global press scale is wrong for a
+               full-width list row; opacity is the honest signal and it is
+               one of the properties reduced motion keeps. */
+            [data-mobile-nav] a,
+            [data-mobile-nav] button {
+                transition: opacity 100ms var(--ease-out);
+            }
+
+            [data-mobile-nav] a:active,
+            [data-mobile-nav] button:active {
+                opacity: 0.6;
+                transform: none;
+            }
+
             /* Link underline draw — used on nav and inline links */
             .link-underline {
                 background-image: linear-gradient(currentColor, currentColor);
@@ -128,14 +144,78 @@ const { meta_title, meta_description, noindex } = Astro.props;
                 transition: background-size 220ms ease;
             }
 
-            .link-underline:hover,
             .link-underline:focus-visible {
                 background-size: 100% 1.5px;
+            }
+
+            @media (hover: hover) and (pointer: fine) {
+                .link-underline:hover {
+                    background-size: 100% 1.5px;
+                }
             }
 
             @media (prefers-reduced-motion: reduce) {
                 .link-underline {
                     transition: none;
+                }
+            }
+
+            /* FAQ disclosure. The +/x already rotated over 150ms while the
+               answer it controls snapped open — half-animated reads worse than
+               not animated. Height is the sanctioned exception for accordions;
+               there is no transform equivalent. */
+            :root {
+                interpolate-size: allow-keywords;
+            }
+
+            details::details-content {
+                block-size: 0;
+                overflow: hidden;
+                transition:
+                    block-size 250ms var(--ease-out),
+                    content-visibility 250ms allow-discrete;
+            }
+
+            details[open]::details-content {
+                block-size: auto;
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                details::details-content {
+                    transition: none;
+                }
+            }
+
+            /* Reduced motion: movement off, colour and opacity on. Transforms
+               still land, they just arrive instead of travelling — which is
+               right for a 2px lift and wrong for the row wipe, so that one
+               becomes a fade below. */
+            @media (prefers-reduced-motion: reduce) {
+                *,
+                *::before,
+                *::after {
+                    transition-property: opacity, color, background-color,
+                        border-color, fill, stroke, box-shadow !important;
+                }
+
+                [data-sweep] {
+                    scale: 1 1 !important;
+                    opacity: 0;
+                    transition: opacity 200ms ease !important;
+                }
+
+                .group:focus-within [data-sweep] {
+                    opacity: 1;
+                }
+
+                .group:active [data-sweep] {
+                    opacity: 1;
+                }
+
+                @media (hover: hover) and (pointer: fine) {
+                    .group:hover [data-sweep] {
+                        opacity: 1;
+                    }
                 }
             }
         </style>

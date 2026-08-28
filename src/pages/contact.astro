@@ -185,11 +185,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
                         <button
                             type="submit"
-                            class="group w-full inline-flex items-center justify-center gap-3 bg-ink text-paper font-mono text-xs md:text-sm uppercase tracking-[0.15em] px-6 py-5 border-2 border-ink hover:bg-paper hover:text-ink transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                            class="group w-full inline-flex items-center justify-center gap-3 bg-ink text-paper font-mono text-xs md:text-sm uppercase tracking-[0.15em] px-6 py-5 border-2 border-ink hover:bg-paper hover:text-ink transition-[color,background-color,border-color,opacity] duration-200 ease-out disabled:opacity-60 disabled:cursor-not-allowed"
                             data-submit-button
                         >
                             <span
-                                class="hidden h-4 w-4 border-2 border-current/30 border-t-current rounded-full animate-spin"
+                                class="hidden h-4 w-4 border-2 border-current/30 border-t-current rounded-full animate-spin [animation-duration:0.6s]"
                                 aria-hidden="true"
                                 data-submit-loader></span>
                             <span data-submit-label>Send Message</span>
@@ -383,6 +383,50 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </section>
 </BaseLayout>
 
+<style>
+    /* Result banner. Was appearing the instant `hidden` came off, shoving the
+       submit button down with no bridge. display + allow-discrete lets the
+       entrance animate out of display:none without JS. Never scale(0). */
+    [data-form-success],
+    [data-form-error] {
+        opacity: 1;
+        scale: 1;
+        transition:
+            opacity 200ms var(--ease-out),
+            scale 200ms var(--ease-out),
+            display 200ms allow-discrete;
+    }
+
+    @starting-style {
+        [data-form-success],
+        [data-form-error] {
+            opacity: 0;
+            scale: 0.98;
+        }
+    }
+
+    /* Submit morph. Label text, spinner and arrow all changed in the same
+       frame, mid-button, at the moment the user is watching hardest. The blur
+       bridges them so the eye reads one morph instead of three teleports.
+       2px — heavy blur is expensive in Safari. */
+    [data-submit-button] > * {
+        transition:
+            opacity 160ms var(--ease-out),
+            filter 160ms var(--ease-out);
+    }
+
+    [data-submit-button][data-swapping] > * {
+        opacity: 0.6;
+        filter: blur(2px);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        [data-submit-button][data-swapping] > * {
+            filter: none;
+        }
+    }
+</style>
+
 <script type="module">
     const form = document.querySelector("[data-contact-form]");
     const submitButton = form?.querySelector("[data-submit-button]");
@@ -396,17 +440,25 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
     const setSubmittingState = (isSubmitting) => {
         if (!submitButton) return;
-        if (isSubmitting) {
-            submitButton.setAttribute("disabled", "true");
-            loader?.classList.remove("hidden");
-            submitIcon?.classList.add("hidden");
-            if (submitLabel) submitLabel.textContent = "Sending...";
-        } else {
-            submitButton.removeAttribute("disabled");
-            loader?.classList.add("hidden");
-            submitIcon?.classList.remove("hidden");
-            if (submitLabel) submitLabel.textContent = "Send Message";
-        }
+        // Disable immediately — double-submit protection can't wait on a beat.
+        if (isSubmitting) submitButton.setAttribute("disabled", "true");
+
+        // Everything else changes at the blur's peak, so the three swaps read
+        // as one morph. 120ms into a 160ms blur.
+        submitButton.dataset.swapping = "";
+        window.setTimeout(() => {
+            if (isSubmitting) {
+                loader?.classList.remove("hidden");
+                submitIcon?.classList.add("hidden");
+                if (submitLabel) submitLabel.textContent = "Sending...";
+            } else {
+                submitButton.removeAttribute("disabled");
+                loader?.classList.add("hidden");
+                submitIcon?.classList.remove("hidden");
+                if (submitLabel) submitLabel.textContent = "Send Message";
+            }
+            delete submitButton.dataset.swapping;
+        }, 120);
     };
 
     const clearMessages = () => {

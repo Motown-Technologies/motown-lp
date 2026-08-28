@@ -26,7 +26,8 @@ const Tag = href ? "a" : "div";
 >
     <span
         aria-hidden
-        class="pointer-events-none absolute inset-0 bg-ink origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[400ms] ease-sweep"
+        data-sweep
+        class="pointer-events-none absolute inset-0 bg-ink origin-left scale-x-0 group-hover:scale-x-100 group-active:scale-x-100 transition-transform duration-[400ms] ease-sweep group-active:duration-[120ms]"
     ></span>
 
     <div

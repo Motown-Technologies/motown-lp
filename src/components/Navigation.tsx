@@ -72,7 +72,7 @@ export function Navigation() {
                   aria-haspopup="menu"
                 >
                   Services
-                  <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
+                  <ChevronDown className="w-3 h-3 transition-transform duration-150 ease-out group-hover:rotate-180" />
                 </a>
 
                 <span
@@ -82,11 +82,11 @@ export function Navigation() {
 
                 <div
                   role="menu"
-                  className="absolute top-full left-0 mt-3 w-72 bg-paper border border-ink py-1
-                            opacity-0 translate-y-1 invisible pointer-events-none
-                            transition-all duration-150
-                            group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible group-hover:pointer-events-auto
-                            group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:visible group-focus-within:pointer-events-auto"
+                  className="absolute top-full left-0 mt-3 w-72 bg-paper border border-ink py-1 origin-top-left
+                            opacity-0 translate-y-1 scale-[0.98] invisible pointer-events-none
+                            transition-[opacity,translate,scale,visibility] duration-150 ease-out
+                            group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100 group-hover:visible group-hover:pointer-events-auto
+                            group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:scale-100 group-focus-within:visible group-focus-within:pointer-events-auto"
                 >
                   {services.map((s, idx) => (
                     <a
@@ -124,13 +124,30 @@ export function Navigation() {
               aria-label="Toggle menu"
               aria-expanded={isMobileMenuOpen}
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              <span className="relative block w-6 h-6">
+                <Menu
+                  className={`absolute inset-0 w-6 h-6 transition-[opacity,rotate] duration-150 ease-out ${
+                    isMobileMenuOpen ? "opacity-0 rotate-90" : "opacity-100 rotate-0"
+                  }`}
+                />
+                <X
+                  className={`absolute inset-0 w-6 h-6 transition-[opacity,rotate] duration-150 ease-out ${
+                    isMobileMenuOpen ? "opacity-100 rotate-0" : "opacity-0 -rotate-90"
+                  }`}
+                />
+              </span>
             </button>
           </div>
 
-          {isMobileMenuOpen && (
-            <div className="md:hidden pb-6 pt-2 border-t border-ink/20">
-              <div className="flex flex-col">
+          <div
+            className={`md:hidden grid transition-[grid-template-rows,opacity] duration-200 ease-out ${
+              isMobileMenuOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+            }`}
+            inert={!isMobileMenuOpen}
+            data-mobile-nav
+          >
+            <div className="overflow-hidden">
+              <div className="pb-6 pt-2 border-t border-ink/20 flex flex-col">
                 <a
                   href="/"
                   className="py-3 font-mono text-xs uppercase tracking-[0.15em] text-ink border-b border-ink/10"
@@ -153,10 +170,15 @@ export function Navigation() {
                     aria-expanded={isServicesOpen}
                   >
                     Services
-                    <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isServicesOpen ? "rotate-180" : ""}`} />
+                    <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ease-out ${isServicesOpen ? "rotate-180" : ""}`} />
                   </button>
-                  {isServicesOpen && (
-                    <div className="pl-4 pb-3 flex flex-col gap-2">
+                  <div
+                    className={`grid transition-[grid-template-rows] duration-200 ease-out ${
+                      isServicesOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                    }`}
+                    inert={!isServicesOpen}
+                  >
+                    <div className="overflow-hidden pl-4 flex flex-col gap-2">
                       {services.map((s, idx) => (
                         <a
                           key={s.href}
@@ -168,8 +190,9 @@ export function Navigation() {
                           {s.name}
                         </a>
                       ))}
+                      <div className="pb-3" />
                     </div>
-                  )}
+                  </div>
                 </div>
 
                 <a
@@ -182,7 +205,7 @@ export function Navigation() {
                 </a>
               </div>
             </div>
-          )}
+          </div>
         </div>
       </nav>
     </>
