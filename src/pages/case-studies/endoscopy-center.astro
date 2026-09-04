@@ -3,16 +3,12 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
 const outcomes = [
     {
-        before: "Every patient request went through WordPress — PHP, a database and a plugin surface in the path",
-        after: "Static HTML on a CDN; the CMS can be down and the site stays up",
+        before: "A full WordPress site — PHP, a database and a plugin surface in the path of every patient request",
+        after: "Static HTML served from Appwrite Sites on infrastructure we run; WordPress is never in the request path",
     },
     {
-        before: "A new page meant a developer, a deploy, and a wait",
-        after: "Staff create it in WordPress — page, provider, procedure or menu item — and the next build carries it",
-    },
-    {
-        before: "49 accessibility errors across the site, on 11 of 13 pages scanned",
-        after: "Zero confirmed WCAG 2.1 AA violations, verified on the live site by two independent scanners",
+        before: "Every edit rendered live through PHP on every visit, and so did every theme and plugin update",
+        after: "Pressing publish triggers one static rebuild — a burst of ten edits produces one build, not ten",
     },
     {
         before: "A slow or unreachable CMS took the public site down with it",
@@ -37,57 +33,96 @@ const pillars = [
     {
         n: "02",
         title: "A build that refuses to guess",
-        body: "Every response from the CMS is validated before it is used, so a renamed field or a restructured group stops the build loudly instead of quietly rendering a page that is wrong. Editor HTML is treated as untrusted on the way in, and where a page genuinely has nothing to show, it says so and tells search engines to leave it alone.",
+        body: "Every response from the CMS is validated before it is used, so a renamed field stops the build loudly instead of quietly rendering a page that is wrong. Editor HTML is treated as untrusted on the way in. And a production build never invents content: if a fetch fails, the result is a not-found page, not a placeholder that looks real.",
     },
     {
         n: "03",
-        title: "Accessibility as a program, not a claim",
-        body: "A healthcare practice's public site carries real accessibility obligations. This one was measured rather than asserted — two independent scanners, a test suite that drives a real browser for the things a scanner cannot see, and a rescan against the live site to confirm the fixes landed where visitors would meet them.",
+        title: "Publishing is a build, not a request",
+        body: "An editor pressing publish is the only thing that changes the public site. A small WordPress plugin notices the change, waits out a short quiet period so a burst of edits becomes one job, and asks the host for a fresh build. Nothing about that requires an editor to know it is happening.",
     },
 ];
 
 const build = [
     {
-        title: "One way in, with a timeout",
-        body: "Every CMS query routes through a single client with a ten-second timeout and two retries on a backoff. Content fetching had started out duplicated inline across a dozen page files; consolidating it into typed services is what made timeouts, retries and validation a single change rather than twelve.",
+        title: "Publish once, build once",
+        body: "A small WordPress plugin we wrote calls the hosting API when published content changes. Edits are debounced through a 90-second scheduled event, so a burst of ten saves produces one build rather than ten. A system cron keeps that scheduler ticking even when no editor has the admin open.",
     },
     {
         title: "Validating what the CMS sends",
-        body: "WordPress schemas drift — fields get renamed, field groups get restructured, and IDs come back inconsistently typed. Every response is validated at runtime against a schema, so a shape change becomes a loud, catchable build failure instead of a page that quietly renders wrong.",
+        body: "WordPress schemas drift — fields get renamed, field groups get restructured, and IDs come back inconsistently typed. Every GraphQL response is checked against a schema at build time, so a shape change becomes a loud, catchable failure instead of a page that quietly renders wrong.",
     },
     {
         title: "Treating CMS HTML as untrusted",
-        body: "Editor HTML is injected into pages, which makes it a real attack surface if the CMS trust boundary ever moves. A sanitizing pass strips scripts, frames, forms, event handlers and javascript URLs — and while it is in there, it also rewrites broken legacy image URLs, injects missing dimensions, and removes the empty headings and anchors the block editor leaves behind.",
+        body: "Editor HTML is injected into pages, which makes it a real attack surface if the CMS trust boundary ever moves. A sanitizing pass strips scripts, frames, forms, event handlers and javascript URLs — and while it is in there, it also rewrites broken legacy upload URLs and adds lazy loading to images. It is pattern-based rather than a full HTML parser, which is a deliberate trade-off for a single-tenant site with trusted editors.",
     },
     {
-        title: "A build that doesn't need the CMS to be up",
+        title: "One way in, with a timeout",
+        body: "Every CMS query routes through a single client with a ten-second timeout and two retries on a backoff. Content fetching had started out duplicated inline across a dozen page files; consolidating it into typed services is what made timeouts, retries and validation a single change rather than twelve — and what made a later major framework upgrade a non-event.",
+    },
+    {
+        title: "A CI build that doesn't need the CMS",
         body: "Continuous integration runs a full build against a local mock GraphQL server on every push. Query and schema breakage is caught without depending on the live CMS being reachable from a build runner — and without a broken build ever reaching the site.",
     },
     {
         title: "Failure states that stay out of the index",
-        body: "Not-found and fallback states carry noindex, so a bad build cannot leave a stub page in search results. Logging is environment-aware: debug and info are stripped from production builds while warnings and errors survive, without spilling payloads into logs.",
-    },
-    {
-        title: "A major version upgrade, zero source changes",
-        body: "Moving up a major framework version — along with the bundler, the compiler, the GraphQL client, Tailwind and the test runner — required no changes to the site's own code, cleared an outstanding dependency advisory, and produced a verified clean 59-page build. That is the payoff of the earlier consolidation, and the reason it was worth doing.",
+        body: "Not-found and fallback states carry noindex, so a bad build cannot leave a stub page in search results. Every page gets a meta description generated from its own content. Fonts are self-hosted, the hero image is prioritised for first paint, and every image carries explicit dimensions so nothing shifts as it loads.",
     },
 ];
 
-const a11y = [
-    { metric: "Errors found by static scans", before: "49", after: "0" },
-    { metric: "Pages carrying an error", before: "11 of 13", after: "0 of 13" },
+const steps = [
     {
-        metric: "Interactive tests passing",
-        before: "10 of 19",
-        after: "19 of 19",
+        n: "01",
+        title: "An editor presses publish",
+        body: "In wp-admin, exactly as before. A page, a provider bio, a procedure, a menu item — the plugin only cares that published content changed.",
     },
-    { metric: "Confirmed WCAG 2.1 AA violations", before: "—", after: "0" },
+    {
+        n: "02",
+        title: "The plugin waits ninety seconds",
+        body: "A scheduled WP-Cron event collapses a flurry of saves into one job. A system cron keeps that scheduler ticking when no editor has the admin open, so nothing waits for the next visitor to wp-admin.",
+    },
+    {
+        n: "03",
+        title: "The host builds the site",
+        body: "Appwrite Sites pulls every page, provider, procedure and the menu over GraphQL, validates each response against its schema, sanitizes editor HTML, and writes plain files. A bad response fails the build here, not in a patient's browser.",
+    },
+    {
+        n: "04",
+        title: "The old site stays up until the new one is ready",
+        body: "A failed build changes nothing. A successful one swaps in a complete set of pages. Either way, the CMS could go offline the next minute and the public site would not notice.",
+    },
+];
+
+const timeline = [
+    {
+        title: "Out from under WordPress",
+        body: "The site was a full WordPress install, themed and served by PHP on every request. Homepage and facility page rebuilt as static pages reading from the same WordPress content, hosted on Appwrite Sites from day one. The shape of the site — static output, CMS at build time only — was fixed here and never revisited.",
+    },
+    {
+        title: "The whole site over GraphQL",
+        body: "Providers, procedures and administrators modelled as custom post types and pulled through WPGraphQL. Home, contact, quality and facility pages parsed from Gutenberg blocks. Navigation generated from the WordPress menu, so editors keep control of it.",
+    },
+    {
+        title: "Hardening sprint",
+        body: "Content fetching, which had grown up duplicated across page files, consolidated into typed services with timeouts and retries. Schema validation, HTML sanitization, centralised configuration, environment-aware logging and a mocked-CMS CI build all landed here, alongside self-hosted fonts, image dimensions and generated meta descriptions.",
+    },
+    {
+        title: "Accessibility pass",
+        body: "Contrast, a working skip link, reduced-motion guards, iframe titles, and heading and landmark structure — with a browser-driven test suite for keyboard navigation and reflow left in the repository so it stays that way.",
+    },
+    {
+        title: "Astro 7",
+        body: "Major framework upgrade, plus redirect and broken-link fixes. The earlier consolidation is what made this uneventful.",
+    },
+    {
+        title: "Publish-to-build",
+        body: "The WordPress plugin went live, so an editor's publish is what builds the site — no developer, no deploy button. A nondiscrimination notice was added.",
+    },
 ];
 ---
 
 <BaseLayout
-    meta_title="Case Study: Headless WordPress for a Healthcare Practice | Motown Solutions"
-    meta_description="Staff still edit WordPress; patients never load it. A headless WordPress build on Astro — static HTML on a CDN, safe failure modes, and zero confirmed WCAG 2.1 AA violations on the live site."
+    meta_title="Case Study: Headless WordPress for an Endoscopy Center | Motown Solutions"
+    meta_description="Staff still edit WordPress; patients never load it. A full WordPress site for an outpatient endoscopy center rebuilt as a static Astro frontend with headless WordPress and content-triggered rebuilds."
 >
     <section class="relative overflow-hidden border-b-2 border-ink">
         <svg
@@ -137,12 +172,11 @@ const a11y = [
                     <p
                         class="mt-10 text-lg md:text-xl text-ink-muted leading-relaxed text-pretty max-w-xl"
                     >
-                        A surgical center needed a public site its own staff
-                        could update — provider bios, procedures, patient
-                        instructions — without a developer in the loop, and
-                        without serving a database-backed CMS to patients on
-                        every request. WordPress stayed exactly where it was.
-                        Everything in front of it changed.
+                        An outpatient endoscopy center was running its public
+                        site as a full WordPress install — PHP, database and
+                        plugins serving every patient request. Staff liked
+                        editing it. Nobody liked how it loaded. WordPress stayed
+                        exactly where it was. Everything in front of it changed.
                     </p>
 
                     <div class="mt-10 flex flex-wrap gap-3">
@@ -157,10 +191,10 @@ const a11y = [
                             >
                         </a>
                         <a
-                            href="#accessibility"
+                            href="#publishing"
                             class="inline-flex items-center gap-2 bg-transparent text-ink font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-ink hover:bg-ink hover:text-paper transition-colors"
                         >
-                            The accessibility numbers
+                            How publishing works
                         </a>
                     </div>
                 </div>
@@ -177,20 +211,11 @@ const a11y = [
                             <span aria-hidden class="text-accent">● live</span>
                         </div>
 
-                        <div class="flex items-end gap-5 px-5 py-6 border-b border-ink/30">
-                            <span
-                                class="font-display font-bold text-6xl leading-[0.85] tracking-tight"
-                                >59</span
-                            >
-                            <span
-                                class="text-sm text-ink-muted leading-snug pb-1"
-                                >pages built from WordPress<br />content, served as static files</span
-                            >
-                        </div>
                         {
                             [
-                                ["Sector", "Healthcare — surgical center"],
-                                ["Stack", "Astro 7 · WPGraphQL · Tailwind 4"],
+                                ["Sector", "Healthcare — outpatient endoscopy"],
+                                ["Audience", "Patients, caregivers, referring physicians"],
+                                ["Stack", "Astro 7 · WPGraphQL · Tailwind 4 · Appwrite Sites"],
                                 ["CMS at request time", "None — the site is static"],
                                 ["Editing", "WordPress, exactly as before"],
                             ].map(([k, v], i, arr) => (
@@ -338,12 +363,13 @@ const a11y = [
                 </p>
                 <p class="mt-4 text-ink-muted leading-relaxed">
                     That is what fetching content at build time actually buys.
-                    The pages a patient loads were finished hours or days ago
-                    and sit on a CDN, so a plugin update, a slow database or an
-                    expiring certificate on the editorial side is a staff
+                    The pages a patient loads were finished the last time an
+                    editor pressed publish, so a plugin update, a slow database
+                    or an expiring certificate on the editorial side is a staff
                     inconvenience rather than an outage on the public site. The
-                    same goes for the traffic spike nobody planned for: there is
-                    nothing to overwhelm.
+                    honest flip side: a build does need WordPress reachable
+                    while it runs. When it isn't, the build fails and the
+                    previous site stays up — which is the failure mode you want.
                 </p>
             </blockquote>
         </div>
@@ -401,9 +427,9 @@ const a11y = [
         </div>
     </section>
 
-    <!-- Accessibility -->
+    <!-- Publishing -->
     <section
-        id="accessibility"
+        id="publishing"
         class="border-t-2 border-ink bg-paper-2 py-20 md:py-28"
         data-reveal
     >
@@ -415,102 +441,110 @@ const a11y = [
                         ></span>
                         <span
                             class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
-                            >Accessibility</span
+                            >From Publish To Live</span
                         >
                     </div>
                     <h2
                         class="font-display font-bold text-h2 tracking-tight text-balance"
                     >
-                        49 errors to zero
+                        What happens when
                         <br />
-                        confirmed violations.
+                        an editor hits save.
                     </h2>
                 </div>
                 <div class="col-span-12 md:col-span-5 md:col-start-8 md:self-end">
                     <p
                         class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
                     >
-                        A healthcare practice's public site carries real
-                        obligations to the people who use it. This one was
-                        measured against WCAG 2.1 Level AA by two independent
-                        scanners, fixed, and rescanned on the live site rather
-                        than on a local copy.
+                        The whole point of keeping WordPress was that staff
+                        would not have to learn anything new. So the pipeline
+                        between their publish button and the public site has to
+                        be invisible to them — and safe when it isn't.
                     </p>
                 </div>
             </div>
 
             <div class="border-t border-ink">
-                <div
-                    class="flex items-baseline gap-4 sm:gap-8 py-3 border-b border-ink font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted"
-                >
-                    <span class="flex-1">Measure</span>
-                    <span class="w-20 sm:w-24 text-right">Before</span>
-                    <span class="w-24 sm:w-28 text-right">After</span>
-                </div>
                 {
-                    a11y.map((row) => (
-                        <div class="flex items-baseline gap-4 sm:gap-8 py-5 border-b border-ink/30 last:border-ink">
-                            <span class="flex-1 text-ink-muted leading-snug">
-                                {row.metric}
-                            </span>
-                            <span class="w-20 sm:w-24 text-right font-display font-bold text-lg md:text-xl tracking-tight text-ink-muted tabular-nums">
-                                {row.before}
-                            </span>
-                            <span class="w-24 sm:w-28 text-right font-display font-bold text-xl md:text-2xl tracking-tight text-accent tabular-nums">
-                                {row.after}
-                            </span>
+                    steps.map((t) => (
+                        <div class="grid grid-cols-12 gap-4 md:gap-8 py-8 border-b border-ink">
+                            <div class="col-span-12 md:col-span-2 font-mono text-xs uppercase tracking-eyebrow text-ink-muted pt-1">
+                                {t.n}
+                            </div>
+                            <div class="col-span-12 md:col-span-4">
+                                <h3 class="font-display text-2xl md:text-3xl font-bold tracking-tight leading-tight">
+                                    {t.title}
+                                </h3>
+                            </div>
+                            <div class="col-span-12 md:col-span-6 text-ink-muted leading-relaxed">
+                                {t.body}
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="border-t-2 border-ink py-20 md:py-28" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-12 gap-6 mb-12 md:mb-16">
+                <div class="col-span-12 md:col-span-6">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >How It Got There</span
+                        >
+                    </div>
+                    <h2
+                        class="font-display font-bold text-h2 tracking-tight text-balance"
+                    >
+                        Six moves,
+                        <br />
+                        one decision.
+                    </h2>
+                </div>
+                <div class="col-span-12 md:col-span-5 md:col-start-8 md:self-end">
+                    <p
+                        class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
+                    >
+                        The shape of the site was decided in the first month and
+                        never revisited. What the rest of the time bought was
+                        the discipline around it: validation, sanitization, and
+                        a deploy that no longer depends on anyone remembering
+                        to press it.
+                    </p>
+                </div>
+            </div>
+
+            <div class="border-t border-ink">
+                {
+                    timeline.map((t) => (
+                        <div class="grid grid-cols-12 gap-4 md:gap-8 py-8 border-b border-ink">
+                            <div class="col-span-12 md:col-span-2 pt-2">
+                                <span aria-hidden class="block w-2.5 h-2.5 rounded-full bg-accent" />
+                            </div>
+                            <div class="col-span-12 md:col-span-4">
+                                <h3 class="font-display text-2xl md:text-3xl font-bold tracking-tight leading-tight">
+                                    {t.title}
+                                </h3>
+                            </div>
+                            <div class="col-span-12 md:col-span-6 text-ink-muted leading-relaxed">
+                                {t.body}
+                            </div>
                         </div>
                     ))
                 }
             </div>
 
-            <div class="grid grid-cols-12 gap-6 mt-14">
-                <div class="col-span-12 lg:col-span-6 border-2 border-ink bg-paper p-8 md:p-10">
-                    <div
-                        class="font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted mb-6"
-                    >
-                        — Beyond what a scanner sees
-                    </div>
-                    <p class="text-ink-muted leading-relaxed mb-4">
-                        A static scan reads markup. It cannot tell you whether a
-                        keyboard can reach the menu, whether focus is visible as
-                        it moves, whether the gallery traps focus once it opens,
-                        or whether the page still works for someone who has
-                        asked their device to reduce motion.
-                    </p>
-                    <p class="text-ink-muted leading-relaxed">
-                        So those are tested directly, in a real browser, as part
-                        of the suite that lives in the repository — including
-                        the page reflowing properly at a 320-pixel viewport,
-                        which is where a phone in a waiting room actually sits.
-                    </p>
-                </div>
-                <div class="col-span-12 lg:col-span-6 border-2 border-ink bg-paper p-8 md:p-10">
-                    <div
-                        class="font-mono text-[10px] uppercase tracking-eyebrow text-ink-muted mb-6"
-                    >
-                        — What the fixes were
-                    </div>
-                    <p class="text-ink-muted leading-relaxed mb-4">
-                        Mostly small things that matter enormously to the person
-                        who hits them: a skip link that had been overlapping the
-                        header instead of clearing it, a headline sitting over a
-                        photograph where contrast could not be guaranteed, a map
-                        embed with no title for a screen reader to announce, and
-                        a page that rendered twelve pixels too wide on a small
-                        phone.
-                    </p>
-                    <p class="text-ink-muted leading-relaxed">
-                        Motion now honours the visitor's own reduced-motion
-                        setting, and every image the CMS produces carries
-                        explicit dimensions so nothing shifts under a thumb
-                        mid-tap.
-                    </p>
-                </div>
-            </div>
-
             <p class="mt-12 text-ink-muted leading-relaxed max-w-2xl">
-                This is
+                Built with Astro 7, Tailwind CSS 4, Alpine.js, TypeScript,
+                graphql-request, zod, WordPress with WPGraphQL and WPGraphQL
+                Gutenberg, Appwrite Sites, and Node
+                22. This is
                 <a
                     href="/website-redesign"
                     class="link-underline font-medium text-ink"
