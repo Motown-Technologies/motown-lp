@@ -265,6 +265,13 @@ const { meta_title, meta_description, noindex } = Astro.props;
                             </li>
                             <li>
                                 <a
+                                    href="/case-studies"
+                                    class="link-underline font-medium"
+                                    >Case Studies</a
+                                >
+                            </li>
+                            <li>
+                                <a
                                     href="/contact"
                                     class="link-underline font-medium"
                                     >Contact</a
@@ -363,9 +370,12 @@ const { meta_title, meta_description, noindex } = Astro.props;
                         </ul>
                     </div>
                     <div class="col-span-2 md:col-span-4 lg:col-span-2">
-                        <div class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted mb-4">
+                        <a
+                            href="/case-studies"
+                            class="link-underline block font-mono text-xs uppercase tracking-eyebrow text-ink-muted mb-4"
+                        >
                             — Case Studies
-                        </div>
+                        </a>
                         <ul class="space-y-2">
                             {
                                 [

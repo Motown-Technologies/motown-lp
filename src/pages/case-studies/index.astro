@@ -1,0 +1,178 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const studies = [
+    {
+        href: "/case-studies/endoscopy-center",
+        sector: "Healthcare — outpatient endoscopy",
+        title: "Staff still edit WordPress. Patients never load it.",
+        body: "A full WordPress site rebuilt as static HTML with WordPress kept as a headless CMS. Pressing publish is what builds the site, and the CMS can be down without anyone outside the office noticing.",
+        stack: "Astro · WPGraphQL · Appwrite Sites",
+    },
+    {
+        href: "/case-studies/healthcare-practice",
+        sector: "Healthcare — multi-site practice",
+        title: "We inherited their stack. We left them a site that publishes itself.",
+        body: "Someone else's React app and a Django admin panel doing duty as a CMS. Three years of quiet work later: a static site, a real authoring experience, and a build that can refuse to deploy.",
+        stack: "Astro · Wagtail · Django",
+    },
+    {
+        href: "/case-studies/senior-care-concierge",
+        sector: "Senior care — multi-facility",
+        title: "A prototype proves the idea. It can't hold someone's name.",
+        body: "A concierge team's low-code proof of concept rebuilt as a production application — same workflow, with authentication, per-facility isolation, audit trails and PHI handled as PHI.",
+        stack: "Laravel · Vue · Postgres",
+    },
+    {
+        href: "/case-studies/auction-operations",
+        sector: "Auction house — internal ops",
+        title: "A spreadsheet knows what. It never knows who, or when.",
+        body: "Spreadsheets, a photo folder and a group chat replaced by one auditable system of record — intake to catalog to auction, with AI drafting the tedious part and a person approving all of it.",
+        stack: "Laravel · Vue · Postgres",
+    },
+    {
+        href: "/case-studies/nonprofit-community",
+        sector: "Nonprofit — grief support",
+        title: "Nobody arrives here wanting to use software.",
+        body: "A public site, a members' app and the back office a small nonprofit now runs itself from — built for people arriving in grief, with a Hebrew-calendar memorial at its centre.",
+        stack: "Laravel · Vue · Inertia",
+    },
+    {
+        href: "/case-studies/donation-platform",
+        sector: "Nonprofit fundraising — multi-tenant",
+        title: "Screen every donor. Tell none of them.",
+        body: "A giving platform that takes payments for other organizations, so sanctions screening, charity verification and retry-safe grants shaped the architecture instead of arriving after it.",
+        stack: "Node · Postgres · Cloudflare Workers",
+    },
+];
+---
+
+<BaseLayout
+    meta_title="Case Studies | Motown Solutions"
+    meta_description="Our work, told plainly: what we inherited, what we built, and what changed for the people using it. Healthcare, nonprofit, senior care and auction operations."
+>
+    <section class="relative border-b-2 border-ink overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 pt-16 md:pt-24 pb-20 md:pb-28">
+            <div class="grid grid-cols-12 gap-6">
+                <div class="col-span-12 lg:col-span-10">
+                    <div class="flex items-center gap-3 mb-8">
+                        <span aria-hidden class="inline-block w-8 h-px bg-ink"
+                        ></span>
+                        <span
+                            class="font-mono text-xs uppercase tracking-eyebrow text-ink-muted"
+                            >Case Studies / All</span
+                        >
+                    </div>
+                    <h1
+                        class="font-display font-bold text-display text-ink text-balance"
+                    >
+                        What we built,
+                        <br />
+                        and <span class="italic text-accent">why it held</span>.
+                    </h1>
+                </div>
+                <div class="col-span-12 lg:col-span-7 lg:col-start-4 mt-10 md:mt-16">
+                    <p
+                        class="text-lg md:text-xl text-ink-muted leading-relaxed text-pretty max-w-xl"
+                    >
+                        Each project, told plainly: what we inherited, what we
+                        decided, and what changed for the people who use the
+                        result. Clients are anonymised. The engineering is not.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-20" data-reveal>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="border-t border-ink/30">
+                {
+                    studies.map((s) => (
+                        <a
+                            href={s.href}
+                            class="group block relative border-b border-ink/30 hover:border-ink transition-colors"
+                        >
+                            <span
+                                aria-hidden
+                                data-sweep
+                                class="pointer-events-none absolute inset-0 bg-ink origin-left scale-x-0 group-hover:scale-x-100 group-active:scale-x-100 transition-transform duration-[400ms] ease-sweep group-active:duration-[120ms]"
+                            />
+                            <div class="relative grid grid-cols-12 gap-4 md:gap-8 py-10 md:py-12 px-4 md:px-6 transition-colors duration-[400ms] ease-sweep group-hover:text-paper">
+                                <div class="col-span-12 md:col-span-7">
+                                    <div class="font-mono text-[10px] md:text-xs uppercase tracking-eyebrow text-ink-muted transition-colors duration-[400ms] ease-sweep group-hover:text-paper/60 mb-4">
+                                        {s.sector}
+                                    </div>
+                                    <h2 class="font-display text-3xl md:text-5xl font-bold tracking-tight leading-[1] mb-5 text-balance">
+                                        {s.title}
+                                    </h2>
+                                    <p class="text-ink-muted transition-colors duration-[400ms] ease-sweep group-hover:text-paper/80 leading-relaxed max-w-xl">
+                                        {s.body}
+                                    </p>
+                                </div>
+                                <div class="col-span-12 md:col-span-4 md:pl-4 md:pt-8">
+                                    <div class="font-mono text-[10px] md:text-xs uppercase tracking-eyebrow text-ink-muted transition-colors duration-[400ms] ease-sweep group-hover:text-paper/60 mb-2">
+                                        — Stack
+                                    </div>
+                                    <div class="font-display font-bold tracking-tight text-lg leading-snug">
+                                        {s.stack}
+                                    </div>
+                                </div>
+                                <div class="col-span-12 md:col-span-1 md:text-right md:pt-8">
+                                    <span
+                                        aria-hidden
+                                        class="inline-block font-mono text-xl md:text-2xl transition-transform group-hover:translate-x-1"
+                                    >
+                                        →
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="section-ink border-t-2 border-ink" data-reveal>
+        <div class="max-w-7xl mx-auto px-6 py-24 md:py-36 flex flex-col items-start">
+            <div class="flex items-center gap-3 mb-8">
+                <span aria-hidden class="inline-block w-8 h-px bg-paper"></span>
+                <span
+                    class="font-mono text-xs uppercase tracking-eyebrow text-paper/60"
+                    >Your Turn</span
+                >
+            </div>
+            <h2
+                class="font-display font-bold text-display text-paper text-balance mb-10 max-w-5xl leading-[0.95]"
+            >
+                Tell us what you
+                <span class="italic text-accent">inherited</span>.
+            </h2>
+            <p class="text-lg md:text-xl text-paper/70 max-w-xl mb-10">
+                Every one of these started as a conversation about something
+                that mostly worked. Tell us what you have and what it has to do,
+                and we will tell you what we would change and what we would
+                leave alone.
+            </p>
+            <div class="flex flex-wrap gap-3">
+                <a
+                    href="/contact"
+                    class="group inline-flex items-center gap-2 bg-accent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-accent hover:bg-paper hover:text-ink hover:border-paper transition-colors"
+                >
+                    Start a conversation
+                    <span
+                        class="transition-transform group-hover:translate-x-0.5"
+                        aria-hidden>→</span
+                    >
+                </a>
+                <a
+                    href="/services"
+                    class="inline-flex items-center gap-2 bg-transparent text-paper font-mono text-xs uppercase tracking-[0.15em] px-6 py-4 border-2 border-paper hover:bg-paper hover:text-ink transition-colors"
+                >
+                    Our services
+                </a>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

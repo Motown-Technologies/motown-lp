@@ -64,6 +64,7 @@ export function Navigation() {
             <div className="hidden md:flex items-center gap-8">
               <a href="/" className={`${linkBase} ${isActive("/")}`}>Home</a>
               <a href="/about" className={`${linkBase} ${isActive("/about")}`}>About</a>
+              <a href="/case-studies" className={`${linkBase} ${isActive("/case-studies")}`}>Case Studies</a>
 
               <div className="relative group inline-flex items-center">
                 <a
@@ -161,6 +162,13 @@ export function Navigation() {
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   About
+                </a>
+                <a
+                  href="/case-studies"
+                  className="py-3 font-mono text-xs uppercase tracking-[0.15em] text-ink border-b border-ink/10"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Case Studies
                 </a>
 
                 <div className="border-b border-ink/10">
