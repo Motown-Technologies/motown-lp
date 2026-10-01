@@ -1,6 +1,7 @@
 ---
 import { ClientRouter } from "astro:transitions";
 import { Navigation } from "../components/Navigation";
+import logo from "../img/logo.png";
 
 import "../styles/global.css";
 
@@ -9,6 +10,18 @@ import "@fontsource-variable/inter";
 import "@fontsource-variable/jetbrains-mono";
 
 const { meta_title, meta_description, noindex } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL("/images/modern-technology-workspace-with-multiple-monitors.jpg", Astro.site);
+const organization = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Motown Solutions",
+    url: "https://motowntech.com",
+    logo: new URL(logo.src, Astro.site).href,
+    email: "contact@motowntech.com",
+    telephone: "+1-845-925-2661",
+};
 ---
 
 <!doctype html>
@@ -17,8 +30,18 @@ const { meta_title, meta_description, noindex } = Astro.props;
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{meta_title}</title>
-        <meta name="description" content={meta_description} />
-        {noindex && <meta name="robots" content="noindex" />}
+<meta name="description" content={meta_description} />
+<link rel="canonical" href={canonical} />
+<link rel="icon" type="image/png" href="/favicon.png" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Motown Solutions" />
+<meta property="og:title" content={meta_title} />
+<meta property="og:description" content={meta_description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImage} />
+<meta name="twitter:card" content="summary_large_image" />
+<script is:inline type="application/ld+json" set:html={JSON.stringify(organization)} />
+{noindex && <meta name="robots" content="noindex" />}
         <ClientRouter />
         <style is:global>
             :root {
