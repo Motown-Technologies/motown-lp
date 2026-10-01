@@ -15,6 +15,7 @@ export default defineConfig({
   // Astro's HTML minifier eats the significant space around inline <span>/<a>
   // when the markup puts them on their own line ("a <span>x</span> app.").
   compressHTML: false,
+  server: { host: '0.0.0.0' },
   integrations: [mdx(), react(), sitemap()],
   vite: {
     plugins: [tailwindcss()]
