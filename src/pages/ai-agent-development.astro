@@ -21,12 +21,12 @@ const work = [
     {
         title: "Scoped Autonomy",
         icon: SoftwareIcon,
-        desc: "Deciding exactly what the agent may do alone, what needs approval, and what it must never attempt. That boundary is the design, not a setting.",
+        desc: "Deciding exactly what the agent may do alone, what needs approval, and what it must never attempt. Drawing that boundary is most of the design work.",
     },
     {
         title: "Tools & Actions",
         icon: ApiIcon,
-        desc: "Wiring the agent into the systems where work actually happens — your CRM, your ticketing, your database — with the same permissions a person would get.",
+        desc: "Wiring the agent into the systems where work actually happens, such as your CRM, ticketing, and database, with the same permissions a person would get.",
     },
     {
         title: "Human Checkpoints",
@@ -46,7 +46,7 @@ const work = [
     {
         title: "Evaluation",
         icon: AutomationIcon,
-        desc: "Scored runs against realistic scenarios, including the awkward ones — because an agent that works on the happy path isn't ready for anyone's inbox.",
+        desc: "Scored runs against realistic scenarios, including the awkward ones. An agent that only works on the happy path isn't ready for anyone's inbox.",
     },
 ];
 
@@ -72,7 +72,7 @@ const control = [
 
 <BaseLayout
     meta_title="AI Agent Development Services | Motown Solutions"
-    meta_description="AI agent development — tool-using agents with scoped autonomy, human-in-the-loop checkpoints, failure handling, full audit trails, and evaluation against realistic scenarios."
+    meta_description="AI agent development with scoped autonomy, human approval checkpoints, failure handling, full audit trails, and testing against realistic scenarios."
 >
     <section class="relative overflow-hidden border-b-2 border-ink">
         <svg
@@ -114,10 +114,7 @@ const control = [
                     <p
                         class="mt-10 text-lg md:text-xl text-ink-muted leading-relaxed text-pretty max-w-xl"
                     >
-                        Getting an agent to take an action is the easy part.
-                        Deciding what it may do unsupervised, where a person has
-                        to sign off, and how it behaves when something goes
-                        wrong — that's the whole job.
+                        Getting an agent to take an action is the easy part. The real work is deciding what it may do unsupervised, where a person has to sign off, and how it behaves when something goes wrong.
                     </p>
 
                     <div class="mt-10 flex flex-wrap gap-3">
@@ -221,9 +218,7 @@ const control = [
                     <p
                         class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
                     >
-                        The question isn't how capable the agent can be. It's how
-                        much it should be trusted to do without anyone watching,
-                        and that answer differs for every action it can take.
+                        What matters is how much the agent should be trusted to do without anyone watching, and the answer differs for every action it can take.
                     </p>
                 </div>
             </div>
@@ -279,8 +274,7 @@ const control = [
                     <p
                         class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
                     >
-                        Agents fail in ways ordinary software doesn't — plausibly,
-                        confidently, and at speed. The containment has to be
+                        Agents fail in ways ordinary software doesn't: plausibly, confidently, and at speed. The containment has to be
                         designed in rather than added after the first incident.
                     </p>
                 </div>
@@ -324,11 +318,10 @@ const control = [
             </div>
 
             <p class="mt-8 text-ink-muted leading-relaxed max-w-2xl">
-                Agents almost always need to look things up first — see
+                Agents almost always need to look things up first (see
                 <a href="/rag-development" class="link-underline font-medium text-ink"
                     >RAG development</a
-                >
-                — and everything they do in production needs
+                >), and everything they do in production needs
                 <a href="/mlops-services" class="link-underline font-medium text-ink"
                     >monitoring and guardrails</a
                 >.

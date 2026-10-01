@@ -3,7 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
 const outcomes = [
     {
-        before: "No product surface at all — the story, the applications and the community lived in conversations",
+        before: "No product surface at all; the story, the applications and the community lived in conversations",
         after: "A public site that tells it and an application funnel that ends in a reviewed cohort",
     },
     {
@@ -37,27 +37,27 @@ const pillars = [
     {
         n: "02",
         title: "A religious calendar is a real domain problem",
-        body: "A Yahrtzeit — the anniversary of a death — is recorded as a Hebrew date, so its date in the civil calendar moves every year and has to be recomputed. In a leap year, an anniversary in plain Adar is observed in Adar II. That is domain logic, not a formatting detail, and it is handled natively rather than approximated.",
+        body: "A Yahrtzeit (the anniversary of a death) is recorded as a Hebrew date, so its date in the civil calendar moves every year and has to be recomputed. In a leap year, an anniversary in plain Adar is observed in Adar II. That is domain logic, not a formatting detail, and it is handled natively rather than approximated.",
     },
     {
         n: "03",
         title: "Dignity written into the permissions",
-        body: "Her record is hers. Staff who need to see the member app on live data impersonate a dedicated test account and nothing else, behind three separate guards. Closing an account is a request rather than a button. Erasing the personal details is a different, deliberate action — and it leaves the memorial standing.",
+        body: "Her record is hers. Staff who need to see the member app on live data impersonate a dedicated test account and nothing else, behind three separate guards. Closing an account is a request rather than a button. Erasing the personal details is a different, deliberate action, and it leaves the memorial standing.",
     },
 ];
 
 const build = [
     {
         title: "Hebrew dates, computed not approximated",
-        body: "Anniversaries are found in two steps: narrow by day of month in the database, then confirm each candidate by converting it into the target year's Hebrew calendar — including the leap-year rule that moves a plain-Adar date into Adar II. It uses the calendar extension already in the language rather than a dependency, and the logic was extracted once a second command needed it.",
+        body: "Anniversaries are found in two steps: narrow by day of month in the database, then confirm each candidate by converting it into the target year's Hebrew calendar, including the leap-year rule that moves a plain-Adar date into Adar II. It uses the calendar extension already in the language rather than a dependency, and the logic was extracted once a second command needed it.",
     },
     {
         title: "Impersonation that cannot reach a member",
-        body: "Admins can view the member experience on live data, but only as a dedicated test account — guarded three ways, and the only place in the codebase that logs a user in directly, so that account can hold a password nobody knows. Every entry and exit is written to the audit log.",
+        body: "Admins can view the member experience on live data, but only as a dedicated test account. That account is guarded three ways and is the only place in the codebase that logs a user in directly, so it can hold a password nobody knows. Every entry and exit is written to the audit log.",
     },
     {
         title: "Closure and erasure are different acts",
-        body: "A member asks to close her account; an admin erases the personal details later, and only on an already-closed account. The erasure anonymizes her without tearing down what she left behind — the parent she commemorated and the wishes written for her stay. The audit entry records her name and email as they go, because that becomes the last place she is named at all.",
+        body: "A member asks to close her account; an admin erases the personal details later, and only on an already-closed account. The erasure anonymizes her without tearing down what she left behind: the parent she commemorated and the wishes written for her stay. The audit entry records her name and email as they go, because that becomes the last place she is named at all.",
     },
     {
         title: "Email in lanes she controls",
@@ -65,18 +65,18 @@ const build = [
     },
     {
         title: "A schedule shaped by the hosting bill",
-        body: "The cluster scales to zero, and waking it holds it awake for a full sleep timeout — so a check every fifteen minutes bills around the clock. Reminders run hourly instead, and the command is written to be idempotent and to catch up, so a longer interval can delay a reminder but never skip one.",
+        body: "The cluster scales to zero, and waking it holds it awake for a full sleep timeout, so a check every fifteen minutes bills around the clock. Reminders run hourly instead, and the command is written to be idempotent and to catch up, so a longer interval can delay a reminder but never skip one.",
     },
     {
         title: "Payments swapped mid-project",
-        body: "The processor changed late, which meant reworking refunds into voids of unsettled payments and simplifying the donation types. Recurring billing runs in the application rather than at the processor, because each cycle needs its own record to produce a receipt and an annual statement — and it runs without overlapping, since two concurrent passes could charge the same donor twice.",
+        body: "The processor changed late, which meant reworking refunds into voids of unsettled payments and simplifying the donation types. Recurring billing runs in the application rather than at the processor, because each cycle needs its own record to produce a receipt and an annual statement. It also runs without overlapping, since two concurrent passes could charge the same donor twice.",
     },
 ];
 
 const rigor = [
     {
         risk: "Coverage slips a little at a time until nobody trusts it",
-        undo: "The gate demands exactly 100% line coverage and 100% type coverage — not a minimum, an equality — on every push",
+        undo: "The gate demands exactly 100% line coverage and 100% type coverage on every push, as an equality rather than a minimum",
     },
     {
         risk: "A link goes stale after a route is renamed",
@@ -84,7 +84,7 @@ const rigor = [
     },
     {
         risk: "Contrast quietly fails on the text nobody checks",
-        undo: "Nothing renders below 4.5:1 — including placeholders and disabled labels — and hue is never the only signal",
+        undo: "Nothing renders below 4.5:1, including placeholders and disabled labels, and hue is never the only signal",
     },
     {
         risk: "A scheduled job double-charges or silently skips",
@@ -98,8 +98,8 @@ const rigor = [
 ---
 
 <BaseLayout
-    meta_title="Case Study: A Nonprofit Community Platform | Motown Solutions"
-    meta_description="A public site, a members' app and the back office a nonprofit runs itself from — built for people arriving in grief, with a Hebrew-calendar memorial at its centre."
+    meta_title="Nonprofit Platform Case Study | Motown Solutions"
+    meta_description="A public site, member app, and back office for a grief-support nonprofit, built for people arriving in grief, with a Hebrew-calendar memorial at its centre."
 >
     <section class="relative overflow-hidden border-b-2 border-ink">
         <svg
@@ -144,8 +144,7 @@ const rigor = [
                     <p
                         class="mt-10 text-lg md:text-xl text-ink-muted leading-relaxed text-pretty max-w-xl"
                     >
-                        A small nonprofit supports women through the loss of a
-                        parent — community events, grief support groups,
+                        A small nonprofit supports women through the loss of a parent: community events, grief support groups,
                         subsidized therapy, and the anniversaries that come
                         around every year. It had no product at all. We built
                         both halves: the public site that has to earn an
@@ -250,9 +249,7 @@ const rigor = [
                     <p
                         class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
                     >
-                        A public face and an operating system for the
-                        organization behind it — because a site that converts
-                        strangers into applicants is worth very little if
+                        A public face and an operating system for the organization behind it. A site that converts strangers into applicants is worth very little if
                         nobody has anywhere to review the applications.
                     </p>
                 </div>
@@ -346,14 +343,7 @@ const rigor = [
                     or sentimentality.
                 </p>
                 <p class="mt-4 text-ink-muted leading-relaxed">
-                    The design system names what it is not as carefully as what
-                    it is: not clinical, not corporate, not greeting-card, not
-                    funereal. Two registers meet at the login — a warm public
-                    voice that has to persuade someone to apply, and a calmer
-                    interior built for repeat use — sharing one hue doing two
-                    jobs, so the accent colour is spent only on the action that
-                    ends a form. Crossing the login is a change of register, not
-                    a change of brand.
+                    The design system lists what it should never look like: clinical, corporate, greeting-card, or funereal. Two registers meet at the login: a warm public voice that has to persuade someone to apply, and a calmer interior built for repeat use. Both share one hue, so the accent colour is spent only on the action that ends a form, and crossing the login changes the register without changing the brand.
                 </p>
             </blockquote>
         </div>
@@ -384,8 +374,7 @@ const rigor = [
                     <p
                         class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
                     >
-                        Every one of these started as a sentence about a person
-                        — what she should never accidentally do, what should
+                        Every one of these started as a sentence about a person: what she should never accidentally do, what should
                         survive her leaving, what a staff member needs to see
                         without being able to read someone's private record.
                     </p>
@@ -484,15 +473,14 @@ const rigor = [
                         Four gates, all of which must pass before anything
                         merges: coverage at exactly 100% by line and by type,
                         three formatters with zero diff, and static analysis
-                        with a single documented exception. Alongside the
-                        feature tests are architectural ones — conventions the
+                        with a single documented exception. Alongside the feature tests are architectural ones: conventions the
                         codebase must keep obeying, including a test that the
                         design system's own typography stays as specified.
                     </p>
                     <p class="text-ink-muted leading-relaxed">
                         Coverage as an equality rather than a minimum is a
                         deliberately awkward rule. It is also the only version
-                        that doesn't quietly erode.
+                        that doesn't slowly erode.
                     </p>
                 </div>
                 <div class="col-span-12 lg:col-span-6 border-2 border-ink bg-paper p-8 md:p-10">
@@ -504,8 +492,7 @@ const rigor = [
                     <p class="text-ink-muted leading-relaxed mb-4">
                         The platform described the community as "peer-led" until
                         we looked at what that sentence was doing. It described
-                        how the organization is run rather than what a visitor
-                        gets — and it undersold the programme, because support
+                        how the organization is run rather than what a visitor gets, and it undersold the programme because support
                         groups and subsidized therapy are not peer-led. It came
                         out of every page.
                     </p>
@@ -556,8 +543,7 @@ const rigor = [
             </h2>
             <p class="text-lg md:text-xl text-paper/70 max-w-xl mb-10">
                 Tell us who arrives at your product and what state they arrive
-                in. That answer changes more of the build than the feature list
-                does — and it is the part most software gets wrong before a
+                in. That answer changes more of the build than the feature list does, and it is the part most software gets wrong before a
                 line is written.
             </p>
             <div class="flex flex-wrap gap-3 mb-12">

@@ -3,7 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
 const outcomes = [
     {
-        before: "\"Submitted by\" was a dropdown of six hard-coded names — the demo had no users",
+        before: "\"Submitted by\" was a dropdown of six hard-coded names, because the demo had no users",
         after: "Invite-only accounts with two-factor and passkeys; no administrator ever handles a password",
     },
     {
@@ -12,7 +12,7 @@ const outcomes = [
     },
     {
         before: "Facility logins and Wi-Fi keys sat in ordinary fields",
-        after: "Encrypted at rest, masked by default, revealed only by an owner or admin — and the reveal is logged",
+        after: "Encrypted at rest, masked by default, revealed only by an owner or admin, and the reveal is logged",
     },
     {
         before: "No record of who changed what, or when",
@@ -32,7 +32,7 @@ const pillars = [
     {
         n: "01",
         title: "Reproduce first. Fortify second.",
-        body: "The proof of concept had already done the hard thinking — the screens, the data, the way a concierge actually works a call. The specification was written in two halves for that reason: reproduce the workflow the team already knows, faithfully, and then add everything a demo is allowed to skip. Staff who had used the prototype needed no retraining.",
+        body: "The proof of concept had already done the hard thinking: the screens, the data, the way a concierge actually works a call. The specification was written in two halves for that reason: reproduce the workflow the team already knows, faithfully, and then add everything a demo is allowed to skip. Staff who had used the prototype needed no retraining.",
     },
     {
         n: "02",
@@ -42,41 +42,41 @@ const pillars = [
     {
         n: "03",
         title: "Then it went past the brief",
-        body: "An externally-facing facility portal with hard per-facility isolation and shared ticket threads, a rebuilt reporting suite with server-rendered charts and scheduled delivery, and full-screen wallboards for facility lobbies — carrying aggregate figures only, never a resident's name.",
+        body: "An externally-facing facility portal with hard per-facility isolation and shared ticket threads, a rebuilt reporting suite with server-rendered charts and scheduled delivery, and full-screen wallboards for facility lobbies that show aggregate figures only, never a resident's name.",
     },
 ];
 
 const build = [
     {
         title: "One boundary, failing closed",
-        body: "Facility isolation is a single global scope applied to every facility-owned record, and it can only ever narrow a query — never widen one. Internal staff see across the portfolio; a facility user sees exactly their facilities; a facility user linked to nothing matches nothing, rather than everything. Because it only narrows, it is safe to leave on by default, and a job that genuinely needs to cross facilities opts out in the open.",
+        body: "Facility isolation is a single global scope applied to every facility-owned record, and it can only ever narrow a query, never widen one. Internal staff see across the portfolio; a facility user sees exactly their facilities; a facility user linked to nothing matches nothing, rather than everything. Because it only narrows, it is safe to leave on by default, and a job that genuinely needs to cross facilities opts out in the open.",
     },
     {
         title: "Secrets that mask themselves",
-        body: "Facility credentials are encrypted at rest and hydrated into an object that redacts itself when printed, logged or serialized to JSON. There is no way to leak one into a response or a log line by accident — reading it takes an explicit, permission-gated, audited call. The safe path is the default path, so security doesn't depend on everyone remembering.",
+        body: "Facility credentials are encrypted at rest and hydrated into an object that redacts itself when printed, logged or serialized to JSON. There is no way to leak one into a response or a log line by accident. Reading it takes an explicit, permission-gated, audited call. Because the safe path is the default, security doesn't depend on everyone remembering.",
     },
     {
         title: "Logging you out without losing your place",
-        body: "HIPAA requires termination on inactivity but names no duration. Three layers: a rolling idle timeout, an absolute session cap, and a countdown warning about a minute out. The subtle part is that the browser heartbeats while idle so a graceful sign-out — with an explanation and a validated return link — beats the server session simply expiring underneath you.",
+        body: "HIPAA requires termination on inactivity but names no duration. Three layers: a rolling idle timeout, an absolute session cap, and a countdown warning about a minute out. The subtle part is that the browser heartbeats while idle so a graceful sign-out (with an explanation and a validated return link) beats the server session simply expiring underneath you.",
     },
     {
         title: "Charts that survive a queue with no browser",
-        body: "Scheduled reports render in a background worker where no browser exists, so a chart drawn by the client could never reach them. The same server-computed series is drawn as SVG on the server and embedded as an image, because the PDF engine drops inline SVG but rasterises SVG images — a constraint that in turn keeps the charts to plain shapes. A small chain of constraints, followed honestly.",
+        body: "Scheduled reports render in a background worker where no browser exists, so a chart drawn by the client could never reach them. The same server-computed series is drawn as SVG on the server and embedded as an image, because the PDF engine drops inline SVG but rasterises SVG images, which in turn keeps the charts to plain shapes.",
     },
     {
         title: "Wallboards that carry nothing worth stealing",
-        body: "Lobby screens run on their own revocable, rotatable read-only links, exempt from the idle and absolute timeouts that govern everyone else — which is safe precisely because the surface shows aggregate, de-identified figures and no PHI at all. The security model let a real product requirement through instead of blocking it.",
+        body: "Lobby screens run on their own revocable, rotatable read-only links, exempt from the idle and absolute timeouts that govern everyone else. That is safe because the surface shows aggregate, de-identified figures and no PHI at all. The security model let a real product requirement through instead of blocking it.",
     },
     {
         title: "Where it lives, decided twice",
-        body: "The first decision was one cloud, one compliance agreement. The second moved the database to a provider with self-serve compliance and branching. The third reversed that, on analysis: the compliance tier made the costs a wash, while the split meant two clouds, two agreements and a database outside the network boundary — and branching is a developer convenience, not client value. Both decisions are still in the repository; the reversal wasn't quietly deleted.",
+        body: "The first decision was one cloud, one compliance agreement. The second moved the database to a provider with self-serve compliance and branching. The third reversed that, on analysis: the compliance tier made the costs a wash, while the split meant two clouds, two agreements and a database outside the network boundary, and branching is a developer convenience the client gets nothing from. Both decisions are still in the repository, including the one that was reversed.",
     },
 ];
 
 const rigor = [
     {
         risk: "The interface hides a button and everyone assumes that's security",
-        undo: "Authorization is server-side always — gates and role middleware are the source of truth; the frontend only shows and hides",
+        undo: "Authorization always happens server-side. Gates and role middleware are the source of truth, and the frontend only shows and hides",
     },
     {
         risk: "An external facility user reaches internal data",
@@ -98,8 +98,8 @@ const rigor = [
 ---
 
 <BaseLayout
-    meta_title="Case Study: A HIPAA-Grade Rebuild of a Low-Code Prototype | Motown Solutions"
-    meta_description="A senior-care operator ran its concierge team on a low-code proof of concept. We rebuilt it as a production application — same workflow, with authentication, per-facility isolation, audit trails and PHI handled as PHI."
+    meta_title="HIPAA Prototype Rebuild Case Study | Motown Solutions"
+    meta_description="A senior-care operator's low-code prototype rebuilt as a production app with authentication, per-facility isolation, audit trails, and PHI handled as PHI."
 >
     <section class="relative overflow-hidden border-b-2 border-ink">
         <svg
@@ -146,10 +146,7 @@ const rigor = [
                     <p
                         class="mt-10 text-lg md:text-xl text-ink-muted leading-relaxed text-pretty max-w-xl"
                     >
-                        A multi-facility senior-care operator ran its concierge
-                        team — resident and family concerns, admissions,
-                        discharges, daily tasks — on a low-code proof of
-                        concept. The thinking was right and the workflow was
+                        A multi-facility senior-care operator ran its concierge team (resident and family concerns, admissions, discharges, daily tasks) on a low-code proof of concept. The thinking was right and the workflow was
                         right. What it could not do was carry a real resident's
                         record, because it had no users, no permissions, no
                         audit trail, and nothing standing between one facility's
@@ -390,10 +387,7 @@ const rigor = [
                     <p
                         class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
                     >
-                        Not in a policy document. In the places where a
-                        developer, on a deadline, would otherwise have to
-                        remember — which is the only version of compliance that
-                        survives contact with a busy month.
+                        It lives in the code, at the points where a developer on a deadline would otherwise have to remember. That is the only kind of compliance that survives a busy month.
                     </p>
                 </div>
             </div>
@@ -444,8 +438,7 @@ const rigor = [
                     >
                         Handing an operator a system that holds their residents'
                         information is not a moment for optimism. Two sweeps ran
-                        against a full working dataset before launch — one
-                        asking what is broken, one asking what was promised and
+                        against a full working dataset before launch: one asking what is broken, and one asking what was promised and
                         never built.
                     </p>
                 </div>
@@ -491,17 +484,13 @@ const rigor = [
                         48 findings, verified against a seeded working set of 33
                         facilities and several thousand tickets rather than by
                         reading code. External facility accounts were appearing
-                        in internal staff pickers — which would eventually have
-                        routed a resident's name to an account outside the
+                        in internal staff pickers, which would eventually have routed a resident's name to an account outside the
                         organisation. A report's own default date range took
                         456 seconds and six gigabytes to produce a PDF; after a
                         row cap, 21 seconds and a tenth of the memory.
                     </p>
                     <p class="text-ink-muted leading-relaxed">
-                        Eight were fixed the same night — and five of those
-                        eight were regressions introduced hours earlier. That is
-                        the argument for auditing before launch rather than
-                        trusting the last green test run.
+                        Eight were fixed the same night, and five of those eight were regressions introduced hours earlier. That is why we audit before launch instead of trusting the last green test run.
                     </p>
                 </div>
                 <div class="col-span-12 lg:col-span-6 border-2 border-ink bg-paper p-8 md:p-10">
@@ -513,9 +502,7 @@ const rigor = [
                     <p class="text-ink-muted leading-relaxed mb-4">
                         Two were rejected as wrong. One proposed fix would have
                         broken a bug fix the client had asked for while securing
-                        nothing, because the same payload was already broadcast
-                        publicly by design — the real defect was a misleading
-                        comment. Three others were fixed more broadly than
+                        nothing, because the same payload was already broadcast publicly by design. The real defect was a misleading comment. Three others were fixed more broadly than
                         written, once the same bug turned up in code paths the
                         sweep had missed. Two were deferred deliberately, with
                         the reason recorded in the code.
@@ -566,8 +553,7 @@ const rigor = [
                 <span class="italic text-accent">easy half</span>.
             </h2>
             <p class="text-lg md:text-xl text-paper/70 max-w-xl mb-10">
-                Send us what you've built and what it has to hold — regulated
-                data, real users, other people's information. We will tell you
+                Send us what you've built and what it has to hold: regulated data, real users, other people's information. We will tell you
                 what has to change before it can carry that, what can stay
                 exactly as it is, and what the rebuild costs.
             </p>

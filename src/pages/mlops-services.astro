@@ -21,12 +21,12 @@ const work = [
     {
         title: "Evaluation Sets",
         icon: AnalyticsIcon,
-        desc: "A fixed set of real cases scored on every change, so a prompt tweak that quietly breaks three scenarios gets caught before it reaches anyone.",
+        desc: "A fixed set of real cases scored on every change, so a prompt tweak that silently breaks three scenarios gets caught before it reaches anyone.",
     },
     {
         title: "Online Monitoring",
         icon: CloudIcon,
-        desc: "Quality, latency, and cost tracked per feature in production — not just whether the endpoint returned 200.",
+        desc: "Quality, latency, and cost tracked per feature in production. A 200 from the endpoint tells you very little.",
     },
     {
         title: "Drift Detection",
@@ -72,7 +72,7 @@ const production = [
 
 <BaseLayout
     meta_title="MLOps & AI Guardrails Services | Motown Solutions"
-    meta_description="MLOps for AI in production — evaluation sets, online quality and cost monitoring, drift detection, prompt injection guardrails, versioning, A/B testing, and rollback."
+    meta_description="MLOps for AI in production: evaluation sets, quality and cost monitoring, drift detection, prompt injection guardrails, versioning, A/B tests, and rollback."
 >
     <section class="relative overflow-hidden border-b-2 border-ink">
         <svg
@@ -114,9 +114,7 @@ const production = [
                     <p
                         class="mt-10 text-lg md:text-xl text-ink-muted leading-relaxed text-pretty max-w-xl"
                     >
-                        AI features fail differently from normal software. They
-                        don't throw errors — they get subtly worse, on inputs
-                        nobody tested, in ways your monitoring won't notice for
+                        AI features fail differently from normal software. Instead of throwing errors, they get subtly worse on inputs nobody tested, in ways your monitoring won't notice for
                         weeks.
                     </p>
 
@@ -324,13 +322,11 @@ const production = [
             </div>
 
             <p class="mt-8 text-ink-muted leading-relaxed max-w-2xl">
-                This applies hardest to anything that takes action on its own —
-                see
+                This applies hardest to anything that takes action on its own (see
                 <a
                     href="/ai-agent-development"
                     class="link-underline font-medium text-ink">AI agents</a
-                >
-                — and sits on top of a well-built
+                >), and it sits on top of a well-built
                 <a
                     href="/ai-integration-services"
                     class="link-underline font-medium text-ink">integration layer</a

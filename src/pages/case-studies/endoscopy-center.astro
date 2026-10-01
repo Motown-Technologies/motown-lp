@@ -3,16 +3,16 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
 const outcomes = [
     {
-        before: "A full WordPress site — PHP, a database and a plugin surface in the path of every patient request",
+        before: "A full WordPress site, with PHP, a database and a plugin surface in the path of every patient request",
         after: "Static HTML served from Appwrite Sites on infrastructure we run; WordPress is never in the request path",
     },
     {
         before: "Every edit rendered live through PHP on every visit, and so did every theme and plugin update",
-        after: "Pressing publish triggers one static rebuild — a burst of ten edits produces one build, not ten",
+        after: "Pressing publish triggers one static rebuild, and a burst of ten edits produces one build, not ten",
     },
     {
         before: "A slow or unreachable CMS took the public site down with it",
-        after: "The pages are already built — the CMS being down is a staff problem, not a patient one",
+        after: "The pages are already built, so a CMS outage is a staff problem, not a patient one",
     },
     {
         before: "Images left over from the old site quietly 404'd, and shifted the layout as they loaded",
@@ -28,7 +28,7 @@ const pillars = [
     {
         n: "01",
         title: "The CMS is a build-time dependency",
-        body: "Staff keep the editorial surface they already know. WordPress exposes its content over GraphQL, the site fetches all of it while building — pages, providers, procedures, and the navigation menu itself — and ships plain HTML. Patients never touch WordPress. Every other decision here follows from that one.",
+        body: "Staff keep the editorial surface they already know. WordPress exposes its content over GraphQL, the site fetches all of it while building (pages, providers, procedures, and the navigation menu itself) and ships plain HTML. Patients never touch WordPress. Every other decision here follows from that one.",
     },
     {
         n: "02",
@@ -49,19 +49,19 @@ const build = [
     },
     {
         title: "Validating what the CMS sends",
-        body: "WordPress schemas drift — fields get renamed, field groups get restructured, and IDs come back inconsistently typed. Every GraphQL response is checked against a schema at build time, so a shape change becomes a loud, catchable failure instead of a page that quietly renders wrong.",
+        body: "WordPress schemas drift: fields get renamed, field groups get restructured, and IDs come back inconsistently typed. Every GraphQL response is checked against a schema at build time, so a shape change becomes a loud, catchable failure instead of a page that quietly renders wrong.",
     },
     {
         title: "Treating CMS HTML as untrusted",
-        body: "Editor HTML is injected into pages, which makes it a real attack surface if the CMS trust boundary ever moves. A sanitizing pass strips scripts, frames, forms, event handlers and javascript URLs — and while it is in there, it also rewrites broken legacy upload URLs and adds lazy loading to images. It is pattern-based rather than a full HTML parser, which is a deliberate trade-off for a single-tenant site with trusted editors.",
+        body: "Editor HTML is injected into pages, which makes it a real attack surface if the CMS trust boundary ever moves. A sanitizing pass strips scripts, frames, forms, event handlers and javascript URLs. While it is in there, it also rewrites broken legacy upload URLs and adds lazy loading to images. It is pattern-based rather than a full HTML parser, which is a deliberate trade-off for a single-tenant site with trusted editors.",
     },
     {
         title: "One way in, with a timeout",
-        body: "Every CMS query routes through a single client with a ten-second timeout and two retries on a backoff. Content fetching had started out duplicated inline across a dozen page files; consolidating it into typed services is what made timeouts, retries and validation a single change rather than twelve — and what made a later major framework upgrade a non-event.",
+        body: "Every CMS query routes through a single client with a ten-second timeout and two retries on a backoff. Content fetching had started out duplicated inline across a dozen page files; consolidating it into typed services is what made timeouts, retries and validation a single change rather than twelve, and it later made a major framework upgrade a non-event.",
     },
     {
         title: "A CI build that doesn't need the CMS",
-        body: "Continuous integration runs a full build against a local mock GraphQL server on every push. Query and schema breakage is caught without depending on the live CMS being reachable from a build runner — and without a broken build ever reaching the site.",
+        body: "Continuous integration runs a full build against a local mock GraphQL server on every push. Query and schema breakage is caught without depending on the live CMS being reachable from a build runner, and a broken build never reaches the site.",
     },
     {
         title: "Failure states that stay out of the index",
@@ -73,7 +73,7 @@ const steps = [
     {
         n: "01",
         title: "An editor presses publish",
-        body: "In wp-admin, exactly as before. A page, a provider bio, a procedure, a menu item — the plugin only cares that published content changed.",
+        body: "In wp-admin, exactly as before. It could be a page, a provider bio, a procedure, or a menu item; the plugin only cares that published content changed.",
     },
     {
         n: "02",
@@ -95,7 +95,7 @@ const steps = [
 const timeline = [
     {
         title: "Out from under WordPress",
-        body: "The site was a full WordPress install, themed and served by PHP on every request. Homepage and facility page rebuilt as static pages reading from the same WordPress content, hosted on Appwrite Sites from day one. The shape of the site — static output, CMS at build time only — was fixed here and never revisited.",
+        body: "The site was a full WordPress install, themed and served by PHP on every request. Homepage and facility page rebuilt as static pages reading from the same WordPress content, hosted on Appwrite Sites from day one. The shape of the site (static output, CMS at build time only) was fixed here and never revisited.",
     },
     {
         title: "The whole site over GraphQL",
@@ -107,7 +107,7 @@ const timeline = [
     },
     {
         title: "Accessibility pass",
-        body: "Contrast, a working skip link, reduced-motion guards, iframe titles, and heading and landmark structure — with a browser-driven test suite for keyboard navigation and reflow left in the repository so it stays that way.",
+        body: "Contrast, a working skip link, reduced-motion guards, iframe titles, and heading and landmark structure, with a browser-driven test suite for keyboard navigation and reflow left in the repository so it stays that way.",
     },
     {
         title: "Astro 7",
@@ -115,14 +115,14 @@ const timeline = [
     },
     {
         title: "Publish-to-build",
-        body: "The WordPress plugin went live, so an editor's publish is what builds the site — no developer, no deploy button. A nondiscrimination notice was added.",
+        body: "The WordPress plugin went live, so an editor's publish is what builds the site, with no developer or deploy button involved. A nondiscrimination notice was added.",
     },
 ];
 ---
 
 <BaseLayout
-    meta_title="Case Study: Headless WordPress for an Endoscopy Center | Motown Solutions"
-    meta_description="Staff still edit WordPress; patients never load it. A full WordPress site for an outpatient endoscopy center rebuilt as a static Astro frontend with headless WordPress and content-triggered rebuilds."
+    meta_title="Headless WordPress Case Study | Motown Solutions"
+    meta_description="An endoscopy center's WordPress site rebuilt as a static Astro frontend. Staff still edit in WordPress, and pressing publish rebuilds the public site."
 >
     <section class="relative overflow-hidden border-b-2 border-ink">
         <svg
@@ -173,8 +173,7 @@ const timeline = [
                         class="mt-10 text-lg md:text-xl text-ink-muted leading-relaxed text-pretty max-w-xl"
                     >
                         An outpatient endoscopy center was running its public
-                        site as a full WordPress install — PHP, database and
-                        plugins serving every patient request. Staff liked
+                        site as a full WordPress install, with PHP, database and plugins serving every patient request. Staff liked
                         editing it. Nobody liked how it loaded. WordPress stayed
                         exactly where it was. Everything in front of it changed.
                     </p>
@@ -368,8 +367,7 @@ const timeline = [
                     or an expiring certificate on the editorial side is a staff
                     inconvenience rather than an outage on the public site. The
                     honest flip side: a build does need WordPress reachable
-                    while it runs. When it isn't, the build fails and the
-                    previous site stays up — which is the failure mode you want.
+                    while it runs. When it isn't, the build fails and the previous site stays up, which is the failure mode you want.
                 </p>
             </blockquote>
         </div>
@@ -458,8 +456,7 @@ const timeline = [
                     >
                         The whole point of keeping WordPress was that staff
                         would not have to learn anything new. So the pipeline
-                        between their publish button and the public site has to
-                        be invisible to them — and safe when it isn't.
+                        between their publish button and the public site has to be invisible to them, and safe when something goes wrong.
                     </p>
                 </div>
             </div>
@@ -582,8 +579,7 @@ const timeline = [
             <p class="text-lg md:text-xl text-paper/70 max-w-xl mb-10">
                 Tell us what your team edits today and what your site has to do
                 for the people who visit it. We will tell you whether the CMS
-                needs replacing or just needs getting out of the way — and what
-                either one costs.
+                needs replacing or just needs getting out of the way, and what either one costs.
             </p>
             <div class="flex flex-wrap gap-3 mb-12">
                 <a

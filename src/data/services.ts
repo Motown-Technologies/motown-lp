@@ -11,7 +11,7 @@ const services: Service[] = [
         icon: "software",
         title: "Software Development",
         description:
-            "Whether you need a new application or want to enhance existing systems, we create software that drives efficiency and innovation. Let us help you turn your ideas into powerful, user-friendly software.",
+            "We build new applications and improve the systems you already run, from web apps and enterprise software to APIs and cloud-native platforms.",
         bullets: [
             "Custom Web Applications",
             "Enterprise Software Solutions",
@@ -25,7 +25,7 @@ const services: Service[] = [
         icon: "ai",
         title: "AI Development",
         description:
-            "We design custom AI models, fine-tune frontier LLMs to your data, and build production-grade AI systems that solve real business problems — not generic chatbots. From private deployments to retrieval and agents, we make AI work where it matters.",
+            "We design custom AI models, fine-tune frontier LLMs to your data, and build production-grade AI systems for specific business problems, including private deployments, retrieval systems, and agents.",
         bullets: [
             "Custom AI Model Development",
             "LLM Fine-Tuning & Evaluation",
@@ -53,7 +53,7 @@ const services: Service[] = [
         icon: "web",
         title: "Web Design & Development",
         description:
-            "We create stunning, responsive websites that not only look great but also deliver exceptional user experiences and drive conversions for your business.",
+            "We design and build responsive websites that are easy to use and built to convert, then keep them fast and maintained after launch.",
         bullets: [
             "Responsive Web Design",
             "E-commerce Solutions",
@@ -95,7 +95,7 @@ const services: Service[] = [
         icon: "mobile",
         title: "Mobile Development",
         description:
-            "We develop mobile apps that are intuitive, engaging, and aligned with your business goals. Whether you're looking to launch a new app or improve an existing one, we've got you covered.",
+            "We build iOS and Android apps, whether you're launching a new one or improving one you already have.",
         bullets: [
             "iOS & Android Development",
             "Cross-Platform Solutions",
@@ -109,7 +109,7 @@ const services: Service[] = [
         icon: "automation",
         title: "Automation",
         description:
-            "We design automation solutions that reduce manual work, minimize errors, and save time. Let us help you automate repetitive tasks so you can focus on what matters most.",
+            "We automate repetitive work, which cuts errors and gives your team its time back.",
         bullets: [
             "Workflow Automation",
             "Business Process Optimization",
@@ -123,7 +123,7 @@ const services: Service[] = [
         icon: "consulting",
         title: "Consulting",
         description:
-            "Our consulting services provide insights and strategies to optimize your IT infrastructure and drive business growth. We're here to help you make informed decisions and achieve your goals.",
+            "We help you plan your technology: where to invest, what to replace, and how to keep it secure.",
         bullets: [
             "Technology Strategy",
             "Digital Transformation",

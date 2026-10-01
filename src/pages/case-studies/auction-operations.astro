@@ -8,11 +8,11 @@ const outcomes = [
     },
     {
         before: "Item status kept in three places that quietly disagreed with each other",
-        after: "Status computed by the database itself — it cannot drift, and code cannot overwrite it",
+        after: "Status computed by the database itself, so it cannot drift and code cannot overwrite it",
     },
     {
         before: "Catalog copy typed by hand, item by item, in the format the auction software wanted",
-        after: "Photos in, draft title, description and keywords out — reviewed and approved by a cataloger",
+        after: "Photos in, draft title, description and keywords out, then reviewed and approved by a cataloger",
     },
     {
         before: "Photos emailed around or dropped in a folder, named by whoever took them",
@@ -32,12 +32,12 @@ const pillars = [
     {
         n: "01",
         title: "The lifecycle is the spine",
-        body: "Inventory moves through seven stages — quick catalog, photograph, store, assign, review, catalog, auction — and then forks to sold or unsold. That path is not a status dropdown bolted on afterwards. Filters, dashboards, bulk actions and the item stepper all key off the same lifecycle, so where a piece stands is the same answer everywhere in the system.",
+        body: "Inventory moves through seven stages (quick catalog, photograph, store, assign, review, catalog, auction) and then forks to sold or unsold. Filters, dashboards, bulk actions and the item stepper all key off the same lifecycle, so where a piece stands is the same answer everywhere in the system.",
     },
     {
         n: "02",
         title: "State you cannot corrupt",
-        body: "Where an item stands is derived by the database from stage timestamps, not stored alongside them and hoped to agree. Sold and unsold are made mutually exclusive by a constraint, not by a method someone might route around. Trust in an operations tool is not a feature you add — it is what you get by making the wrong state impossible to write.",
+        body: "Where an item stands is derived by the database from stage timestamps, not stored alongside them and hoped to agree. Sold and unsold are made mutually exclusive by a constraint, not by a method someone might route around. Staff can trust the tool because the database refuses to store a wrong state.",
     },
     {
         n: "03",
@@ -49,11 +49,11 @@ const pillars = [
 const build = [
     {
         title: "Status the app cannot lie about",
-        body: "Three sources of truth for stage completion were collapsed into one. Timestamps became the only record; status and progress became generated columns computed from them and indexed. No backfill, no drift, and no write path — including raw SQL — that can disagree.",
+        body: "Three sources of truth for stage completion were collapsed into one. Timestamps became the only record; status and progress became generated columns computed from them and indexed. Nothing needed backfilling, and no write path, raw SQL included, can make them disagree.",
     },
     {
         title: "Auditing writes that fire no events",
-        body: "A bulk edit through the query builder skips model events, so a twenty-five-thousand-item change used to leave no trail. Auditing moved into a custom builder, which covers every mass update written since — and every one written in future — without anyone having to remember.",
+        body: "A bulk edit through the query builder skips model events, so a twenty-five-thousand-item change used to leave no trail. Auditing moved into a custom builder, which covers every mass update written since, including future ones, without anyone having to remember.",
     },
     {
         title: "A circuit breaker on the AI",
@@ -61,7 +61,7 @@ const build = [
     },
     {
         title: "Built for a phone camera",
-        body: "Uploads are presigned and go straight to storage. iPhone photos are converted from HEIC and compressed in the browser before they ever leave, then optimized again by a queue worker — so cataloging from a phone on the warehouse floor is the normal path, not the degraded one.",
+        body: "Uploads are presigned and go straight to storage. iPhone photos are converted from HEIC and compressed in the browser before they ever leave, then optimized again by a queue worker. Cataloging from a phone on the warehouse floor is the normal path, not a degraded one.",
     },
     {
         title: "Lot numbers that reuse their gaps",
@@ -69,7 +69,7 @@ const build = [
     },
     {
         title: "Realtime, with a fallback",
-        body: "Job progress, image processing and bulk actions broadcast over WebSockets and the interface subscribes — but it also polls if the socket never arrives, and failed broadcasts are retried. Progress bars are the thing users trust least when they are wrong.",
+        body: "Job progress, image processing and bulk actions broadcast over WebSockets and the interface subscribes. It also polls if the socket never arrives, and failed broadcasts are retried. Progress bars are the thing users trust least when they are wrong.",
     },
 ];
 
@@ -80,7 +80,7 @@ const rigor = [
     },
     {
         risk: "Something is deleted the week before the sale",
-        undo: "Nothing is really deleted — a recently-deleted screen restores it in bulk, on a retention window the house sets",
+        undo: "Nothing is really deleted. A recently-deleted screen restores it in bulk, on a retention window the house sets",
     },
     {
         risk: "Two people disagree about where a lot stands",
@@ -102,8 +102,8 @@ const rigor = [
 ---
 
 <BaseLayout
-    meta_title="Case Study: An Auction House Operations Platform | Motown Solutions"
-    meta_description="Spreadsheets, a photo folder and a group chat, replaced by one auditable system of record — inventory intake, AI-assisted cataloging, media handling and auction management for an auction house."
+    meta_title="Auction Operations Platform Case Study | Motown Solutions"
+    meta_description="How we replaced an auction house's spreadsheets, photo folder, and group chat with one auditable system for intake, AI-assisted cataloging, and auctions."
 >
     <section class="relative overflow-hidden border-b-2 border-ink">
         <svg
@@ -254,8 +254,7 @@ const rigor = [
                     >
                         The staff already knew how to run an auction. The tools
                         were the problem: three of them, none aware of the
-                        others, and no way to answer who changed what. Nothing
-                        here reinvents the operation — it just gives it a memory.
+                        others, and no way to answer who changed what. We left the operation itself alone and gave it a memory.
                     </p>
                 </div>
             </div>
@@ -348,12 +347,7 @@ const rigor = [
                     the exception and then didn't use it.
                 </p>
                 <p class="mt-4 text-ink-muted leading-relaxed">
-                    The design system is checked into the repository — a colour
-                    scale, a five-role type scale, component specs, and named
-                    anti-references: not the default template, not enterprise
-                    grey, not consumer playful, not the spreadsheet it replaced.
-                    Dense where staff scan, calm and deliberate at the commit
-                    points — deleting, publishing, marking a lot sold. Status is
+                    The design system is checked into the repository: a colour scale, a five-role type scale, component specs, and named anti-references (the default template, enterprise grey, consumer playful, and the spreadsheet it replaced). Screens are dense where staff scan and calm at the commit points, such as deleting, publishing, and marking a lot sold. Status is
                     never communicated by colour alone.
                 </p>
             </blockquote>
@@ -438,10 +432,7 @@ const rigor = [
                         class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
                     >
                         A team that stops trusting its own tool goes back to the
-                        spreadsheet, and nobody tells you they have. So the
-                        question worth asking of an operations system is not
-                        what it does on a good day — it's what the worst
-                        afternoon of the quarter costs you.
+                        spreadsheet, and nobody tells you they have. So the question to ask of an operations system is what the worst afternoon of the quarter costs you.
                     </p>
                 </div>
             </div>
@@ -513,8 +504,7 @@ const rigor = [
                 Outgrowing it is.
             </h2>
             <p class="text-lg md:text-xl text-paper/70 max-w-xl mb-10">
-                Tell us how the work actually moves today — the files, the group
-                chats, the one person who knows. We will map it, tell you which
+                Tell us how the work actually moves today: the files, the group chats, the one person who knows. We will map it, tell you which
                 parts are worth building software for and which are fine as they
                 are, and what the first version costs.
             </p>

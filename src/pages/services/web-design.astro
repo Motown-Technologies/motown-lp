@@ -6,7 +6,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 const services = [
     {
         title: "Responsive Design",
-        desc: "Websites that look perfect on every device, from mobile to desktop",
+        desc: "Websites that work on every screen, from phone to desktop",
         iconPath:
             "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
         bullets: [
@@ -19,7 +19,7 @@ const services = [
     },
     {
         title: "UI/UX Design",
-        desc: "Intuitive interfaces designed with your users in mind",
+        desc: "Interfaces designed around research with your users",
         iconPath:
             "M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01",
         bullets: [
@@ -32,7 +32,7 @@ const services = [
     },
     {
         title: "E-commerce Design",
-        desc: "Online stores designed to maximize conversions and sales",
+        desc: "Online stores designed to turn visits into orders",
         iconPath:
             "M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z",
         bullets: [
@@ -45,7 +45,7 @@ const services = [
     },
     {
         title: "Landing Pages",
-        desc: "High-converting pages designed to capture leads and drive action",
+        desc: "Single pages built to turn paid traffic into leads",
         iconPath: "M13 10V3L4 14h7v7l9-11h-7z",
         bullets: [
             "Compelling headlines & copy",
@@ -57,7 +57,7 @@ const services = [
     },
     {
         title: "Website Redesign",
-        desc: "Modernize your existing website with fresh design and improved UX",
+        desc: "A new design and better UX for the site you already have",
         iconPath:
             "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15",
         bullets: [
@@ -73,7 +73,7 @@ const services = [
 const process = [
     {
         t: "Research & Strategy",
-        d: "We analyze your brand, competitors, and target audience to create a strategic foundation",
+        d: "We study your brand, competitors, and audience before designing anything",
     },
     {
         t: "Wireframing & Prototyping",
@@ -81,18 +81,18 @@ const process = [
     },
     {
         t: "Visual Design",
-        d: "Our designers craft beautiful, on-brand visuals that captivate your audience",
+        d: "We design on-brand visuals for every page",
     },
     {
         t: "Development & Launch",
-        d: "We build your website with clean code and launch it with comprehensive testing",
+        d: "We build the site and test it thoroughly before launch",
     },
 ];
 ---
 
 <BaseLayout
-    meta_title="Web Design & Development | Motown Solutions"
-    meta_description="Design and launch high-performing websites with modern UX, crisp visuals, and measurable results."
+    meta_title="Web Design & Development Services | Motown Solutions"
+    meta_description="Web design and development: responsive websites, UI/UX design, ecommerce stores, landing pages, and website redesigns built to convert."
 >
     <!-- Hero -->
     <section class="relative border-b-2 border-ink overflow-hidden">
@@ -120,10 +120,7 @@ const process = [
                     <p
                         class="text-lg md:text-xl text-ink-muted leading-relaxed text-pretty max-w-xl"
                     >
-                        We create stunning, user-friendly websites that
-                        captivate your audience and drive business growth.
-                        From concept to launch, we deliver digital experiences
-                        that make an impact.
+                        We design and build websites that are easy to use and built to turn visitors into customers, from the first concept through launch.
                     </p>
                     <div class="mt-10 flex flex-wrap gap-3" data-reveal>
                         <a
@@ -174,8 +171,7 @@ const process = [
                     <p
                         class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
                     >
-                        From landing pages to complex web applications, we
-                        craft digital experiences that engage and convert
+                        Landing pages, full sites, online stores, and redesigns
                     </p>
                 </div>
             </div>
@@ -262,9 +258,7 @@ const process = [
                     <p
                         class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
                     >
-                        We follow a proven design process that ensures your
-                        website not only looks great but achieves your business
-                        goals.
+                        Four stages take the site from research to launch, with your business goals guiding each one.
                     </p>
                 </div>
             </div>
@@ -274,7 +268,7 @@ const process = [
                     <div class="border border-ink aspect-[4/3] overflow-hidden">
                         <Image
                             src={processImage}
-                            alt="Design Process"
+                            alt="Website wireframes and mockups from the design process"
                             class="w-full h-full object-cover"
                             loading="lazy"
                         />
@@ -322,8 +316,7 @@ const process = [
                 >?
             </h2>
             <p class="text-lg md:text-xl text-paper/70 max-w-xl mb-10">
-                Let's create a website that not only looks amazing but drives
-                real results for your business.
+                Tell us what your site needs to do for your business.
             </p>
             <div class="flex flex-wrap gap-3">
                 <a

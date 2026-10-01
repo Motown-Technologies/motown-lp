@@ -3,16 +3,16 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
 const outcomes = [
     {
-        before: "Every URL served the same empty shell — search engines saw nothing until JavaScript ran",
+        before: "Every URL served the same empty shell, so search engines saw nothing until JavaScript ran",
         after: "352 real HTML pages, rendered at build time and served complete",
     },
     {
         before: "Every visit re-fetched every word of content from the API",
-        after: "Nothing is fetched at runtime — the site stands up even when the API doesn't",
+        after: "Nothing is fetched at runtime, so the site stays up even when the API doesn't",
     },
     {
         before: "Editors worked in a database admin: no drafts, no preview, no scheduling, no media library",
-        after: "A real CMS — drafts, revisions, preview, scheduled publishing, editor roles",
+        after: "A real CMS with drafts, revisions, preview, scheduled publishing, and editor roles",
     },
     {
         before: "Publishing a change meant asking a developer to run a deploy script",
@@ -28,7 +28,7 @@ const pillars = [
     {
         n: "01",
         title: "Static, all the way down",
-        body: "The site is HTML on a CDN. Content is pulled once, at build time, by a single typed data layer — not by the browser, on every visit, for every visitor. Interactive pieces load as isolated islands; everything else ships no JavaScript at all.",
+        body: "The site is HTML on a CDN. Content is pulled once, at build time, by a single typed data layer, instead of by the browser on every visit. Interactive pieces load as isolated islands; everything else ships no JavaScript at all.",
     },
     {
         n: "02",
@@ -38,7 +38,7 @@ const pillars = [
     {
         n: "03",
         title: "A build that can refuse to deploy",
-        body: "Every push builds in CI before production moves. Publishing content triggers the same build. A change that breaks the site fails in the pipeline rather than on the site — which was not true of the shell script we inherited.",
+        body: "Every push builds in CI before production moves. Publishing content triggers the same build. A change that breaks the site fails in the pipeline rather than on the site. The shell script we inherited had no such check.",
     },
 ];
 
@@ -46,7 +46,7 @@ const timeline = [
     {
         when: "Aug 2023",
         title: "Handover",
-        body: "A Create React App deployed to S3 by a one-line shell script, talking to a Django 3.2 API whose admin panel was the CMS. The first month produced no features — it went on making someone else's system runnable, deployable and reproducible.",
+        body: "A Create React App deployed to S3 by a one-line shell script, talking to a Django 3.2 API whose admin panel was the CMS. The first month produced no features. It went into making someone else's system runnable, deployable and reproducible.",
     },
     {
         when: "Oct 2023",
@@ -56,24 +56,24 @@ const timeline = [
     {
         when: "2024 – 2026",
         title: "Two and a half years of quiet work",
-        body: "Framework upgrades, pinned dependencies, error monitoring, automatic rebuilds on publish. The content model kept growing with the practice. And we kept hand-building editor features — draft states, a preview mode, a page registry — into an admin panel that was never meant to have them.",
+        body: "Framework upgrades, pinned dependencies, error monitoring, automatic rebuilds on publish. The content model kept growing with the practice. And we kept hand-building editor features (draft states, a preview mode, a page registry) into an admin panel that was never meant to have them.",
     },
     {
         when: "Mar 2026",
         title: "Rebuilt on Astro",
-        body: "Specified before a line was written, with three rules: as little browser JavaScript as possible, nothing fetched at runtime, and pixel parity with the live site. No redesign, no new features — both explicit non-goals.",
+        body: "Specified before a line was written, with three rules: as little browser JavaScript as possible, nothing fetched at runtime, and pixel parity with the live site. A redesign and new features were both explicit non-goals.",
     },
     {
         when: "Jun 2026",
         title: "Moved to Wagtail",
-        body: "Django 4.2 reached end of support in April 2026, so the framework upgrade was happening regardless. Rather than pay for two migrations, we bundled the CMS replacement with it — shipping the upgrade as its own release first, so its fallout stayed separate.",
+        body: "Django 4.2 reached end of support in April 2026, so the framework upgrade was happening regardless. Rather than pay for two migrations, we bundled the CMS replacement with it, shipping the upgrade as its own release first so its fallout stayed separate.",
     },
 ];
 
 const reversibility = [
     {
         risk: "The new API is wrong",
-        undo: "The old one stayed mounted and frozen — nothing was removed to make the new one work",
+        undo: "The old one stayed mounted and frozen, and nothing was removed to make the new one work",
     },
     {
         risk: "The site breaks on the new API",
@@ -95,8 +95,8 @@ const reversibility = [
 ---
 
 <BaseLayout
-    meta_title="Case Study: Rebuilding an Inherited Healthcare Site | Motown Solutions"
-    meta_description="We inherited a Create React App and a Django admin panel doing duty as a CMS. Three years later: a fully static site, a real authoring experience, and a build that can refuse to deploy."
+    meta_title="Healthcare Website Rebuild Case Study | Motown Solutions"
+    meta_description="We inherited a React app and a Django admin doing duty as a CMS. Three years later: a static site, a real CMS, and a build that can refuse to deploy."
 >
     <section class="relative overflow-hidden border-b-2 border-ink">
         <svg
@@ -146,8 +146,7 @@ const reversibility = [
                         class="mt-10 text-lg md:text-xl text-ink-muted leading-relaxed text-pretty max-w-xl"
                     >
                         The practice came to us as someone else's codebase. Nothing was
-                        broken, which is the difficult kind of inheritance —
-                        everything was simply fragile, and every fragile part
+                        broken, which is the difficult kind of inheritance: everything was fragile, and every fragile part
                         was load-bearing. Today the practice publishes its own
                         content, the site is static files on a CDN, and a
                         broken build cannot reach production.
@@ -353,9 +352,7 @@ const reversibility = [
                 </p>
                 <p class="mt-4 text-ink-muted leading-relaxed">
                     By mid-2026 we had hand-written draft states, a preview
-                    mode, and a registry of pages the editors couldn't reach —
-                    all of it custom code we would then own and maintain, badly
-                    reimplementing what a CMS gives you on day one. The patches
+                    mode, and a registry of pages the editors couldn't reach. All of it was custom code we would have to own and maintain, and it badly reimplemented what a CMS gives you on day one. The patches
                     were the argument.
                 </p>
             </blockquote>
@@ -525,8 +522,7 @@ const reversibility = [
                     </p>
                     <p class="text-ink-muted leading-relaxed">
                         Triaged, fixed, then launched. A migration reported to
-                        have gone perfectly is usually one nobody checked
-                        closely enough — and parity was only auditable because
+                        have gone perfectly is usually one nobody checked closely enough. Parity was only auditable because
                         we refused to redesign anything at the same time.
                     </p>
                 </div>
@@ -570,8 +566,7 @@ const reversibility = [
             </h2>
             <p class="text-lg md:text-xl text-paper/70 max-w-xl mb-10">
                 Send us the repository and the thing that worries you most about
-                it. We will tell you what is fragile, what is urgent, what can
-                wait, and what it costs — before anyone commits to a rebuild.
+                it. We will tell you what is fragile, what is urgent, what can wait, and what it costs, before anyone commits to a rebuild.
             </p>
             <div class="flex flex-wrap gap-3 mb-12">
                 <a

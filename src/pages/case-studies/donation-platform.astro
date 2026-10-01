@@ -4,11 +4,11 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 const outcomes = [
     {
         before: "Call a screening vendor from inside the donation path",
-        after: "The watchlists live locally and are queried in about half a millisecond — no third party between a donor and their gift",
+        after: "The watchlists live locally and are queried in about half a millisecond, with no third party between a donor and their gift",
     },
     {
         before: "Tell a blocked donor why they were blocked",
-        after: "A neutral decline that never mentions a watchlist — telling a designated party they matched is itself the violation",
+        after: "A neutral decline that never mentions a watchlist, because telling a designated party they matched is itself the violation",
     },
     {
         before: "Let the donation through when the screening service is unavailable",
@@ -20,7 +20,7 @@ const outcomes = [
     },
     {
         before: "Treat a charity missing from the federal list as unverified and stop it",
-        after: "Advisory only — churches are exempt without ever applying and mostly aren't listed at all",
+        after: "Advisory only, since churches are exempt without ever applying and mostly aren't listed at all",
     },
     {
         before: "Assume a payment partner's API is safe to retry",
@@ -32,12 +32,12 @@ const pillars = [
     {
         n: "01",
         title: "Compliance sits in the path",
-        body: "Every donor is screened against the sanctions lists at the one function every donation route passes through to resolve a donor — before a row is written, before a payment object exists, card and donor-advised-fund grants alike. A check that lives beside the critical path instead of inside it is a check somebody eventually routes around.",
+        body: "Every donor is screened against the sanctions lists at the one function every donation route passes through to resolve a donor. That happens before a row is written or a payment object exists, for card gifts and donor-advised-fund grants alike. A check that sits beside the critical path instead of inside it eventually gets routed around.",
     },
     {
         n: "02",
         title: "Two lists, two postures",
-        body: "Sanctions screening blocks. Charity-status verification does not. They look like the same feature — match a name against a government list — but sanctions violations carry strict liability, while being absent from the charity roll is ordinary and expected. Same shape, opposite defaults, because the legal exposure is not the same.",
+        body: "Sanctions screening blocks. Charity-status verification does not. They look like the same feature (match a name against a government list), but sanctions violations carry strict liability, while being absent from the charity roll is ordinary and expected. Same shape, opposite defaults, because the legal exposure is not the same.",
     },
     {
         n: "03",
@@ -49,7 +49,7 @@ const pillars = [
 const build = [
     {
         title: "Matching names nobody spells the same way",
-        body: "Donor names and list entries are normalized into a sorted set of tokens — diacritics stripped, punctuation dropped, honorifics and corporate suffixes removed — so a list's \"SMITH, John\" and a donor's \"John Smith\" compare as equal. The known gap is written down rather than glossed: there is no fuzzy matching, so transliteration variants can still slip past.",
+        body: "Donor names and list entries are normalized into a sorted set of tokens, with diacritics, punctuation, honorifics, and corporate suffixes removed, so a list's \"SMITH, John\" and a donor's \"John Smith\" compare as equal. The known gap is written down rather than glossed: there is no fuzzy matching, so transliteration variants can still slip past.",
     },
     {
         title: "Money safety without a safety net",
@@ -61,11 +61,11 @@ const build = [
     },
     {
         title: "A release you have to mean",
-        body: "Merging to the main branch deploys staging automatically, gated on the test suite. Production deploys only when someone pushes a version tag — so going live is a deliberate act naming an exact commit, not a side effect of merging a pull request on a Friday.",
+        body: "Merging to the main branch deploys staging automatically, gated on the test suite. Production deploys only when someone pushes a version tag, so going live is a deliberate act naming an exact commit, not a side effect of merging a pull request on a Friday.",
     },
     {
         title: "One instance, on purpose",
-        body: "Rate-limit counters live in one process's memory, so spreading traffic across instances would silently multiply every limit — five login attempts a minute becomes fifteen across three shards. Traffic is deliberately pinned to a single container until shared counters land. The ceiling is documented in the README with the ticket that lifts it.",
+        body: "Rate-limit counters live in one process's memory, so spreading traffic across instances would silently multiply every limit: five login attempts a minute becomes fifteen across three shards. Traffic is deliberately pinned to a single container until shared counters land. The ceiling is documented in the README with the ticket that lifts it.",
     },
     {
         title: "Tests that watch the routes themselves",
@@ -88,7 +88,7 @@ const rigor = [
     },
     {
         risk: "Documentation drifts away from the code",
-        undo: "Docs change in the same commit as the code — endpoints, environment variables and limitations included",
+        undo: "Docs change in the same commit as the code, including endpoints, environment variables and limitations",
     },
     {
         risk: "A deploy ships code nobody committed",
@@ -98,8 +98,8 @@ const rigor = [
 ---
 
 <BaseLayout
-    meta_title="Case Study: A Multi-Tenant Donation Platform | Motown Solutions"
-    meta_description="Sanctions screening in the donation path, charity verification that deliberately blocks nothing, and donor-advised-fund grants made safe to retry — a multi-tenant giving platform built compliance-first."
+    meta_title="Donation Platform Case Study | Motown Solutions"
+    meta_description="A multi-tenant giving platform built compliance-first, with sanctions screening in the donation path and donor-advised fund grants that are safe to retry."
 >
     <section class="relative overflow-hidden border-b-2 border-ink">
         <svg
@@ -150,10 +150,7 @@ const rigor = [
                         giving pages, and donors give by card, wallet, or grant
                         from a donor-advised fund. Take payments for other
                         organizations and you inherit obligations that have
-                        nothing to do with payments — sanctions screening,
-                        charity verification, records that hold up years later.
-                        Those obligations shaped the architecture rather than
-                        arriving after it.
+                        nothing to do with payments: sanctions screening, charity verification, and records that hold up years later. Those obligations shaped the architecture from the start.
                     </p>
 
                     <div class="mt-10 flex flex-wrap gap-3">
@@ -254,11 +251,7 @@ const rigor = [
                     <p
                         class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
                     >
-                        Nothing here is exotic engineering. Each one is a
-                        default that looks reasonable, ships quickly, and is
-                        wrong for a system that moves other people's charitable
-                        money — and each is cheap to get right at the start and
-                        expensive to retrofit.
+                        Each of these is a default that looks reasonable and ships quickly but is wrong for a system that moves other people's charitable money. Each is cheap to get right at the start and expensive to retrofit.
                     </p>
                 </div>
             </div>
@@ -353,8 +346,7 @@ const rigor = [
                 <p class="mt-4 text-ink-muted leading-relaxed">
                     Which is why screening fails closed: if the lists cannot be
                     queried, the donation is declined rather than waved through.
-                    The same instinct runs through the rest of it — production
-                    refuses to boot without its encryption key, unknown outcomes
+                    The same instinct runs through the rest of it: production refuses to boot without its encryption key, unknown outcomes
                     from a payment partner are handled as their own case rather
                     than assumed successful, and the decisions that cleared are
                     recorded alongside the ones that blocked.
@@ -389,9 +381,7 @@ const rigor = [
                         class="text-base md:text-lg text-ink-muted leading-relaxed text-pretty"
                     >
                         Every one of these carries a tradeoff we took
-                        deliberately, and in most cases wrote into the
-                        repository next to the code — including the ceiling it
-                        imposes and the work that would lift it.
+                        deliberately, and in most cases wrote into the repository next to the code, including the ceiling it imposes and the work that would lift it.
                     </p>
                 </div>
             </div>
@@ -489,8 +479,7 @@ const rigor = [
                         six of twenty ordinary donor names in our own July
                         testing. "Maria Garcia" is contained inside a longer
                         listed name, and a platform that declines her is worse
-                        than useless. Allowing exactly one extra token brought
-                        it to three of twenty — and those three are genuine
+                        than useless. Allowing exactly one extra token brought it to three of twenty, and those three are genuine
                         possible matches that a person should look at.
                     </p>
                     <p class="text-ink-muted leading-relaxed">
@@ -517,7 +506,7 @@ const rigor = [
                     <p class="text-ink-muted leading-relaxed">
                         A documentation section that only lists what works is a
                         sales page. The value of writing the limits down is that
-                        the next person — including the next us — inherits them
+                        the next person (including us, next time) inherits them
                         as decisions instead of discovering them as surprises.
                     </p>
                 </div>
@@ -560,8 +549,7 @@ const rigor = [
                 <span class="italic text-accent">version two</span>.
             </h2>
             <p class="text-lg md:text-xl text-paper/70 max-w-xl mb-10">
-                Tell us what your product moves — payments, donations, claims,
-                regulated data — and who you'd have to answer to about it. We
+                Tell us what your product moves (payments, donations, claims, regulated data) and who you'd have to answer to about it. We
                 will tell you which obligations belong in the architecture now
                 and which can honestly wait.
             </p>
